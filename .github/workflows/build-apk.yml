@@ -43,7 +43,6 @@ jobs:
           echo "sdkmanager at: $SDKMANAGER"
           if [ -n "$SDKMANAGER" ]; then
             yes | "$SDKMANAGER" --licenses 2>&1 | tail -5 || true
-            "$SDKMANAGER" "platforms;android-35" "build-tools;35.0.0" 2>&1 && echo "SDK 35 installed" || \
             "$SDKMANAGER" "platforms;android-34" "build-tools;34.0.0" 2>&1 && echo "SDK 34 installed" || \
             echo "WARNING: sdkmanager install failed, relying on pre-installed SDK"
           fi
