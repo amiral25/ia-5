@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand -->
+    <color name="brand_red">#FF0000</color>
+
+    <!-- Backgrounds -->
+    <color name="bg_dark">#111111</color>
+    <color name="bg_card">#1E1E1E</color>
+
+    <!-- Text -->
+    <color name="text_primary">#F5F5F5</color>
+    <color name="text_secondary">#888888</color>
+
+    <!-- Status -->
+    <color name="status_active">#4CAF50</color>
+    <color name="status_inactive">#F44336</color>
+
+    <!-- System -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+</resources>
