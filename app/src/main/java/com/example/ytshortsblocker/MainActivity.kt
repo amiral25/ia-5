@@ -6,18 +6,18 @@ import android.os.Bundle
 import android.provider.Settings
 import android.text.TextUtils
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.ContextCompat
-import com.google.android.material.button.MaterialButton
-import com.google.android.material.materialswitch.MaterialSwitch
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var statusIndicator: View
     private lateinit var statusText: TextView
-    private lateinit var enableSwitch: MaterialSwitch
-    private lateinit var settingsButton: MaterialButton
+    private lateinit var enableSwitch: SwitchCompat
+    private lateinit var settingsButton: Button
     private lateinit var instructionText: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,7 +51,6 @@ class MainActivity : AppCompatActivity() {
         val active = isAccessibilityServiceEnabled()
         val color = if (active) R.color.status_active else R.color.status_inactive
 
-        // Update indicator circle color
         val bg = statusIndicator.background.mutate() as? GradientDrawable
         bg?.setColor(ContextCompat.getColor(this, color))
 
