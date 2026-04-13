@@ -1,0 +1,62 @@
+name: Build APK
+
+on:
+  push:
+    branches:
+      - claude/youtube-shorts-blocker-app-AISBy
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Cache Gradle packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: gradle-
+
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+
+      - name: Build debug APK
+        run: ./gradlew assembleDebug --no-daemon
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: YTShortsBlocker-debug
+          path: app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 30
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0-debug
+          name: "YT Shorts Blocker v1.0"
+          body: |
+            ## Installation
+
+            1. Téléchargez le fichier `YTShortsBlocker.apk` ci-dessous
+            2. Sur votre Android : **Paramètres → Applications → Installer des applis inconnues** → autoriser votre navigateur
+            3. Ouvrez le fichier APK téléchargé et installez
+            4. Lancez l'app et activez le service d'accessibilité
+
+            > APK debug signé avec la clé de débogage Android — fonctionnel pour une installation personnelle.
+          files: app/build/outputs/apk/debug/app-debug.apk
+          token: ${{ secrets.GITHUB_TOKEN }}
+          make_latest: true
