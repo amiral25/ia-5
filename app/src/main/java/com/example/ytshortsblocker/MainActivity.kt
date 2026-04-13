@@ -6,10 +6,10 @@ import android.os.Bundle
 import android.provider.Settings
 import android.text.TextUtils
 import android.view.View
-import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.materialswitch.MaterialSwitch
 
 class MainActivity : AppCompatActivity() {
@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var statusIndicator: View
     private lateinit var statusText: TextView
     private lateinit var enableSwitch: MaterialSwitch
-    private lateinit var settingsButton: Button
+    private lateinit var settingsButton: MaterialButton
     private lateinit var instructionText: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {

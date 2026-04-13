@@ -76,10 +76,14 @@ class ShortsBlockerService : AccessibilityService() {
     }
 
     private fun detectShorts(event: AccessibilityEvent): Boolean {
-        // Strategy 1: Class name check (fast, fires on navigation)
-        val className = event.className?.toString() ?: ""
-        if (SHORTS_CLASS_FRAGMENTS.any { className.contains(it, ignoreCase = true) }) {
-            return true
+        // Strategy 1: Class name check — only for window STATE changes.
+        // For TYPE_WINDOW_CONTENT_CHANGED, className is a View class (not an Activity),
+        // which can produce false positives when scrolling past Shorts shelves on the home feed.
+        if (event.eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
+            val className = event.className?.toString() ?: ""
+            if (SHORTS_CLASS_FRAGMENTS.any { className.contains(it, ignoreCase = true) }) {
+                return true
+            }
         }
 
         // Strategy 2: View hierarchy scan using known Shorts view IDs (most reliable)
@@ -110,7 +114,7 @@ class ShortsBlockerService : AccessibilityService() {
     }
 
     private fun isBlockerEnabled(): Boolean =
-        prefs.getBoolean(KEY_ENABLED, true)
+        if (::prefs.isInitialized) prefs.getBoolean(KEY_ENABLED, true) else true
 
     override fun onInterrupt() {
         // Required — no action needed
