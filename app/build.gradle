@@ -35,5 +35,8 @@ android {
 dependencies {
     implementation 'androidx.core:core-ktx:1.13.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.12.0'
+    // Exclude viewpager2 — not used by this app, causes resolution conflict
+    implementation('com.google.android.material:material:1.12.0') {
+        exclude group: 'androidx.viewpager2', module: 'viewpager2'
+    }
 }
