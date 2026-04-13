@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">YT Shorts Blocker</string>
+    <string name="app_subtitle">Bloquez les YouTube Shorts définitivement</string>
+    <string name="service_name">Bloqueur de YouTube Shorts</string>
+    <string name="accessibility_service_description">Détecte automatiquement les YouTube Shorts dans l\'application YouTube et navigue en arrière pour les bloquer.</string>
+    <string name="service_status_label">Statut du service</string>
+    <string name="status_active">Actif</string>
+    <string name="status_inactive">Inactif</string>
+    <string name="blocker_toggle_title">Blocage activé</string>
+    <string name="blocker_toggle_subtitle">Désactiver temporairement sans quitter le service</string>
+    <string name="button_enable_service">Activer le service d\'accessibilité</string>
+    <string name="button_open_settings">Paramètres d\'accessibilité</string>
+    <string name="instruction_text">Appuyez sur le bouton ci-dessous, puis activez \"YT Shorts Blocker\" dans la liste des services d\'accessibilité.</string>
+</resources>

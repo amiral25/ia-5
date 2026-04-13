@@ -1,0 +1,71 @@
+name: Build APK
+
+on:
+  push:
+    branches:
+      - claude/youtube-shorts-blocker-app-AISBy
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Create local.properties
+        run: echo "sdk.dir=$ANDROID_HOME" > local.properties
+
+      - name: Accept Android SDK licenses
+        run: yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
+
+      - name: Install Android platform 34
+        run: $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-34" "build-tools;34.0.0"
+
+      - name: Cache Gradle packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: gradle-
+
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+
+      - name: Build debug APK
+        run: ./gradlew assembleDebug --no-daemon --stacktrace
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: YTShortsBlocker-debug
+          path: app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 30
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0-debug
+          name: "YT Shorts Blocker v1.0"
+          body: |
+            ## Installation
+
+            1. Téléchargez **`app-debug.apk`** ci-dessous
+            2. Sur Android : **Paramètres → Applications → Installer des applis inconnues** → autoriser votre navigateur/gestionnaire de fichiers
+            3. Ouvrez le fichier `.apk` sur votre téléphone et installez
+            4. Lancez **YT Shorts Blocker** → appuyez sur le bouton rouge → activez le service dans les paramètres d'accessibilité
+
+            > APK signé avec la clé de débogage Android standard.
+          files: app/build/outputs/apk/debug/app-debug.apk
+          token: ${{ secrets.GITHUB_TOKEN }}
+          make_latest: true
