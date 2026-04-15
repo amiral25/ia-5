@@ -12,15 +12,4 @@
     <string name="button_enable_service">Activer le service d\'accessibilité</string>
     <string name="button_open_settings">Paramètres d\'accessibilité</string>
     <string name="instruction_text">Appuyez sur le bouton ci-dessous, puis activez \"YT Shorts Blocker\" dans la liste des services d\'accessibilité.</string>
-
-    <!-- Diagnostic section -->
-    <string name="diag_title">Diagnostic</string>
-    <string name="diag_subtitle">Identifie les IDs de vues YouTube Shorts en temps réel</string>
-    <string name="diag_count_zero">Active le mode, ouvre YouTube Shorts, puis reviens ici</string>
-    <string name="diag_count">%d IDs uniques capturés</string>
-    <string name="diag_copy">Copier les IDs</string>
-    <string name="diag_clear">Effacer</string>
-    <string name="diag_copied">IDs copiés dans le presse-papier !</string>
-    <string name="diag_cleared">Données effacées</string>
-    <string name="diag_empty">Aucune donnée. Active le mode et navigue dans YouTube.</string>
 </resources>

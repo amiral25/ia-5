@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "view_ids": [
+    "com.google.android.youtube:id/reel_player_page_container",
+    "com.google.android.youtube:id/shorts_container",
+    "com.google.android.youtube:id/reel_channel_bar_container",
+    "com.google.android.youtube:id/shorts_shelf_item",
+    "com.google.android.youtube:id/reel_player_header_container",
+    "com.google.android.youtube:id/reel_watch_fragment_container",
+    "com.google.android.youtube:id/shorts_player_container",
+    "com.google.android.youtube:id/reel_player_id",
+    "com.google.android.youtube:id/shorts_video_cell",
+    "com.google.android.youtube:id/reel_overlay_container",
+    "com.google.android.youtube:id/shorts_pivot_item",
+    "com.google.android.youtube:id/reel_player_bottom_panel"
+  ],
+  "class_fragments": [
+    "shorts",
+    "Shorts",
+    "reel",
+    "Reel",
+    "ReelWatchFragment",
+    "ShortsActivity",
+    "ShortsFragment",
+    "com.google.android.apps.youtube.app.shorts"
+  ]
+}
