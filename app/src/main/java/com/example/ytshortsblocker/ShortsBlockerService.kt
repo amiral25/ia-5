@@ -12,11 +12,14 @@ class ShortsBlockerService : AccessibilityService() {
         const val YOUTUBE_PACKAGE = "com.google.android.youtube"
         const val PREFS_NAME = "YTBlockerPrefs"
         const val KEY_ENABLED = "blocker_enabled"
+        const val KEY_DIAG_MODE = "diag_mode"
+        const val KEY_DIAG_IDS = "diag_ids"
+        const val KEY_DIAG_CLASSES = "diag_classes"
 
         private const val CONTENT_CHANGE_COOLDOWN_MS = 200L
         private const val BACK_PRESS_COOLDOWN_MS = 1500L
+        private const val DIAG_CAPTURE_INTERVAL_MS = 500L
 
-        // Known Shorts view IDs — checked first (fast native search)
         private val SHORTS_VIEW_IDS = listOf(
             "$YOUTUBE_PACKAGE:id/reel_player_page_container",
             "$YOUTUBE_PACKAGE:id/shorts_container",
@@ -32,13 +35,9 @@ class ShortsBlockerService : AccessibilityService() {
             "$YOUTUBE_PACKAGE:id/reel_player_bottom_panel",
         )
 
-        // Class name fragments for window-state transitions
         private val SHORTS_CLASS_FRAGMENTS = listOf(
-            "shorts", "Shorts",
-            "reel", "Reel",
-            "ReelWatchFragment",
-            "ShortsActivity",
-            "ShortsFragment",
+            "shorts", "Shorts", "reel", "Reel",
+            "ReelWatchFragment", "ShortsActivity", "ShortsFragment",
             "com.google.android.apps.youtube.app.shorts",
         )
     }
@@ -46,6 +45,7 @@ class ShortsBlockerService : AccessibilityService() {
     private lateinit var prefs: SharedPreferences
     private var lastContentCheckTime = 0L
     private var lastBackPressTime = 0L
+    private var lastDiagCaptureTime = 0L
 
     override fun onServiceConnected() {
         super.onServiceConnected()
@@ -65,10 +65,21 @@ class ShortsBlockerService : AccessibilityService() {
     }
 
     override fun onAccessibilityEvent(event: AccessibilityEvent) {
-        if (!isBlockerEnabled()) return
         if (event.packageName?.toString() != YOUTUBE_PACKAGE) return
+        if (!::prefs.isInitialized) return
 
         val now = System.currentTimeMillis()
+
+        // Diagnostic capture — runs regardless of blocker state
+        if (prefs.getBoolean(KEY_DIAG_MODE, false)) {
+            if (now - lastDiagCaptureTime > DIAG_CAPTURE_INTERVAL_MS) {
+                lastDiagCaptureTime = now
+                rootInActiveWindow?.let { root -> runDiagnostic(root, event) }
+            }
+        }
+
+        if (!isBlockerEnabled()) return
+
         if (event.eventType == AccessibilityEvent.TYPE_WINDOW_CONTENT_CHANGED) {
             if (now - lastContentCheckTime < CONTENT_CHANGE_COOLDOWN_MS) return
             lastContentCheckTime = now
@@ -87,12 +98,14 @@ class ShortsBlockerService : AccessibilityService() {
         }
 
         val root = rootInActiveWindow ?: return false
+
         return try {
-            // Strategy 2: fast search using known view IDs
+            // Strategy 2: fast lookup of hardcoded known view IDs
             if (containsShortsViewId(root)) return true
-            // Strategy 3: deep tree scan for ANY "shorts"/"reel" view ID
-            // (catches renamed IDs across YouTube updates)
-            // Only on window state changes to avoid performance cost on frequent content events
+            // Strategy 3: Shorts nav tab is the selected/active tab (no internal IDs needed)
+            if (isShortsNavSelected(root)) return true
+            // Strategy 4: deep tree scan for any "shorts"/"reel" in view IDs
+            // Only on state changes to avoid performance hit on frequent content events
             if (event.eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
                 scanTreeForShortsId(root, 0)
             } else false
@@ -113,7 +126,30 @@ class ShortsBlockerService : AccessibilityService() {
         return false
     }
 
-    // Recursive scan: returns true if ANY node has a resource ID containing "shorts" or "reel"
+    // Detects when the "Shorts" tab in the YouTube bottom navigation is the active tab.
+    // This works without any hardcoded internal view IDs.
+    private fun isShortsNavSelected(root: AccessibilityNodeInfo): Boolean {
+        return try {
+            val nodes = root.findAccessibilityNodeInfosByText("Shorts")
+            var found = false
+            for (node in nodes) {
+                try {
+                    val text = node.text?.toString() ?: ""
+                    // Exact match avoids false positives from titles like "Top Shorts"
+                    if (text.equals("Shorts", ignoreCase = true) && node.isSelected) {
+                        found = true
+                        break
+                    }
+                } finally {
+                    node.recycle()
+                }
+            }
+            found
+        } catch (e: Exception) {
+            false
+        }
+    }
+
     private fun scanTreeForShortsId(node: AccessibilityNodeInfo, depth: Int): Boolean {
         if (depth > 12) return false
         val id = node.viewIdResourceName
@@ -121,7 +157,6 @@ class ShortsBlockerService : AccessibilityService() {
             (id.contains("shorts", ignoreCase = true) ||
                     id.contains("reel", ignoreCase = true))
         ) return true
-
         for (i in 0 until node.childCount) {
             val child = node.getChild(i) ?: continue
             try {
@@ -132,6 +167,46 @@ class ShortsBlockerService : AccessibilityService() {
         }
         return false
     }
+
+    // --- Diagnostic mode: captures all YouTube view IDs for analysis ---
+
+    private fun runDiagnostic(root: AccessibilityNodeInfo, event: AccessibilityEvent) {
+        try {
+            val ids = mutableSetOf<String>()
+            collectAllIds(root, ids, 0)
+
+            val existingStr = prefs.getString(KEY_DIAG_IDS, "") ?: ""
+            val existingIds = if (existingStr.isEmpty()) mutableSetOf()
+                else existingStr.split("\n").filter { it.isNotEmpty() }.toMutableSet()
+            existingIds.addAll(ids)
+            val trimmedIds = existingIds.toSortedSet().take(400).joinToString("\n")
+
+            val cls = event.className?.toString() ?: ""
+            val existingClsStr = prefs.getString(KEY_DIAG_CLASSES, "") ?: ""
+            val existingCls = if (existingClsStr.isEmpty()) mutableSetOf()
+                else existingClsStr.split("\n").filter { it.isNotEmpty() }.toMutableSet()
+            if (cls.isNotEmpty()) existingCls.add(cls)
+            val trimmedCls = existingCls.toSortedSet().take(50).joinToString("\n")
+
+            prefs.edit()
+                .putString(KEY_DIAG_IDS, trimmedIds)
+                .putString(KEY_DIAG_CLASSES, trimmedCls)
+                .apply()
+        } catch (e: Exception) { /* ignore */ }
+    }
+
+    private fun collectAllIds(node: AccessibilityNodeInfo, ids: MutableSet<String>, depth: Int) {
+        if (depth > 8) return
+        node.viewIdResourceName?.let {
+            if (it.startsWith("com.google")) ids.add(it)
+        }
+        for (i in 0 until node.childCount) {
+            val child = node.getChild(i) ?: continue
+            try { collectAllIds(child, ids, depth + 1) } finally { child.recycle() }
+        }
+    }
+
+    // ---
 
     private fun pressBack(now: Long) {
         if (now - lastBackPressTime < BACK_PRESS_COOLDOWN_MS) return
