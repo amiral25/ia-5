@@ -1,0 +1,32 @@
+# XcodeGen spec — generate the Xcode project with:  `xcodegen generate`
+# (install once with: `brew install xcodegen`)
+name: NeonDash
+options:
+  bundleIdPrefix: com.neondash
+  deploymentTarget:
+    iOS: "15.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+    SWIFT_VERSION: "5.0"
+    DEVELOPMENT_TEAM: "" # <- mets ton Team ID Apple ici pour signer
+    TARGETED_DEVICE_FAMILY: "1,2"
+    GENERATE_INFOPLIST_FILE: NO
+
+targets:
+  NeonDash:
+    type: application
+    platform: iOS
+    sources:
+      - path: NeonDash
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.neondash.game
+        # Use the committed Info.plist as-is (AdMob keys live there, commented).
+        INFOPLIST_FILE: NeonDash/Resources/Info.plist
+    # Pour activer AdMob :
+    #   1) Ajoute le package Swift "GoogleMobileAds" (Google-Mobile-Ads-SDK) à ce target.
+    #   2) Le code dans Ads/AdMobInterstitial.swift s'active tout seul via `#if canImport(GoogleMobileAds)`.
