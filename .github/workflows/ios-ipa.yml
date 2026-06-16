@@ -10,8 +10,13 @@ name: Build iOS IPA (sideload)
 on:
   workflow_dispatch:
   push:
+    branches:
+      - claude/ios-game-infinite-ads-5thf90
     tags:
       - 'ios-v*'
+    paths:
+      - 'ios/**'
+      - '.github/workflows/ios-ipa.yml'
 
 permissions:
   contents: write
