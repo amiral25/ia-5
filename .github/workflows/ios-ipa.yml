@@ -1,0 +1,97 @@
+name: Build iOS IPA (sideload)
+
+# Produit un .ipa NON SIGNÉ, prêt à être installé avec Sideloadly ou AltStore
+# (signature faite au moment du sideload avec ton identifiant Apple gratuit).
+#
+# Lance-le à la main : onglet "Actions" → "Build iOS IPA (sideload)" → "Run workflow".
+# Le .ipa est ensuite dispo : (1) dans les artifacts du run, et (2) dans la
+# Release GitHub "ios-latest".
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'ios-v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build-ipa:
+    runs-on: macos-14
+    defaults:
+      run:
+        working-directory: ios
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_16.app || true
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        run: xcodegen generate
+
+      - name: Archive (unsigned, device)
+        run: |
+          xcodebuild \
+            -project NeonDash.xcodeproj \
+            -scheme NeonDash \
+            -configuration Release \
+            -sdk iphoneos \
+            -archivePath "$RUNNER_TEMP/NeonDash.xcarchive" \
+            archive \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGN_ENTITLEMENTS="" \
+            DEVELOPMENT_TEAM=""
+
+      - name: Package unsigned .ipa
+        run: |
+          APP_PATH="$RUNNER_TEMP/NeonDash.xcarchive/Products/Applications/NeonDash.app"
+          if [ ! -d "$APP_PATH" ]; then
+            echo "::error::NeonDash.app introuvable dans l'archive"; exit 1
+          fi
+          WORK="$RUNNER_TEMP/ipa"
+          rm -rf "$WORK" && mkdir -p "$WORK/Payload"
+          cp -R "$APP_PATH" "$WORK/Payload/"
+          (cd "$WORK" && zip -qry "$RUNNER_TEMP/NeonDash-unsigned.ipa" Payload)
+          echo "IPA prête : $RUNNER_TEMP/NeonDash-unsigned.ipa"
+          ls -lh "$RUNNER_TEMP/NeonDash-unsigned.ipa"
+
+      - name: Upload .ipa artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: NeonDash-unsigned-ipa
+          path: ${{ runner.temp }}/NeonDash-unsigned.ipa
+          retention-days: 30
+
+      - name: Publish to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ios-latest
+          name: "Neon Dash — iOS (à sideloader)"
+          body: |
+            ## Neon Dash — build de test iOS
+
+            **`NeonDash-unsigned.ipa`** ci-dessous = app NON signée.
+            Tu la signes au moment de l'installation avec ton **identifiant Apple gratuit**.
+
+            ### Installer sur ton iPhone (Sideloadly — Windows ou Mac)
+            1. Installe **Sideloadly** : https://sideloadly.io
+            2. Branche ton iPhone en USB, déverrouille-le, accepte « Faire confiance ».
+            3. Glisse `NeonDash-unsigned.ipa` dans Sideloadly, entre ton Apple ID, clique **Start**.
+            4. Sur l'iPhone : **Réglages → Général → VPN et gestion de l'appareil** → fais
+               confiance à ton compte développeur.
+            5. Lance **Neon Dash**. ⏳ Le build expire après **7 jours** (compte gratuit) :
+               relance Sideloadly pour le prolonger.
+
+            > Alternative : **AltStore** (installe AltServer sur le PC, puis l'app via l'iPhone).
+          files: ${{ runner.temp }}/NeonDash-unsigned.ipa
+          token: ${{ secrets.GITHUB_TOKEN }}
+          make_latest: false
