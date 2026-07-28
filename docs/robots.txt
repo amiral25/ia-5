@@ -1,0 +1,6 @@
+# Calculatrice de Durée
+User-agent: *
+Allow: /
+
+# Remplacez VOTRE-SITE.fr par votre nom de domaine réel
+Sitemap: https://VOTRE-SITE.fr/sitemap.xml
