@@ -21,15 +21,12 @@
     var neg = sec < 0, s = Math.round(Math.abs(sec));
     var h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), r = s % 60;
     var out = '';
-    if (h) out += h + 'h ' + String(m).padStart(2, '0') + 'min';
-    else if (m) out += m + 'min';
-    else out = '0min';
-    if (r) out += ' ' + String(r).padStart(2, '0') + 's';
+    if (h) out = nf(h) + 'h ' + String(m).padStart(2, '0') + 'min';
+    else if (m) out = m + 'min';
+    if (r) out += out ? ' ' + String(r).padStart(2, '0') + 's' : r + 's';
+    if (!out) out = '0min';
     return (neg ? '−' : '') + out;
   }
-
-  /** Secondes → heures décimales ("4,25 h") */
-  function fmtDecimal(sec) { return nf(sec / 3600, 2) + ' h'; }
 
   /** Secondes → minutes totales ("255 min") */
   function fmtMinutes(sec) {
@@ -179,10 +176,16 @@
   var rowsBox = $('#rows'), quick = $('#quick');
 
   function rowTemplate(h, m, s, sign) {
+    var minus = sign === '-';
     var d = document.createElement('div');
     d.className = 'row';
     d.innerHTML =
-      '<button class="sign" type="button" data-sign="' + (sign || '+') + '" aria-label="Inverser le signe">' + (sign || '+') + '</button>' +
+      '<div class="sign-group" role="group" aria-label="Ajouter ou soustraire cette durée">' +
+        '<button type="button" class="sg-btn sg-plus' + (minus ? '' : ' is-on') + '" data-sign="+"' +
+        ' aria-pressed="' + (minus ? 'false' : 'true') + '" title="Additionner cette durée">+</button>' +
+        '<button type="button" class="sg-btn sg-minus' + (minus ? ' is-on' : '') + '" data-sign="-"' +
+        ' aria-pressed="' + (minus ? 'true' : 'false') + '" title="Soustraire cette durée">−</button>' +
+      '</div>' +
       '<input class="inp r-h" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Heures" value="' + (h === undefined ? '' : h) + '">' +
       '<input class="inp r-m" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Minutes" value="' + (m === undefined ? '' : m) + '">' +
       '<input class="inp r-s" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Secondes" value="' + (s === undefined ? '' : s) + '">' +
@@ -191,16 +194,22 @@
   }
 
   function buildRows(list) {
-    rowsBox.innerHTML = '<div class="row-units" aria-hidden="true"><span>+/−</span><span>Heures</span><span>Minutes</span><span>Sec.</span><span></span></div>';
+    rowsBox.innerHTML = '<div class="row-units" aria-hidden="true"><span>Ajouter / Retirer</span><span>Heures</span><span>Minutes</span><span>Sec.</span><span></span></div>';
     (list || [[2, 30, ''], [1, 45, '']]).forEach(function (r) {
       rowsBox.appendChild(rowTemplate(r[0], r[1], r[2], r[3]));
     });
   }
 
+  /** Signe actif d'une ligne : '+' ou '-' */
+  function rowSign(row) {
+    var on = $('.sg-btn.is-on', row);
+    return on && on.dataset.sign === '-' ? '-' : '+';
+  }
+
   function sumRows() {
     var total = 0, filled = false;
     $$('.row', rowsBox).forEach(function (row) {
-      var sign = $('.sign', row).dataset.sign === '-' ? -1 : 1;
+      var sign = rowSign(row) === '-' ? -1 : 1;
       var h = parseFloat($('.r-h', row).value) || 0;
       var m = parseFloat($('.r-m', row).value) || 0;
       var s = parseFloat($('.r-s', row).value) || 0;
@@ -229,7 +238,7 @@
       input = $$('.row', rowsBox).map(function (row) {
         var h = $('.r-h', row).value || 0, m = $('.r-m', row).value || 0, s = $('.r-s', row).value || 0;
         if (!+h && !+m && !+s) return '';
-        return $('.sign', row).dataset.sign + ' ' + h + 'h' + String(m).padStart(2, '0') + (+s ? ':' + s : '');
+        return rowSign(row) + ' ' + h + 'h' + String(m).padStart(2, '0') + (+s ? ':' + s : '');
       }).filter(Boolean).join(' ').replace(/^\+\s/, '');
     }
 
@@ -267,7 +276,7 @@
         error: 'Renseignez une heure de début et une heure de fin.' });
     }
 
-    var overnight = b <= a;
+    var overnight = b < a; // heures identiques = durée nulle, pas 24 h
     hNote.classList.toggle('is-hidden', !overnight);
     var gross = overnight ? b + 86400 - a : b - a;
     var net = gross - pause;
@@ -486,10 +495,14 @@
 
   rowsBox.addEventListener('input', compute);
   rowsBox.addEventListener('click', function (e) {
-    var sign = e.target.closest('.sign');
-    if (sign) {
-      var v = sign.dataset.sign === '+' ? '-' : '+';
-      sign.dataset.sign = v; sign.textContent = v; compute(); return;
+    var sg = e.target.closest('.sg-btn');
+    if (sg) {
+      $$('.sg-btn', sg.closest('.sign-group')).forEach(function (b) {
+        var on = b === sg;
+        b.classList.toggle('is-on', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      compute(); return;
     }
     var del = e.target.closest('.row-del');
     if (del) {
@@ -498,10 +511,13 @@
       compute();
     }
   });
-  $('#add-row').addEventListener('click', function () {
-    rowsBox.appendChild(rowTemplate('', '', ''));
+
+  function appendRow(sign) {
+    rowsBox.appendChild(rowTemplate('', '', '', sign));
     $('.row:last-child .r-h', rowsBox).focus();
-  });
+  }
+  $('#add-row').addEventListener('click', function () { appendRow('+'); });
+  $('#sub-row').addEventListener('click', function () { appendRow('-'); });
   quick.addEventListener('input', compute);
 
   [hStart, hEnd, hPause].forEach(function (el) { el.addEventListener('input', compute); });
@@ -527,7 +543,8 @@
   }
 
   $('#year').textContent = new Date().getFullYear();
-  buildRows();
+  // Les lignes de départ sont déjà dans le HTML (évite tout décalage au chargement)
+  if (!$('.row', rowsBox)) buildRows();
   setDefaultDates();
   syncChips();
   drawHist();

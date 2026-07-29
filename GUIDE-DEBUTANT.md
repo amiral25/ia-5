@@ -146,7 +146,7 @@ contenu utile, un outil qui fonctionne, et une page de mentions légales. Vérif
 4. AdSense affiche alors **un code à mettre sur le site** pour vérifier que vous en êtes propriétaire.
 
 ### 5.3 Coller le code de vérification
-Ouvrez **`docs/index.html`**. Vers la ligne 35, vous trouverez ce bloc **déjà préparé** :
+Ouvrez **`docs/index.html`**. Vers la **ligne 35** (cherchez `GOOGLE ADSENSE`), vous trouverez ce bloc **déjà préparé** :
 
 ```html
 <!-- ============================================================
@@ -163,7 +163,7 @@ Faites deux choses :
 2. Remplacez `ca-pub-XXXXXXXXXXXXXXXX` par **votre identifiant**, que AdSense affiche à l'écran
    (il ressemble à `ca-pub-1234567890123456`).
 
-Faites la même opération dans `mentions-legales.html` si vous voulez des pubs aussi sur cette page (facultatif).
+Le même bloc commenté existe dans `mentions-legales.html` (ligne 14) si vous voulez des pubs aussi sur cette page — c'est facultatif.
 
 Republiez le site, puis cliquez sur **« J'ai placé le code »** dans AdSense.
 
@@ -206,6 +206,27 @@ choisissez « Consentement », activez-le sur votre site, **Publier**. Rien à c
 - Dès **10 €** gagnés : Google envoie un **code PIN par courrier postal** (2 à 4 semaines). À saisir dans votre compte.
 - Renseignez votre **RIB** dans *Paiements → Ajouter un mode de paiement*.
 - Le versement part automatiquement quand vous atteignez **70 €**, autour du **21 du mois suivant**.
+
+### 5.9 Faut-il créer une société ? (non)
+Pour **ouvrir** le compte, non : Google accepte les comptes « particulier », sans SIRET, avec votre RIB personnel.
+
+Le critère légal n'est pas le montant mais le **caractère habituel** de l'activité :
+- quelques euros une seule fois → à déclarer en revenus non professionnels (formulaire 2042-C-PRO) ;
+- un revenu qui tombe **tous les mois**, même 30 € → créez une **micro-entreprise**.
+
+La micro-entreprise n'est **pas** une société : pas de capital, pas de statuts, pas de comptable.
+Création **gratuite** en ~20 minutes sur **formalites.entreprises.gouv.fr** (le guichet officiel — méfiez-vous
+des sites qui facturent 50-100 € pour la même démarche). Activité : *exploitation de site internet, régie
+publicitaire* (BIC, prestations de services).
+
+Ce que cela implique : environ **21-22 % de cotisations** sur le chiffre d'affaires encaissé (taux à vérifier
+sur urssaf.fr), une déclaration mensuelle ou trimestrielle **même à 0 €**, l'**ACRE** (−50 % la 1ʳᵉ année) à
+demander à la création, et la CFE exonérée la 1ʳᵉ année. Piège peu connu : Google vous paie depuis **Google
+Ireland**, ce qui impose normalement un **numéro de TVA intracommunautaire** et une **DES** — demandez
+confirmation à votre service des impôts des entreprises.
+
+Une vraie société (SASU, EURL) ne devient intéressante qu'au-delà de **~2 000-3 000 €/mois** : en dessous,
+le comptable coûte plus cher que le gain. *(Information générale, pas un conseil juridique.)*
 
 ### 🚫 Les 4 interdits qui font bannir un compte (définitivement)
 1. **Ne cliquez JAMAIS sur vos propres publicités**, même « pour tester ». Google le détecte immédiatement.
