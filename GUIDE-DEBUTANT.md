@@ -49,8 +49,9 @@ Le site s'ouvre dans votre navigateur. Tout fonctionne déjà (calculs, thème s
 
 Le code est déjà sur GitHub, dans la branche `claude/duration-calculator-seo-wyoyjn`.
 
-1. Fusionnez d'abord cette branche dans `main` (bouton vert *Merge pull request* si une Pull Request existe,
-   sinon GitHub → onglet **Pull requests** → *New pull request* → base `main` ← compare `claude/duration-calculator-seo-wyoyjn` → *Create* → *Merge*).
+1. Fusionnez d'abord cette branche dans `main` : ouvrez la Pull Request
+   **https://github.com/amiral25/ia-5/pull/2** et cliquez sur le bouton vert **Merge pull request**,
+   puis **Confirm merge**.
 2. Sur la page du dépôt, cliquez sur **Settings** (⚙️ en haut à droite).
 3. Menu de gauche : **Pages**.
 4. Section *Build and deployment* :
