@@ -105,9 +105,18 @@ Utilisez **Rechercher / Remplacer** (`Ctrl+H` ou `Cmd+H`) :
 
 À faire dans ces 4 fichiers : `index.html`, `mentions-legales.html`, `robots.txt`, `sitemap.xml`.
 
-Puis, dans **`mentions-legales.html`**, remplacez tout ce qui est entre crochets
-`[VOTRE PRÉNOM ET NOM]`, `[votre-email@exemple.fr]`, `[NOM DE L'HÉBERGEUR]`… par vos vraies informations.
-👉 **Google refuse les sites sans mentions légales identifiables. Ne sautez pas cette étape.**
+Puis ouvrez **`mentions-legales.html`**. Le fichier contient **deux versions au choix**, expliquées
+dans un gros commentaire en haut :
+
+- **Version A — particulier, site sans publicité** (celle qui est active par défaut). La loi française
+  (LCEN art. 6-III-2) autorise un éditeur **non professionnel** à rester anonyme vis-à-vis du public :
+  **vous n'avez ni votre nom ni votre adresse à publier**, seulement l'hébergeur et un e-mail de contact.
+  Vous n'avez donc qu'à remplir `[votre-email@exemple.fr]` et `[NOM DE L'HÉBERGEUR]`.
+- **Version B — activité professionnelle**, à activer **le jour où vous lancez AdSense** : nom, adresse,
+  téléphone et SIRET deviennent obligatoires. Pour ne pas exposer votre domicile, utilisez une société de
+  domiciliation (15-30 €/mois), un espace de coworking, ou l'adresse d'un proche avec son accord.
+
+👉 **Google refuse les sites sans mentions légales. Ne sautez pas cette étape.**
 
 Enfin, republiez (re-glissez le dossier sur Netlify, ou re-poussez sur GitHub).
 
@@ -136,14 +145,14 @@ C'est normal, il n'y a rien à forcer.
 Google refuse la plupart des sites vides. Vous partez avec un avantage : ce site a déjà 1 200 mots de
 contenu utile, un outil qui fonctionne, et une page de mentions légales. Vérifiez juste que :
 - ✅ le site est en ligne sur **votre nom de domaine** (pas une adresse `.netlify.app` temporaire) ;
-- ✅ la page **mentions légales est remplie** avec votre vrai nom et un e-mail ;
+- ✅ la page **mentions légales est remplie** — passez à la **version B** du fichier (nom, adresse, SIRET), car un site monétisé n'est plus un site non professionnel ;
 - ✅ vous avez **18 ans** et un **compte bancaire** à votre nom (ou celui d'un parent, avec son accord) ;
 - ✅ le site est en ligne depuis **au moins quelques jours** et reçoit quelques visites.
 
 ### 5.2 Créer le compte
 1. Allez sur **https://adsense.google.com** → *Commencer*.
 2. Renseignez : l'URL de votre site, votre pays (France), acceptez les conditions.
-3. Renseignez votre adresse postale exacte (elle servira à vous envoyer un code PIN par courrier plus tard).
+3. Renseignez votre adresse postale exacte (elle servira à recevoir un code PIN par courrier). ⚠️ Cette adresse-là reste **privée** : elle est stockée dans votre compte Google et n'apparaît **jamais** sur le site. À ne pas confondre avec l'adresse des mentions légales.
 4. AdSense affiche alors **un code à mettre sur le site** pour vérifier que vous en êtes propriétaire.
 
 ### 5.3 Coller le code de vérification
