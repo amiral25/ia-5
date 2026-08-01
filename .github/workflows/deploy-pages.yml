@@ -1,8 +1,12 @@
 name: Publier le site (GitHub Pages)
 
-# Publie le contenu du dossier docs/ sur GitHub Pages à chaque mise à jour.
-# La première exécution active GitHub Pages toute seule (enablement: true),
-# il n'y a donc rien à cocher dans les réglages du dépôt.
+# Recopie le contenu du dossier docs/ sur la branche « gh-pages », que
+# GitHub Pages sert ensuite à l'adresse https://amiral25.github.io/ia-5/
+#
+# Pourquoi cette méthode plutôt que l'action officielle « deploy-pages » ?
+# Créer un site Pages par l'API exige les droits d'administration du dépôt,
+# qu'un workflow n'obtient jamais (erreur « Resource not accessible by
+# integration »). Écrire dans une branche ne demande que « contents: write ».
 
 on:
   push:
@@ -13,34 +17,42 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
-  group: pages
+  group: publication-site
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  publier:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Récupérer le code
         uses: actions/checkout@v4
 
-      - name: Configurer et activer GitHub Pages
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
+      - name: Recopier docs/ sur la branche gh-pages
+        run: |
+          set -e
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Préparer le dossier docs/
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./docs
+          rm -rf /tmp/site
+          cp -r docs /tmp/site
+          touch /tmp/site/.nojekyll
 
-      - name: Déployer
-        id: deployment
-        uses: actions/deploy-pages@v4
+          git checkout --orphan publication-temporaire
+          git rm -rf . > /dev/null
+          cp -r /tmp/site/. .
+
+          git add -A
+          git commit -m "Publication du site (source : ${GITHUB_SHA})"
+          git push --force origin HEAD:gh-pages
+
+      - name: Récapitulatif
+        run: |
+          echo "### ✅ Site publié" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Adresse : https://amiral25.github.io/ia-5/" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Si la page renvoie une erreur 404, ouvrez une seule fois" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Settings → Pages** et choisissez la branche \`gh-pages\` (dossier \`/ (root)\`)." >> "$GITHUB_STEP_SUMMARY"
