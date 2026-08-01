@@ -1,0 +1,6 @@
+# Calculatrice de Durée
+User-agent: *
+Allow: /
+
+# Remplacez amiral25.github.io/ia-5 par votre nom de domaine réel
+Sitemap: https://amiral25.github.io/ia-5/sitemap.xml
