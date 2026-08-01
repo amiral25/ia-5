@@ -1,0 +1,46 @@
+name: Publier le site (GitHub Pages)
+
+# Publie le contenu du dossier docs/ sur GitHub Pages à chaque mise à jour.
+# La première exécution active GitHub Pages toute seule (enablement: true),
+# il n'y a donc rien à cocher dans les réglages du dépôt.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - '.github/workflows/deploy-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Configurer et activer GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Préparer le dossier docs/
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./docs
+
+      - name: Déployer
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -45,23 +45,17 @@ Le site s'ouvre dans votre navigateur. Tout fonctionne déjà (calculs, thème s
 
 ---
 
-### Méthode B — GitHub Pages (gratuit, depuis le dépôt où se trouve déjà ce code)
+### Méthode B — GitHub Pages (déjà fait ✅)
 
-Le code est déjà sur GitHub, dans la branche `claude/duration-calculator-seo-wyoyjn`.
+Le site est **déjà en ligne** à cette adresse :
 
-1. Fusionnez d'abord cette branche dans `main` : ouvrez la Pull Request
-   **https://github.com/amiral25/ia-5/pull/2** et cliquez sur le bouton vert **Merge pull request**,
-   puis **Confirm merge**.
-2. Sur la page du dépôt, cliquez sur **Settings** (⚙️ en haut à droite).
-3. Menu de gauche : **Pages**.
-4. Section *Build and deployment* :
-   - **Source** : `Deploy from a branch`
-   - **Branch** : `main`  +  dossier **`/docs`**
-   - Cliquez **Save**.
-5. Attendez 1 à 2 minutes, rechargez la page : GitHub affiche
-   `Your site is live at https://VOTRE-PSEUDO.github.io/ia-5/`
+# 👉 https://amiral25.github.io/ia-5/
 
-⚠️ Avec cette méthode l'adresse contient `/ia-5/`. Si vous branchez un vrai nom de domaine (étape 2), ce problème disparaît.
+La publication est automatisée par le fichier `.github/workflows/deploy-pages.yml`.
+**Vous n'avez plus rien à faire** : à chaque modification du dossier `docs/` envoyée sur la
+branche `main`, le site se met à jour tout seul en une minute environ.
+
+Pour suivre une mise en ligne : onglet **Actions** du dépôt → workflow *Publier le site (GitHub Pages)*.
 
 ---
 
@@ -93,13 +87,15 @@ Un vrai domaine inspire confiance à Google **et** à AdSense. Coût : **8 à 15
 
 ---
 
-## ✏️ Étape 3 — Remplacer `VOTRE-SITE.fr` par votre vrai domaine
+## ✏️ Étape 3 — (Plus tard) remplacer l'adresse par votre nom de domaine
 
-C'est **la seule modification de code obligatoire**. Ouvrez chaque fichier avec le **Bloc-notes**
+⚠️ **Déjà fait pour vous** : tous les fichiers pointent sur `amiral25.github.io/ia-5`.
+Refaites cette étape **uniquement** le jour où vous achetez un nom de domaine (étape 2),
+en remplaçant `amiral25.github.io/ia-5` par votre domaine. Ouvrez chaque fichier avec le **Bloc-notes**
 (Windows) ou **TextEdit** (Mac), ou mieux : **Visual Studio Code** (gratuit).
 
 Utilisez **Rechercher / Remplacer** (`Ctrl+H` ou `Cmd+H`) :
-- Rechercher : `VOTRE-SITE.fr`
+- Rechercher : `amiral25.github.io/ia-5`
 - Remplacer par : `calculatrice-duree.fr` (votre domaine, **sans** `https://` ni `www` si vous n'en utilisez pas)
 - Cliquez **Tout remplacer**
 
