@@ -45,17 +45,32 @@ Le site s'ouvre dans votre navigateur. Tout fonctionne déjà (calculs, thème s
 
 ---
 
-### Méthode B — GitHub Pages (déjà fait ✅)
+### Méthode B — GitHub Pages (en cours)
 
-Le site est **déjà en ligne** à cette adresse :
+Le site est construit automatiquement sur la branche **`gh-pages`** par le workflow
+`.github/workflows/deploy-pages.yml`, à chaque modification du dossier `docs/`.
 
-# 👉 https://amiral25.github.io/ia-5/
+**Adresse du site :** https://amiral25.github.io/ia-5/
 
-La publication est automatisée par le fichier `.github/workflows/deploy-pages.yml`.
-**Vous n'avez plus rien à faire** : à chaque modification du dossier `docs/` envoyée sur la
-branche `main`, le site se met à jour tout seul en une minute environ.
+#### Si la page s'affiche → c'est fini, il n'y a rien à faire.
 
-Pour suivre une mise en ligne : onglet **Actions** du dépôt → workflow *Publier le site (GitHub Pages)*.
+#### Si la page affiche « 404 » → une seule case à cocher, une fois pour toutes :
+
+1. Dépôt GitHub → **Settings** (⚙️ en haut à droite)
+2. Menu de gauche → **Pages**
+3. Section *Build and deployment* :
+   - **Source** : `Deploy from a branch`
+   - **Branch** : `gh-pages`   +   dossier **`/ (root)`**
+   - **Save**
+4. Attendez 1 à 2 minutes, puis rechargez https://amiral25.github.io/ia-5/
+
+> Pourquoi cette case n'a pas pu être cochée automatiquement&nbsp;: créer un site Pages passe par
+> l'API `POST /repos/.../pages`, qui exige les droits d'**administration** du dépôt. GitHub ne les
+> accorde jamais à un workflow, uniquement au propriétaire du compte. C'est une sécurité, pas un bug.
+
+Une fois cette case cochée, plus jamais besoin d'y revenir&nbsp;: chaque mise à jour de `docs/`
+republie le site toute seule en une minute environ.
+Pour suivre une publication&nbsp;: onglet **Actions** → *Publier le site (GitHub Pages)*.
 
 ---
 
