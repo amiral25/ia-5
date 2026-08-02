@@ -152,6 +152,38 @@ Pourquoi cet outil plutôt que Google Analytics&nbsp;:
 
 ---
 
+## 🧭 Étape 4 ter — Les pages satellites (fait ✅)
+
+Le site compte désormais **6 pages de contenu** au lieu d'une. Chacune vise une recherche précise,
+bien moins concurrentielle que « calculatrice de durée », et ouvre directement le bon onglet du
+calculateur&nbsp;:
+
+| Page | Recherche ciblée | Onglet ouvert |
+|---|---|---|
+| `index.html` | calculatrice de durée | Addition |
+| `convertir-minutes-en-heures.html` | convertir minutes en heures / centièmes | Addition |
+| `additionner-des-heures.html` | additionner des heures | Addition |
+| `calcul-heures-de-travail.html` | calcul heures de travail | Entre 2 heures |
+| `calcul-jours-ouvres.html` | jours ouvrés entre 2 dates | Entre 2 dates |
+| `duree-entre-deux-dates.html` | durée entre deux dates | Entre 2 dates |
+
+Toutes sont reliées entre elles par un bloc « Les autres calculateurs du site » et un fil d'Ariane
+(**maillage interne**), et sont déclarées dans `sitemap.xml`.
+
+### Ce qu'il vous reste à faire dans Search Console
+
+1. **Sitemaps** → supprimez `sitemap.xml` puis re-soumettez-le, pour que Google relise les 7 URLs.
+2. **Inspection d'URL** → demandez l'indexation de chaque nouvelle page, une par une. C'est plus
+   rapide que d'attendre que Google les découvre seul.
+
+### Pour aller plus loin plus tard
+
+D'autres recherches restent à couvrir&nbsp;: `calcul-anciennete`, `convertir-heures-en-minutes`,
+`calcul-temps-de-trajet`, `nombre-de-jours-dans-le-mois`. Le principe est toujours le même&nbsp;:
+une page = une recherche = un contenu unique.
+
+---
+
 ## 💰 Étape 5 — Activer la publicité Google AdSense (l'argent)
 
 ### 5.1 Avant de candidater — les conditions à respecter
