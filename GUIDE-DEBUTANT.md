@@ -45,32 +45,17 @@ Le site s'ouvre dans votre navigateur. Tout fonctionne déjà (calculs, thème s
 
 ---
 
-### Méthode B — GitHub Pages (en cours)
+### Méthode B — GitHub Pages (déjà en place ✅)
 
-Le site est construit automatiquement sur la branche **`gh-pages`** par le workflow
+Le site est publié automatiquement sur la branche **`gh-pages`** par le workflow
 `.github/workflows/deploy-pages.yml`, à chaque modification du dossier `docs/`.
 
-**Adresse du site :** https://amiral25.github.io/ia-5/
+**Adresse définitive : https://calculatrice-duree.fr**
 
-#### Si la page s'affiche → c'est fini, il n'y a rien à faire.
+Le fichier `docs/CNAME` contient le domaine : c'est lui qui dit à GitHub quel nom accepter.
+**Ne le supprimez jamais**, sinon le domaine cesse de fonctionner à la publication suivante.
 
-#### Si la page affiche « 404 » → une seule case à cocher, une fois pour toutes :
-
-1. Dépôt GitHub → **Settings** (⚙️ en haut à droite)
-2. Menu de gauche → **Pages**
-3. Section *Build and deployment* :
-   - **Source** : `Deploy from a branch`
-   - **Branch** : `gh-pages`   +   dossier **`/ (root)`**
-   - **Save**
-4. Attendez 1 à 2 minutes, puis rechargez https://amiral25.github.io/ia-5/
-
-> Pourquoi cette case n'a pas pu être cochée automatiquement&nbsp;: créer un site Pages passe par
-> l'API `POST /repos/.../pages`, qui exige les droits d'**administration** du dépôt. GitHub ne les
-> accorde jamais à un workflow, uniquement au propriétaire du compte. C'est une sécurité, pas un bug.
-
-Une fois cette case cochée, plus jamais besoin d'y revenir&nbsp;: chaque mise à jour de `docs/`
-republie le site toute seule en une minute environ.
-Pour suivre une publication&nbsp;: onglet **Actions** → *Publier le site (GitHub Pages)*.
+Pour suivre une mise en ligne : onglet **Actions** → *Publier le site (GitHub Pages)*.
 
 ---
 
@@ -84,66 +69,59 @@ Pour suivre une publication&nbsp;: onglet **Actions** → *Publier le site (GitH
 
 ---
 
-## 🏷️ Étape 2 — Acheter un nom de domaine (fortement recommandé)
+## 🏷️ Étape 2 — Le nom de domaine (fait ✅)
 
-Un vrai domaine inspire confiance à Google **et** à AdSense. Coût : **8 à 15 € par an**.
+Domaine : **calculatrice-duree.fr**, acheté chez OVHcloud.
 
-1. Allez chez un vendeur : **OVHcloud**, **Gandi**, **Namecheap** ou **Hostinger**.
-2. Cherchez un nom court contenant le mot-clé, par exemple :
-   `calculatrice-duree.fr`, `calcul-duree.fr`, `duree-calcul.com`.
-3. Achetez-le (prenez l'option *protection des données WHOIS*, souvent gratuite).
-4. **Reliez-le à votre site :**
-   - **Netlify** : *Domain management → Add a domain* → tapez votre domaine → Netlify vous donne
-     2 valeurs à copier chez votre vendeur de domaine (des « serveurs DNS » type `dns1.p01.nsone.net`).
-     Chez le vendeur : *Serveurs DNS → Utiliser des serveurs personnalisés* → collez-les.
-   - **GitHub Pages** : *Settings → Pages → Custom domain* → tapez votre domaine → Save.
-     Puis chez le vendeur, créez un enregistrement **CNAME** `www` → `VOTRE-PSEUDO.github.io`.
-5. Attendez de 1 à 24 h (propagation DNS). Vérifiez que **HTTPS** est activé (cadenas 🔒) — c'est automatique et gratuit sur les deux plateformes.
+### Configuration DNS chez OVH (zone DNS du domaine)
+
+| Type | Sous-domaine | Cible |
+|---|---|---|
+| A | *(vide ou `@`)* | `185.199.108.153` |
+| A | *(vide ou `@`)* | `185.199.109.153` |
+| A | *(vide ou `@`)* | `185.199.110.153` |
+| A | *(vide ou `@`)* | `185.199.111.153` |
+| CNAME | `www` | `amiral25.github.io.` *(point final compris)* |
+
+> ⚠️ **Si OVH refuse le CNAME `www`** : c'est qu'une entrée `www` existe déjà (OVH en crée une
+> vers sa page de parking à l'achat). Une règle DNS interdit à un CNAME de cohabiter avec un autre
+> enregistrement du même nom. Supprimez d'abord les lignes `www` de type A et AAAA, puis réessayez.
+
+### Côté GitHub
+
+*Settings → Pages → Custom domain* → `calculatrice-duree.fr` → **Save**,
+puis cochez **Enforce HTTPS** dès que la case devient cliquable (jusqu'à 24 h le temps que le
+certificat se génère).
+
+⏱️ La propagation DNS prend de 15 minutes à 24 h. C'est normal que le domaine ne réponde pas
+immédiatement.
 
 ---
 
-## ✏️ Étape 3 — (Plus tard) remplacer l'adresse par votre nom de domaine
+## ✏️ Étape 3 — Adresse dans les fichiers (fait ✅)
 
-⚠️ **Déjà fait pour vous** : tous les fichiers pointent sur `amiral25.github.io/ia-5`.
-Refaites cette étape **uniquement** le jour où vous achetez un nom de domaine (étape 2),
-en remplaçant `amiral25.github.io/ia-5` par votre domaine. Ouvrez chaque fichier avec le **Bloc-notes**
-(Windows) ou **TextEdit** (Mac), ou mieux : **Visual Studio Code** (gratuit).
+`calculatrice-duree.fr` est déjà renseigné partout : balise canonique, Open Graph, données
+structurées JSON-LD, `robots.txt`, `sitemap.xml`, et le fichier `docs/CNAME`.
 
-Utilisez **Rechercher / Remplacer** (`Ctrl+H` ou `Cmd+H`) :
-- Rechercher : `amiral25.github.io/ia-5`
-- Remplacer par : `calculatrice-duree.fr` (votre domaine, **sans** `https://` ni `www` si vous n'en utilisez pas)
-- Cliquez **Tout remplacer**
-
-À faire dans ces 4 fichiers : `index.html`, `mentions-legales.html`, `robots.txt`, `sitemap.xml`.
-
-Puis ouvrez **`mentions-legales.html`**. Le fichier contient **deux versions au choix**, expliquées
-dans un gros commentaire en haut :
-
-- **Version A — particulier, site sans publicité** (celle qui est active par défaut). La loi française
-  (LCEN art. 6-III-2) autorise un éditeur **non professionnel** à rester anonyme vis-à-vis du public :
-  **vous n'avez ni votre nom ni votre adresse à publier**, seulement l'hébergeur et un e-mail de contact.
-  Vous n'avez donc qu'à remplir `[votre-email@exemple.fr]` et `[NOM DE L'HÉBERGEUR]`.
-- **Version B — activité professionnelle**, à activer **le jour où vous lancez AdSense** : nom, adresse,
-  téléphone et SIRET deviennent obligatoires. Pour ne pas exposer votre domicile, utilisez une société de
-  domiciliation (15-30 €/mois), un espace de coworking, ou l'adresse d'un proche avec son accord.
-
-👉 **Google refuse les sites sans mentions légales. Ne sautez pas cette étape.**
-
-Enfin, republiez (re-glissez le dossier sur Netlify, ou re-poussez sur GitHub).
+La page `mentions-legales.html` est remplie en **version A** (éditeur non professionnel : ni nom
+ni adresse à publier, conformément à la LCEN art. 6-III-2), avec l'e-mail de contact et
+l'hébergeur. **Basculez sur la version B** — nom, adresse, téléphone, SIRET — le jour où vous
+activez AdSense : un site monétisé n'est plus un site non professionnel. Les deux versions sont
+dans le fichier, la marche à suivre est en commentaire tout en haut.
 
 ---
 
 ## 🔎 Étape 4 — Déclarer le site à Google (indispensable pour être trouvé)
 
 1. Allez sur **https://search.google.com/search-console** et connectez-vous avec un compte Google.
-2. *Ajouter une propriété* → choisissez la case de droite **« Préfixe de l'URL »** → tapez `https://votre-domaine.fr`
+2. *Ajouter une propriété* → choisissez la case de droite **« Préfixe de l'URL »** → tapez `https://calculatrice-duree.fr`
 3. Google demande de prouver que le site est à vous. La méthode la plus simple : **Balise HTML**.
    Google vous donne une ligne du type
    `<meta name="google-site-verification" content="AbC123..." />`
    → copiez-la, ouvrez `index.html`, et collez-la juste **en dessous** de la ligne `<meta charset="utf-8">`.
    Republiez le site, puis cliquez sur **Vérifier**.
 4. Une fois vérifié : menu de gauche → **Sitemaps** → tapez `sitemap.xml` → **Envoyer**.
-5. Menu **Inspection d'URL** → collez `https://votre-domaine.fr` → **Demander une indexation**.
+5. Menu **Inspection d'URL** → collez `https://calculatrice-duree.fr` → **Demander une indexation**.
 
 ⏳ Google met **quelques jours à quelques semaines** pour vous faire apparaître dans les résultats.
 C'est normal, il n'y a rien à forcer.
