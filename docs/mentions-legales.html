@@ -121,6 +121,15 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
       de navigation.
     </p>
 
+    <h2>Mesure d'audience</h2>
+    <p>
+      Le nombre de visites et de pages vues est mesuré avec <strong>Cloudflare Web Analytics</strong>.
+      Cet outil <strong>ne dépose aucun cookie</strong>, ne crée aucune empreinte numérique et ne suit
+      aucun visiteur individuellement&nbsp;: seules des statistiques agrégées et anonymes sont produites
+      (nombre de pages vues, pays, type d'appareil, site d'origine). Aucun profil publicitaire n'est
+      constitué&nbsp;; c'est pourquoi cette mesure ne nécessite pas de bandeau de consentement.
+    </p>
+
     <h2>Cookies et publicité</h2>
     <p>
       Ce site affiche des annonces fournies par <strong>Google AdSense</strong>. Google et ses partenaires peuvent
@@ -151,5 +160,9 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
   </div>
 </footer>
 <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+
+<!-- Mesure d'audience Cloudflare Web Analytics : sans cookie, sans suivi individuel,
+     donc aucun bandeau de consentement n'est requis. Chargé en module = non bloquant. -->
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "358b8858ea3e40f7b12a4fe1064cb56b"}'></script>
 </body>
 </html>
