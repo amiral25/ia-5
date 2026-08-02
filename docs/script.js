@@ -351,7 +351,9 @@
     var workLabel = skipWe ? (skipHol ? 'Jours ouvrés' : 'Jours hors week-end') : (skipHol ? 'Jours hors fériés' : 'Jours comptés');
 
     render({
-      label: 'Écart entre le ' + toFR(from) + ' et le ' + toFR(to),
+      // Libellé volontairement constant : y insérer les dates le ferait passer
+      // sur deux lignes selon la largeur, ce qui décale la page (CLS).
+      label: 'Écart entre deux dates',
       value: nf(days) + (days > 1 ? ' jours' : ' jour'),
       input: toFR(from) + ' → ' + toFR(to),
       cells: [
@@ -548,5 +550,7 @@
   setDefaultDates();
   syncChips();
   drawHist();
-  activate(1);
+  // Les pages satellites indiquent l'onglet à ouvrir via <body data-tab="2">
+  var onglet = parseInt(document.body.getAttribute('data-tab'), 10);
+  activate(onglet >= 1 && onglet <= 3 ? onglet : 1);
 })();

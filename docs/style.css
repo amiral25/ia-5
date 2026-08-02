@@ -61,6 +61,21 @@ body{
 [data-theme="dark"] .ico-sun{display:none}
 [data-theme="dark"] .ico-moon{display:block}
 
+/* ---------- Fil d'Ariane ---------- */
+.fil{padding:14px 0 0;font-size:.82rem;color:var(--muted)}
+.fil a{color:var(--brand);text-decoration:none}
+.fil a:hover{text-decoration:underline}
+.fil span[aria-hidden]{margin:0 6px;opacity:.6}
+
+/* ---------- Liens vers les autres pages ---------- */
+.liens-connexes{display:grid;grid-template-columns:1fr;gap:8px;margin:14px 0 6px}
+@media(min-width:600px){.liens-connexes{grid-template-columns:1fr 1fr}}
+.liens-connexes a{display:block;padding:12px 14px;background:var(--card);border:1px solid var(--line);
+  border-radius:var(--r-sm);text-decoration:none;color:var(--text);font-weight:600;font-size:.92rem;
+  transition:border-color .15s,transform .15s}
+.liens-connexes a:hover{border-color:var(--brand);color:var(--brand);transform:translateY(-1px)}
+.liens-connexes a::before{content:"→ ";color:var(--brand)}
+
 /* ---------- Héros ---------- */
 .hero{padding:22px 0 12px;max-width:900px}
 h1{font-size:clamp(1.5rem,4vw,2.2rem);line-height:1.18;letter-spacing:-.025em;font-weight:800}
@@ -78,7 +93,8 @@ h1{font-size:clamp(1.5rem,4vw,2.2rem);line-height:1.18;letter-spacing:-.025em;fo
 @media(min-width:768px){.ad-leaderboard .ad-slot{min-height:90px}}
 
 /* ---------- Mise en page (mobile d'abord) ---------- */
-.layout{display:grid;grid-template-columns:1fr;gap:24px;align-items:start}
+.layout{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;align-items:start}
+.col-main,.col-side{min-width:0}
 @media(min-width:1024px){
   .layout{grid-template-columns:minmax(0,1fr) 300px;gap:28px}
   .col-side{position:sticky;top:80px}
@@ -126,10 +142,16 @@ h1{font-size:clamp(1.5rem,4vw,2.2rem);line-height:1.18;letter-spacing:-.025em;fo
 .sg-plus.is-on{background:var(--brand);color:#fff}
 .sg-minus.is-on{background:var(--err);color:#fff}
 .sg-btn:focus-visible{outline:2px solid var(--brand);outline-offset:-2px;border-radius:0}
-.row .inp{padding:12px 6px;text-align:center}
+.row .inp{padding:12px 6px;text-align:center;min-width:0}
 .row-del{height:36px;width:36px;border:0;border-radius:9px;background:transparent;color:var(--muted);cursor:pointer;font-size:1.2rem;line-height:1}
 .row-del:hover{color:var(--err);background:var(--card-2)}
 .row-units{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+@media(max-width:400px){
+  .row,.row-units{grid-template-columns:66px 1fr 1fr 1fr 30px;gap:6px}
+  .row-units{font-size:.62rem;letter-spacing:.02em}
+  .row .inp{padding:12px 2px}
+  .row-del{width:30px}
+}
 .row-units span{text-align:center;line-height:1.3}
 .row-actions{display:flex;flex-wrap:wrap;gap:8px}
 .op-plus{color:var(--brand);font-weight:800}
@@ -155,11 +177,13 @@ h1{font-size:clamp(1.5rem,4vw,2.2rem);line-height:1.18;letter-spacing:-.025em;fo
 
 /* ---------- Résultat (hauteur réservée) ---------- */
 .result{margin-top:14px;padding:16px;border-radius:14px;background:linear-gradient(150deg,var(--res-a) 0%,var(--res-b) 100%);color:#fff;min-height:158px;box-shadow:var(--shadow)}
-.result-label{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;opacity:.82}
+.result-label{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;opacity:.82;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .result-value{display:block;font-size:clamp(1.9rem,7vw,2.7rem);font-weight:800;line-height:1.15;letter-spacing:-.02em;margin-top:2px;font-variant-numeric:tabular-nums}
 .result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-top:14px}
 .res-cell{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:9px 11px}
-.res-cell b{display:block;font-size:1.02rem;font-weight:700;font-variant-numeric:tabular-nums}
+.res-cell b{display:block;font-size:1.02rem;font-weight:700;font-variant-numeric:tabular-nums;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .res-cell span{display:block;font-size:.7rem;opacity:.85;text-transform:uppercase;letter-spacing:.07em}
 .result-note{margin-top:10px;font-size:.75rem;opacity:.82}
 .result-err{margin-top:10px;font-size:.85rem;background:rgba(0,0,0,.22);padding:8px 11px;border-radius:9px}
