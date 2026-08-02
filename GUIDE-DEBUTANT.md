@@ -128,6 +128,30 @@ C'est normal, il n'y a rien à forcer.
 
 ---
 
+## 📊 Étape 4 bis — Voir combien de personnes visitent le site (fait ✅)
+
+La mesure d'audience est assurée par **Cloudflare Web Analytics**, déjà installé sur les deux pages.
+
+**Voir les statistiques :** https://dash.cloudflare.com → *Analytics & Logs* → **Web Analytics**
+
+Vous y trouverez le nombre de visites, les pages vues, les pays, les types d'appareils et les sites
+qui vous envoient du trafic.
+
+Pourquoi cet outil plutôt que Google Analytics&nbsp;:
+- **gratuit et illimité**, sans carte bancaire&nbsp;;
+- **aucun cookie**, donc **aucun bandeau de consentement** à afficher et aucun risque CNIL —
+  Google Analytics, lui, dépose des cookies et a déjà valu des sanctions à des sites français&nbsp;;
+- script minuscule et non bloquant (`type="module"`), il ne dégrade pas les performances.
+  Google Analytics pèse ~50 Ko.
+
+⏳ Les premières statistiques apparaissent au bout de quelques minutes. Un site neuf affiche
+**0 visiteur pendant des jours, voire des semaines** — c'est normal, le temps que Google l'indexe.
+
+> Le token est inscrit en clair dans `index.html` et `mentions-legales.html`. Ce n'est pas un secret&nbsp;:
+> il identifie le site, il ne donne accès à rien.
+
+---
+
 ## 💰 Étape 5 — Activer la publicité Google AdSense (l'argent)
 
 ### 5.1 Avant de candidater — les conditions à respecter
