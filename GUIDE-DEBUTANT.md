@@ -184,6 +184,43 @@ une page = une recherche = un contenu unique.
 
 ---
 
+## 🎯 Étape 4 quater — Titres calés sur les vraies recherches (fait ✅)
+
+Une étude de mots-clés (HaloScan) a montré deux écarts entre ce que le site disait et ce que les
+gens tapent réellement.
+
+**1. Le mot « temps » pèse plus lourd que « durée »** — « calcul temps » 8 250 recherches/mois,
+« calculatrice temps » 3 273, « calculatrice de temps » 2 182, contre 1 900 pour « calculatrice de
+durée ». Le mot est désormais présent dans le titre et l'accroche de la page d'accueil.
+
+**2. Les gens tapent « calculatrice », le site écrivait « calcul ».** Les titres ont été réécrits
+avec les expressions exactes&nbsp;:
+
+| Page | Nouveau titre | Recherches/mois visées |
+|---|---|---|
+| `index.html` | Calculatrice de Durée et de Temps – Calcul d'Heures Gratuit | 1 900 + 2 182 |
+| `calcul-heures-de-travail.html` | Calculatrice d'Heure de Travail – Calcul du Temps de Travail | 2 200 + 2 100 |
+| `additionner-des-heures.html` | Addition d'Heures – Additionner Heures et Minutes en Ligne | 1 900 + 480 |
+| `duree-entre-deux-dates.html` | Calcul Durée entre Deux Dates – Jours, Semaines et Mois | 1 500 + 320 |
+
+**3. Les « questions liées » de Google sont devenues des entrées FAQ** (avec le balisage
+`FAQPage` correspondant, condition pour apparaître dans « Autres questions posées »)&nbsp;:
+« De 8h à 17h, combien d'heures&nbsp;? », « Comment faire une soustraction de durée&nbsp;? »,
+« Comment calculer le nombre d'heures travaillées par mois&nbsp;? », et cinq autres.
+
+> ⚠️ Les volumes annoncés par ces outils sont des **estimations**. « calcul temps » (8 250) mélange
+> des intentions très différentes — temps de trajet, de cuisson, de travail — d'où le choix de ne pas
+> construire une page entière dessus.
+
+### Ce qu'il reste dans cette veine
+
+- **Multiplication et division de durées** (« 2h30 × 3 », « 10h ÷ 4 ») : la fonction n'existe pas
+  encore dans le calculateur, alors que les suggestions Google la réclament.
+- Une page dédiée à « calcul durée entre deux heures » (480 recherches/mois).
+- Des pages horaires précises du type « de 8h à 17h combien d'heures ».
+
+---
+
 ## 💰 Étape 5 — Activer la publicité Google AdSense (l'argent)
 
 ### 5.1 Avant de candidater — les conditions à respecter
