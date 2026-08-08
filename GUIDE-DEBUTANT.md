@@ -154,7 +154,7 @@ Pourquoi cet outil plutôt que Google Analytics&nbsp;:
 
 ## 🧭 Étape 4 ter — Les pages satellites (fait ✅)
 
-Le site compte désormais **6 pages de contenu** au lieu d'une. Chacune vise une recherche précise,
+Le site compte désormais **8 pages de contenu** au lieu d'une. Chacune vise une recherche précise,
 bien moins concurrentielle que « calculatrice de durée », et ouvre directement le bon onglet du
 calculateur&nbsp;:
 
@@ -166,6 +166,8 @@ calculateur&nbsp;:
 | `calcul-heures-de-travail.html` | calcul heures de travail | Entre 2 heures |
 | `calcul-jours-ouvres.html` | jours ouvrés entre 2 dates | Entre 2 dates |
 | `duree-entre-deux-dates.html` | durée entre deux dates | Entre 2 dates |
+| `combien-heures-entre-deux-horaires.html` | de 8h à 17h combien d'heures | Entre 2 heures |
+| `multiplier-diviser-une-duree.html` | multiplier / diviser une durée | Multiplier / Diviser |
 
 Toutes sont reliées entre elles par un bloc « Les autres calculateurs du site » et un fil d'Ariane
 (**maillage interne**), et sont déclarées dans `sitemap.xml`.
@@ -212,12 +214,56 @@ avec les expressions exactes&nbsp;:
 > des intentions très différentes — temps de trajet, de cuisson, de travail — d'où le choix de ne pas
 > construire une page entière dessus.
 
-### Ce qu'il reste dans cette veine
+---
 
-- **Multiplication et division de durées** (« 2h30 × 3 », « 10h ÷ 4 ») : la fonction n'existe pas
-  encore dans le calculateur, alors que les suggestions Google la réclament.
-- Une page dédiée à « calcul durée entre deux heures » (480 recherches/mois).
-- Des pages horaires précises du type « de 8h à 17h combien d'heures ».
+## ✖️ Étape 4 quinquies — Multiplier / diviser une durée + 2 pages (fait ✅)
+
+C'était le dernier manque relevé par l'étude de mots-clés. Trois choses ont été ajoutées.
+
+### 1. Un 4ᵉ onglet dans le calculateur : « Multiplier / Diviser »
+
+Il répond à des questions que le site ne savait pas traiter&nbsp;:
+
+- **× (multiplier)** — « 3 séances de 2h30, ça fait combien&nbsp;? » → `2h30 × 3 = 7h 30min`
+- **÷ (diviser)** — « je dois répartir 10h sur 4 jours » → `10h ÷ 4 = 2h 30min`
+
+Le nombre accepte **la virgule française** (`2,5`) comme le point (`2.5`) — un champ classique
+« nombre » refuse la virgule, ce qui aurait bloqué la majorité des visiteurs français.
+
+> Sur mobile les onglets passent automatiquement sur **2 lignes de 2**, ils restent lisibles
+> et rien ne déborde. Vérifié de 320&nbsp;px à 1440&nbsp;px de large.
+
+### 2. Deux nouvelles pages
+
+| Page | Recherche ciblée | Ce qu'elle contient en plus |
+|---|---|---|
+| `combien-heures-entre-deux-horaires.html` | « de 8h à 17h combien d'heure », « calcul durée entre deux heures » (480/mois) | Un tableau de 12 horaires courants (8h-17h, 9h-18h…) avec amplitude, pause 45 min, pause 1 h et heures décimales |
+| `multiplier-diviser-une-duree.html` | « multiplier une durée », « diviser des heures » | Une table de multiplication de durées prête à lire |
+
+Ces tableaux sont **calculés par le générateur**, pas tapés à la main&nbsp;: aucun risque d'erreur
+de calcul, et ce sont exactement le genre de réponses immédiates que Google met en avant.
+
+### 3. Contrôles automatiques
+
+Le site est vérifié par deux séries de tests avant chaque mise en ligne&nbsp;:
+**287 contrôles** au total (calculs justes, titres uniques, FAQ cohérente avec son balisage,
+aucun lien mort, aucune barre de défilement horizontale, **CLS = 0** sur les 9 pages).
+Tous au vert.
+
+### Ce qu'il vous reste à faire dans Search Console
+
+Demandez l'indexation des deux nouvelles adresses (menu **Inspection d'URL**, collez l'adresse,
+puis **Demander une indexation**)&nbsp;:
+
+```
+https://calculatrice-duree.fr/combien-heures-entre-deux-horaires.html
+https://calculatrice-duree.fr/multiplier-diviser-une-duree.html
+```
+
+### Pistes restantes
+
+`calcul-anciennete`, `convertir-heures-en-minutes`, `calcul-temps-de-trajet`,
+`nombre-de-jours-dans-le-mois`. Toujours le même principe&nbsp;: une page = une recherche.
 
 ---
 
@@ -399,6 +445,7 @@ il faudra de vrais avis vérifiables.
 - [ ] `VOTRE-SITE.fr` remplacé partout (4 fichiers)
 - [ ] `mentions-legales.html` rempli avec vos vraies informations
 - [ ] Search Console vérifiée + `sitemap.xml` envoyé
+- [ ] Indexation demandée pour les 8 pages de contenu
 - [ ] Compte AdSense créé, code collé, `ads.txt` rempli
 - [ ] Bandeau de consentement RGPD publié
 - [ ] Blocs de pub créés et collés aux 2 emplacements

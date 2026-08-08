@@ -371,13 +371,60 @@
   }
 
   /* ---------------------------------------------------------
+     7 bis. Onglet 4 — Multiplier / diviser une durée
+     --------------------------------------------------------- */
+  var mH = $('#m-h'), mM = $('#m-m'), mS = $('#m-s'), mN = $('#m-n');
+
+  /** Opération active : 'x' ou '/' */
+  function opActif() {
+    var on = $('.sign-group-op .sg-btn.is-on');
+    return on && on.dataset.op === '/' ? '/' : 'x';
+  }
+
+  function calcTab4() {
+    var h = parseFloat(mH.value) || 0,
+        m = parseFloat(mM.value) || 0,
+        sec0 = parseFloat(mS.value) || 0;
+    var base = h * 3600 + m * 60 + sec0;
+    var op = opActif();
+    var n = parseFloat(String(mN.value).replace(',', '.'));
+    var signe = op === 'x' ? '×' : '÷';
+
+    if (!isFinite(n)) {
+      return render({ label: 'Multiplier ou diviser', value: '—', idle: true,
+        error: 'Indiquez par combien multiplier ou diviser.' });
+    }
+    if (op === '/' && n === 0) {
+      return render({ label: 'Division impossible', value: '—', idle: true,
+        error: 'On ne peut pas diviser par zéro.' });
+    }
+
+    var sec = op === 'x' ? base * n : base / n;
+    var nAff = nf(n, Math.abs(n % 1) < 1e-9 ? 0 : 2);
+    var operation = fmtHMS(base) + ' ' + signe + ' ' + nAff;
+
+    render({
+      label: op === 'x' ? 'Durée multipliée' : 'Durée divisée',
+      value: fmtHMS(sec),
+      input: fmtHMS(base) + ' ' + signe + ' ' + nAff,
+      cells: [
+        { v: nf(sec / 3600, 2), l: 'Heures décimales' },
+        { v: fmtMinutes(sec), l: 'Minutes totales' },
+        { v: operation, l: 'Opération' }
+      ],
+      copy: operation + ' = ' + fmtHMS(sec) + '  (' + nf(sec / 3600, 2) + ' h décimales)'
+    });
+  }
+
+  /* ---------------------------------------------------------
      8. Onglets
      --------------------------------------------------------- */
   var current = 1;
   function compute() {
     if (current === 1) calcTab1();
     else if (current === 2) calcTab2();
-    else calcTab3();
+    else if (current === 3) calcTab3();
+    else calcTab4();
   }
 
   function activate(n) {
@@ -399,9 +446,9 @@
   $$('.tab').forEach(function (t, i) {
     t.addEventListener('click', function () { activate(i + 1); });
     t.addEventListener('keydown', function (e) {
-      var k = e.key, n = null;
-      if (k === 'ArrowRight') n = (i + 1) % 3 + 1;
-      if (k === 'ArrowLeft') n = (i + 2) % 3 + 1;
+      var k = e.key, n = null, nb = $$('.tab').length;
+      if (k === 'ArrowRight') n = (i + 1) % nb + 1;
+      if (k === 'ArrowLeft') n = (i + nb - 1) % nb + 1;
       if (n) { e.preventDefault(); activate(n); $('#tab-' + n).focus(); }
     });
   });
@@ -476,7 +523,8 @@
   $('#btn-reset').addEventListener('click', function () {
     if (current === 1) { quick.value = ''; buildRows([['', '', ''], ['', '', '']]); }
     else if (current === 2) { hStart.value = ''; hEnd.value = ''; hPause.value = 0; syncChips(); }
-    else { setDefaultDates(); dWe.checked = true; dHol.checked = true; }
+    else if (current === 3) { setDefaultDates(); dWe.checked = true; dHol.checked = true; }
+    else { mH.value = ''; mM.value = ''; mS.value = ''; mN.value = '2'; }
     compute();
     showToast('Champs réinitialisés');
   });
@@ -534,6 +582,18 @@
 
   [dStart, dEnd, dWe, dHol].forEach(function (el) { el.addEventListener('input', compute); });
 
+  [mH, mM, mS, mN].forEach(function (el) { el.addEventListener('input', compute); });
+  $$('.sign-group-op .sg-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      $$('.sign-group-op .sg-btn').forEach(function (o) {
+        var on = o === btn;
+        o.classList.toggle('is-on', on);
+        o.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      compute();
+    });
+  });
+
   /* ---------------------------------------------------------
      12. Initialisation
      --------------------------------------------------------- */
@@ -552,5 +612,5 @@
   drawHist();
   // Les pages satellites indiquent l'onglet à ouvrir via <body data-tab="2">
   var onglet = parseInt(document.body.getAttribute('data-tab'), 10);
-  activate(onglet >= 1 && onglet <= 3 ? onglet : 1);
+  activate(onglet >= 1 && onglet <= 4 ? onglet : 1);
 })();
