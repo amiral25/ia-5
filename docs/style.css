@@ -14,7 +14,7 @@ img,svg{display:block;max-width:100%}
 :root{
   --brand:#2563eb; --brand-dk:#1d4ed8; --brand-soft:#eff6ff;
   --bg:#f1f5f9; --bg-grad:radial-gradient(1200px 600px at 50% -200px,#dbeafe 0%,transparent 70%);
-  --card:#ffffff; --card-2:#f8fafc;
+  --card:#ffffff; --card-2:#f8fafc; --ad-ph:#5a6473;
   --text:#0f172a; --muted:#64748b; --line:#e2e8f0;
   --ok:#059669; --warn:#b45309; --err:#dc2626;
   --shadow:0 1px 2px rgba(15,23,42,.06),0 8px 24px -12px rgba(15,23,42,.18);
@@ -26,7 +26,7 @@ img,svg{display:block;max-width:100%}
 [data-theme="dark"]{
   --brand:#60a5fa; --brand-dk:#3b82f6; --brand-soft:#132a4d;
   --bg:#080d18; --bg-grad:radial-gradient(1200px 600px at 50% -220px,#132a4d 0%,transparent 70%);
-  --card:#0f172a; --card-2:#131f38;
+  --card:#0f172a; --card-2:#131f38; --ad-ph:#93a4c0;
   --text:#e8eefc; --muted:#93a4c0; --line:#22304d;
   --ok:#34d399; --warn:#fbbf24; --err:#f87171;
   --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px -14px rgba(0,0,0,.7);
@@ -84,11 +84,13 @@ h1{font-size:clamp(1.5rem,4vw,2.2rem);line-height:1.18;letter-spacing:-.025em;fo
 
 /* ---------- Publicité (hauteurs réservées : CLS = 0) ---------- */
 .ad{margin:4px 0 16px}
-.ad-label{display:block;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);opacity:.7;margin-bottom:3px}
-.ad-slot{display:grid;place-items:center;border:1px dashed var(--line);border-radius:var(--r-sm);background:var(--card-2);color:var(--muted);overflow:hidden}
+/* Pas d'opacity ici : elle délavait le texte jusqu'à 2,3:1 sur le fond clair,
+   sous le seuil de lisibilité WCAG. La couleur est posée en dur à la place. */
+.ad-label{display:block;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ad-ph);margin-bottom:3px}
+.ad-slot{display:grid;place-items:center;border:1px dashed var(--line);border-radius:var(--r-sm);background:var(--card-2);color:var(--ad-ph);overflow:hidden}
 .ad-leaderboard .ad-slot{min-height:100px}
 .ad-slot-rect{width:100%;max-width:300px;min-height:250px;margin-inline:auto}
-.ad-ph{font-size:.78rem;text-align:center;opacity:.6}
+.ad-ph{font-size:.78rem;text-align:center}
 .ad-slot:has(ins) .ad-ph,.ad-slot:has(iframe) .ad-ph{display:none}
 @media(min-width:768px){.ad-leaderboard .ad-slot{min-height:90px}}
 
