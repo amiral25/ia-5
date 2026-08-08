@@ -217,7 +217,7 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
             <span>Heures</span></div>
 
           </div>
-          <p class="result-note" id="res-note">* bornes incluses (la date de début et la date de fin sont comptées).</p>
+          <p class="result-note" id="res-note">* bornes incluses. Jours fériés : France.</p>
           <p class="result-err is-hidden" id="res-err"></p>
         </div>
 
@@ -329,6 +329,16 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
               <input id="d-end" class="inp" type="date">
             </div>
           </div>
+          <div class="field">
+            <label class="lbl" for="d-pays">Jours fériés du pays</label>
+            <select id="d-pays" class="inp inp-select">
+              <option value="fr">France</option>
+              <option value="be">Belgique</option>
+              <option value="ch">Suisse (socle romand)</option>
+              <option value="lu">Luxembourg</option>
+              <option value="qc">Québec</option>
+            </select>
+          </div>
           <div class="opts">
             <label class="switch">
               <input id="d-weekend" type="checkbox" checked>
@@ -338,7 +348,7 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
             <label class="switch">
               <input id="d-holidays" type="checkbox" checked>
               <span class="switch-ui" aria-hidden="true"></span>
-              <span>Exclure les jours fériés (France)</span>
+              <span>Exclure les jours fériés</span>
             </label>
           </div>
         </div>
@@ -431,48 +441,50 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
       </p>
             <div class="table-wrap">
         <table>
-          <caption>Les 11 jours fériés 2026 en France métropolitaine</caption>
+          <caption>Les 11 jours fériés 2026 — France métropolitaine</caption>
           <thead><tr><th scope="col">Jour férié</th><th scope="col">Date 2026</th><th scope="col">Tombe-t-il en semaine&nbsp;?</th></tr></thead>
           <tbody>
-          <tr><td>Jour de l’an</td><td>jeudi 1 janvier</td><td>✅ jour ouvré</td></tr>
-          <tr><td>Lundi de Pâques</td><td>lundi 6 avril</td><td>✅ jour ouvré</td></tr>
-          <tr><td>Fête du Travail</td><td>vendredi 1 mai</td><td>✅ jour ouvré</td></tr>
-          <tr><td>Victoire 1945</td><td>vendredi 8 mai</td><td>✅ jour ouvré</td></tr>
-          <tr><td>Ascension</td><td>jeudi 14 mai</td><td>✅ jour ouvré</td></tr>
-          <tr><td>Lundi de Pentecôte</td><td>lundi 25 mai</td><td>✅ jour ouvré</td></tr>
-          <tr><td>Fête nationale</td><td>mardi 14 juillet</td><td>✅ jour ouvré</td></tr>
-          <tr><td>Assomption</td><td>samedi 15 août</td><td>❌ week-end</td></tr>
-          <tr><td>Toussaint</td><td>dimanche 1 novembre</td><td>❌ week-end</td></tr>
-          <tr><td>Armistice 1918</td><td>mercredi 11 novembre</td><td>✅ jour ouvré</td></tr>
-          <tr><td>Noël</td><td>vendredi 25 décembre</td><td>✅ jour ouvré</td></tr>
+          <tr><td>Jour de l’an</td><td>jeudi 1<sup>er</sup> janvier</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Lundi de Pâques</td><td>lundi 6 avril</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Fête du Travail</td><td>vendredi 1<sup>er</sup> mai</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Victoire 1945</td><td>vendredi 8 mai</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Ascension</td><td>jeudi 14 mai</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Lundi de Pentecôte</td><td>lundi 25 mai</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Fête nationale</td><td>mardi 14 juillet</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Assomption</td><td>samedi 15 août</td><td>❌ non, week-end</td></tr>
+          <tr><td>Toussaint</td><td>dimanche 1<sup>er</sup> novembre</td><td>❌ non, week-end</td></tr>
+          <tr><td>Armistice 1918</td><td>mercredi 11 novembre</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Noël</td><td>vendredi 25 décembre</td><td>✅ oui, en semaine</td></tr>
         </tbody>
         </table>
       </div>
-      <p class="micro">En 2026, <strong>2 jours fériés</strong>
-      tombent un samedi ou un dimanche&nbsp;: ils sont « perdus »
-      pour les salariés du lundi au vendredi, car la loi française ne prévoit aucun report.</p>
+      <p class="micro">En 2026, <strong>2 jours fériés</strong> tombent
+      un samedi ou un dimanche, et l'année compte
+      <strong>252 jours ouvrés</strong> au total&nbsp;;
+      la loi française ne prévoit aucun report, ces jours sont donc « perdus ».</p>
             <div class="table-wrap">
         <table>
-          <caption>Les 11 jours fériés 2027 en France métropolitaine</caption>
+          <caption>Les 11 jours fériés 2027 — France métropolitaine</caption>
           <thead><tr><th scope="col">Jour férié</th><th scope="col">Date 2027</th><th scope="col">Tombe-t-il en semaine&nbsp;?</th></tr></thead>
           <tbody>
-          <tr><td>Jour de l’an</td><td>vendredi 1 janvier</td><td>✅ jour ouvré</td></tr>
-          <tr><td>Lundi de Pâques</td><td>lundi 29 mars</td><td>✅ jour ouvré</td></tr>
-          <tr><td>Fête du Travail</td><td>samedi 1 mai</td><td>❌ week-end</td></tr>
-          <tr><td>Ascension</td><td>jeudi 6 mai</td><td>✅ jour ouvré</td></tr>
-          <tr><td>Victoire 1945</td><td>samedi 8 mai</td><td>❌ week-end</td></tr>
-          <tr><td>Lundi de Pentecôte</td><td>lundi 17 mai</td><td>✅ jour ouvré</td></tr>
-          <tr><td>Fête nationale</td><td>mercredi 14 juillet</td><td>✅ jour ouvré</td></tr>
-          <tr><td>Assomption</td><td>dimanche 15 août</td><td>❌ week-end</td></tr>
-          <tr><td>Toussaint</td><td>lundi 1 novembre</td><td>✅ jour ouvré</td></tr>
-          <tr><td>Armistice 1918</td><td>jeudi 11 novembre</td><td>✅ jour ouvré</td></tr>
-          <tr><td>Noël</td><td>samedi 25 décembre</td><td>❌ week-end</td></tr>
+          <tr><td>Jour de l’an</td><td>vendredi 1<sup>er</sup> janvier</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Lundi de Pâques</td><td>lundi 29 mars</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Fête du Travail</td><td>samedi 1<sup>er</sup> mai</td><td>❌ non, week-end</td></tr>
+          <tr><td>Ascension</td><td>jeudi 6 mai</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Victoire 1945</td><td>samedi 8 mai</td><td>❌ non, week-end</td></tr>
+          <tr><td>Lundi de Pentecôte</td><td>lundi 17 mai</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Fête nationale</td><td>mercredi 14 juillet</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Assomption</td><td>dimanche 15 août</td><td>❌ non, week-end</td></tr>
+          <tr><td>Toussaint</td><td>lundi 1<sup>er</sup> novembre</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Armistice 1918</td><td>jeudi 11 novembre</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Noël</td><td>samedi 25 décembre</td><td>❌ non, week-end</td></tr>
         </tbody>
         </table>
       </div>
-      <p class="micro">En 2027, <strong>4 jours fériés</strong>
-      tombent un samedi ou un dimanche&nbsp;: ils sont « perdus »
-      pour les salariés du lundi au vendredi, car la loi française ne prévoit aucun report.</p>
+      <p class="micro">En 2027, <strong>4 jours fériés</strong> tombent
+      un samedi ou un dimanche, et l'année compte
+      <strong>254 jours ouvrés</strong> au total&nbsp;;
+      la loi française ne prévoit aucun report, ces jours sont donc « perdus ».</p>
       <p>
         Seul le <strong>1<sup>er</sup>&nbsp;mai</strong> est légalement chômé et payé pour tous&nbsp;; les dix
         autres ne le sont que si un accord ou un usage le prévoit — c'est cependant le cas dans la très grande
@@ -501,10 +513,36 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
         <li><strong>Planning et charge d'équipe</strong>&nbsp;: connaître le nombre réel de jours travaillables sur un mois ou un trimestre.</li>
         <li><strong>Arrêts de travail et absences</strong>&nbsp;: convertir une durée calendaire en jours effectivement travaillés.</li>
       </ul>
+      <h2>Vous ne travaillez pas en France&nbsp;?</h2>
+      <p>
+        Le calculateur ne se limite pas au calendrier français. Le sélecteur
+        «&nbsp;<strong>Jours fériés du pays</strong>&nbsp;» au-dessus des options bascule le décompte sur
+        la Belgique, la Suisse, le Luxembourg ou le Québec — dates mobiles recalculées comprises. Le pays
+        choisi est mémorisé pour vos prochaines visites.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <caption>Nombre de jours ouvrés en 2026 selon le pays</caption>
+          <thead><tr><th scope="col">Pays</th><th scope="col">Jours fériés légaux</th><th scope="col">Jours ouvrés en 2026</th></tr></thead>
+          <tbody>
+            <tr><td><strong>France métropolitaine</strong></td><td>11 jours</td><td>252 jours</td></tr>
+            <tr><td><strong>Belgique</strong></td><td>10 jours</td><td>253 jours</td></tr>
+            <tr><td><strong>Suisse (socle romand)</strong></td><td>7 jours</td><td>255 jours</td></tr>
+            <tr><td><strong>Luxembourg</strong></td><td>11 jours</td><td>254 jours</td></tr>
+            <tr><td><strong>Québec</strong></td><td>8 jours</td><td>253 jours</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ul class="uses">
+        <li><a href="jours-feries-belgique.html">Jours fériés en Belgique</a> — et la règle du jour de remplacement.</li>
+        <li><a href="jours-feries-suisse.html">Jours fériés en Suisse</a> — un seul est fédéral, tous les autres sont cantonaux.</li>
+        <li><a href="jours-feries-luxembourg.html">Jours fériés au Luxembourg</a> — indispensable pour les frontaliers.</li>
+        <li><a href="jours-feries-quebec.html">Jours fériés au Québec</a> — la Loi sur les normes du travail.</li>
+      </ul>
       <p class="micro">
-        Le calculateur couvre la <strong>France métropolitaine</strong>. L'Alsace-Moselle compte deux fériés
-        supplémentaires (Vendredi saint et 26&nbsp;décembre), et les départements d'outre-mer ont leurs propres
-        dates de commémoration de l'abolition de l'esclavage — non pris en compte ici.
+        Côté français, le calculateur couvre la <strong>France métropolitaine</strong>. L'Alsace-Moselle compte
+        deux fériés supplémentaires (Vendredi saint et 26&nbsp;décembre), et les départements d'outre-mer ont
+        leurs propres dates de commémoration de l'abolition de l'esclavage — non pris en compte ici.
       </p>
 
       <h2 id="faq">Questions fréquentes</h2>
@@ -536,6 +574,10 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
         <li><a href="duree-entre-deux-dates.html">Entre 2 dates</a></li>
         <li><a href="combien-heures-entre-deux-horaires.html">Combien d'heures entre 2 horaires</a></li>
         <li><a href="multiplier-diviser-une-duree.html">Multiplier / Diviser</a></li>
+        <li><a href="jours-feries-belgique.html">Fériés Belgique</a></li>
+        <li><a href="jours-feries-suisse.html">Fériés Suisse</a></li>
+        <li><a href="jours-feries-luxembourg.html">Fériés Luxembourg</a></li>
+        <li><a href="jours-feries-quebec.html">Fériés Québec</a></li>
       </ul>
   </article>
 </main>

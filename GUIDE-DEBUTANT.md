@@ -154,7 +154,7 @@ Pourquoi cet outil plutôt que Google Analytics&nbsp;:
 
 ## 🧭 Étape 4 ter — Les pages satellites (fait ✅)
 
-Le site compte désormais **8 pages de contenu** au lieu d'une. Chacune vise une recherche précise,
+Le site compte désormais **12 pages de contenu** au lieu d'une. Chacune vise une recherche précise,
 bien moins concurrentielle que « calculatrice de durée », et ouvre directement le bon onglet du
 calculateur&nbsp;:
 
@@ -168,6 +168,10 @@ calculateur&nbsp;:
 | `duree-entre-deux-dates.html` | durée entre deux dates | Entre 2 dates |
 | `combien-heures-entre-deux-horaires.html` | de 8h à 17h combien d'heures | Entre 2 heures |
 | `multiplier-diviser-une-duree.html` | multiplier / diviser une durée | Multiplier / Diviser |
+| `jours-feries-belgique.html` | jours fériés Belgique | Entre 2 dates (Belgique) |
+| `jours-feries-suisse.html` | jours fériés Suisse | Entre 2 dates (Suisse) |
+| `jours-feries-luxembourg.html` | jours fériés Luxembourg | Entre 2 dates (Luxembourg) |
+| `jours-feries-quebec.html` | jours fériés Québec | Entre 2 dates (Québec) |
 
 Toutes sont reliées entre elles par un bloc « Les autres calculateurs du site » et un fil d'Ariane
 (**maillage interne**), et sont déclarées dans `sitemap.xml`.
@@ -260,10 +264,78 @@ https://calculatrice-duree.fr/combien-heures-entre-deux-horaires.html
 https://calculatrice-duree.fr/multiplier-diviser-une-duree.html
 ```
 
+---
+
+## 🌍 Étape 4 sexies — Toute la francophonie, pas seulement la France (fait ✅)
+
+Jusqu'ici le calculateur ne connaissait qu'un seul calendrier&nbsp;: le français. Un visiteur belge,
+suisse, luxembourgeois ou québécois obtenait donc un **résultat faux** sans le savoir. C'est corrigé.
+
+### Un menu « Jours fériés du pays »
+
+Dans l'onglet « Entre 2 dates », un menu déroulant permet de choisir&nbsp;:
+
+| Pays | Jours fériés | Jours ouvrés en 2026 |
+|---|---|---|
+| France métropolitaine | 11 | 252 |
+| Belgique | 10 | 253 |
+| Suisse (socle romand) | 7 | 255 |
+| Luxembourg | 11 | 254 |
+| Québec | 8 | 253 |
+
+Le pays choisi est **mémorisé** dans le navigateur&nbsp;: un visiteur belge ne le resélectionne pas à
+chaque visite. Les dates mobiles sont recalculées pays par pays — le Vendredi saint en Suisse et au
+Québec, la Journée des patriotes québécoise (le lundi précédant le 25 mai), l'Action de grâce
+(2ᵉ lundi d'octobre), qui n'existent pas dans le calendrier français.
+
+### Quatre nouvelles pages
+
+Chacune a un contenu **réellement différent**, pas un simple copier-coller avec le nom du pays changé
+(Google sanctionne les pages jumelles)&nbsp;:
+
+| Page | Ce qu'elle apporte de spécifique |
+|---|---|
+| `jours-feries-belgique.html` | La règle du **jour de remplacement** : en Belgique un férié tombant un dimanche n'est pas perdu, il doit être remplacé. Et le fait que le 11 juillet n'est pas férié dans le privé. |
+| `jours-feries-suisse.html` | Un seul jour est **fédéral** (le 1ᵉʳ août), tout le reste est cantonal. Tableau des ajouts par canton romand, et le fait que férié ≠ payé. |
+| `jours-feries-luxembourg.html` | Le cas des **frontaliers** : on suit les fériés du pays où l'on travaille, pas de son domicile. Un frontalier français travaille le 14 juillet. |
+| `jours-feries-quebec.html` | Les 8 congés de la **Loi sur les normes du travail**, la différence fériés provinciaux / fédéraux, l'indemnité au 1/20ᵉ. |
+
+### Pourquoi ça compte pour le référencement
+
+« jours fériés belgique 2026 », « jours fériés luxembourg », « jours fériés québec » sont des
+recherches à **fort volume et faible concurrence francophone** — beaucoup moins disputées que
+« calculatrice de durée ». Et le Luxembourg comme la Suisse ont un revenu publicitaire par visiteur
+sensiblement supérieur à la France, ce qui compte le jour où AdSense sera activé.
+
+### Contrôles
+
+**390 contrôles automatiques** au vert, dont une série entière sur les cinq calendriers&nbsp;: chaque
+année civile complète est recomptée pays par pays, et une quinzaine de dates piège sont vérifiées une
+par une (le 14 juillet férié en France mais travaillé en Belgique, le 21 juillet l'inverse, le
+9 mai luxembourgeois, l'Action de grâce recalculée en 2026 **et** en 2027…).
+
+### Ce qu'il vous reste à faire dans Search Console
+
+Demandez l'indexation des quatre nouvelles adresses&nbsp;:
+
+```
+https://calculatrice-duree.fr/jours-feries-belgique.html
+https://calculatrice-duree.fr/jours-feries-suisse.html
+https://calculatrice-duree.fr/jours-feries-luxembourg.html
+https://calculatrice-duree.fr/jours-feries-quebec.html
+```
+
+Puis re-soumettez `sitemap.xml`, qui compte désormais **13 adresses**.
+
+> 💡 Dans Search Console, l'onglet **PAYS** devient maintenant intéressant à surveiller. Si la
+> Belgique ou la Suisse décollent, ce sera le signe qu'il faut pousser plus loin dans cette
+> direction.
+
 ### Pistes restantes
 
 `calcul-anciennete`, `convertir-heures-en-minutes`, `calcul-temps-de-trajet`,
-`nombre-de-jours-dans-le-mois`. Toujours le même principe&nbsp;: une page = une recherche.
+`nombre-de-jours-dans-le-mois`, et une page « jours fériés Alsace-Moselle » (2 fériés de plus).
+Toujours le même principe&nbsp;: une page = une recherche.
 
 ---
 
@@ -445,7 +517,7 @@ il faudra de vrais avis vérifiables.
 - [ ] `VOTRE-SITE.fr` remplacé partout (4 fichiers)
 - [ ] `mentions-legales.html` rempli avec vos vraies informations
 - [ ] Search Console vérifiée + `sitemap.xml` envoyé
-- [ ] Indexation demandée pour les 8 pages de contenu
+- [ ] Indexation demandée pour les 12 pages de contenu
 - [ ] Compte AdSense créé, code collé, `ads.txt` rempli
 - [ ] Bandeau de consentement RGPD publié
 - [ ] Blocs de pub créés et collés aux 2 emplacements

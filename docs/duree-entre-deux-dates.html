@@ -217,7 +217,7 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
             <span>Heures</span></div>
 
           </div>
-          <p class="result-note" id="res-note">* bornes incluses (la date de début et la date de fin sont comptées).</p>
+          <p class="result-note" id="res-note">* bornes incluses. Jours fériés : France.</p>
           <p class="result-err is-hidden" id="res-err"></p>
         </div>
 
@@ -329,6 +329,16 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
               <input id="d-end" class="inp" type="date">
             </div>
           </div>
+          <div class="field">
+            <label class="lbl" for="d-pays">Jours fériés du pays</label>
+            <select id="d-pays" class="inp inp-select">
+              <option value="fr">France</option>
+              <option value="be">Belgique</option>
+              <option value="ch">Suisse (socle romand)</option>
+              <option value="lu">Luxembourg</option>
+              <option value="qc">Québec</option>
+            </select>
+          </div>
           <div class="opts">
             <label class="switch">
               <input id="d-weekend" type="checkbox" checked>
@@ -338,7 +348,7 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
             <label class="switch">
               <input id="d-holidays" type="checkbox" checked>
               <span class="switch-ui" aria-hidden="true"></span>
-              <span>Exclure les jours fériés (France)</span>
+              <span>Exclure les jours fériés</span>
             </label>
           </div>
         </div>
@@ -524,6 +534,10 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
         <li><a href="calcul-jours-ouvres.html">Jours ouvrés</a></li>
         <li><a href="combien-heures-entre-deux-horaires.html">Combien d'heures entre 2 horaires</a></li>
         <li><a href="multiplier-diviser-une-duree.html">Multiplier / Diviser</a></li>
+        <li><a href="jours-feries-belgique.html">Fériés Belgique</a></li>
+        <li><a href="jours-feries-suisse.html">Fériés Suisse</a></li>
+        <li><a href="jours-feries-luxembourg.html">Fériés Luxembourg</a></li>
+        <li><a href="jours-feries-quebec.html">Fériés Québec</a></li>
       </ul>
   </article>
 </main>

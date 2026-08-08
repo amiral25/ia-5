@@ -50,6 +50,30 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://calculatrice-duree.fr/jours-feries-belgique.html</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calculatrice-duree.fr/jours-feries-suisse.html</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calculatrice-duree.fr/jours-feries-luxembourg.html</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calculatrice-duree.fr/jours-feries-quebec.html</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://calculatrice-duree.fr/mentions-legales.html</loc>
     <lastmod>2026-08-08</lastmod>
     <changefreq>yearly</changefreq>

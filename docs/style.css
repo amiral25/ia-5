@@ -123,8 +123,15 @@ h1{font-size:clamp(1.5rem,4vw,2.2rem);line-height:1.18;letter-spacing:-.025em;fo
 .lbl{display:block;font-size:.8rem;font-weight:600;color:var(--muted);margin-bottom:6px}
 .inp{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--card-2);
   font-size:1rem;transition:border-color .15s,box-shadow .15s;min-height:44px}
-.inp:focus{outline:0;border-color:var(--brand);box-shadow:0 0 0 3px color-mix(in srgb,var(--brand) 22%,transparent);background:var(--card)}
+.inp:focus{outline:0;border-color:var(--brand);box-shadow:0 0 0 3px color-mix(in srgb,var(--brand) 22%,transparent);background-color:var(--card)}
 .inp-quick{font-size:1.12rem;font-weight:600;letter-spacing:.01em}
+/* Chevron dessiné en CSS : aucune image à télécharger, et il suit le thème. */
+.inp-select{appearance:none;-webkit-appearance:none;cursor:pointer;font-weight:600;
+  padding-right:38px;color:var(--text);
+  background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),
+                   linear-gradient(135deg,currentColor 50%,transparent 50%);
+  background-position:calc(100% - 19px) calc(50% + 1px),calc(100% - 14px) calc(50% + 1px);
+  background-size:5px 5px,5px 5px;background-repeat:no-repeat}
 .hint{margin-top:6px;font-size:.76rem;line-height:1.5;color:var(--muted)}
 .hint code,.content code{background:var(--brand-soft);color:var(--brand-dk);padding:1px 6px;border-radius:6px;font-size:.9em;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
 [data-theme="dark"] .hint code,[data-theme="dark"] .content code{color:#bfdbfe}
@@ -197,7 +204,9 @@ h1{font-size:clamp(1.5rem,4vw,2.2rem);line-height:1.18;letter-spacing:-.025em;fo
 .res-cell b{display:block;font-size:1.02rem;font-weight:700;font-variant-numeric:tabular-nums;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .res-cell span{display:block;font-size:.7rem;opacity:.85;text-transform:uppercase;letter-spacing:.07em}
-.result-note{margin-top:10px;font-size:.75rem;opacity:.82}
+/* min-height = 2 lignes : le texte passe de une à deux lignes selon le pays
+   choisi et la largeur d'écran ; la hauteur réservée empêche tout décalage. */
+.result-note{margin-top:10px;font-size:.75rem;line-height:1.45;min-height:2.9em;opacity:.82}
 .result-err{margin-top:10px;font-size:.85rem;background:rgba(0,0,0,.22);padding:8px 11px;border-radius:9px}
 .result-err.is-hidden,.result-note.is-hidden{display:none}
 
