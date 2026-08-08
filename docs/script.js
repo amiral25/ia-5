@@ -109,7 +109,8 @@
   }
 
   /* ---------------------------------------------------------
-     3. Jours fériés français (métropole)
+     3. Jours fériés de la francophonie
+        France · Belgique · Suisse · Luxembourg · Québec
      --------------------------------------------------------- */
   var holidayCache = {};
 
@@ -124,21 +125,92 @@
     return Date.UTC(y, month - 1, day);
   }
 
-  function holidaysOf(year) {
-    if (holidayCache[year]) return holidayCache[year];
-    var set = Object.create(null);
-    var fixed = [[0, 1], [4, 1], [4, 8], [6, 14], [7, 15], [10, 1], [10, 11], [11, 25]];
-    for (var i = 0; i < fixed.length; i++) set[Date.UTC(year, fixed[i][0], fixed[i][1])] = 1;
+  /** n-ième jour de semaine d'un mois. nthWeekday(2026, 8, 1, 1) = 1er lundi de septembre. */
+  function nthWeekday(y, month, weekday, n) {
+    var first = new Date(Date.UTC(y, month, 1)).getUTCDay();
+    return Date.UTC(y, month, 1 + ((weekday - first + 7) % 7) + (n - 1) * 7);
+  }
+
+  /** Dernier `weekday` STRICTEMENT avant le `day` du mois (fête des Patriotes). */
+  function weekdayBefore(y, month, day, weekday) {
+    var ts = Date.UTC(y, month, day);
+    var back = (new Date(ts).getUTCDay() - weekday + 7) % 7 || 7;
+    return ts - back * DAY_MS;
+  }
+
+  // fixes  : [mois (0-11), jour, nom]
+  // mobiles: [décalage par rapport à Pâques, nom]  (-2 = Vendredi saint)
+  var PAYS = {
+    fr: {
+      nom: 'France', gentile: 'français',
+      fixes: [[0, 1, 'Jour de l\'an'], [4, 1, 'Fête du Travail'], [4, 8, 'Victoire 1945'],
+              [6, 14, 'Fête nationale'], [7, 15, 'Assomption'], [10, 1, 'Toussaint'],
+              [10, 11, 'Armistice 1918'], [11, 25, 'Noël']],
+      mobiles: [[1, 'Lundi de Pâques'], [39, 'Ascension'], [50, 'Lundi de Pentecôte']]
+    },
+    be: {
+      nom: 'Belgique', gentile: 'belges',
+      fixes: [[0, 1, 'Nouvel An'], [4, 1, 'Fête du Travail'], [6, 21, 'Fête nationale'],
+              [7, 15, 'Assomption'], [10, 1, 'Toussaint'], [10, 11, 'Armistice'],
+              [11, 25, 'Noël']],
+      mobiles: [[1, 'Lundi de Pâques'], [39, 'Ascension'], [50, 'Lundi de Pentecôte']]
+    },
+    ch: {
+      // Seul le 1er août est fédéral : les autres relèvent des cantons.
+      // On retient le socle observé dans toute la Suisse romande.
+      nom: 'Suisse', gentile: 'suisses',
+      fixes: [[0, 1, 'Nouvel An'], [7, 1, 'Fête nationale'], [11, 25, 'Noël']],
+      mobiles: [[-2, 'Vendredi saint'], [1, 'Lundi de Pâques'],
+                [39, 'Ascension'], [50, 'Lundi de Pentecôte']]
+    },
+    lu: {
+      nom: 'Luxembourg', gentile: 'luxembourgeois',
+      fixes: [[0, 1, 'Nouvel An'], [4, 1, 'Fête du Travail'], [4, 9, 'Journée de l\'Europe'],
+              [5, 23, 'Fête nationale'], [7, 15, 'Assomption'], [10, 1, 'Toussaint'],
+              [11, 25, 'Noël'], [11, 26, 'Saint-Étienne']],
+      mobiles: [[1, 'Lundi de Pâques'], [39, 'Ascension'], [50, 'Lundi de Pentecôte']]
+    },
+    qc: {
+      nom: 'Québec', gentile: 'québécois',
+      fixes: [[0, 1, 'Jour de l\'An'], [5, 24, 'Fête nationale du Québec'],
+              [6, 1, 'Fête du Canada'], [11, 25, 'Noël']],
+      mobiles: [[-2, 'Vendredi saint']],
+      calcules: function (y) {
+        return [
+          [weekdayBefore(y, 4, 25, 1), 'Journée nationale des patriotes'], // lundi avant le 25 mai
+          [nthWeekday(y, 8, 1, 1), 'Fête du Travail'],                     // 1er lundi de septembre
+          [nthWeekday(y, 9, 1, 2), 'Action de grâce']                      // 2e lundi d'octobre
+        ];
+      }
+    }
+  };
+
+  function codePays(code) { return PAYS[code] ? code : 'fr'; }
+
+  /** { timestamp UTC → nom du jour férié } pour une année et un pays. */
+  function holidaysOf(year, code) {
+    code = codePays(code);
+    var key = code + ':' + year;
+    if (holidayCache[key]) return holidayCache[key];
+
+    var p = PAYS[code], set = Object.create(null), i;
+    for (i = 0; i < p.fixes.length; i++) {
+      set[Date.UTC(year, p.fixes[i][0], p.fixes[i][1])] = p.fixes[i][2];
+    }
     var e = easterUTC(year);
-    set[e + 1 * DAY_MS] = 1;   // lundi de Pâques
-    set[e + 39 * DAY_MS] = 1;  // Ascension
-    set[e + 50 * DAY_MS] = 1;  // lundi de Pentecôte
-    holidayCache[year] = set;
+    for (i = 0; i < p.mobiles.length; i++) {
+      set[e + p.mobiles[i][0] * DAY_MS] = p.mobiles[i][1];
+    }
+    if (p.calcules) {
+      var sup = p.calcules(year);
+      for (i = 0; i < sup.length; i++) set[sup[i][0]] = sup[i][1];
+    }
+    holidayCache[key] = set;
     return set;
   }
 
-  function isHoliday(ts) {
-    return !!holidaysOf(new Date(ts).getUTCFullYear())[ts];
+  function isHoliday(ts, code) {
+    return !!holidaysOf(new Date(ts).getUTCFullYear(), code)[ts];
   }
 
   /* ---------------------------------------------------------
@@ -301,7 +373,12 @@
      7. Onglet 3 — Durée entre deux dates
      --------------------------------------------------------- */
   var dStart = $('#d-start'), dEnd = $('#d-end'),
-      dWe = $('#d-weekend'), dHol = $('#d-holidays');
+      dWe = $('#d-weekend'), dHol = $('#d-holidays'), dPays = $('#d-pays');
+
+  var PKEY = 'cd-pays';
+
+  /** Pays retenu pour les jours fériés. */
+  function paysActif() { return codePays(dPays && dPays.value); }
 
   function dateToUTC(v) {
     var p = /^(\d{4})-(\d{2})-(\d{2})$/.exec(v || '');
@@ -338,17 +415,23 @@
     if (mo < 0) { mo += 12; y--; }
 
     // Jours ouvrés (bornes incluses)
-    var work = 0, skipWe = dWe.checked, skipHol = dHol.checked;
+    var work = 0, feriesDeduits = 0,
+        skipWe = dWe.checked, skipHol = dHol.checked, pays = paysActif();
     for (var ts = from; ts <= to; ts += DAY_MS) {
       var wd = new Date(ts).getUTCDay();
       if (skipWe && (wd === 0 || wd === 6)) continue;
-      if (skipHol && isHoliday(ts)) continue;
+      if (skipHol && isHoliday(ts, pays)) { feriesDeduits++; continue; }
       work++;
     }
 
     var weeks = Math.floor(days / 7), remDays = days % 7;
     var breakdown = (y ? y + ' an' + (y > 1 ? 's' : '') + ' ' : '') + (mo ? mo + ' mois ' : '') + dd + ' j';
     var workLabel = skipWe ? (skipHol ? 'Jours ouvrés' : 'Jours hors week-end') : (skipHol ? 'Jours hors fériés' : 'Jours comptés');
+    // Note volontairement constante à pays donné : y glisser le nombre de fériés
+    // la ferait passer sur deux lignes selon la période, donc décaler la page (CLS).
+    var note = skipHol
+      ? '* bornes incluses. Jours fériés : ' + PAYS[pays].nom + '.'
+      : '* bornes incluses (la date de début et la date de fin sont comptées).';
 
     render({
       // Libellé volontairement constant : y insérer les dates le ferait passer
@@ -363,9 +446,11 @@
         { v: nf(days + 1), l: 'Jours inclus *' },
         { v: nf(days * 24), l: 'Heures' }
       ],
-      note: '* bornes incluses (la date de début et la date de fin sont comptées).',
+      note: note,
       copy: 'Du ' + toFR(from) + ' au ' + toFR(to) + ' : ' + nf(days) + ' jours d\'écart · ' +
             nf(days + 1) + ' jours bornes incluses · ' + nf(work) + ' ' + workLabel.toLowerCase() +
+            (skipHol ? ' (' + feriesDeduits + ' férié' + (feriesDeduits > 1 ? 's' : '') +
+                       ' ' + PAYS[pays].gentile + ' déduit' + (feriesDeduits > 1 ? 's' : '') + ')' : '') +
             ' · ' + breakdown.trim()
     });
   }
@@ -580,7 +665,12 @@
   });
   hPause.addEventListener('input', syncChips);
 
-  [dStart, dEnd, dWe, dHol].forEach(function (el) { el.addEventListener('input', compute); });
+  [dStart, dEnd, dWe, dHol, dPays].forEach(function (el) { el.addEventListener('input', compute); });
+
+  // Le pays choisi est retenu : un visiteur belge ne le resélectionne pas à chaque visite.
+  dPays.addEventListener('change', function () {
+    try { localStorage.setItem(PKEY, paysActif()); } catch (e) {}
+  });
 
   [mH, mM, mS, mN].forEach(function (el) { el.addEventListener('input', compute); });
   $$('.sign-group-op .sg-btn').forEach(function (btn) {
@@ -604,10 +694,21 @@
     dEnd.value = new Date(t + 30 * DAY_MS).toISOString().slice(0, 10);
   }
 
+  /** Pays d'ouverture : celui de la page (<body data-pays>) sinon le dernier choisi. */
+  function initPays() {
+    var page = document.body.getAttribute('data-pays');
+    if (PAYS[page]) { dPays.value = page; return; }
+    try {
+      var memo = localStorage.getItem(PKEY);
+      if (PAYS[memo]) dPays.value = memo;
+    } catch (e) {}
+  }
+
   $('#year').textContent = new Date().getFullYear();
   // Les lignes de départ sont déjà dans le HTML (évite tout décalage au chargement)
   if (!$('.row', rowsBox)) buildRows();
   setDefaultDates();
+  initPays();
   syncChips();
   drawHist();
   // Les pages satellites indiquent l'onglet à ouvrir via <body data-tab="2">
