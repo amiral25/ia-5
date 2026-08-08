@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<!-- Vérification de propriété Google Search Console. À conserver : la supprimer
+     ferait perdre l'accès aux statistiques de recherche. -->
+<meta name="google-site-verification" content="gILNN0x-6r44dwUobxE3BdUbGs9OTXNgcFvqBqA8X3w">
+
+<title>Calculatrice de Durée et de Temps – Calcul d'Heures Gratuit</title>
+<meta name="description" content="Calculatrice de durée et de temps : additionnez vos heures, calculez l'écart entre 2 heures ou 2 dates et convertissez en décimales. Gratuit et instantané.">
+
+<!-- Domaine du site. Le fichier docs/CNAME doit contenir la même valeur. -->
+<link rel="canonical" href="https://calculatrice-duree.fr/">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="author" content="Calculatrice de Durée">
+<meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Calculatrice de Durée">
+<meta property="og:title" content="Calculatrice de Durée et de Temps – Calcul d'Heures Gratuit">
+<meta property="og:description" content="Calculatrice de durée et de temps : additionnez vos heures, calculez l'écart entre 2 heures ou 2 dates et convertissez en décimales. Gratuit et instantané.">
+<meta property="og:url" content="https://calculatrice-duree.fr/">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+
+<!-- Anti-flash du thème sombre : doit rester en ligne et en premier -->
+<script>
+(function(){try{var t=localStorage.getItem('cd-theme');
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+
+<!-- ============================================================
+     GOOGLE ADSENSE — décommentez ces 2 lignes après validation
+     et remplacez ca-pub-XXXXXXXXXXXXXXXX par votre identifiant.
+     ============================================================
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+-->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://calculatrice-duree.fr/#app",
+      "name": "Calculatrice de Durée",
+      "url": "https://calculatrice-duree.fr/",
+      "applicationCategory": "UtilitiesApplication",
+      "applicationSubCategory": "Calculatrice",
+      "operatingSystem": "Tous (navigateur web)",
+      "browserRequirements": "Requiert JavaScript",
+      "inLanguage": "fr-FR",
+      "isAccessibleForFree": true,
+      "description": "Calculatrice de durée en ligne : additionnez et soustrayez des heures, calculez le temps écoulé entre deux horaires avec pause, mesurez l'écart entre deux dates en jours, semaines, mois et jours ouvrés.",
+      "featureList": [
+        "Addition et soustraction de durées",
+        "Durée entre deux heures avec temps de pause",
+        "Durée entre deux dates et calcul des jours ouvrés",
+        "Jours fériés de France, Belgique, Suisse, Luxembourg et Québec",
+        "Conversion en heures décimales et en minutes totales",
+        "Historique des 5 derniers calculs"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://calculatrice-duree.fr/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Comment additionner des heures et des minutes ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Additionnez d'abord les minutes entre elles, puis les heures. Si le total des minutes dépasse 60, retirez 60 minutes et ajoutez 1 heure. Exemple : 2h45 + 1h30 = 3h et 75 min, soit 4h15. La calculatrice ci-dessus effectue automatiquement cette retenue et affiche le résultat en heures et minutes, en décimal et en minutes totales."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment convertir 45 minutes en heures décimales ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Divisez le nombre de minutes par 60. 45 ÷ 60 = 0,75. Donc 45 minutes valent 0,75 heure, soit 75 centièmes d'heure. De la même façon, 1h30 se note 1,5 heure et 7h20 se note 7,33 heures."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment calculer le nombre d'heures travaillées entre deux horaires avec une pause ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Soustrayez l'heure de début de l'heure de fin, puis retirez la durée de la pause. Exemple : de 08h30 à 17h15 il s'écoule 8h45 ; avec 45 minutes de pause déjeuner non rémunérée, le temps de travail effectif est de 8h00, soit 8 heures décimales. L'onglet « Durée entre 2 heures » fait ce calcul automatiquement, y compris pour les horaires de nuit qui passent minuit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment compter les jours ouvrés entre deux dates en France ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Les jours ouvrés sont les jours du lundi au vendredi, hors jours fériés. L'onglet « Durée entre 2 dates » exclut automatiquement les samedis, les dimanches et les 11 jours fériés français (dont Pâques, l'Ascension et la Pentecôte, dont la date change chaque année) et vous donne le nombre exact de jours ouvrés, bornes incluses."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Le calculateur gère-t-il les jours fériés belges, suisses, luxembourgeois ou québécois ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui. Le menu « Jours fériés du pays », dans l'onglet « Entre 2 dates », bascule le décompte sur la France, la Belgique, la Suisse, le Luxembourg ou le Québec. Chaque calendrier a ses propres dates : la Belgique chôme le 21 juillet mais pas le 14, le Luxembourg chôme la Journée de l'Europe du 9 mai, la Suisse ne compte qu'un seul jour férié fédéral et le Québec ajoute la Journée nationale des patriotes et l'Action de grâce. Le pays choisi est mémorisé pour vos prochaines visites."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment calculer des heures ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Trois cas se présentent. Pour additionner des durées, cumulez les minutes puis reportez la retenue au-delà de 60. Pour connaître le temps écoulé entre deux horaires, soustrayez l'heure de début de l'heure de fin, puis retirez la pause. Pour convertir en décimal, divisez les minutes par 60. La calculatrice ci-dessus couvre les trois cas et affiche le résultat en heures et minutes, en décimal et en minutes totales."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment calculer le nombre d'heures entre deux dates ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multipliez le nombre de jours d'écart par 24. Entre le 1er et le 15 d'un mois, il y a 14 jours d'écart, soit 336 heures. L'onglet « Entre 2 dates » affiche directement ce total en heures, en plus des jours, des semaines et des jours ouvrés."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "La calculatrice de durée est-elle gratuite ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui, l'outil est entièrement gratuit, sans inscription et sans limite d'utilisation. Tous les calculs sont réalisés directement dans votre navigateur : aucune donnée saisie n'est envoyée sur un serveur."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://calculatrice-duree.fr/" },
+        { "@type": "ListItem", "position": 2, "name": "Calculatrice de durée", "item": "https://calculatrice-duree.fr/#calculatrice" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#calculatrice">Aller à la calculatrice</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.2 2"></path>
+        </svg>
+      </span>
+      <span class="brand-text">Calculatrice&nbsp;de&nbsp;Durée</span>
+    </a>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Basculer le thème sombre">
+      <svg class="ico-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4.2"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"></path>
+      </svg>
+      <svg class="ico-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.7 6.7 0 0 0 10.5 10.5Z"></path>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <h1>Calculatrice de Durée et de Temps&nbsp;: Additionnez et Convertissez vos Heures</h1>
+    <p class="lead">
+      Additionnez ou soustrayez vos heures, calculez le temps écoulé entre deux horaires ou deux dates.
+      Résultat instantané en <strong>h&nbsp;: min</strong>, en <strong>décimal</strong> et en
+      <strong>minutes totales</strong>.
+    </p>
+  </section>
+
+  <!-- ══════════ EMPLACEMENT PUBLICITAIRE A — Bannière responsive ══════════
+       Hauteur réservée en CSS : aucun décalage de mise en page (CLS = 0). -->
+  <aside class="ad ad-leaderboard" aria-label="Publicité">
+    <span class="ad-label">Publicité</span>
+    <div class="ad-slot">
+      <!-- ▼▼ COLLEZ ICI VOTRE BLOC ADSENSE « Bannière » ▼▼
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+           data-ad-slot="0000000000" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      ▲▲ FIN DU BLOC ADSENSE ▲▲ -->
+      <span class="ad-ph">Emplacement publicitaire</span>
+    </div>
+  </aside>
+
+  <div class="layout">
+
+    <!-- ───────────────────────── CALCULATRICE ───────────────────────── -->
+    <div class="col-main">
+      <section id="calculatrice" class="card calc" aria-label="Calculatrice de durée">
+
+        <div class="tabs" role="tablist" aria-label="Type de calcul">
+          <button class="tab is-active" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true" type="button"
+                  aria-label="Additionner et soustraire des durées">
+            <svg class="tab-ico" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" aria-hidden="true">
+              <path d="M12 5v7M8.5 8.5h7M6.5 18h11"></path>
+            </svg><span>Addition / Soustraction</span>
+          </button>
+          <button class="tab" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false" tabindex="-1" type="button"
+                  aria-label="Durée entre deux heures">
+            <svg class="tab-ico" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.4"></circle><path d="M12 7.4V12l3 2"></path>
+            </svg><span>Entre 2 heures</span>
+          </button>
+          <button class="tab" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false" tabindex="-1" type="button"
+                  aria-label="Durée entre deux dates">
+            <svg class="tab-ico" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3.4" y="5" width="17.2" height="15.5" rx="2.6"></rect><path d="M3.4 10h17.2M8 3v4M16 3v4"></path>
+            </svg><span>Entre 2 dates</span>
+          </button>
+          <button class="tab" role="tab" id="tab-4" aria-controls="panel-4" aria-selected="false" tabindex="-1" type="button"
+                  aria-label="Multiplier ou diviser une durée">
+            <svg class="tab-ico" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" aria-hidden="true">
+              <path d="M5.5 7.5l5 5M10.5 7.5l-5 5M14.5 15h6"></path>
+              <circle cx="17.5" cy="11.6" r=".95" fill="currentColor" stroke="none"></circle>
+              <circle cx="17.5" cy="18.4" r=".95" fill="currentColor" stroke="none"></circle>
+            </svg><span>Multiplier / Diviser</span>
+          </button>
+        </div>
+
+        <!-- RÉSULTAT (hauteur réservée → CLS = 0) -->
+        <div class="result" id="result" aria-live="polite">
+          <div class="result-main">
+            <span class="result-label" id="res-label">Total des durées</span>
+            <output class="result-value" id="res-value">4h 15min</output>
+          </div>
+          <!-- État initial écrit en dur : le JS le remplace à l'identique,
+               donc rien ne bouge au chargement (CLS = 0). -->
+          <div class="result-grid" id="res-grid">
+            <div class="res-cell">
+            <b>4,25</b>
+            <span>Heures décimales</span></div>
+            <div class="res-cell">
+            <b>255 min</b>
+            <span>Minutes totales</span></div>
+            <div class="res-cell">
+            <b>15 300 s</b>
+            <span>Secondes totales</span></div>
+          </div>
+          <p class="result-note is-hidden" id="res-note"></p>
+          <p class="result-err is-hidden" id="res-err"></p>
+        </div>
+
+        <div class="actions">
+          <button id="btn-copy" class="btn btn-primary" type="button">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+            </svg>
+            <span id="copy-txt">Copier le résultat</span>
+          </button>
+          <button id="btn-reset" class="btn btn-ghost" type="button">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 12a9 9 0 1 0 3-6.7L3 8"></path><path d="M3 3v5h5"></path>
+            </svg>
+            Effacer
+          </button>
+        </div>
+
+
+        <!-- ONGLET 1 -->
+        <div class="panel" role="tabpanel" id="panel-1" aria-labelledby="tab-1">
+          <div class="field">
+            <label class="lbl" for="quick">Saisie rapide</label>
+            <input id="quick" class="inp inp-quick" type="text" inputmode="text" autocomplete="off" spellcheck="false"
+                   aria-describedby="quick-hint" placeholder="Ex : 2h30 + 1h45 − 20min">
+            <p class="hint" id="quick-hint">
+              Utilisez <code>+</code> pour <strong>additionner</strong> et <code>-</code> pour
+              <strong>soustraire</strong>. Formats acceptés&nbsp;: <code>2h30</code>, <code>2:30</code>,
+              <code>45min</code>, <code>90s</code>, <code>1j</code>. Un nombre seul&nbsp;= des heures
+              (<code>1,5</code> = 1h30). Le résultat peut être négatif.
+              Laissez vide pour utiliser les champs ci-dessous.
+            </p>
+          </div>
+
+          <div class="sep"><span>ou saisie détaillée</span></div>
+
+          <div id="rows" class="rows">
+            <div class="row-units" aria-hidden="true">
+            <span>Ajouter / Retirer</span>
+            <span>Heures</span>
+            <span>Minutes</span>
+            <span>Sec.</span>
+            <span></span></div>
+            <div class="row">
+            <div class="sign-group" role="group" aria-label="Ajouter ou soustraire cette durée">
+            <button type="button" class="sg-btn sg-plus is-on" data-sign="+" aria-pressed="true" title="Additionner cette durée">+</button>
+            <button type="button" class="sg-btn sg-minus" data-sign="-" aria-pressed="false" title="Soustraire cette durée">−</button></div><input class="inp r-h" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Heures" value="2"><input class="inp r-m" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Minutes" value="30"><input class="inp r-s" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Secondes" value="">
+            <button class="row-del" type="button" aria-label="Supprimer cette ligne">×</button></div>
+            <div class="row">
+            <div class="sign-group" role="group" aria-label="Ajouter ou soustraire cette durée">
+            <button type="button" class="sg-btn sg-plus is-on" data-sign="+" aria-pressed="true" title="Additionner cette durée">+</button>
+            <button type="button" class="sg-btn sg-minus" data-sign="-" aria-pressed="false" title="Soustraire cette durée">−</button></div><input class="inp r-h" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Heures" value="1"><input class="inp r-m" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Minutes" value="45"><input class="inp r-s" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Secondes" value="">
+            <button class="row-del" type="button" aria-label="Supprimer cette ligne">×</button></div>
+          </div>
+
+          <div class="row-actions">
+            <button id="add-row" class="btn btn-ghost btn-sm" type="button">
+              <span class="op-plus" aria-hidden="true">+</span> Ajouter une durée
+            </button>
+            <button id="sub-row" class="btn btn-ghost btn-sm" type="button">
+              <span class="op-minus" aria-hidden="true">−</span> Soustraire une durée
+            </button>
+          </div>
+          <p class="hint">
+            Sur chaque ligne, choisissez <strong>+</strong> pour ajouter la durée ou <strong>−</strong> pour la retirer
+            du total.
+          </p>
+        </div>
+
+        <!-- ONGLET 2 -->
+        <div class="panel is-hidden" role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden>
+          <div class="grid-2">
+            <div class="field">
+              <label class="lbl" for="h-start">Heure de début</label>
+              <input id="h-start" class="inp" type="time" value="08:30" step="60">
+            </div>
+            <div class="field">
+              <label class="lbl" for="h-end">Heure de fin</label>
+              <input id="h-end" class="inp" type="time" value="17:15" step="60">
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="field">
+              <label class="lbl" for="h-pause">Pause (minutes)</label>
+              <input id="h-pause" class="inp" type="number" min="0" max="1440" step="5" value="45" inputmode="numeric">
+            </div>
+            <div class="field">
+              <span class="lbl">Pauses fréquentes</span>
+              <div class="chips">
+                <button class="chip" type="button" data-pause="0">Aucune</button>
+                <button class="chip" type="button" data-pause="30">30 min</button>
+                <button class="chip" type="button" data-pause="45">45 min</button>
+                <button class="chip" type="button" data-pause="60">1 h</button>
+              </div>
+            </div>
+          </div>
+          <p id="h-note" class="note is-hidden">🌙 L'heure de fin est le lendemain (service de nuit).</p>
+        </div>
+
+        <!-- ONGLET 3 -->
+        <div class="panel is-hidden" role="tabpanel" id="panel-3" aria-labelledby="tab-3" hidden>
+          <div class="grid-2">
+            <div class="field">
+              <label class="lbl" for="d-start">Date de début</label>
+              <input id="d-start" class="inp" type="date">
+            </div>
+            <div class="field">
+              <label class="lbl" for="d-end">Date de fin</label>
+              <input id="d-end" class="inp" type="date">
+            </div>
+          </div>
+          <div class="field">
+            <label class="lbl" for="d-pays">Jours fériés du pays</label>
+            <select id="d-pays" class="inp inp-select">
+              <option value="fr">France</option>
+              <option value="be">Belgique</option>
+              <option value="ch">Suisse (socle romand)</option>
+              <option value="lu">Luxembourg</option>
+              <option value="qc">Québec</option>
+            </select>
+          </div>
+          <div class="opts">
+            <label class="switch">
+              <input id="d-weekend" type="checkbox" checked>
+              <span class="switch-ui" aria-hidden="true"></span>
+              <span>Exclure les week-ends</span>
+            </label>
+            <label class="switch">
+              <input id="d-holidays" type="checkbox" checked>
+              <span class="switch-ui" aria-hidden="true"></span>
+              <span>Exclure les jours fériés</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- ONGLET 4 -->
+        <div class="panel is-hidden" role="tabpanel" id="panel-4" aria-labelledby="tab-4" hidden>
+          <div class="field">
+            <span class="lbl">Durée de départ</span>
+            <div class="units-3" aria-hidden="true"><span>Heures</span><span>Minutes</span><span>Sec.</span></div>
+            <div class="grid-3">
+              <input id="m-h" class="inp" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Heures" value="2">
+              <input id="m-m" class="inp" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Minutes" value="30">
+              <input id="m-s" class="inp" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Secondes">
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <span class="lbl">Opération</span>
+              <div class="sign-group sign-group-op" role="group" aria-label="Multiplier ou diviser">
+                <button type="button" class="sg-btn sg-mul is-on" data-op="x" aria-pressed="true">× Multiplier</button>
+                <button type="button" class="sg-btn sg-div" data-op="/" aria-pressed="false">÷ Diviser</button>
+              </div>
+            </div>
+            <div class="field">
+              <label class="lbl" for="m-n">Par combien&nbsp;?</label>
+              <!-- type="text" volontaire : un champ number rejette la virgule,
+                   or « 2,5 » est la façon française d'écrire un nombre décimal. -->
+              <input id="m-n" class="inp" type="text" inputmode="decimal" autocomplete="off"
+                     spellcheck="false" placeholder="3" value="3">
+            </div>
+          </div>
+
+          <p class="hint">
+            Exemples&nbsp;: <code>2h30 × 3</code> = 7h30 (trois séances identiques) ·
+            <code>10h ÷ 4</code> = 2h30 (répartir une charge sur 4&nbsp;jours).
+          </p>
+        </div>
+
+        <div class="history" id="history-box" hidden>
+          <div class="history-head">
+            <h2 class="history-title">5 derniers calculs</h2>
+            <button id="btn-clear-hist" class="link-btn" type="button">Vider</button>
+          </div>
+          <ul class="history-list" id="history-list"></ul>
+        </div>
+      </section>
+    </div>
+
+    <!-- ══════════ EMPLACEMENT PUBLICITAIRE B — Pavé 300×250 (sticky bureau) ══════════ -->
+    <aside class="col-side" aria-label="Publicité">
+      <div class="ad ad-rect">
+        <span class="ad-label">Publicité</span>
+        <div class="ad-slot ad-slot-rect">
+          <!-- ▼▼ COLLEZ ICI VOTRE BLOC ADSENSE « Rectangle 300×250 » ▼▼
+          <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px"
+               data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="0000000000"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          ▲▲ FIN DU BLOC ADSENSE ▲▲ -->
+          <span class="ad-ph">Emplacement publicitaire<br>300 × 250</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- ───────────────────────── CONTENU SEO ───────────────────────── -->
+  <article class="content">
+
+    <h2 id="convertir-minutes">Comment convertir des minutes en heures décimales&nbsp;?</h2>
+    <p>
+      Une heure vaut 60 minutes, mais la paie, la facturation et les tableurs raisonnent en <strong>base 10</strong>.
+      C'est la source d'erreur numéro un&nbsp;: écrire «&nbsp;7,30&nbsp;» dans un tableur pour désigner 7&nbsp;h&nbsp;30
+      revient à déclarer 7&nbsp;h&nbsp;18. Pour <strong>convertir des minutes en heures décimales</strong> (aussi appelées
+      centièmes d'heure), la formule est toujours la même&nbsp;:
+    </p>
+    <p class="formula"><strong>Heures décimales = minutes ÷ 60</strong> &nbsp;→&nbsp; 45 ÷ 60 = <strong>0,75&nbsp;h</strong></p>
+    <p>
+      Ainsi 1&nbsp;h&nbsp;30 s'écrit 1,5&nbsp;h&nbsp;; 7&nbsp;h&nbsp;20 s'écrit 7,33&nbsp;h&nbsp;; et 35&nbsp;h&nbsp;45
+      deviennent 35,75&nbsp;h. Pour l'opération inverse, multipliez la partie décimale par 60&nbsp;:
+      0,4&nbsp;h × 60 = 24&nbsp;minutes. Les <strong>centièmes</strong> utilisés sur les feuilles de pointage sont
+      simplement ces décimales multipliées par 100 (0,75&nbsp;h = 75&nbsp;centièmes).
+    </p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>Table de conversion minutes → heures décimales → centièmes</caption>
+        <thead>
+          <tr><th scope="col">Minutes</th><th scope="col">Heures décimales</th><th scope="col">Centièmes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>5 min</td><td>0,08 h</td><td>8</td></tr>
+          <tr><td>10 min</td><td>0,17 h</td><td>17</td></tr>
+          <tr><td>15 min</td><td>0,25 h</td><td>25</td></tr>
+          <tr><td>20 min</td><td>0,33 h</td><td>33</td></tr>
+          <tr><td>25 min</td><td>0,42 h</td><td>42</td></tr>
+          <tr><td>30 min</td><td>0,50 h</td><td>50</td></tr>
+          <tr><td>35 min</td><td>0,58 h</td><td>58</td></tr>
+          <tr><td>40 min</td><td>0,67 h</td><td>67</td></tr>
+          <tr><td>45 min</td><td>0,75 h</td><td>75</td></tr>
+          <tr><td>50 min</td><td>0,83 h</td><td>83</td></tr>
+          <tr><td>55 min</td><td>0,92 h</td><td>92</td></tr>
+          <tr><td>60 min</td><td>1,00 h</td><td>100</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="micro">
+      Astuce&nbsp;: la calculatrice ci-dessus affiche systématiquement les trois formats en même temps, vous n'avez donc
+      jamais à faire la conversion à la main avant de remplir une feuille d'heures ou une facture.
+    </p>
+
+    <h2 id="heures-de-travail">Comment calculer ses heures de travail quotidiennes et hebdomadaires&nbsp;?</h2>
+
+    <h3>1. Le calcul d'une journée de travail</h3>
+    <p>
+      Le principe du <strong>calcul d'heure de travail</strong> tient en trois opérations&nbsp;: heure de fin −
+      heure de début − temps de pause non rémunéré. Prenons une journée classique de 8&nbsp;h&nbsp;30 à 17&nbsp;h&nbsp;15
+      avec 45&nbsp;minutes de pause déjeuner. L'amplitude est de 8&nbsp;h&nbsp;45&nbsp;; en retirant la pause, le temps
+      de <em>travail effectif</em> est de <strong>8&nbsp;h&nbsp;00</strong>, soit 8,00&nbsp;heures décimales et
+      480&nbsp;minutes. Attention à ne pas confondre l'<strong>amplitude horaire</strong> (présence dans l'entreprise)
+      et le <strong>temps de travail effectif</strong>&nbsp;: seul le second est rémunéré, et c'est celui qui sert de
+      base au décompte des heures supplémentaires.
+    </p>
+    <p>
+      Pour un poste de nuit qui démarre à 21&nbsp;h&nbsp;00 et se termine à 5&nbsp;h&nbsp;30, la soustraction directe
+      donnerait un résultat négatif. Il faut ajouter 24&nbsp;heures à l'heure de fin&nbsp;: 29&nbsp;h&nbsp;30 −
+      21&nbsp;h&nbsp;00 = 8&nbsp;h&nbsp;30. L'onglet «&nbsp;Entre 2 heures&nbsp;» détecte automatiquement ce passage
+      par minuit et vous le signale.
+    </p>
+
+    <h3>2. Le total hebdomadaire</h3>
+    <p>
+      Additionnez ensuite les journées de la semaine. Avec 7&nbsp;h&nbsp;45 le lundi, 8&nbsp;h&nbsp;15 le mardi,
+      7&nbsp;h&nbsp;30 le mercredi, 8&nbsp;h&nbsp;00 le jeudi et 6&nbsp;h&nbsp;30 le vendredi, on obtient
+      38&nbsp;h&nbsp;00. La méthode manuelle consiste à cumuler les minutes (45+15+30+0+30 = 120&nbsp;min = 2&nbsp;h)
+      puis à les reporter sur les heures (36&nbsp;h + 2&nbsp;h). Au-delà de la durée légale de 35&nbsp;heures, les
+      heures supplémentaires sont ici de 3&nbsp;heures. La saisie rapide de l'onglet 1 accepte directement
+      <code>7h45 + 8h15 + 7h30 + 8h + 6h30</code>&nbsp;: le total tombe instantanément, avec la retenue déjà faite.
+    </p>
+
+    <h3>3. Mensualisation&nbsp;: d'où vient le chiffre 151,67&nbsp;h&nbsp;?</h3>
+    <p>
+      Un contrat à 35&nbsp;heures hebdomadaires correspond à 151,67&nbsp;heures mensuelles. Le calcul&nbsp;:
+      35&nbsp;h × 52&nbsp;semaines ÷ 12&nbsp;mois = 151,666…&nbsp;h, arrondi à 151,67. C'est cette valeur, exprimée en
+      décimal, qui figure sur la fiche de paie&nbsp;— et non «&nbsp;151&nbsp;h&nbsp;67&nbsp;», qui n'aurait aucun sens
+      puisqu'une heure ne compte que 60&nbsp;minutes. Pour un temps partiel à 24&nbsp;h, le même calcul donne
+      104&nbsp;heures mensuelles.
+    </p>
+
+    <h2 id="additionner-durees">Additionner des durées sans erreur&nbsp;: la méthode en 3 étapes</h2>
+    <p>
+      <strong>Additionner des durées</strong> à la main reste possible si l'on respecte l'ordre suivant.
+      <strong>Étape 1</strong>&nbsp;: additionnez séparément les secondes, les minutes puis les heures.
+      <strong>Étape 2</strong>&nbsp;: reportez les retenues, car le système est sexagésimal — chaque fois que les
+      secondes dépassent 60, vous convertissez en 1&nbsp;minute&nbsp;; chaque fois que les minutes dépassent 60, vous
+      convertissez en 1&nbsp;heure. <strong>Étape 3</strong>&nbsp;: vérifiez en repassant par les minutes totales.
+      Exemple avec 1&nbsp;h&nbsp;50 + 2&nbsp;h&nbsp;20 + 0&nbsp;h&nbsp;55&nbsp;: les minutes donnent 125, soit
+      2&nbsp;h&nbsp;05&nbsp;; ajoutées aux 3&nbsp;heures, le total est de <strong>5&nbsp;h&nbsp;05</strong>
+      (305&nbsp;minutes, ou 5,08&nbsp;heures décimales).
+    </p>
+    <p>
+      La soustraction suit la logique inverse&nbsp;: pour 4&nbsp;h&nbsp;10 − 1&nbsp;h&nbsp;35, on «&nbsp;casse&nbsp;»
+      une heure pour transformer 4&nbsp;h&nbsp;10 en 3&nbsp;h&nbsp;70, ce qui permet de soustraire les minutes&nbsp;:
+      le résultat est 2&nbsp;h&nbsp;35. Notre outil accepte les résultats négatifs et les affiche précédés du signe
+      moins, ce qui est utile pour suivre un compteur d'heures ou un solde de récupération.
+    </p>
+
+    <h2 id="jours-ouvres">Jours ouvrés, jours ouvrables et jours fériés</h2>
+    <p>
+      Les trois notions sont souvent confondues. Les <strong>jours ouvrables</strong> correspondent à tous les jours de
+      la semaine sauf le dimanche et les jours fériés, soit 6&nbsp;jours&nbsp;: c'est la base historique du décompte
+      des congés payés. Les <strong>jours ouvrés</strong> sont les jours réellement travaillés dans l'entreprise, en
+      général du lundi au vendredi, soit 5&nbsp;jours. Les <strong>jours calendaires</strong>, eux, comptent tous les
+      jours sans exception, y compris les week-ends et les fériés&nbsp;— c'est l'unité utilisée pour les délais de
+      préavis ou de rétractation.
+    </p>
+    <p>
+      La France métropolitaine compte 11&nbsp;jours fériés légaux. Huit ont une date fixe&nbsp;: le 1<sup>er</sup>&nbsp;janvier,
+      le 1<sup>er</sup>&nbsp;mai, le 8&nbsp;mai, le 14&nbsp;juillet, le 15&nbsp;août, le 1<sup>er</sup>&nbsp;novembre,
+      le 11&nbsp;novembre et le 25&nbsp;décembre. Trois sont mobiles car indexés sur Pâques&nbsp;: le lundi de Pâques,
+      l'Ascension (39&nbsp;jours après Pâques) et le lundi de Pentecôte (50&nbsp;jours après Pâques). L'onglet
+      «&nbsp;Entre 2 dates&nbsp;» calcule ces dates mobiles année par année et les retire du décompte quand l'option
+      est activée&nbsp;; les jours fériés qui tombent un samedi ou un dimanche ne sont évidemment comptés qu'une fois.
+    </p>
+
+    <h3>Belgique, Suisse, Luxembourg, Québec&nbsp;: cinq calendriers, un seul outil</h3>
+    <p>
+      Les jours fériés ne s'arrêtent pas aux frontières françaises, et les calendriers diffèrent bien plus qu'on
+      ne le croit. Le menu «&nbsp;<strong>Jours fériés du pays</strong>&nbsp;» de l'onglet «&nbsp;Entre 2 dates&nbsp;»
+      bascule le décompte sur la Belgique, la Suisse, le Luxembourg ou le Québec. Les dates mobiles sont recalculées
+      pour chaque pays, y compris celles qui n'existent pas en France&nbsp;: le Vendredi saint en Suisse et au Québec,
+      la Journée nationale des patriotes québécoise — le lundi précédant le 25&nbsp;mai — ou l'Action de grâce, deuxième
+      lundi d'octobre. Le pays retenu est mémorisé pour vos prochaines visites.
+    </p>
+    <p>
+      Les écarts sont loin d'être anecdotiques. La Belgique ignore le 8&nbsp;mai et le 14&nbsp;juillet mais chôme le
+      21&nbsp;juillet&nbsp;; le Luxembourg est l'un des rares pays à chômer la Journée de l'Europe du 9&nbsp;mai&nbsp;;
+      en Suisse, un seul jour est fédéral, le 1<sup>er</sup>&nbsp;août, tout le reste relevant des cantons. La règle
+      du week-end change elle aussi du tout au tout&nbsp;: en France un férié tombant un dimanche est perdu, alors que
+      la Belgique impose un jour de remplacement et le Luxembourg un congé compensatoire.
+    </p>
+    <ul class="uses">
+      <li><a href="jours-feries-belgique.html">Jours fériés en Belgique</a>&nbsp;: les 10 jours légaux et le jour de remplacement.</li>
+      <li><a href="jours-feries-suisse.html">Jours fériés en Suisse</a>&nbsp;: le socle romand et les listes cantonales.</li>
+      <li><a href="jours-feries-luxembourg.html">Jours fériés au Luxembourg</a>&nbsp;: les 11 jours légaux et le cas des frontaliers.</li>
+      <li><a href="jours-feries-quebec.html">Jours fériés au Québec</a>&nbsp;: les 8 congés de la Loi sur les normes du travail.</li>
+    </ul>
+
+    <h2 id="cas-usage">À qui sert cette calculatrice&nbsp;?</h2>
+    <ul class="uses">
+      <li><strong>Salariés et intérimaires</strong>&nbsp;: vérifier son bulletin de paie, additionner ses heures supplémentaires, contrôler un compteur de récupération.</li>
+      <li><strong>Indépendants et freelances</strong>&nbsp;: convertir le temps passé en heures décimales pour facturer au taux horaire sans arrondi hasardeux.</li>
+      <li><strong>Managers et RH</strong>&nbsp;: préparer un planning, calculer une durée de préavis, compter les jours ouvrés d'un arrêt ou de congés.</li>
+      <li><strong>Étudiants, sportifs, cuisiniers, musiciens</strong>&nbsp;: cumuler des temps de révision, de course, de cuisson ou de répétition.</li>
+      <li><strong>Voyageurs</strong>&nbsp;: mesurer une durée de trajet, une correspondance ou un temps d'attente.</li>
+    </ul>
+    <p class="micro">
+      Tous les calculs sont exécutés localement, dans votre navigateur&nbsp;: aucune donnée saisie n'est transmise ni
+      enregistrée sur un serveur. L'historique des cinq derniers calculs reste stocké uniquement sur votre appareil et
+      vous pouvez l'effacer à tout moment d'un clic.
+    </p>
+
+    <h2>Les autres calculateurs du site</h2>
+    <ul class="liens-connexes">
+      <li><a href="convertir-minutes-en-heures.html">Convertir minutes → heures</a></li>
+      <li><a href="additionner-des-heures.html">Additionner des heures</a></li>
+      <li><a href="calcul-heures-de-travail.html">Heures de travail</a></li>
+      <li><a href="calcul-jours-ouvres.html">Jours ouvrés</a></li>
+      <li><a href="duree-entre-deux-dates.html">Entre 2 dates</a></li>
+      <li><a href="combien-heures-entre-deux-horaires.html">Combien d'heures entre 2 horaires</a></li>
+      <li><a href="multiplier-diviser-une-duree.html">Multiplier / Diviser</a></li>
+      <li><a href="jours-feries-belgique.html">Fériés Belgique</a></li>
+      <li><a href="jours-feries-suisse.html">Fériés Suisse</a></li>
+      <li><a href="jours-feries-luxembourg.html">Fériés Luxembourg</a></li>
+      <li><a href="jours-feries-quebec.html">Fériés Québec</a></li>
+    </ul>
+
+    <h2 id="faq">Questions fréquentes</h2>
+    <div class="faq">
+      <details>
+        <summary>Comment additionner des heures et des minutes&nbsp;?</summary>
+        <p>Additionnez d'abord les minutes entre elles, puis les heures. Si le total des minutes dépasse 60, retirez
+        60&nbsp;minutes et ajoutez 1&nbsp;heure. Exemple&nbsp;: 2h45 + 1h30 = 3&nbsp;h et 75&nbsp;min, soit
+        <strong>4h15</strong>. La calculatrice ci-dessus effectue automatiquement cette retenue et affiche le résultat
+        en heures et minutes, en décimal et en minutes totales.</p>
+      </details>
+      <details>
+        <summary>Comment convertir 45 minutes en heures décimales&nbsp;?</summary>
+        <p>Divisez le nombre de minutes par 60. 45 ÷ 60 = 0,75. Donc 45&nbsp;minutes valent <strong>0,75&nbsp;heure</strong>,
+        soit 75&nbsp;centièmes d'heure. De la même façon, 1h30 se note 1,5&nbsp;heure et 7h20 se note 7,33&nbsp;heures.</p>
+      </details>
+      <details>
+        <summary>Comment calculer le nombre d'heures travaillées entre deux horaires avec une pause&nbsp;?</summary>
+        <p>Soustrayez l'heure de début de l'heure de fin, puis retirez la durée de la pause. Exemple&nbsp;: de 08h30 à
+        17h15 il s'écoule 8h45&nbsp;; avec 45&nbsp;minutes de pause déjeuner non rémunérée, le temps de travail effectif
+        est de <strong>8h00</strong>, soit 8&nbsp;heures décimales. L'onglet «&nbsp;Durée entre 2 heures&nbsp;» fait ce
+        calcul automatiquement, y compris pour les horaires de nuit qui passent minuit.</p>
+      </details>
+      <details>
+        <summary>Comment compter les jours ouvrés entre deux dates en France&nbsp;?</summary>
+        <p>Les jours ouvrés sont les jours du lundi au vendredi, hors jours fériés. L'onglet «&nbsp;Durée entre
+        2&nbsp;dates&nbsp;» exclut automatiquement les samedis, les dimanches et les 11&nbsp;jours fériés français
+        (dont Pâques, l'Ascension et la Pentecôte, dont la date change chaque année) et vous donne le nombre exact de
+        jours ouvrés, bornes incluses.</p>
+      </details>
+      <details>
+        <summary>Le calculateur gère-t-il les jours fériés belges, suisses, luxembourgeois ou québécois&nbsp;?</summary>
+        <p>Oui. Le menu «&nbsp;Jours fériés du pays&nbsp;», dans l'onglet «&nbsp;Entre 2 dates&nbsp;», bascule le décompte
+        sur la France, la <a href="jours-feries-belgique.html">Belgique</a>, la <a href="jours-feries-suisse.html">Suisse</a>,
+        le <a href="jours-feries-luxembourg.html">Luxembourg</a> ou le <a href="jours-feries-quebec.html">Québec</a>.
+        Chaque calendrier a ses propres dates&nbsp;: la Belgique chôme le 21&nbsp;juillet mais pas le 14, le Luxembourg
+        chôme la Journée de l'Europe du 9&nbsp;mai, la Suisse ne compte qu'un seul jour férié fédéral et le Québec ajoute
+        la Journée nationale des patriotes et l'Action de grâce. Le pays choisi est mémorisé pour vos prochaines visites.</p>
+      </details>
+      <details>
+        <summary>Comment calculer des heures&nbsp;?</summary>
+        <p>Trois cas se présentent. Pour <strong>additionner des durées</strong>, cumulez les minutes puis reportez
+        la retenue au-delà de 60. Pour connaître le <strong>temps écoulé entre deux horaires</strong>, soustrayez
+        l'heure de début de l'heure de fin, puis retirez la pause. Pour <strong>convertir en décimal</strong>,
+        divisez les minutes par 60. La calculatrice ci-dessus couvre les trois cas et affiche le résultat en heures
+        et minutes, en décimal et en minutes totales.</p>
+      </details>
+      <details>
+        <summary>Comment calculer le nombre d'heures entre deux dates&nbsp;?</summary>
+        <p>Multipliez le nombre de jours d'écart par 24. Entre le 1<sup>er</sup> et le 15 d'un mois, il y a
+        14&nbsp;jours d'écart, soit <strong>336&nbsp;heures</strong>. L'onglet «&nbsp;Entre 2 dates&nbsp;» affiche
+        directement ce total en heures, en plus des jours, des semaines et des jours ouvrés.</p>
+      </details>
+      <details>
+        <summary>La calculatrice de durée est-elle gratuite&nbsp;?</summary>
+        <p>Oui, l'outil est entièrement gratuit, sans inscription et sans limite d'utilisation. Tous les calculs sont
+        réalisés directement dans votre navigateur&nbsp;: aucune donnée saisie n'est envoyée sur un serveur.</p>
+      </details>
+    </div>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>
+      <strong>Calculatrice de Durée</strong> — addition d'heures, temps de travail, jours ouvrés.
+      Calculs effectués dans votre navigateur, aucune donnée collectée.
+    </p>
+    <p class="micro">
+      © <span id="year">2026</span> Calculatrice de Durée · Les résultats sont fournis à titre indicatif ·
+      <a href="mentions-legales.html">Mentions légales &amp; confidentialité</a>
+    </p>
+  </div>
+</footer>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js" defer></script>
+
+<!-- Mesure d'audience Cloudflare Web Analytics : sans cookie, sans suivi individuel,
+     donc aucun bandeau de consentement n'est requis. Chargé en module = non bloquant. -->
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "358b8858ea3e40f7b12a4fe1064cb56b"}'></script>
+</body>
+</html>
