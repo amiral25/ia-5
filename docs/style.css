@@ -105,14 +105,16 @@ h1{font-size:clamp(1.5rem,4vw,2.2rem);line-height:1.18;letter-spacing:-.025em;fo
 .calc{padding:14px}
 @media(min-width:640px){.calc{padding:22px}}
 
-.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:5px;background:var(--card-2);border:1px solid var(--line);border-radius:14px;margin-bottom:18px}
+.tabs{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;padding:5px;background:var(--card-2);border:1px solid var(--line);border-radius:14px;margin-bottom:18px}
+@media(min-width:640px){.tabs{grid-template-columns:repeat(4,1fr)}}
 .tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
   padding:9px 4px;border:0;border-radius:10px;background:transparent;color:var(--muted);
   font-size:.76rem;font-weight:600;line-height:1.25;text-align:center;cursor:pointer;transition:background .16s,color .16s}
 .tab-ico{flex:0 0 auto}
 .tab:hover{color:var(--text)}
 .tab.is-active{background:var(--card);color:var(--brand);box-shadow:var(--shadow)}
-@media(min-width:640px){.tab{flex-direction:row;gap:8px;font-size:.9rem;padding:11px 8px}}
+@media(min-width:640px){.tab{flex-direction:row;gap:8px;font-size:.84rem;padding:11px 6px}}
+@media(min-width:900px){.tab{font-size:.9rem;padding:11px 8px}}
 
 .panel{display:block}
 .panel.is-hidden{display:none}
@@ -156,6 +158,16 @@ h1{font-size:clamp(1.5rem,4vw,2.2rem);line-height:1.18;letter-spacing:-.025em;fo
 .row-actions{display:flex;flex-wrap:wrap;gap:8px}
 .op-plus{color:var(--brand);font-weight:800}
 .op-minus{color:var(--err);font-weight:800}
+
+/* Saisie h / min / s de l'onglet multiplier-diviser */
+.grid-3,.units-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.grid-3 .inp{text-align:center;padding:12px 6px;min-width:0}
+.units-3{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.units-3 span{text-align:center}
+.sign-group-op .sg-btn{font-size:.82rem;font-weight:700;padding:0 4px}
+.sg-mul.is-on{background:var(--brand);color:#fff}
+.sg-div.is-on{background:#7c3aed;color:#fff}
+[data-theme="dark"] .sg-div.is-on{background:#8b5cf6}
 
 .chips{display:flex;flex-wrap:wrap;gap:7px}
 .chip{padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:var(--card-2);font-size:.82rem;font-weight:600;color:var(--muted);cursor:pointer;transition:.15s}
