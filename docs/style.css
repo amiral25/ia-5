@@ -263,6 +263,17 @@ td:first-child{font-weight:600}
 .faq details p{padding:0 16px 15px;margin:0;color:var(--muted);font-size:.93rem}
 
 /* ---------- Pied de page ---------- */
+/* Plan du site : présent sur toutes les pages, il relie chacune à toutes
+   les autres. Bloc statique, sous la ligne de flottaison : aucun décalage. */
+.plan{display:grid;grid-template-columns:1fr 1fr;gap:18px 20px;padding-bottom:20px;margin-bottom:18px;border-bottom:1px solid var(--line)}
+@media(min-width:760px){.plan{grid-template-columns:repeat(4,1fr)}}
+.plan-titre{font-size:.72rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.plan ul{display:grid;gap:5px}
+.plan li{font-size:.86rem;line-height:1.45}
+.plan a{color:var(--text);text-decoration:none}
+.plan a:hover{color:var(--brand);text-decoration:underline}
+.plan [aria-current]{color:var(--muted)}
+
 .site-footer{margin-top:44px;padding:26px 0 34px;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem;background:var(--card)}
 .site-footer p{margin-bottom:6px}
 .site-footer strong{color:var(--text)}
