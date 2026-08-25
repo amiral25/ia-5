@@ -428,6 +428,20 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
         Le bon résultat est <strong>4&nbsp;h&nbsp;15</strong>.
       </p>
 
+      <h2>Calculette, calculatrice, additionneur&nbsp;: le même besoin</h2>
+      <p>
+        Peu importe le mot que vous employez — <strong>calculette d'heures</strong>, calculatrice
+        d'addition d'heures, additionneur de temps, somme d'heures — le besoin est toujours le même&nbsp;:
+        cumuler des durées sans se tromper de retenue. L'outil en haut de page fait les trois opérations
+        d'un coup&nbsp;: il additionne, il soustrait, et il affiche le total en heures et minutes, en
+        heures décimales et en minutes totales.
+      </p>
+      <p>
+        Une calculette de bureau, elle, ne sait pas le faire&nbsp;: tapez-y <code>2,45 + 1,30</code> et
+        elle répond 3,75, un résultat qui ne veut rien dire en durée. C'est précisément cette confusion
+        entre virgule décimale et minutes que la page suivante détaille.
+      </p>
+
       <h2>La méthode en 3 étapes</h2>
       <p>
         <strong>Étape 1 — additionner séparément.</strong> Cumulez d'un côté les heures, de l'autre les minutes.
@@ -442,6 +456,27 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
         <strong>Étape 3 — vérifier par les minutes totales.</strong> Convertissez tout en minutes&nbsp;:
         165 + 90 = 255&nbsp;minutes. Puis 255 ÷ 60 = 4, reste 15 → 4&nbsp;h&nbsp;15. Si les deux méthodes
         concordent, le résultat est bon.
+      </p>
+
+      <h2>Les additions qu'on cherche le plus souvent</h2>
+      <div class="table-wrap">
+        <table>
+          <caption>Additions de durées courantes, résultat immédiat</caption>
+          <thead><tr><th scope="col">Opération</th><th scope="col">Résultat</th><th scope="col">En décimal</th><th scope="col">En minutes</th></tr></thead>
+          <tbody>
+            <tr><td>45 min + 45 min</td><td><strong>1 h 30</strong></td><td>1,50</td><td>90 min</td></tr>
+            <tr><td>30 min + 45 min</td><td><strong>1 h 15</strong></td><td>1,25</td><td>75 min</td></tr>
+            <tr><td>1 h 30 + 1 h 45</td><td><strong>3 h 15</strong></td><td>3,25</td><td>195 min</td></tr>
+            <tr><td>2 h 45 + 1 h 30</td><td><strong>4 h 15</strong></td><td>4,25</td><td>255 min</td></tr>
+            <tr><td>7 h 30 + 7 h 30</td><td><strong>15 h 00</strong></td><td>15,00</td><td>900 min</td></tr>
+            <tr><td>8 h 15 + 6 h 50</td><td><strong>15 h 05</strong></td><td>15,08</td><td>905 min</td></tr>
+            <tr><td>20 min + 20 min + 20 min</td><td><strong>1 h 00</strong></td><td>1,00</td><td>60 min</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="micro">
+        Le piège revient à chaque ligne&nbsp;: 45 + 45 fait 90, et 90 minutes ne s'écrivent pas 0h90 mais
+        <strong>1 h 30</strong>. Dès que la somme des minutes dépasse 60, il y a une retenue.
       </p>
 
       <h2>Exemple concret&nbsp;: une semaine de travail</h2>
