@@ -48,6 +48,39 @@ jobs:
           git commit -m "Publication du site (source : ${GITHUB_SHA})"
           git push --force origin HEAD:gh-pages
 
+      # Prévient Bing (et donc ChatGPT et Copilot, qui puisent dans son index)
+      # qu'une page a changé, sans attendre son prochain passage. Google ne
+      # participe pas à ce protocole : lui passe toujours par Search Console.
+      # Une panne du service ne doit jamais faire échouer la publication.
+      - name: Signaler les pages à IndexNow
+        continue-on-error: true
+        run: |
+          set -u
+          # L'étape précédente a remplacé l'arborescence par celle de gh-pages ;
+          # la copie intacte du site reste dans /tmp/site.
+          python3 - <<'PY' > /tmp/indexnow.json
+          import json, re
+          cle = '5f635c1f34de81654e24c32d13f3fe1e'
+          xml = open('/tmp/site/sitemap.xml', encoding='utf-8').read()
+          print(json.dumps({
+            'host': 'calculatrice-duree.fr',
+            'key': cle,
+            'keyLocation': f'https://calculatrice-duree.fr/{cle}.txt',
+            'urlList': re.findall(r'<loc>([^<]+)</loc>', xml),
+          }))
+          PY
+
+          CODE=$(curl -sS -o /tmp/indexnow.out -w '%{http_code}' \
+                 --max-time 30 \
+                 -H 'Content-Type: application/json; charset=utf-8' \
+                 --data-binary @/tmp/indexnow.json \
+                 https://api.indexnow.org/indexnow || echo 000)
+
+          echo "IndexNow a répondu $CODE"
+          cat /tmp/indexnow.out || true
+          # 200 et 202 valent acceptation ; le reste est signalé sans bloquer.
+          case "$CODE" in 200|202) echo "✅ pages signalées" ;; *) echo "⚠️ signalement ignoré" ;; esac
+
       - name: Récapitulatif
         run: |
           echo "### ✅ Site publié" >> "$GITHUB_STEP_SUMMARY"
