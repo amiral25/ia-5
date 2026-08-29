@@ -69,7 +69,7 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
         "Durée entre deux dates et calcul des jours ouvrés",
         "Jours fériés de France, Belgique, Suisse, Luxembourg et Québec",
         "Conversion en heures décimales et en minutes totales",
-        "Historique des 5 derniers calculs"
+        "Relevé des 50 derniers calculs, exportable en CSV et imprimable en PDF"
       ],
       "offers": {
         "@type": "Offer",
@@ -435,9 +435,15 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
         </div>
 
         <div class="history" id="history-box" hidden>
+          <!-- Visible uniquement à l'impression : sert d'en-tête au relevé papier/PDF. -->
+          <p class="print-seul" id="print-entete">Relevé de durées</p>
           <div class="history-head">
-            <h2 class="history-title">5 derniers calculs</h2>
-            <button id="btn-clear-hist" class="link-btn" type="button">Vider</button>
+            <h2 class="history-title">Vos derniers calculs</h2>
+            <div class="history-actions">
+              <button id="btn-csv" class="link-btn" type="button">Exporter CSV</button>
+              <button id="btn-print" class="link-btn" type="button">Imprimer / PDF</button>
+              <button id="btn-clear-hist" class="link-btn" type="button">Vider</button>
+            </div>
           </div>
           <ul class="history-list" id="history-list"></ul>
         </div>

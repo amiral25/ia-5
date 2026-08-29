@@ -224,14 +224,19 @@ h1{font-size:clamp(1.5rem,4vw,2.2rem);line-height:1.18;letter-spacing:-.025em;fo
 
 /* ---------- Historique ---------- */
 .history{margin-top:18px;border-top:1px solid var(--line);padding-top:14px}
-.history-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.history-head{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.history-actions{display:flex;flex-wrap:wrap;gap:2px;margin-left:auto}
 .history-title{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
 .link-btn{border:0;background:none;color:var(--brand);font-size:.8rem;font-weight:600;cursor:pointer;padding:6px 10px;min-height:32px}
 .history-list{display:flex;flex-direction:column;gap:6px}
 .history-list li{display:flex;justify-content:space-between;gap:12px;align-items:baseline;
   padding:9px 12px;background:var(--card-2);border:1px solid var(--line);border-radius:10px;font-size:.85rem}
-.history-list .h-in{color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.history-list .h-in{flex:1;min-width:0;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .history-list .h-out{font-weight:700;white-space:nowrap;color:var(--brand)}
+/* La date encombrerait la ligne sur un petit écran ; elle reste dans le CSV
+   et dans le relevé imprimé, où elle est indispensable. */
+.history-list .h-date{display:none;font-size:.76rem;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+@media(min-width:520px){.history-list .h-date{display:inline}}
 
 /* ---------- Contenu éditorial ---------- */
 .content{max-width:760px;margin:46px 0 20px}
@@ -286,4 +291,37 @@ td:first-child{font-weight:600}
 .toast.is-on{transform:translate(-50%,0);opacity:1}
 
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-@media print{.ad,.site-header,.actions,.history,.toast{display:none!important}}
+/* ---------- Impression : on n'imprime que le relevé ----------
+   Pas de bibliothèque PDF (jsPDF pèse >300 Ko) : la boîte d'impression du
+   navigateur propose « Enregistrer au format PDF » sur tous les systèmes
+   récents, pour zéro octet ajouté. */
+.print-seul{display:none}
+
+@page{margin:15mm}
+
+@media print{
+  /* Les jetons sont forcés en clair : imprimer le thème sombre donnerait du
+     texte pâle sur papier blanc, donc illisible. */
+  :root,[data-theme="dark"]{
+    --bg:#fff;--bg-grad:none;--card:#fff;--card-2:#fff;
+    --text:#000;--muted:#333;--line:#999;--brand:#000;
+  }
+  body{background:#fff!important;color:#000!important;font-size:11pt}
+  .site-header,.fil,.hero,.ad,.tabs,.panel,.result,.actions,.content,
+  .plan,.site-footer,.toast,.skip-link,.history-actions,.liens-connexes{display:none!important}
+  .layout,.col-main,.card,.calc,.wrap{display:block!important;border:0!important;
+    box-shadow:none!important;padding:0!important;margin:0!important;max-width:none!important}
+  .history{border-top:0;margin-top:0;padding-top:0}
+  .history-title{display:none}
+  .print-seul{display:block;font-size:10pt;font-weight:700;margin-bottom:8pt;
+    padding-bottom:5pt;border-bottom:1.5pt solid #000}
+  /* Les lignes redeviennent des lignes de tableau : ni cadre, ni coin arrondi,
+     ni fond — sinon le relevé imprimé ressemble à une capture d'écran. */
+  .history-list{gap:0}
+  .history-list li{display:grid;grid-template-columns:100pt 1fr auto;gap:10pt;
+    padding:4pt 0;background:none!important;border:0;border-radius:0;
+    border-bottom:.5pt solid #bbb;break-inside:avoid;font-size:10pt}
+  .history-list .h-date,.history-list .h-in{white-space:normal;overflow:visible;color:#000}
+  .history-list .h-date{font-size:9pt}
+  .history-list .h-out{color:#000;font-weight:700;text-align:right}
+}

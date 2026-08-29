@@ -539,9 +539,14 @@
   });
 
   /* ---------------------------------------------------------
-     9. Historique local (5 derniers calculs)
+     9. Relevé local : historique, export CSV, impression
      --------------------------------------------------------- */
-  var HKEY = 'cd-hist', histBox = $('#history-box'), histList = $('#history-list'), histTimer;
+  // 50 lignes : de quoi couvrir un mois de saisies quotidiennes, ce qui rend
+  // l'export utile. Au-delà, la liste devient illisible à l'écran.
+  var HKEY = 'cd-hist', MAX_HIST = 50;
+  var histBox = $('#history-box'), histList = $('#history-list'), histTimer;
+  var NOM_ONGLET = { 1: 'Addition / Soustraction', 2: 'Entre 2 heures',
+                     3: 'Entre 2 dates', 4: 'Multiplier / Diviser' };
 
   function readHist() {
     try { return JSON.parse(localStorage.getItem(HKEY)) || []; } catch (e) { return []; }
@@ -549,11 +554,30 @@
   function writeHist(a) {
     try { localStorage.setItem(HKEY, JSON.stringify(a)); } catch (e) {}
   }
+
+  function deuxChiffres(n) { return String(n).padStart(2, '0'); }
+
+  /** « 29/08/2026 14:32 » en heure locale. Chaîne vide si la ligne est
+      antérieure à l'ajout de l'horodatage. */
+  function horodatage(ms) {
+    if (!ms) return '';
+    var d = new Date(ms);
+    return deuxChiffres(d.getDate()) + '/' + deuxChiffres(d.getMonth() + 1) + '/' + d.getFullYear() +
+           ' ' + deuxChiffres(d.getHours()) + ':' + deuxChiffres(d.getMinutes());
+  }
+  function jourISO() {
+    var d = new Date();
+    return d.getFullYear() + '-' + deuxChiffres(d.getMonth() + 1) + '-' + deuxChiffres(d.getDate());
+  }
+
   function drawHist() {
     var h = readHist();
     histBox.hidden = h.length === 0;
     histList.innerHTML = h.map(function (it) {
-      return '<li><span class="h-in">' + esc(it.i) + '</span><span class="h-out">' + esc(it.o) + '</span></li>';
+      return '<li>' +
+        '<span class="h-date">' + esc(horodatage(it.d)) + '</span>' +
+        '<span class="h-in">' + esc(it.i) + '</span>' +
+        '<span class="h-out">' + esc(it.o) + '</span></li>';
     }).join('');
   }
   function esc(s) {
@@ -564,17 +588,84 @@
   function queueHistory() {
     if (!userTouched) return; // pas d'enregistrement pour l'exemple affiché au chargement
     clearTimeout(histTimer);
-    var snap = { i: lastResult.input || '—', o: lastResult.summary };
+    var snap = { d: Date.now(), t: NOM_ONGLET[current] || '',
+                 i: lastResult.input || '—', o: lastResult.summary };
     histTimer = setTimeout(function () {
       if (!snap.i || snap.i === '—') return;
       var h = readHist();
       if (h.length && h[0].i === snap.i && h[0].o === snap.o) return;
       h.unshift(snap);
-      writeHist(h.slice(0, 5));
+      writeHist(h.slice(0, MAX_HIST));
       drawHist();
     }, 1600);
   }
   $('#btn-clear-hist').addEventListener('click', function () { writeHist([]); drawHist(); });
+
+  /* ---------- Export CSV ---------- */
+
+  /** Une valeur n'est mise entre guillemets que si elle en a besoin ; à
+      l'intérieur, un guillemet se double. C'est la convention RFC 4180. */
+  function csvCell(v) {
+    v = String(v == null ? '' : v);
+    return /[";\r\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v;
+  }
+
+  function telecharger(texte, type, nom) {
+    var url = URL.createObjectURL(new Blob([texte], { type: type }));
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = nom;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    // Libérer trop tôt annule le téléchargement sur certains navigateurs.
+    setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+  }
+
+  function exporterCSV() {
+    var h = readHist();
+    if (!h.length) return showToast('Aucun calcul à exporter');
+
+    var lignes = [['Date', 'Type de calcul', 'Opération', 'Résultat']];
+    // Ordre chronologique : un relevé se lit du plus ancien au plus récent.
+    h.slice().reverse().forEach(function (it) {
+      lignes.push([horodatage(it.d), it.t || '', it.i || '', it.o || '']);
+    });
+
+    // Point-virgule et BOM : sans eux, Excel en français empile tout dans une
+    // seule colonne et affiche les accents en charabia. Le BOM lui signale
+    // l'UTF-8, le point-virgule est son séparateur par défaut en locale FR.
+    var csv = '\uFEFF' + lignes.map(function (l) {
+      return l.map(csvCell).join(';');
+    }).join('\r\n');
+
+    telecharger(csv, 'text/csv;charset=utf-8', 'releve-durees-' + jourISO() + '.csv');
+    showToast(h.length + (h.length > 1 ? ' lignes exportées' : ' ligne exportée'));
+  }
+
+  $('#btn-csv').addEventListener('click', exporterCSV);
+
+  /* ---------- Impression / PDF ----------
+     Pas de bibliothèque PDF : jsPDF pèse plus de 300 Ko, ce qui ruinerait le
+     score de performance et la promesse « aucune requête externe ». La boîte
+     d'impression du navigateur propose « Enregistrer au format PDF » sur tous
+     les systèmes récents, et rend un document plus propre. */
+  function majEnteteImpression() {
+    var n = readHist().length;
+    $('#print-entete').textContent =
+      'Relevé de durées — ' + n + (n > 1 ? ' calculs' : ' calcul') +
+      ' — édité le ' + horodatage(Date.now()) + ' — calculatrice-duree.fr';
+  }
+
+  // Beaucoup de gens impriment par Ctrl+P sans passer par le bouton :
+  // l'en-tête doit être juste dans les deux cas.
+  window.addEventListener('beforeprint', majEnteteImpression);
+
+  $('#btn-print').addEventListener('click', function () {
+    if (!readHist().length) return showToast('Aucun calcul à imprimer');
+    majEnteteImpression();
+    window.print();
+  });
 
   /* ---------------------------------------------------------
      10. Actions : copier / effacer / thème / toast
