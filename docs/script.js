@@ -16,14 +16,23 @@
     return n.toLocaleString('fr-FR', { minimumFractionDigits: dec || 0, maximumFractionDigits: dec === undefined ? 0 : dec });
   }
 
-  /** Secondes → "4h 15min" / "−1h 05min 30s" / "12min" */
-  function fmtHMS(sec) {
-    var neg = sec < 0, s = Math.round(Math.abs(sec));
-    var h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), r = s % 60;
+  /** Secondes → "4h 15min" / "−1h 05min 30s" / "12min"
+      Avec `avecMs`, la partie décimale de la seconde est rendue : "1min 30s 250ms". */
+  function fmtHMS(sec, avecMs) {
+    var neg = sec < 0, abs = Math.abs(sec), ms = 0;
+    if (avecMs) {
+      ms = Math.round((abs - Math.floor(abs)) * 1000);
+      abs = Math.floor(abs);
+      if (ms === 1000) { ms = 0; abs += 1; } // arrondi qui déborde
+    } else {
+      abs = Math.round(abs);
+    }
+    var h = Math.floor(abs / 3600), m = Math.floor((abs % 3600) / 60), r = abs % 60;
     var out = '';
     if (h) out = nf(h) + 'h ' + String(m).padStart(2, '0') + 'min';
     else if (m) out = m + 'min';
     if (r) out += out ? ' ' + String(r).padStart(2, '0') + 's' : r + 's';
+    if (ms) out += out ? ' ' + ms + 'ms' : ms + 'ms';
     if (!out) out = '0min';
     return (neg ? '−' : '') + out;
   }
@@ -246,8 +255,23 @@
      5. Onglet 1 — Addition / soustraction
      --------------------------------------------------------- */
   var rowsBox = $('#rows'), quick = $('#quick');
+  var MSKEY = 'cd-ms', optMs = $('#opt-ms');
+  var tab1Secondes = 0; // dernier total de l'onglet 1, pour le report
 
-  function rowTemplate(h, m, s, sign) {
+  /** Les millisecondes sont une option : la colonne existe toujours dans le
+      DOM, seule sa visibilité change. Ajouter ou retirer des champs au clic
+      ferait bouger la mise en page. */
+  function msActif() { return optMs.checked; }
+
+  // Le marqueur est posé sur <html>, comme pour le thème : le script d'en-tête
+  // le pose avant le premier rendu, donc la colonne ne surgit pas après coup.
+  function appliquerMs() {
+    if (msActif()) document.documentElement.setAttribute('data-ms', '1');
+    else document.documentElement.removeAttribute('data-ms');
+    try { localStorage.setItem(MSKEY, msActif() ? '1' : '0'); } catch (e) {}
+  }
+
+  function rowTemplate(h, m, s, sign, ms) {
     var minus = sign === '-';
     var d = document.createElement('div');
     d.className = 'row';
@@ -261,15 +285,18 @@
       '<input class="inp r-h" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Heures" value="' + (h === undefined ? '' : h) + '">' +
       '<input class="inp r-m" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Minutes" value="' + (m === undefined ? '' : m) + '">' +
       '<input class="inp r-s" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Secondes" value="' + (s === undefined ? '' : s) + '">' +
+      '<input class="inp r-ms" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Millisecondes" value="' + (ms === undefined ? '' : ms) + '">' +
       '<button class="row-del" type="button" aria-label="Supprimer cette ligne">×</button>';
     return d;
   }
 
   function buildRows(list) {
-    rowsBox.innerHTML = '<div class="row-units" aria-hidden="true"><span>Ajouter / Retirer</span><span>Heures</span><span>Minutes</span><span>Sec.</span><span></span></div>';
+    rowsBox.innerHTML = '<div class="row-units" aria-hidden="true"><span>Ajouter / Retirer</span>' +
+      '<span>Heures</span><span>Minutes</span><span>Sec.</span><span class="u-ms">Ms.</span><span></span></div>';
     (list || [[2, 30, ''], [1, 45, '']]).forEach(function (r) {
-      rowsBox.appendChild(rowTemplate(r[0], r[1], r[2], r[3]));
+      rowsBox.appendChild(rowTemplate(r[0], r[1], r[2], r[3], r[4]));
     });
+    appliquerMs();
   }
 
   /** Signe actif d'une ligne : '+' ou '-' */
@@ -279,14 +306,16 @@
   }
 
   function sumRows() {
-    var total = 0, filled = false;
+    var total = 0, filled = false, ms = msActif();
     $$('.row', rowsBox).forEach(function (row) {
       var sign = rowSign(row) === '-' ? -1 : 1;
       var h = parseFloat($('.r-h', row).value) || 0;
       var m = parseFloat($('.r-m', row).value) || 0;
       var s = parseFloat($('.r-s', row).value) || 0;
-      if ($('.r-h', row).value || $('.r-m', row).value || $('.r-s', row).value) filled = true;
-      total += sign * (h * 3600 + m * 60 + s);
+      var q = ms ? (parseFloat($('.r-ms', row).value) || 0) : 0;
+      if ($('.r-h', row).value || $('.r-m', row).value || $('.r-s', row).value ||
+          (ms && $('.r-ms', row).value)) filled = true;
+      total += sign * (h * 3600 + m * 60 + s + q / 1000);
     });
     return { seconds: total, filled: filled };
   }
@@ -308,22 +337,27 @@
       }
       sec = rows.seconds;
       input = $$('.row', rowsBox).map(function (row) {
-        var h = $('.r-h', row).value || 0, m = $('.r-m', row).value || 0, s = $('.r-s', row).value || 0;
-        if (!+h && !+m && !+s) return '';
-        return rowSign(row) + ' ' + h + 'h' + String(m).padStart(2, '0') + (+s ? ':' + s : '');
+        var h = $('.r-h', row).value || 0, m = $('.r-m', row).value || 0,
+            s = $('.r-s', row).value || 0, q = msActif() ? ($('.r-ms', row).value || 0) : 0;
+        if (!+h && !+m && !+s && !+q) return '';
+        return rowSign(row) + ' ' + h + 'h' + String(m).padStart(2, '0') +
+               (+s || +q ? ':' + s : '') + (+q ? '.' + String(q).padStart(3, '0') : '');
       }).filter(Boolean).join(' ').replace(/^\+\s/, '');
     }
 
+    tab1Secondes = sec;
+    var ms = msActif();
+
     render({
       label: 'Total des durées',
-      value: fmtHMS(sec),
+      value: fmtHMS(sec, ms),
       input: input,
       cells: [
         { v: nf(sec / 3600, 2), l: 'Heures décimales' },
         { v: fmtMinutes(sec), l: 'Minutes totales' },
-        { v: nf(Math.round(sec)) + ' s', l: 'Secondes totales' }
+        { v: (ms ? nf(sec, 3) : nf(Math.round(sec))) + ' s', l: 'Secondes totales' }
       ],
-      copy: fmtHMS(sec) + '  (' + nf(sec / 3600, 2) + ' h décimales · ' + fmtMinutes(sec) + ')'
+      copy: fmtHMS(sec, ms) + '  (' + nf(sec / 3600, 2) + ' h décimales · ' + fmtMinutes(sec) + ')'
     });
   }
 
@@ -746,6 +780,52 @@
   $('#sub-row').addEventListener('click', function () { appendRow('-'); });
   quick.addEventListener('input', compute);
 
+  // Millisecondes : à la désactivation, les valeurs saisies sont effacées.
+  // Les laisser dans des champs masqués fausserait le total sans rien montrer.
+  optMs.addEventListener('change', function () {
+    if (!msActif()) $$('.r-ms', rowsBox).forEach(function (i) { i.value = ''; });
+    appliquerMs();
+    compute();
+  });
+
+  /** Reporte le total sur la première ligne pour enchaîner les calculs :
+      on cumule un mois d'heures sans ressaisir le sous-total à chaque fois. */
+  function reporterTotal() {
+    if (current !== 1) return showToast('Le report ne concerne que l\'addition');
+    if (quick.value.trim()) quick.value = ''; // la saisie libre reprend la main sinon
+    var sec = tab1Secondes;
+    if (!sec) return showToast('Aucun total à reporter');
+
+    var neg = sec < 0, abs = Math.abs(sec);
+    var q = Math.round((abs - Math.floor(abs)) * 1000);
+    abs = Math.floor(abs);
+    if (q === 1000) { q = 0; abs += 1; }
+    var h = Math.floor(abs / 3600), m = Math.floor((abs % 3600) / 60), s = abs % 60;
+
+    buildRows([[h || '', m || '', s || '', neg ? '-' : '+', msActif() && q ? q : ''],
+               ['', '', '', '+', '']]);
+    compute();
+    showToast('Total reporté sur la première ligne');
+  }
+  $('#btn-retenue').addEventListener('click', reporterTotal);
+
+  /* Raccourcis clavier — ignorés dès qu'un champ a le focus, sinon taper « + »
+     dans la saisie libre ajouterait une ligne au lieu d'écrire le signe. */
+  document.addEventListener('keydown', function (e) {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    var a = document.activeElement;
+    if (a && /^(INPUT|SELECT|TEXTAREA)$/.test(a.tagName)) return;
+    if (a && a.isContentEditable) return;
+
+    var k = e.key.toLowerCase();
+    if (current === 1 && (e.key === '+' || e.key === '-' || e.key === '−')) {
+      appendRow(e.key === '+' ? '+' : '-'); e.preventDefault(); return;
+    }
+    if (k === 'w') { reporterTotal(); e.preventDefault(); return; }
+    if (k === 'c') { $('#btn-copy').click(); e.preventDefault(); return; }
+    if (k === 'm') { $('#btn-reset').click(); e.preventDefault(); }
+  });
+
   [hStart, hEnd, hPause].forEach(function (el) { el.addEventListener('input', compute); });
   function syncChips() {
     var v = String(parseFloat(hPause.value) || 0);
@@ -794,6 +874,11 @@
       if (PAYS[memo]) dPays.value = memo;
     } catch (e) {}
   }
+
+  // Le marqueur data-ms est déjà posé par le script d'en-tête ; on aligne
+  // simplement la case à cocher sur le choix mémorisé.
+  try { optMs.checked = localStorage.getItem(MSKEY) === '1'; } catch (e) {}
+  appliquerMs();
 
   $('#year').textContent = new Date().getFullYear();
   // Les lignes de départ sont déjà dans le HTML (évite tout décalage au chargement)

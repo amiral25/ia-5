@@ -27,7 +27,9 @@
 <script>
 (function(){try{var t=localStorage.getItem('cd-theme');
 if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
-document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+document.documentElement.setAttribute('data-theme',t);
+if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('data-ms','1');
+}catch(e){}})();
 </script>
 
 <!-- ============================================================
@@ -257,16 +259,17 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
             <span>Heures</span>
             <span>Minutes</span>
             <span>Sec.</span>
+            <span class="u-ms">Ms.</span>
             <span></span></div>
             <div class="row">
             <div class="sign-group" role="group" aria-label="Ajouter ou soustraire cette durée">
             <button type="button" class="sg-btn sg-plus is-on" data-sign="+" aria-pressed="true" title="Additionner cette durée">+</button>
-            <button type="button" class="sg-btn sg-minus" data-sign="-" aria-pressed="false" title="Soustraire cette durée">−</button></div><input class="inp r-h" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Heures" value="2"><input class="inp r-m" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Minutes" value="30"><input class="inp r-s" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Secondes" value="">
+            <button type="button" class="sg-btn sg-minus" data-sign="-" aria-pressed="false" title="Soustraire cette durée">−</button></div><input class="inp r-h" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Heures" value="2"><input class="inp r-m" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Minutes" value="30"><input class="inp r-s" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Secondes" value=""><input class="inp r-ms" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Millisecondes" value="">
             <button class="row-del" type="button" aria-label="Supprimer cette ligne">×</button></div>
             <div class="row">
             <div class="sign-group" role="group" aria-label="Ajouter ou soustraire cette durée">
             <button type="button" class="sg-btn sg-plus is-on" data-sign="+" aria-pressed="true" title="Additionner cette durée">+</button>
-            <button type="button" class="sg-btn sg-minus" data-sign="-" aria-pressed="false" title="Soustraire cette durée">−</button></div><input class="inp r-h" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Heures" value="1"><input class="inp r-m" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Minutes" value="45"><input class="inp r-s" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Secondes" value="">
+            <button type="button" class="sg-btn sg-minus" data-sign="-" aria-pressed="false" title="Soustraire cette durée">−</button></div><input class="inp r-h" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Heures" value="1"><input class="inp r-m" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Minutes" value="45"><input class="inp r-s" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Secondes" value=""><input class="inp r-ms" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Millisecondes" value="">
             <button class="row-del" type="button" aria-label="Supprimer cette ligne">×</button></div>
           </div>
 
@@ -277,10 +280,24 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
             <button id="sub-row" class="btn btn-ghost btn-sm" type="button">
               <span class="op-minus" aria-hidden="true">−</span> Soustraire une durée
             </button>
+            <button id="btn-retenue" class="btn btn-ghost btn-sm" type="button"
+                    title="Reporter le total sur la première ligne pour continuer le calcul">
+              <span aria-hidden="true">↩</span> Reporter le total
+            </button>
           </div>
+          <label class="switch switch-ms">
+            <input id="opt-ms" type="checkbox">
+            <span class="switch-ui" aria-hidden="true"></span>
+            <span>Afficher les millisecondes</span>
+          </label>
           <p class="hint">
             Sur chaque ligne, choisissez <strong>+</strong> pour ajouter la durée ou <strong>−</strong> pour la retirer
-            du total.
+            du total. Un total négatif s'affiche tel quel, précédé d'un signe moins&nbsp;: utile pour un compteur
+            d'heures en déficit.
+          </p>
+          <p class="hint raccourcis">
+            Au clavier&nbsp;: <kbd>+</kbd> ajoute une ligne · <kbd>-</kbd> en ajoute une à soustraire ·
+            <kbd>W</kbd> reporte le total · <kbd>C</kbd> copie le résultat · <kbd>M</kbd> remet à zéro.
           </p>
         </div>
 

@@ -147,6 +147,20 @@ h1{font-size:clamp(1.5rem,4vw,2.2rem);line-height:1.18;letter-spacing:-.025em;fo
 /* Lignes de saisie détaillée */
 .rows{display:flex;flex-direction:column;gap:8px;margin-bottom:10px}
 .row,.row-units{display:grid;grid-template-columns:78px 1fr 1fr 1fr 36px;gap:8px;align-items:center}
+/* Colonne millisecondes : présente dans le DOM, révélée par le marqueur posé
+   sur <html> avant le premier rendu, donc sans décaler la page. */
+.r-ms,.u-ms{display:none}
+html[data-ms="1"] .row,html[data-ms="1"] .row-units{grid-template-columns:78px 1fr 1fr 1fr 1fr 36px}
+html[data-ms="1"] .r-ms{display:block}
+html[data-ms="1"] .u-ms{display:block}
+.switch-ms{margin:2px 0 10px}
+.raccourcis{display:none}
+.raccourcis kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.72rem;
+  background:var(--card-2);border:1px solid var(--line);border-bottom-width:2px;
+  border-radius:5px;padding:1px 5px;color:var(--text)}
+/* Un clavier physique est nécessaire : inutile d'annoncer ces raccourcis
+   à quelqu'un qui navigue au doigt. */
+@media(hover:hover) and (pointer:fine){.raccourcis{display:block}}
 .sign-group{display:grid;grid-template-columns:1fr 1fr;height:44px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card-2)}
 .sg-btn{border:0;background:transparent;font-weight:800;font-size:1.05rem;line-height:1;color:var(--muted);cursor:pointer;transition:background .15s,color .15s}
 .sg-btn:hover{background:color-mix(in srgb,var(--brand) 12%,transparent);color:var(--text)}
@@ -159,6 +173,9 @@ h1{font-size:clamp(1.5rem,4vw,2.2rem);line-height:1.18;letter-spacing:-.025em;fo
 .row-units{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
 @media(max-width:400px){
   .row,.row-units{grid-template-columns:66px 1fr 1fr 1fr 30px;gap:6px}
+  html[data-ms="1"] .row,html[data-ms="1"] .row-units{grid-template-columns:52px 1fr 1fr 1fr 1fr 26px;gap:4px}
+  html[data-ms="1"] .sg-btn{font-size:.9rem}
+  html[data-ms="1"] .row-del{width:26px}
   .row-units{font-size:.62rem;letter-spacing:.02em}
   .row .inp{padding:12px 2px}
   .row-del{width:30px}
