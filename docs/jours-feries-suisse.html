@@ -218,6 +218,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
 
         <!-- RÉSULTAT (hauteur réservée → CLS = 0) -->
         <div class="result" id="result" aria-live="polite">
+          <span class="res-exemple" id="res-exemple">Exemple</span>
           <div class="result-main">
             <span class="result-label" id="res-label">Écart entre deux dates</span>
             <output class="result-value" id="res-value">—</output>
@@ -247,11 +248,11 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         </div>
 
         <div class="actions">
-          <button id="btn-copy" class="btn btn-primary" type="button">
+          <button id="btn-copy" class="btn btn-primary" type="button" aria-label="Copier le résultat">
             <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
             </svg>
-            <span id="copy-txt">Copier le résultat</span>
+            <span id="copy-txt">Copier<span class="btn-long"> le résultat</span></span>
           </button>
           <button id="btn-reset" class="btn btn-ghost" type="button">
             <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -300,15 +301,16 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
           </div>
 
           <div class="row-actions">
-            <button id="add-row" class="btn btn-ghost btn-sm" type="button">
-              <span class="op-plus" aria-hidden="true">+</span> Ajouter une durée
+            <button id="add-row" class="btn btn-ghost btn-sm" type="button" aria-label="Ajouter une durée">
+              <span class="op-plus" aria-hidden="true">+</span> Ajouter<span class="btn-long"> une durée</span>
             </button>
-            <button id="sub-row" class="btn btn-ghost btn-sm" type="button">
-              <span class="op-minus" aria-hidden="true">−</span> Soustraire une durée
+            <button id="sub-row" class="btn btn-ghost btn-sm" type="button" aria-label="Soustraire une durée">
+              <span class="op-minus" aria-hidden="true">−</span> Soustraire<span class="btn-long"> une durée</span>
             </button>
             <button id="btn-retenue" class="btn btn-ghost btn-sm" type="button"
+                    aria-label="Reporter le total sur la première ligne"
                     title="Reporter le total sur la première ligne pour continuer le calcul">
-              <span aria-hidden="true">↩</span> Reporter le total
+              <span aria-hidden="true">↩</span> Reporter<span class="btn-long"> le total</span>
             </button>
           </div>
           <label class="switch switch-ms">
@@ -706,6 +708,8 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
     </p>
   </div>
 </footer>
+
+<a class="retour-calc" id="retour-calc" href="#calculatrice"><span aria-hidden="true">↑</span> Calculateur</a>
 
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 

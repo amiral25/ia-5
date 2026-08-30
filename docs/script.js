@@ -749,9 +749,26 @@
      11. Câblage des événements
      --------------------------------------------------------- */
   var userTouched = false;
+  var badgeExemple = $('#res-exemple');
   ['input', 'click'].forEach(function (ev) {
-    $('#calculatrice').addEventListener(ev, function () { userTouched = true; }, true);
+    $('#calculatrice').addEventListener(ev, function () {
+      userTouched = true;
+      // Le résultat s'affiche au-dessus des champs : tant que rien n'a été
+      // saisi, il faut dire que c'est une démonstration, pas un calcul du
+      // visiteur. L'étiquette ne revient jamais une fois retirée.
+      if (badgeExemple && !badgeExemple.hidden) badgeExemple.hidden = true;
+    }, true);
   });
+
+  /* Retour au calculateur : les pages atteignent quatorze écrans sur mobile.
+     Le bouton n'apparaît qu'une fois l'outil sorti de l'écran. */
+  (function () {
+    var lien = $('#retour-calc'), cible = $('#calculatrice');
+    if (!lien || !cible || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(function (entrees) {
+      lien.classList.toggle('is-on', !entrees[0].isIntersecting);
+    }, { rootMargin: '-80px 0px 0px 0px' }).observe(cible);
+  })();
 
   rowsBox.addEventListener('input', compute);
   rowsBox.addEventListener('click', function (e) {
