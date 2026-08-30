@@ -51,7 +51,29 @@ body{
 
 /* ---------- En-tête ---------- */
 .site-header{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.header-inner{display:flex;align-items:center;justify-content:space-between;height:60px}
+/* Sur mobile l'en-tête défile avec la page : collant, la marque plus la barre
+   de navigation mangeraient un dixième de l'écran en permanence. */
+@media(max-width:899px){.site-header{position:static}}
+
+/* Marque et bouton sur la première ligne, navigation en dessous ; tout sur une
+   seule ligne à partir de 900 px. */
+.header-inner{display:grid;grid-template-columns:1fr auto;align-items:center;gap:4px 14px;min-height:60px;
+  grid-template-areas:"marque bouton" "nav nav"}
+.brand{grid-area:marque}
+.theme-toggle{grid-area:bouton}
+.site-nav{grid-area:nav}
+
+.site-nav{display:flex;gap:4px;overflow-x:auto;padding-bottom:8px;
+  scrollbar-width:none;-ms-overflow-style:none}
+.site-nav::-webkit-scrollbar{display:none}
+.site-nav a{white-space:nowrap;padding:7px 11px;border-radius:8px;text-decoration:none;
+  color:var(--muted);font-size:.86rem;font-weight:600;transition:color .15s,background .15s}
+.site-nav a:hover{color:var(--text);background:var(--card-2)}
+.site-nav a[aria-current]{color:var(--brand);background:var(--brand-soft)}
+@media(min-width:900px){
+  .header-inner{grid-template-columns:auto 1fr auto;grid-template-areas:"marque nav bouton"}
+  .site-nav{justify-content:center;padding-bottom:0;overflow:visible}
+}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:700;letter-spacing:-.02em}
 .brand-mark{display:grid;place-items:center;width:32px;height:32px;border-radius:9px;background:linear-gradient(140deg,var(--brand),#7c3aed);color:#fff;box-shadow:var(--shadow)}
 .brand-text{font-size:1.02rem}
@@ -82,7 +104,15 @@ h1{font-size:clamp(1.5rem,4vw,2.2rem);line-height:1.18;letter-spacing:-.025em;fo
 .lead{margin-top:10px;max-width:660px;color:var(--muted);font-size:clamp(.94rem,2.2vw,1.04rem)}
 .lead strong{color:var(--text);font-weight:600}
 
-/* ---------- Publicité (hauteurs réservées : CLS = 0) ---------- */
+/* ---------- Publicité ----------
+   ▼▼▼ LES ENCARTS SONT MASQUÉS TANT QU'ADSENSE N'EST PAS VALIDÉ ▼▼▼
+   Un rectangle vide marqué « Emplacement publicitaire » occupe la meilleure
+   place de la page et donne l'impression d'un site inachevé, sans rapporter
+   un centime. Le jour où AdSense est accepté, SUPPRIMEZ la ligne ci-dessous :
+   les emplacements réapparaissent avec leur hauteur réservée, donc sans
+   décaler la page. */
+.ad{display:none}
+/* ▲▲▲ FIN DU MASQUAGE — la suite reste valable une fois la pub active ▲▲▲ */
 .ad{margin:4px 0 16px}
 /* Pas d'opacity ici : elle délavait le texte jusqu'à 2,3:1 sur le fond clair,
    sous le seuil de lisibilité WCAG. La couleur est posée en dur à la place. */
@@ -254,6 +284,22 @@ html[data-ms="1"] .u-ms{display:block}
    et dans le relevé imprimé, où elle est indispensable. */
 .history-list .h-date{display:none;font-size:.76rem;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
 @media(min-width:520px){.history-list .h-date{display:inline}}
+
+/* ---------- « L'essentiel » : la réponse avant l'outil ----------
+   Quelqu'un qui cherche « jours fériés Belgique » veut des faits, pas un
+   calculateur. Ce bloc répond d'abord, l'outil vient après. */
+.enbref{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);
+  border-radius:var(--r-sm);padding:16px 18px;margin:0 0 18px;box-shadow:var(--shadow)}
+.enbref h2{font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.11em;
+  color:var(--muted);margin-bottom:10px}
+.enbref ul{display:flex;flex-direction:column;gap:7px}
+.enbref li{position:relative;padding-left:18px;font-size:.94rem;line-height:1.55}
+.enbref li::before{content:"";position:absolute;left:2px;top:.62em;width:6px;height:6px;
+  border-radius:50%;background:var(--brand)}
+.enbref p{margin-top:12px;font-size:.9rem}
+.enbref a{color:var(--brand);font-weight:600;text-decoration:none}
+.enbref a:hover{text-decoration:underline}
+@media(min-width:700px){.enbref ul{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px}}
 
 /* ---------- Liens contextuels sous le calculateur ---------- */
 .voisins{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:14px}

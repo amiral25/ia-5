@@ -136,6 +136,12 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
       </span>
       <span class="brand-text">Calculatrice&nbsp;de&nbsp;Durée</span>
     </a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a href="additionner-des-heures.html">Addition d'heures</a>
+      <a href="calcul-heures-de-travail.html">Heures de travail</a>
+      <a href="duree-entre-deux-dates.html">Entre 2 dates</a>
+      <a href="calcul-jours-ouvres.html">Jours fériés</a>
+    </nav>
     <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Basculer le thème sombre">
       <svg class="ico-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
         <circle cx="12" cy="12" r="4.2"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"></path>
@@ -157,6 +163,17 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
     <h1>Jours fériés en Suisse&nbsp;: dates 2026 et 2027</h1>
     <p class="lead">En Suisse, un seul jour férié est fédéral. Tous les autres relèvent des cantons — voici ce qui vaut partout, et ce qui change d'un canton à l'autre.</p>
   </section>
+
+      <aside class="enbref">
+        <h2>L'essentiel</h2>
+        <ul>
+          <li>Un <strong>seul jour férié fédéral</strong>&nbsp;: le 1<sup>er</sup> août. Tout le reste est cantonal.</li>
+          <li>Chaque canton peut en assimiler <strong>huit au maximum</strong> au dimanche.</li>
+          <li>Seul le 1<sup>er</sup> août est légalement <strong>payé</strong> pour tous.</li>
+          <li>Jeûne genevois&nbsp;: <strong>10 septembre 2026</strong>. Lundi du Jeûne fédéral&nbsp;: <strong>21 septembre 2026</strong>.</li>
+        </ul>
+        <p><a href="#dates">Voir le socle romand 2026 et 2027 →</a></p>
+      </aside>
 
   <aside class="ad ad-leaderboard" aria-label="Publicité">
     <span class="ad-label">Publicité</span>
@@ -451,7 +468,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
 
   <article class="content">
 
-      <h2>Un seul jour férié fédéral&nbsp;: le 1<sup>er</sup> août</h2>
+      <h2 id="dates">Un seul jour férié fédéral&nbsp;: le 1<sup>er</sup> août</h2>
       <p>
         C'est la particularité suisse, et elle surprend tous les calculateurs étrangers&nbsp;: la
         Confédération ne fixe qu'<strong>un seul jour férié pour tout le pays</strong>, la fête
