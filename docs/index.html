@@ -465,6 +465,17 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
           <ul class="history-list" id="history-list"></ul>
         </div>
       </section>
+
+      <!-- Liens contextuels placés au ras du calculateur : le bloc complet
+           reste en bas de page, mais ces trois-là sont vus. -->
+      <nav class="voisins" aria-label="Calculateurs proches">
+        <span class="voisins-titre">À voir aussi</span>
+        <ul>
+        <li><a href="additionner-des-heures.html">Addition d'heures</a></li>
+        <li><a href="calcul-heures-de-travail.html">Heures de travail</a></li>
+        <li><a href="duree-entre-deux-dates.html">Entre deux dates</a></li>
+        </ul>
+      </nav>
     </div>
 
     <!-- ══════════ EMPLACEMENT PUBLICITAIRE B — Pavé 300×250 (sticky bureau) ══════════ -->
@@ -625,6 +636,49 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
       <li><a href="jours-feries-quebec.html">Jours fériés au Québec</a>&nbsp;: les 8 congés de la Loi sur les normes du travail.</li>
     </ul>
 
+    <h2 id="fonctions">Les fonctions du calculateur, une par une</h2>
+    <p>
+      Au-delà des quatre onglets, l'outil propose quelques commandes qui font gagner du temps quand on
+      calcule souvent. Elles sont toutes gratuites, sans inscription, et fonctionnent dans le navigateur.
+    </p>
+
+    <h3>Le relevé et son export</h3>
+    <p>
+      Chaque calcul est enregistré dans un <strong>relevé de 50 lignes</strong>, avec sa date et son heure.
+      Deux boutons se trouvent sous la liste&nbsp;: <strong>Exporter CSV</strong> télécharge un fichier qui
+      s'ouvre directement dans Excel, LibreOffice ou Google Sheets, colonnes séparées et accents intacts&nbsp;;
+      <strong>Imprimer / PDF</strong> produit un relevé propre, sans publicité ni menu, que la boîte
+      d'impression de votre système sait enregistrer au format PDF.
+    </p>
+    <p>
+      Le relevé reste dans votre navigateur. Il n'est envoyé nulle part, et personne d'autre que vous n'y a
+      accès&nbsp;— y compris nous.
+    </p>
+
+    <h3>Reporter le total</h3>
+    <p>
+      Le bouton <strong>Reporter le total</strong> renvoie le résultat sur la première ligne et vide les
+      autres. C'est fait pour cumuler&nbsp;: vous additionnez votre première semaine, vous reportez, vous
+      saisissez la deuxième, et ainsi de suite jusqu'au total du mois, sans jamais réécrire un sous-total.
+      Si le total est négatif, la ligne bascule automatiquement en soustraction pour conserver le sens.
+    </p>
+
+    <h3>Les millisecondes</h3>
+    <p>
+      L'option <strong>Afficher les millisecondes</strong> ajoute une quatrième colonne à l'onglet
+      d'addition. Elle sert au chronométrage&nbsp;: cumuler des temps de passage en course à pied, en
+      natation ou en sport automobile. Votre choix est mémorisé pour vos prochaines visites, et désactiver
+      l'option efface les valeurs saisies pour qu'elles ne faussent pas le total.
+    </p>
+
+    <h3>Les raccourcis clavier</h3>
+    <p>
+      Sur ordinateur, cinq touches accélèrent la saisie&nbsp;: <strong>+</strong> ajoute une ligne,
+      <strong>−</strong> ajoute une ligne à soustraire, <strong>W</strong> reporte le total,
+      <strong>C</strong> copie le résultat et <strong>M</strong> remet tout à zéro. Ils restent sans effet
+      pendant que vous écrivez dans un champ, pour ne pas gêner la saisie.
+    </p>
+
     <h2 id="cas-usage">À qui sert cette calculatrice&nbsp;?</h2>
     <ul class="uses">
       <li><strong>Salariés et intérimaires</strong>&nbsp;: vérifier son bulletin de paie, additionner ses heures supplémentaires, contrôler un compteur de récupération.</li>
@@ -722,8 +776,8 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         <ul>
           <li><span aria-current="page">Calculatrice de durée</span></li>
           <li><a href="additionner-des-heures.html">Addition d'heures</a></li>
-          <li><a href="multiplier-diviser-une-duree.html">Multiplier ou diviser une durée</a></li>
           <li><a href="convertir-minutes-en-heures.html">Convertir minutes en heures</a></li>
+          <li><a href="multiplier-diviser-une-duree.html">Multiplier ou diviser une durée</a></li>
         </ul>
       </div>
       <div>
@@ -744,9 +798,16 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         <h2 class="plan-titre">Jours fériés</h2>
         <ul>
           <li><a href="jours-feries-belgique.html">Belgique</a></li>
+          <li><a href="jours-feries-quebec.html">Québec</a></li>
           <li><a href="jours-feries-suisse.html">Suisse</a></li>
           <li><a href="jours-feries-luxembourg.html">Luxembourg</a></li>
-          <li><a href="jours-feries-quebec.html">Québec</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="plan-titre">Le site</h2>
+        <ul>
+          <li><a href="nouveautes.html">Nouveautés</a></li>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
         </ul>
       </div>
     </nav>
