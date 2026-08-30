@@ -13,7 +13,8 @@
 <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
 
 <meta property="og:type" content="article">
-<meta property="og:locale" content="fr_FR">
+<meta property="og:locale" content="fr_CH">
+<meta property="og:locale:alternate" content="fr_FR">
 <meta property="og:site_name" content="Calculatrice de Durée">
 <meta property="og:title" content="Jours Fériés en Suisse 2026 et 2027 – Cantons et Calcul">
 <meta property="og:description" content="Jours fériés suisses 2026 et 2027 : le socle romand, les spécificités de chaque canton et un calculateur de jours ouvrés réglé sur la Suisse.">
@@ -50,6 +51,11 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
       "name": "Jours Fériés en Suisse 2026 et 2027 – Cantons et Calcul",
       "description": "Jours fériés suisses 2026 et 2027 : le socle romand, les spécificités de chaque canton et un calculateur de jours ouvrés réglé sur la Suisse.",
       "inLanguage": "fr-FR",
+      "about": {
+        "@type": "Country",
+        "name": "Suisse",
+        "identifier": "CH"
+      },
       "isPartOf": {
         "@type": "WebSite",
         "@id": "https://calculatrice-duree.fr/#site",
@@ -508,9 +514,9 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
           <caption>Jours fériés supplémentaires en Suisse romande</caption>
           <thead><tr><th scope="col">Jour</th><th scope="col">Date</th><th scope="col">Cantons concernés</th></tr></thead>
           <tbody>
-            <tr><td>Jeûne genevois</td><td>Jeudi suivant le 1<sup>er</sup> dimanche de septembre</td><td>Genève</td></tr>
+            <tr><td>Jeûne genevois</td><td>Jeudi suivant le 1<sup>er</sup> dimanche de septembre<br><strong>10 septembre 2026</strong>, puis 9 septembre 2027</td><td>Genève</td></tr>
             <tr><td>Restauration de la République</td><td>31 décembre</td><td>Genève</td></tr>
-            <tr><td>Lundi du Jeûne fédéral</td><td>Lundi suivant le 3<sup>e</sup> dimanche de septembre</td><td>Vaud, Neuchâtel</td></tr>
+            <tr><td>Lundi du Jeûne fédéral</td><td>Lundi suivant le 3<sup>e</sup> dimanche de septembre<br><strong>21 septembre 2026</strong>, puis 20 septembre 2027</td><td>Vaud, Neuchâtel</td></tr>
             <tr><td>Instauration de la République</td><td>1<sup>er</sup> mars</td><td>Neuchâtel</td></tr>
             <tr><td>Commémoration du plébiscite</td><td>23 juin</td><td>Jura</td></tr>
             <tr><td>Saint-Étienne</td><td>26 décembre</td><td>Vaud, Jura, Fribourg et la plupart des cantons alémaniques</td></tr>
@@ -523,6 +529,13 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         Le Valais et le Tessin ne chôment pas le Vendredi saint, alors que Genève et Vaud le chôment.
         Vérifiez toujours la liste officielle de votre canton avant de vous engager sur un délai&nbsp;:
         aucune règle nationale ne vous couvre.
+      </p>
+
+      <p class="micro">
+        Les deux dates mobiles de septembre reviennent chaque année à un jour différent, ce qui les rend
+        pénibles à retrouver&nbsp;: le <strong>Jeûne genevois tombe le jeudi 10 septembre 2026</strong>
+        (puis le 9 septembre 2027), et le <strong>Lundi du Jeûne fédéral le 21 septembre 2026</strong>
+        (puis le 20 septembre 2027). Le calculateur les recalcule pour n'importe quelle année.
       </p>
 
       <h2>Combien de jours fériés par canton romand&nbsp;?</h2>
@@ -548,6 +561,20 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         Ces totaux sont donnés à titre indicatif&nbsp;: certains cantons distinguent les jours
         entièrement chômés des demi-journées, et quelques communes ajoutent leur fête patronale. Seule
         la liste publiée par votre canton fait foi.
+      </p>
+
+      <h2>Le vocabulaire suisse du temps de travail</h2>
+      <p>
+        Deux distinctions n'existent pas en France et changent le sens d'une recherche. D'abord, la loi
+        suisse sépare les <strong>heures supplémentaires</strong> — au-delà de l'horaire contractuel — du
+        <strong>travail supplémentaire</strong>, qui dépasse le maximum légal de 45 ou 50&nbsp;heures
+        hebdomadaires. Les deux ne se compensent pas de la même façon.
+      </p>
+      <p>
+        Ensuite, on parle de <strong>vacances</strong> là où la France dit congés payés, le minimum légal
+        étant de quatre semaines. Et le <strong>13<sup>e</sup> salaire</strong>, très répandu, n'a pas
+        d'équivalent français&nbsp;: il ne s'agit pas d'une prime mais d'un salaire annuel versé en treize
+        fois, ce qui change le calcul du taux horaire.
       </p>
 
       <h2>Le samedi, un cas à part en Suisse</h2>
