@@ -428,6 +428,17 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
           <ul class="history-list" id="history-list"></ul>
         </div>
       </section>
+
+      <!-- Liens contextuels placés au ras du calculateur : le bloc complet
+           reste en bas de page, mais ces trois-là sont vus. -->
+      <nav class="voisins" aria-label="Calculateurs proches">
+        <span class="voisins-titre">À voir aussi</span>
+        <ul>
+        <li><a href="convertir-minutes-en-heures.html">Minutes en heures</a></li>
+        <li><a href="multiplier-diviser-une-duree.html">Multiplier une durée</a></li>
+        <li><a href="calcul-heures-de-travail.html">Heures de travail</a></li>
+        </ul>
+      </nav>
     </div>
 
     <aside class="col-side" aria-label="Publicité">
@@ -562,6 +573,69 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         décimales et −180&nbsp;min en minutes totales. Une valeur négative reste négative partout.
       </p>
 
+      <h2>Cumuler un mois d'heures sans tout ressaisir</h2>
+      <p>
+        Additionner quatre lignes est simple. Additionner vingt-deux journées de travail l'est beaucoup
+        moins&nbsp;: on perd le fil, on ressaisit un sous-total de travers, et le mois entier est faux.
+      </p>
+      <p>
+        Le bouton <strong>Reporter le total</strong> répond exactement à ça. Il renvoie le résultat sur la
+        première ligne et vide les autres. La méthode&nbsp;:
+      </p>
+      <ol class="uses">
+        <li>Saisissez les cinq journées de la première semaine, une par ligne.</li>
+        <li>Cliquez sur <strong>Reporter le total</strong>&nbsp;: la semaine devient la première ligne.</li>
+        <li>Saisissez la deuxième semaine en dessous, reportez à nouveau, et ainsi de suite.</li>
+      </ol>
+      <p>
+        À la fin, vous avez le total du mois sans avoir recopié un seul sous-total à la main. Et si le
+        cumul est négatif — un compteur en déficit — la première ligne bascule en soustraction pour que
+        le signe soit conservé.
+      </p>
+      <p class="micro">
+        Chaque étape est enregistrée dans le relevé sous le calculateur, avec sa date. Vous pouvez ensuite
+        l'exporter en CSV pour l'ouvrir dans un tableur, ou l'imprimer en PDF pour le joindre à une
+        demande de régularisation.
+      </p>
+
+      <h2>Additionner des millisecondes&nbsp;: chronométrage et temps de passage</h2>
+      <p>
+        L'option <strong>Afficher les millisecondes</strong>, sous les lignes de saisie, ajoute une
+        quatrième colonne. Elle ne sert à rien pour un bulletin de paie, mais elle devient indispensable
+        dès qu'on chronomètre&nbsp;: cumuler des tours de piste, additionner des temps de passage en
+        natation, comparer des relais en sport automobile.
+      </p>
+      <p>
+        Les millisecondes vont de 0 à 999 et se reportent normalement&nbsp;: 500&nbsp;ms plus 600&nbsp;ms
+        donnent <strong>1&nbsp;s&nbsp;100&nbsp;ms</strong>, pas 1&nbsp;100&nbsp;ms. Le résultat les affiche
+        alors dans tous ses formats, y compris en secondes décimales.
+      </p>
+      <p class="micro">
+        Votre choix est mémorisé d'une visite à l'autre. Si vous désactivez l'option, les millisecondes
+        déjà saisies sont effacées&nbsp;: les garder dans des champs masqués fausserait le total sans que
+        rien ne l'indique à l'écran.
+      </p>
+
+      <h2>Les raccourcis clavier</h2>
+      <p>
+        Sur ordinateur, cinq touches évitent des allers-retours à la souris. Elles ne fonctionnent que
+        lorsque aucun champ n'a le focus&nbsp;— autrement, taper <code>+</code> dans la saisie rapide
+        ajouterait une ligne au lieu d'écrire le signe.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <caption>Raccourcis de l'onglet Addition / Soustraction</caption>
+          <thead><tr><th scope="col">Touche</th><th scope="col">Effet</th></tr></thead>
+          <tbody>
+            <tr><td><strong>+</strong></td><td>Ajoute une ligne à additionner</td></tr>
+            <tr><td><strong>−</strong></td><td>Ajoute une ligne à soustraire</td></tr>
+            <tr><td><strong>W</strong></td><td>Reporte le total sur la première ligne</td></tr>
+            <tr><td><strong>C</strong></td><td>Copie le résultat dans le presse-papiers</td></tr>
+            <tr><td><strong>M</strong></td><td>Remet tous les champs à zéro</td></tr>
+          </tbody>
+        </table>
+      </div>
+
       <h2>Convertir avant d'additionner&nbsp;: la méthode des minutes</h2>
       <p>
         Il existe une seconde façon de procéder, souvent plus sûre quand les durées sont nombreuses&nbsp;:
@@ -659,8 +733,8 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         <ul>
           <li><a href="index.html">Calculatrice de durée</a></li>
           <li><span aria-current="page">Addition d'heures</span></li>
-          <li><a href="multiplier-diviser-une-duree.html">Multiplier ou diviser une durée</a></li>
           <li><a href="convertir-minutes-en-heures.html">Convertir minutes en heures</a></li>
+          <li><a href="multiplier-diviser-une-duree.html">Multiplier ou diviser une durée</a></li>
         </ul>
       </div>
       <div>
@@ -681,9 +755,16 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         <h2 class="plan-titre">Jours fériés</h2>
         <ul>
           <li><a href="jours-feries-belgique.html">Belgique</a></li>
+          <li><a href="jours-feries-quebec.html">Québec</a></li>
           <li><a href="jours-feries-suisse.html">Suisse</a></li>
           <li><a href="jours-feries-luxembourg.html">Luxembourg</a></li>
-          <li><a href="jours-feries-quebec.html">Québec</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="plan-titre">Le site</h2>
+        <ul>
+          <li><a href="nouveautes.html">Nouveautés</a></li>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
         </ul>
       </div>
     </nav>

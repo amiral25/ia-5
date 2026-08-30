@@ -440,6 +440,17 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
           <ul class="history-list" id="history-list"></ul>
         </div>
       </section>
+
+      <!-- Liens contextuels placés au ras du calculateur : le bloc complet
+           reste en bas de page, mais ces trois-là sont vus. -->
+      <nav class="voisins" aria-label="Calculateurs proches">
+        <span class="voisins-titre">À voir aussi</span>
+        <ul>
+        <li><a href="combien-heures-entre-deux-horaires.html">De 8h à 17h ?</a></li>
+        <li><a href="additionner-des-heures.html">Addition d'heures</a></li>
+        <li><a href="calcul-jours-ouvres.html">Jours ouvrés</a></li>
+        </ul>
+      </nav>
     </div>
 
     <aside class="col-side" aria-label="Publicité">
@@ -538,6 +549,34 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         temps plein. Leur majoration est de 10&nbsp;% dans la limite du dixième, puis 25&nbsp;% au-delà.
       </p>
 
+      <h2>Éditer son relevé d'heures pour l'employeur</h2>
+      <p>
+        Compter ses heures ne sert qu'à moitié si l'on ne peut pas les présenter. Chaque calcul est
+        conservé dans un <strong>relevé de 50&nbsp;lignes</strong> sous le calculateur, avec sa date et son
+        heure, et deux boutons permettent d'en sortir un document.
+      </p>
+
+      <h3>L'export CSV, pour un tableur</h3>
+      <p>
+        Le bouton <strong>Exporter CSV</strong> télécharge un fichier daté du type
+        <code>releve-durees-2026-08-30.csv</code>, avec quatre colonnes&nbsp;: date, type de calcul,
+        opération et résultat. Il s'ouvre d'un double-clic dans Excel, LibreOffice ou Google&nbsp;Sheets,
+        colonnes correctement séparées et accents intacts&nbsp;— ce qui n'a rien d'automatique&nbsp;: le
+        fichier est écrit avec le séparateur et l'encodage qu'attend un Excel en français.
+      </p>
+
+      <h3>L'impression, pour un document papier ou PDF</h3>
+      <p>
+        Le bouton <strong>Imprimer / PDF</strong> ne sort que le relevé&nbsp;: ni menu, ni publicité, ni
+        contenu de la page, avec un en-tête daté. La boîte d'impression de votre système propose ensuite
+        <strong>Enregistrer au format PDF</strong>, ce qui donne un justificatif propre à joindre à un
+        courriel ou à une demande de régularisation.
+      </p>
+      <p class="micro">
+        Tout reste dans votre navigateur&nbsp;: le relevé n'est envoyé sur aucun serveur, et il disparaît
+        si vous videz les données du site. Pensez à exporter avant de faire le ménage.
+      </p>
+
       <h2>Les durées maximales à connaître</h2>
       <ul class="uses">
         <li><strong>10 heures</strong> par jour au maximum (dérogations possibles jusqu'à 12&nbsp;h).</li>
@@ -608,8 +647,8 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         <ul>
           <li><a href="index.html">Calculatrice de durée</a></li>
           <li><a href="additionner-des-heures.html">Addition d'heures</a></li>
-          <li><a href="multiplier-diviser-une-duree.html">Multiplier ou diviser une durée</a></li>
           <li><a href="convertir-minutes-en-heures.html">Convertir minutes en heures</a></li>
+          <li><a href="multiplier-diviser-une-duree.html">Multiplier ou diviser une durée</a></li>
         </ul>
       </div>
       <div>
@@ -630,9 +669,16 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         <h2 class="plan-titre">Jours fériés</h2>
         <ul>
           <li><a href="jours-feries-belgique.html">Belgique</a></li>
+          <li><a href="jours-feries-quebec.html">Québec</a></li>
           <li><a href="jours-feries-suisse.html">Suisse</a></li>
           <li><a href="jours-feries-luxembourg.html">Luxembourg</a></li>
-          <li><a href="jours-feries-quebec.html">Québec</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="plan-titre">Le site</h2>
+        <ul>
+          <li><a href="nouveautes.html">Nouveautés</a></li>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
         </ul>
       </div>
     </nav>
