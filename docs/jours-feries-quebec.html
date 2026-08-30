@@ -13,7 +13,8 @@
 <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
 
 <meta property="og:type" content="article">
-<meta property="og:locale" content="fr_FR">
+<meta property="og:locale" content="fr_CA">
+<meta property="og:locale:alternate" content="fr_FR">
 <meta property="og:site_name" content="Calculatrice de Durée">
 <meta property="og:title" content="Jours Fériés au Québec 2026 et 2027 – Liste et Calcul">
 <meta property="og:description" content="Les jours fériés du Québec en 2026 et 2027 : congés de la Loi sur les normes du travail, fériés fédéraux, indemnité, et calculateur de jours ouvrables.">
@@ -50,6 +51,11 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
       "name": "Jours Fériés au Québec 2026 et 2027 – Liste et Calcul",
       "description": "Les jours fériés du Québec en 2026 et 2027 : congés de la Loi sur les normes du travail, fériés fédéraux, indemnité, et calculateur de jours ouvrables.",
       "inLanguage": "fr-FR",
+      "about": {
+        "@type": "Country",
+        "name": "Canada",
+        "identifier": "CA"
+      },
       "isPartOf": {
         "@type": "WebSite",
         "@id": "https://calculatrice-duree.fr/#site",
@@ -541,6 +547,27 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
       <p>
         Concrètement, un délai de «&nbsp;5&nbsp;jours ouvrables&nbsp;» annoncé par une entreprise
         québécoise correspond à ce que le calculateur donne en cochant les deux options d'exclusion.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Les mêmes notions, deux vocabulaires</caption>
+          <thead><tr><th scope="col">En France</th><th scope="col">Au Québec</th></tr></thead>
+          <tbody>
+            <tr><td>Jours ouvrés</td><td><strong>Jours ouvrables</strong></td></tr>
+            <tr><td>Heures supplémentaires</td><td><strong>Temps supplémentaire</strong></td></tr>
+            <tr><td>Jours fériés</td><td><strong>Congés fériés</strong> ou jours fériés</td></tr>
+            <tr><td>Congés payés</td><td><strong>Vacances annuelles</strong></td></tr>
+            <tr><td>Bulletin de paie</td><td><strong>Bulletin de paie</strong> ou relevé de paie</td></tr>
+            <tr><td>Durée légale du travail</td><td><strong>Semaine normale de travail</strong> (40 h)</td></tr>
+            <tr><td>Convention collective</td><td>Convention collective, ou <strong>décret</strong> selon le secteur</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="micro">
+        Ce n'est pas une coquetterie&nbsp;: si vous cherchez «&nbsp;calcul temps supplémentaire&nbsp;»
+        depuis Montréal, vous ne tapez pas la même chose qu'à Lyon, et vous ne devriez pas tomber sur une
+        page qui parle du Code du travail français.
       </p>
 
       <h2>L'indemnité de jour férié</h2>
