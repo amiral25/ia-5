@@ -873,6 +873,108 @@
   });
 
   /* ---------------------------------------------------------
+     11 bis. Liens partageables
+     L'état du calcul tient dans l'adresse, pour qu'un lien rouvre
+     exactement le même calcul chez le destinataire.
+     --------------------------------------------------------- */
+
+  /** Construit les paramètres décrivant l'onglet visible. */
+  function etatEnParametres() {
+    var p = new URLSearchParams();
+    p.set('t', current);
+    if (current === 1) {
+      if (quick.value.trim()) {
+        p.set('q', quick.value.trim());
+      } else {
+        // Chaque ligne devient « ±h:m:s », le tout séparé par des tirets bas :
+        // lisible dans la barre d'adresse et sans caractère à encoder.
+        var lignes = $$('.row', rowsBox).map(function (row) {
+          var h = +$('.r-h', row).value || 0, m = +$('.r-m', row).value || 0,
+              s = +$('.r-s', row).value || 0, q = msActif() ? (+$('.r-ms', row).value || 0) : 0;
+          if (!h && !m && !s && !q) return '';
+          return rowSign(row) + h + ':' + m + ':' + s + (q ? '.' + q : '');
+        }).filter(Boolean);
+        if (lignes.length) p.set('l', lignes.join('_'));
+      }
+    } else if (current === 2) {
+      p.set('hd', hStart.value); p.set('hf', hEnd.value);
+      p.set('hp', String(parseFloat(hPause.value) || 0));
+    } else if (current === 3) {
+      p.set('dd', dStart.value); p.set('df', dEnd.value);
+      p.set('dw', dWe.checked ? 1 : 0); p.set('dh', dHol.checked ? 1 : 0);
+      p.set('dp', paysActif());
+    } else {
+      p.set('mh', mH.value || 0); p.set('mm', mM.value || 0); p.set('mz', mS.value || 0);
+      p.set('mo', opActif()); p.set('mn', mN.value);
+    }
+    return p;
+  }
+
+  /** Adresse partageable. La base vient de la balise canonique : un lien
+      partagé pointe donc vers l'adresse propre de la page, pas vers
+      « /index.html » ni vers une éventuelle variante. */
+  function lienPartage() {
+    var can = $('link[rel="canonical"]');
+    var base = can ? can.href : location.origin + location.pathname;
+    return base.split('?')[0].split('#')[0] + '?' + etatEnParametres().toString();
+  }
+
+  /** Applique les paramètres reçus. Renvoie l'onglet demandé, ou 0. */
+  function appliquerParametres() {
+    var p = new URLSearchParams(location.search);
+    if (!p.toString()) return 0;
+    var t = parseInt(p.get('t'), 10);
+
+    if (p.has('q')) { quick.value = p.get('q'); }
+    if (p.has('l')) {
+      quick.value = '';
+      var lignes = p.get('l').split('_').map(function (bloc) {
+        var m = /^([+-])(\d+):(\d+):(\d+)(?:\.(\d+))?$/.exec(bloc);
+        return m ? [+m[2] || '', +m[3] || '', +m[4] || '', m[1], m[5] ? +m[5] : ''] : null;
+      }).filter(Boolean);
+      if (lignes.length) {
+        if (lignes.length === 1) lignes.push(['', '', '', '+', '']);
+        buildRows(lignes);
+      }
+    }
+    if (p.has('hd')) hStart.value = p.get('hd');
+    if (p.has('hf')) hEnd.value = p.get('hf');
+    if (p.has('hp')) { hPause.value = p.get('hp'); syncChips(); }
+    if (p.has('dd')) dStart.value = p.get('dd');
+    if (p.has('df')) dEnd.value = p.get('df');
+    if (p.has('dw')) dWe.checked = p.get('dw') === '1';
+    if (p.has('dh')) dHol.checked = p.get('dh') === '1';
+    if (p.has('dp') && PAYS[p.get('dp')]) dPays.value = p.get('dp');
+    if (p.has('mh')) mH.value = p.get('mh');
+    if (p.has('mm')) mM.value = p.get('mm');
+    if (p.has('mz')) mS.value = p.get('mz');
+    if (p.has('mn')) mN.value = p.get('mn');
+    if (p.has('mo')) {
+      var vise = p.get('mo') === '/' ? '/' : 'x';
+      $$('.sign-group-op .sg-btn').forEach(function (b) {
+        var on = b.dataset.op === vise;
+        b.classList.toggle('is-on', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+    }
+    return t >= 1 && t <= 4 ? t : 0;
+  }
+
+  $('#btn-share').addEventListener('click', function () {
+    var url = lienPartage();
+    // Sur mobile, la feuille de partage du système est plus utile qu'un
+    // presse-papiers ; ailleurs on copie, faute de mieux.
+    if (navigator.share) {
+      navigator.share({ title: document.title, url: url }).catch(function () {});
+      return;
+    }
+    var done = function () { showToast('Lien du calcul copié ✓'); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(done, function () { fallbackCopy(url, done); });
+    } else fallbackCopy(url, done);
+  });
+
+  /* ---------------------------------------------------------
      12. Initialisation
      --------------------------------------------------------- */
   function setDefaultDates() {
@@ -904,7 +1006,9 @@
   initPays();
   syncChips();
   drawHist();
-  // Les pages satellites indiquent l'onglet à ouvrir via <body data-tab="2">
-  var onglet = parseInt(document.body.getAttribute('data-tab'), 10);
+  // Un lien partagé impose son état et son onglet ; à défaut, les pages
+  // satellites indiquent l'onglet à ouvrir via <body data-tab="2">.
+  var depuisLien = appliquerParametres();
+  var onglet = depuisLien || parseInt(document.body.getAttribute('data-tab'), 10);
   activate(onglet >= 1 && onglet <= 4 ? onglet : 1);
 })();
