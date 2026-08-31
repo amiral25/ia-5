@@ -280,8 +280,12 @@ html[data-ms="1"] .u-ms{display:block}
 .result-err{margin-top:10px;font-size:.85rem;background:rgba(0,0,0,.22);padding:8px 11px;border-radius:9px}
 .result-err.is-hidden,.result-note.is-hidden{display:none}
 
-.actions{display:grid;grid-template-columns:1fr auto;gap:10px;margin:12px 0 18px}
-@media(max-width:420px){.actions{grid-template-columns:1fr 1fr}}
+.actions{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0 18px}
+.actions .btn{padding:12px 6px;min-width:0}
+@media(min-width:640px){
+  .actions{display:flex;gap:10px;flex-wrap:wrap}
+  .actions .btn{padding:12px 18px}
+}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;border-radius:12px;border:1px solid transparent;
   font-size:.92rem;font-weight:600;cursor:pointer;transition:transform .14s,background .14s,border-color .14s;min-height:46px}
 .btn:active{transform:translateY(1px)}
