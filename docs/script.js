@@ -679,6 +679,119 @@
 
   $('#btn-csv').addEventListener('click', exporterCSV);
 
+  /* ---------- Emporter les jours fériés (pages pays) ----------
+     Les tableaux de ces pages sont écrits en dur dans le HTML, mais les
+     fichiers téléchargés sont recalculés par le moteur de la section 3 :
+     une seule source de vérité pour les dates, et n'importe quelle année
+     reste exportable sans toucher au HTML. */
+
+  var JOURS_FR = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+
+  /** Les fériés d'une année, triés par date : [{ ts, nom }, …] */
+  function listeFeries(annee, code) {
+    var set = holidaysOf(annee, code);
+    return Object.keys(set).map(Number).sort(function (a, b) { return a - b; })
+      .map(function (ts) { return { ts: ts, nom: set[ts] }; });
+  }
+
+  function dateFR(ts) {
+    var d = new Date(ts);
+    return deuxChiffres(d.getUTCDate()) + '/' + deuxChiffres(d.getUTCMonth() + 1) +
+           '/' + d.getUTCFullYear();
+  }
+
+  /** « 20260101 » : le format de date des fichiers .ics. */
+  function dateCompacte(ts) {
+    var d = new Date(ts);
+    return '' + d.getUTCFullYear() + deuxChiffres(d.getUTCMonth() + 1) + deuxChiffres(d.getUTCDate());
+  }
+
+  function slugPays(code) {
+    return PAYS[code].nom.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  }
+
+  // Mêmes précautions que pour le relevé : BOM, point-virgule et CRLF, sans
+  // quoi Excel en français empile tout dans une colonne et casse les accents.
+  function feriesCSV(annee, code) {
+    var lignes = [['Jour férié', 'Date', 'Jour de la semaine']];
+    listeFeries(annee, code).forEach(function (f) {
+      lignes.push([f.nom, dateFR(f.ts), JOURS_FR[new Date(f.ts).getUTCDay()]]);
+    });
+    return '\uFEFF' + lignes.map(function (l) {
+      return l.map(csvCell).join(';');
+    }).join('\r\n');
+  }
+
+  /** Dans un .ics, une valeur texte échappe \ ; , et les retours à la ligne. */
+  function echapICS(v) {
+    return String(v).replace(/\\/g, '\\\\').replace(/([;,])/g, '\\$1').replace(/\r?\n/g, '\\n');
+  }
+
+  /** La norme iCalendar limite une ligne à 75 octets ; au-delà on la coupe et
+      la suite commence par une espace. Sans ce repli, certains agendas
+      refusent le fichier — et « Fête nationale du Québec » compte des
+      caractères à deux octets. */
+  function plierICS(ligne) {
+    var enc = new TextEncoder(), morceaux = [], buf = '', n = 0;
+    for (var i = 0; i < ligne.length; i++) {
+      var b = enc.encode(ligne[i]).length;
+      if (n + b > 75) { morceaux.push(buf); buf = ''; n = 1; } // 1 = l'espace de repli
+      buf += ligne[i];
+      n += b;
+    }
+    morceaux.push(buf);
+    return morceaux.join('\r\n ');
+  }
+
+  function feriesICS(annee, code, adresse) {
+    var estampille = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+/, '');
+    var l = ['BEGIN:VCALENDAR', 'VERSION:2.0',
+             'PRODID:-//calculatrice-duree.fr//Jours feries//FR',
+             'CALSCALE:GREGORIAN', 'METHOD:PUBLISH',
+             'X-WR-CALNAME:' + echapICS('Jours fériés — ' + PAYS[code].nom + ' ' + annee)];
+
+    listeFeries(annee, code).forEach(function (f) {
+      var debut = dateCompacte(f.ts);
+      l.push('BEGIN:VEVENT',
+             'UID:' + debut + '-' + code + '@calculatrice-duree.fr',
+             'DTSTAMP:' + estampille,
+             // Un férié occupe la journée entière : DTEND est le lendemain.
+             'DTSTART;VALUE=DATE:' + debut,
+             'DTEND;VALUE=DATE:' + dateCompacte(f.ts + DAY_MS),
+             'SUMMARY:' + echapICS(f.nom),
+             'DESCRIPTION:' + echapICS('Jour férié — ' + PAYS[code].nom +
+                                       '. Source : calculatrice-duree.fr'),
+             // Un férié ne doit pas marquer la journée « occupée ».
+             'TRANSP:TRANSPARENT');
+      if (adresse) l.push('URL:' + adresse);
+      l.push('END:VEVENT');
+    });
+    l.push('END:VCALENDAR');
+    return l.map(plierICS).join('\r\n') + '\r\n';
+  }
+
+  // Absent des pages calculatrice : la boucle ne fait alors simplement rien.
+  Array.prototype.forEach.call(document.querySelectorAll('.dl-feries'), function (bloc) {
+    var code = codePays(bloc.getAttribute('data-pays'));
+    var annee = parseInt(bloc.getAttribute('data-annee'), 10);
+    if (!annee) return;
+    var can = $('link[rel="canonical"]');
+    var adresse = can ? can.href : '';
+
+    bloc.addEventListener('click', function (ev) {
+      var b = ev.target.closest('[data-dl]');
+      if (!b) return;
+      var nom = 'jours-feries-' + slugPays(code) + '-' + annee;
+      if (b.getAttribute('data-dl') === 'csv') {
+        telecharger(feriesCSV(annee, code), 'text/csv;charset=utf-8', nom + '.csv');
+        showToast('Fichier Excel téléchargé');
+      } else {
+        telecharger(feriesICS(annee, code, adresse), 'text/calendar;charset=utf-8', nom + '.ics');
+        showToast('Fichier agenda téléchargé');
+      }
+    });
+  });
+
   /* ---------- Impression / PDF ----------
      Pas de bibliothèque PDF : jsPDF pèse plus de 300 Ko, ce qui ruinerait le
      score de performance et la promesse « aucune requête externe ». La boîte
