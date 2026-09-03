@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>Multiplier ou Diviser une Durée – Calculatrice en Ligne</title>
+<meta name="description" content="Multipliez ou divisez une durée par un nombre : 2h30 × 3 = 7h30, 10h ÷ 4 = 2h30. Méthode expliquée, tableau des cas courants et calcul instantané.">
+
+<link rel="canonical" href="https://calculatrice-duree.fr/multiplier-diviser-une-duree.html">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Calculatrice de Durée">
+<meta property="og:title" content="Multiplier ou Diviser une Durée – Calculatrice en Ligne">
+<meta property="og:description" content="Multipliez ou divisez une durée par un nombre : 2h30 × 3 = 7h30, 10h ÷ 4 = 2h30. Méthode expliquée, tableau des cas courants et calcul instantané.">
+<meta property="og:url" content="https://calculatrice-duree.fr/multiplier-diviser-une-duree.html">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+
+<!-- Anti-flash du thème sombre : doit rester en ligne et en premier -->
+<script>
+(function(){try{var t=localStorage.getItem('cd-theme');
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+document.documentElement.setAttribute('data-theme',t);
+if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('data-ms','1');
+}catch(e){}})();
+</script>
+
+<!-- ============================================================
+     GOOGLE ADSENSE — décommentez après validation et remplacez
+     ca-pub-XXXXXXXXXXXXXXXX par votre identifiant.
+     ============================================================
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+-->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://calculatrice-duree.fr/multiplier-diviser-une-duree.html#page",
+      "url": "https://calculatrice-duree.fr/multiplier-diviser-une-duree.html",
+      "name": "Multiplier ou Diviser une Durée – Calculatrice en Ligne",
+      "description": "Multipliez ou divisez une durée par un nombre : 2h30 × 3 = 7h30, 10h ÷ 4 = 2h30. Méthode expliquée, tableau des cas courants et calcul instantané.",
+      "inLanguage": "fr-FR",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://calculatrice-duree.fr/#site",
+        "name": "Calculatrice de Durée",
+        "url": "https://calculatrice-duree.fr/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://calculatrice-duree.fr/multiplier-diviser-une-duree.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Combien font 2h30 × 3 ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "2h30 × 3 = 7h30. Le calcul passe par les minutes : 2h30 vaut 150 minutes, 150 × 3 = 450 minutes, et 450 ÷ 60 donne 7 heures et 30 minutes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment diviser une durée par un nombre ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Convertissez la durée en minutes, divisez, puis reconvertissez. Pour répartir 10 heures sur 4 jours : 600 minutes ÷ 4 = 150 minutes, soit 2 h 30 par jour."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Peut-on multiplier une durée par un nombre décimal ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui. Multiplier 1h20 par 2,5 donne 3h20 : 80 minutes × 2,5 = 200 minutes. Le calculateur accepte la virgule française comme le point."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Pourquoi ma calculatrice classique se trompe-t-elle ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Parce qu'elle compte en base 10 et ignore qu'une heure vaut 60 minutes. Elle affichera 6,9 pour 2,30 × 3, ce qui n'a aucun sens en durée. Il faut convertir en minutes avant de calculer, ou utiliser un outil qui le fait pour vous."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://calculatrice-duree.fr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Multiplier / Diviser",
+          "item": "https://calculatrice-duree.fr/multiplier-diviser-une-duree.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body data-tab="4">
+
+<a class="skip-link" href="#calculatrice">Aller à la calculatrice</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.2 2"></path>
+        </svg>
+      </span>
+      <span class="brand-text">Calculatrice&nbsp;de&nbsp;Durée</span>
+    </a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a href="additionner-des-heures.html">Addition d'heures</a>
+      <a href="calcul-heures-de-travail.html">Heures de travail</a>
+      <a href="duree-entre-deux-dates.html">Entre 2 dates</a>
+      <a href="calcul-jours-ouvres.html">Jours fériés</a>
+    </nav>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Basculer le thème sombre">
+      <svg class="ico-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4.2"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"></path>
+      </svg>
+      <svg class="ico-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.7 6.7 0 0 0 10.5 10.5Z"></path>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <nav class="fil" aria-label="Fil d'Ariane">
+    <a href="/">Accueil</a> <span aria-hidden="true">›</span> <span>Multiplier / Diviser</span>
+  </nav>
+
+  <section class="hero">
+    <h1>Multiplier ou diviser une durée</h1>
+    <p class="lead">Répétez une durée un certain nombre de fois, ou répartissez-la en parts égales. Résultat immédiat en heures, en décimal et en minutes.</p>
+  </section>
+
+  <aside class="ad ad-leaderboard" aria-label="Publicité">
+    <span class="ad-label">Publicité</span>
+    <div class="ad-slot">
+      <!-- ▼▼ COLLEZ ICI VOTRE BLOC ADSENSE « Bannière » ▼▼ -->
+      <span class="ad-ph">Emplacement publicitaire</span>
+    </div>
+  </aside>
+
+  <div class="layout">
+    <div class="col-main">
+      <section id="calculatrice" class="card calc" aria-label="Calculatrice de durée">
+
+        <div class="tabs" role="tablist" aria-label="Type de calcul">
+          <button class="tab is-active" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true" type="button"
+                  aria-label="Addition / Soustraction de durées">
+            <svg class="tab-ico" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" aria-hidden="true">
+              <path d="M12 5v7M8.5 8.5h7M6.5 18h11"></path>
+            </svg><span>Addition / Soustraction</span>
+          </button>
+          <button class="tab" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false" tabindex="-1" type="button"
+                  aria-label="Durée entre 2 heures">
+            <svg class="tab-ico" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.4"></circle><path d="M12 7.4V12l3 2"></path>
+            </svg><span>Entre 2 heures</span>
+          </button>
+          <button class="tab" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false" tabindex="-1" type="button"
+                  aria-label="Durée entre 2 dates">
+            <svg class="tab-ico" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3.4" y="5" width="17.2" height="15.5" rx="2.6"></rect><path d="M3.4 10h17.2M8 3v4M16 3v4"></path>
+            </svg><span>Entre 2 dates</span>
+          </button>
+          <button class="tab" role="tab" id="tab-4" aria-controls="panel-4" aria-selected="false" tabindex="-1" type="button"
+                  aria-label="Multiplier / Diviser une durée">
+            <svg class="tab-ico" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" aria-hidden="true">
+              <path d="M5.5 7.5l5 5M10.5 7.5l-5 5M14.5 15h6"></path>
+              <circle cx="17.5" cy="11.6" r=".95" fill="currentColor" stroke="none"></circle>
+              <circle cx="17.5" cy="18.4" r=".95" fill="currentColor" stroke="none"></circle>
+            </svg><span>Multiplier / Diviser</span>
+          </button>
+        </div>
+
+        <!-- RÉSULTAT (hauteur réservée → CLS = 0) -->
+        <div class="result" id="result" aria-live="polite">
+          <span class="res-exemple" id="res-exemple">Exemple</span>
+          <div class="result-main">
+            <span class="result-label" id="res-label">Durée multipliée</span>
+            <output class="result-value" id="res-value">7h 30min</output>
+          </div>
+          <!-- État initial écrit en dur : le JS le remplace à l'identique,
+               donc rien ne bouge au chargement (CLS = 0). -->
+          <div class="result-grid" id="res-grid">
+            <div class="res-cell">
+            <b>7,50</b>
+            <span>Heures décimales</span></div>
+            <div class="res-cell">
+            <b>450 min</b>
+            <span>Minutes totales</span></div>
+            <div class="res-cell">
+            <b>2h 30min × 3</b>
+            <span>Opération</span></div>
+
+          </div>
+          <p class="result-note is-hidden" id="res-note"></p>
+          <p class="result-err is-hidden" id="res-err"></p>
+        </div>
+
+        <div class="actions">
+          <button id="btn-copy" class="btn btn-primary" type="button" aria-label="Copier le résultat">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+            </svg>
+            <span id="copy-txt">Copier<span class="btn-long"> le résultat</span></span>
+          </button>
+          <button id="btn-reset" class="btn btn-ghost" type="button">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 12a9 9 0 1 0 3-6.7L3 8"></path><path d="M3 3v5h5"></path>
+            </svg>
+            Effacer
+          </button>
+          <button id="btn-share" class="btn btn-ghost" type="button" aria-label="Partager ce calcul">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"></path><path d="M12 15V3M8 7l4-4 4 4"></path>
+            </svg>
+            Partager<span class="btn-long"> ce calcul</span>
+          </button>
+        </div>
+
+
+        <!-- ONGLET 1 -->
+        <div class="panel" role="tabpanel" id="panel-1" aria-labelledby="tab-1">
+          <div class="field">
+            <label class="lbl" for="quick">Saisie rapide</label>
+            <input id="quick" class="inp inp-quick" type="text" inputmode="text" autocomplete="off" spellcheck="false"
+                   aria-describedby="quick-hint" placeholder="Ex : 2h30 + 1h45 − 20min">
+            <p class="hint" id="quick-hint">
+              Utilisez <code>+</code> pour <strong>additionner</strong> et <code>-</code> pour
+              <strong>soustraire</strong>. Formats acceptés&nbsp;: <code>2h30</code>, <code>2:30</code>,
+              <code>45min</code>, <code>90s</code>, <code>1j</code>. Un nombre seul&nbsp;= des heures
+              (<code>1,5</code> = 1h30). Le résultat peut être négatif.
+              Laissez vide pour utiliser les champs ci-dessous.
+            </p>
+          </div>
+
+          <div class="sep"><span>ou saisie détaillée</span></div>
+
+          <div id="rows" class="rows">
+            <div class="row-units" aria-hidden="true">
+            <span>Ajouter / Retirer</span>
+            <span>Heures</span>
+            <span>Minutes</span>
+            <span>Sec.</span>
+            <span class="u-ms">Ms.</span>
+            <span></span></div>
+            <div class="row">
+            <div class="sign-group" role="group" aria-label="Ajouter ou soustraire cette durée">
+            <button type="button" class="sg-btn sg-plus is-on" data-sign="+" aria-pressed="true" title="Additionner cette durée">+</button>
+            <button type="button" class="sg-btn sg-minus" data-sign="-" aria-pressed="false" title="Soustraire cette durée">−</button></div><input class="inp r-h" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Heures" value="2"><input class="inp r-m" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Minutes" value="30"><input class="inp r-s" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Secondes" value=""><input class="inp r-ms" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Millisecondes" value="">
+            <button class="row-del" type="button" aria-label="Supprimer cette ligne">×</button></div>
+            <div class="row">
+            <div class="sign-group" role="group" aria-label="Ajouter ou soustraire cette durée">
+            <button type="button" class="sg-btn sg-plus is-on" data-sign="+" aria-pressed="true" title="Additionner cette durée">+</button>
+            <button type="button" class="sg-btn sg-minus" data-sign="-" aria-pressed="false" title="Soustraire cette durée">−</button></div><input class="inp r-h" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Heures" value="1"><input class="inp r-m" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Minutes" value="45"><input class="inp r-s" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Secondes" value=""><input class="inp r-ms" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Millisecondes" value="">
+            <button class="row-del" type="button" aria-label="Supprimer cette ligne">×</button></div>
+          </div>
+
+          <div class="row-actions">
+            <button id="add-row" class="btn btn-ghost btn-sm" type="button" aria-label="Ajouter une durée">
+              <span class="op-plus" aria-hidden="true">+</span> Ajouter<span class="btn-long"> une durée</span>
+            </button>
+            <button id="sub-row" class="btn btn-ghost btn-sm" type="button" aria-label="Soustraire une durée">
+              <span class="op-minus" aria-hidden="true">−</span> Soustraire<span class="btn-long"> une durée</span>
+            </button>
+            <button id="btn-retenue" class="btn btn-ghost btn-sm" type="button"
+                    aria-label="Reporter le total sur la première ligne"
+                    title="Reporter le total sur la première ligne pour continuer le calcul">
+              <span aria-hidden="true">↩</span> Reporter<span class="btn-long"> le total</span>
+            </button>
+          </div>
+          <label class="switch switch-ms">
+            <input id="opt-ms" type="checkbox">
+            <span class="switch-ui" aria-hidden="true"></span>
+            <span>Afficher les millisecondes</span>
+          </label>
+          <p class="hint">
+            Sur chaque ligne, choisissez <strong>+</strong> pour ajouter la durée ou <strong>−</strong> pour la retirer
+            du total. Un total négatif s'affiche tel quel, précédé d'un signe moins&nbsp;: utile pour un compteur
+            d'heures en déficit.
+          </p>
+          <p class="hint raccourcis">
+            Au clavier&nbsp;: <kbd>+</kbd> ajoute une ligne · <kbd>-</kbd> en ajoute une à soustraire ·
+            <kbd>W</kbd> reporte le total · <kbd>C</kbd> copie le résultat · <kbd>M</kbd> remet à zéro.
+          </p>
+        </div>
+
+        <!-- ONGLET 2 -->
+        <div class="panel is-hidden" role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden>
+          <div class="grid-2">
+            <div class="field">
+              <label class="lbl" for="h-start">Heure de début</label>
+              <input id="h-start" class="inp" type="time" value="08:30" step="60">
+            </div>
+            <div class="field">
+              <label class="lbl" for="h-end">Heure de fin</label>
+              <input id="h-end" class="inp" type="time" value="17:15" step="60">
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="field">
+              <label class="lbl" for="h-pause">Pause (minutes)</label>
+              <input id="h-pause" class="inp" type="number" min="0" max="1440" step="5" value="45" inputmode="numeric">
+            </div>
+            <div class="field">
+              <span class="lbl">Pauses fréquentes</span>
+              <div class="chips">
+                <button class="chip" type="button" data-pause="0">Aucune</button>
+                <button class="chip" type="button" data-pause="30">30 min</button>
+                <button class="chip" type="button" data-pause="45">45 min</button>
+                <button class="chip" type="button" data-pause="60">1 h</button>
+              </div>
+            </div>
+          </div>
+          <p id="h-note" class="note is-hidden">🌙 L'heure de fin est le lendemain (service de nuit).</p>
+        </div>
+
+        <!-- ONGLET 3 -->
+        <div class="panel is-hidden" role="tabpanel" id="panel-3" aria-labelledby="tab-3" hidden>
+          <div class="grid-2">
+            <div class="field">
+              <label class="lbl" for="d-start">Date de début</label>
+              <input id="d-start" class="inp" type="date">
+            </div>
+            <div class="field">
+              <label class="lbl" for="d-end">Date de fin</label>
+              <input id="d-end" class="inp" type="date">
+            </div>
+          </div>
+          <div class="field">
+            <label class="lbl" for="d-pays">Jours fériés du pays</label>
+            <select id="d-pays" class="inp inp-select">
+              <option value="fr">France</option>
+              <option value="be">Belgique</option>
+              <option value="ch">Suisse (socle romand)</option>
+              <option value="lu">Luxembourg</option>
+              <option value="qc">Québec</option>
+            </select>
+          </div>
+          <div class="opts">
+            <label class="switch">
+              <input id="d-weekend" type="checkbox" checked>
+              <span class="switch-ui" aria-hidden="true"></span>
+              <span>Exclure les week-ends</span>
+            </label>
+            <label class="switch">
+              <input id="d-holidays" type="checkbox" checked>
+              <span class="switch-ui" aria-hidden="true"></span>
+              <span>Exclure les jours fériés</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- ONGLET 4 -->
+        <div class="panel is-hidden" role="tabpanel" id="panel-4" aria-labelledby="tab-4" hidden>
+          <div class="field">
+            <span class="lbl">Durée de départ</span>
+            <div class="units-3" aria-hidden="true"><span>Heures</span><span>Minutes</span><span>Sec.</span></div>
+            <div class="grid-3">
+              <input id="m-h" class="inp" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Heures" value="2">
+              <input id="m-m" class="inp" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Minutes" value="30">
+              <input id="m-s" class="inp" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Secondes">
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <span class="lbl">Opération</span>
+              <div class="sign-group sign-group-op" role="group" aria-label="Multiplier ou diviser">
+                <button type="button" class="sg-btn sg-mul is-on" data-op="x" aria-pressed="true">× Multiplier</button>
+                <button type="button" class="sg-btn sg-div" data-op="/" aria-pressed="false">÷ Diviser</button>
+              </div>
+            </div>
+            <div class="field">
+              <label class="lbl" for="m-n">Par combien&nbsp;?</label>
+              <!-- type="text" volontaire : un champ number rejette la virgule,
+                   or « 2,5 » est la façon française d'écrire un nombre décimal. -->
+              <input id="m-n" class="inp" type="text" inputmode="decimal" autocomplete="off"
+                     spellcheck="false" placeholder="3" value="3">
+            </div>
+          </div>
+
+          <p class="hint">
+            Exemples&nbsp;: <code>2h30 × 3</code> = 7h30 (trois séances identiques) ·
+            <code>10h ÷ 4</code> = 2h30 (répartir une charge sur 4&nbsp;jours).
+          </p>
+        </div>
+
+        <div class="history" id="history-box" hidden>
+          <!-- Visible uniquement à l'impression : sert d'en-tête au relevé papier/PDF. -->
+          <p class="print-seul" id="print-entete">Relevé de durées</p>
+          <div class="history-head">
+            <h2 class="history-title">Vos derniers calculs</h2>
+            <div class="history-actions">
+              <button id="btn-csv" class="link-btn" type="button">Exporter CSV</button>
+              <button id="btn-print" class="link-btn" type="button">Imprimer / PDF</button>
+              <button id="btn-clear-hist" class="link-btn" type="button">Vider</button>
+            </div>
+          </div>
+          <ul class="history-list" id="history-list"></ul>
+        </div>
+      </section>
+
+      <!-- Liens contextuels placés au ras du calculateur : le bloc complet
+           reste en bas de page, mais ces trois-là sont vus. -->
+      <nav class="voisins" aria-label="Calculateurs proches">
+        <span class="voisins-titre">À voir aussi</span>
+        <ul>
+        <li><a href="additionner-des-heures.html">Addition d'heures</a></li>
+        <li><a href="calcul-heures-de-travail.html">Heures de travail</a></li>
+        <li><a href="convertir-minutes-en-heures.html">Minutes en heures</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <aside class="col-side" aria-label="Publicité">
+      <div class="ad ad-rect">
+        <span class="ad-label">Publicité</span>
+        <div class="ad-slot ad-slot-rect">
+          <!-- ▼▼ COLLEZ ICI VOTRE BLOC ADSENSE « Rectangle 300×250 » ▼▼ -->
+          <span class="ad-ph">Emplacement publicitaire<br>300 × 250</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <article class="content">
+
+      <h2>Pourquoi on ne peut pas multiplier bêtement</h2>
+      <p>
+        Multiplier 2&nbsp;h&nbsp;30 par 3 ne donne pas «&nbsp;6&nbsp;h&nbsp;90&nbsp;». Comme pour l'addition,
+        le système est <strong>sexagésimal</strong>&nbsp;: au-delà de 60&nbsp;minutes, il faut convertir en
+        heures. 90&nbsp;minutes valent 1&nbsp;h&nbsp;30, donc le résultat est
+        <strong>7&nbsp;h&nbsp;30</strong>.
+      </p>
+      <p>
+        Une calculatrice ordinaire ne sait pas faire cela&nbsp;: elle compte en base 10 et ignore qu'une heure
+        vaut 60&nbsp;minutes. C'est la raison d'être de cet outil.
+      </p>
+
+      <h2>La méthode fiable&nbsp;: passer par les minutes</h2>
+      <p>
+        <strong>Étape 1</strong>&nbsp;— convertissez la durée entièrement en minutes.
+        2&nbsp;h&nbsp;30 = (2 × 60) + 30 = <strong>150&nbsp;minutes</strong>.
+      </p>
+      <p>
+        <strong>Étape 2</strong>&nbsp;— multipliez ou divisez ce nombre, qui est un entier ordinaire.
+        150 × 3 = <strong>450&nbsp;minutes</strong>.
+      </p>
+      <p>
+        <strong>Étape 3</strong>&nbsp;— reconvertissez&nbsp;: divisez par 60 pour obtenir les heures, le reste
+        donne les minutes. 450 ÷ 60 = 7, reste 30, soit <strong>7&nbsp;h&nbsp;30</strong>.
+      </p>
+      <p>
+        La division suit exactement le même chemin. Pour répartir 10&nbsp;heures sur 4&nbsp;jours&nbsp;:
+        600&nbsp;minutes ÷ 4 = 150&nbsp;minutes = <strong>2&nbsp;h&nbsp;30</strong> par jour.
+      </p>
+
+      <h2>Le tableau des multiplications les plus demandées</h2>
+            <div class="table-wrap">
+        <table>
+          <caption>Multiplier une durée : les résultats les plus demandés</caption>
+          <thead><tr><th scope="col">Durée</th><th scope="col">× 2</th><th scope="col">× 3</th>
+          <th scope="col">× 4</th><th scope="col">× 5</th><th scope="col">× 10</th></tr></thead>
+          <tbody>
+          <tr><td><strong>15 min</strong></td><td>30 min</td><td>45 min</td><td>1 h 00</td><td>1 h 15</td><td>2 h 30</td></tr>
+          <tr><td><strong>20 min</strong></td><td>40 min</td><td>1 h 00</td><td>1 h 20</td><td>1 h 40</td><td>3 h 20</td></tr>
+          <tr><td><strong>30 min</strong></td><td>1 h 00</td><td>1 h 30</td><td>2 h 00</td><td>2 h 30</td><td>5 h 00</td></tr>
+          <tr><td><strong>45 min</strong></td><td>1 h 30</td><td>2 h 15</td><td>3 h 00</td><td>3 h 45</td><td>7 h 30</td></tr>
+          <tr><td><strong>1 h</strong></td><td>2 h 00</td><td>3 h 00</td><td>4 h 00</td><td>5 h 00</td><td>10 h 00</td></tr>
+          <tr><td><strong>1 h 30</strong></td><td>3 h 00</td><td>4 h 30</td><td>6 h 00</td><td>7 h 30</td><td>15 h 00</td></tr>
+          <tr><td><strong>2 h</strong></td><td>4 h 00</td><td>6 h 00</td><td>8 h 00</td><td>10 h 00</td><td>20 h 00</td></tr>
+          <tr><td><strong>2 h 30</strong></td><td>5 h 00</td><td>7 h 30</td><td>10 h 00</td><td>12 h 30</td><td>25 h 00</td></tr>
+          <tr><td><strong>7 h</strong></td><td>14 h 00</td><td>21 h 00</td><td>28 h 00</td><td>35 h 00</td><td>70 h 00</td></tr>
+        </tbody>
+        </table>
+      </div>
+
+      <h2>Combien d'heures par semaine&nbsp;? Le calcul le plus demandé</h2>
+      <p>
+        C'est de loin l'usage le plus fréquent de la multiplication de durées&nbsp;: connaître son volume
+        hebdomadaire à partir d'un horaire quotidien. <strong>7h30 × 5 jours = 37 h 30</strong>, soit
+        37,50&nbsp;heures décimales — le fameux temps plein français. Un poste de 7h45 sur cinq jours
+        donne 38 h 45, et 8h45 sur quatre jours donne 35 h 00.
+      </p>
+            <div class="table-wrap">
+        <table>
+          <caption>Un horaire quotidien multiplié par le nombre de jours travaillés</caption>
+          <thead><tr>
+            <th scope="col">Par jour</th><th scope="col">× 4 jours</th>
+            <th scope="col">× 5 jours</th><th scope="col">× 6 jours</th>
+            <th scope="col">Semaine de 5 j en décimal</th>
+          </tr></thead>
+          <tbody>
+          <tr><td><strong>7 h 00</strong></td><td>28 h 00</td><td>35 h 00</td><td>42 h 00</td><td>35,00</td></tr>
+          <tr><td><strong>7 h 30</strong></td><td>30 h 00</td><td>37 h 30</td><td>45 h 00</td><td>37,50</td></tr>
+          <tr><td><strong>7 h 45</strong></td><td>31 h 00</td><td>38 h 45</td><td>46 h 30</td><td>38,75</td></tr>
+          <tr><td><strong>8 h 00</strong></td><td>32 h 00</td><td>40 h 00</td><td>48 h 00</td><td>40,00</td></tr>
+          <tr><td><strong>8 h 15</strong></td><td>33 h 00</td><td>41 h 15</td><td>49 h 30</td><td>41,25</td></tr>
+          <tr><td><strong>8 h 30</strong></td><td>34 h 00</td><td>42 h 30</td><td>51 h 00</td><td>42,50</td></tr>
+          <tr><td><strong>8 h 45</strong></td><td>35 h 00</td><td>43 h 45</td><td>52 h 30</td><td>43,75</td></tr>
+          <tr><td><strong>9 h 00</strong></td><td>36 h 00</td><td>45 h 00</td><td>54 h 00</td><td>45,00</td></tr>
+          <tr><td><strong>10 h 00</strong></td><td>40 h 00</td><td>50 h 00</td><td>60 h 00</td><td>50,00</td></tr>
+          <tr><td><strong>12 h 00</strong></td><td>48 h 00</td><td>60 h 00</td><td>72 h 00</td><td>60,00</td></tr>
+        </tbody>
+        </table>
+      </div>
+      <p class="micro">
+        La dernière colonne donne la semaine de cinq jours en <strong>heures décimales</strong>, la forme
+        utilisée sur les bulletins de paie et dans les logiciels de gestion. Attention à ne pas la
+        confondre avec l'écriture horaire&nbsp;: 37,50 se lit 37 h 30, pas 37 h 50.
+      </p>
+
+      <h2>Quand la division ne tombe pas juste</h2>
+      <p>
+        8&nbsp;heures réparties sur 3&nbsp;personnes donnent 480 ÷ 3 = 160&nbsp;minutes, soit
+        <strong>2&nbsp;h&nbsp;40</strong> chacune&nbsp;— cela tombe juste. Mais 8&nbsp;heures sur
+        7&nbsp;personnes donnent 68,57&nbsp;minutes, soit environ <strong>1&nbsp;h&nbsp;09</strong>.
+      </p>
+      <p>
+        Le calculateur arrondit à la seconde près et affiche aussi le résultat en minutes décimales, ce qui
+        permet de voir immédiatement l'écart. Pour un planning, mieux vaut arrondir au quart d'heure supérieur
+        et absorber la différence sur la dernière part.
+      </p>
+
+      <h2>À quoi ça sert concrètement</h2>
+      <ul class="uses">
+        <li><strong>Devis et facturation</strong>&nbsp;: 1&nbsp;h&nbsp;45 d'intervention × 6 sites = 10&nbsp;h&nbsp;30 à facturer.</li>
+        <li><strong>Planning d'équipe</strong>&nbsp;: répartir 35&nbsp;heures de charge sur 4&nbsp;personnes.</li>
+        <li><strong>Formation</strong>&nbsp;: 12&nbsp;heures de module découpées en 8&nbsp;séances de 1&nbsp;h&nbsp;30.</li>
+        <li><strong>Sport</strong>&nbsp;: 8&nbsp;séries de 3&nbsp;min&nbsp;30, soit 28&nbsp;minutes d'effort.</li>
+        <li><strong>Cuisine</strong>&nbsp;: adapter un temps de cuisson en doublant les quantités.</li>
+        <li><strong>Musique</strong>&nbsp;: 12&nbsp;répétitions de 2&nbsp;h&nbsp;15 avant un concert.</li>
+      </ul>
+      <p class="micro">
+        Le calculateur accepte la virgule française pour les nombres décimaux&nbsp;: tapez <code>2,5</code>
+        pour multiplier par deux et demi.
+      </p>
+
+      <h2 id="faq">Questions fréquentes</h2>
+      <div class="faq">
+      <details>
+        <summary>Combien font 2h30 × 3 ?</summary>
+        <p>2h30 × 3 = 7h30. Le calcul passe par les minutes : 2h30 vaut 150 minutes, 150 × 3 = 450 minutes, et 450 ÷ 60 donne 7 heures et 30 minutes.</p>
+      </details>
+      <details>
+        <summary>Comment diviser une durée par un nombre ?</summary>
+        <p>Convertissez la durée en minutes, divisez, puis reconvertissez. Pour répartir 10 heures sur 4 jours : 600 minutes ÷ 4 = 150 minutes, soit 2 h 30 par jour.</p>
+      </details>
+      <details>
+        <summary>Peut-on multiplier une durée par un nombre décimal ?</summary>
+        <p>Oui. Multiplier 1h20 par 2,5 donne 3h20 : 80 minutes × 2,5 = 200 minutes. Le calculateur accepte la virgule française comme le point.</p>
+      </details>
+      <details>
+        <summary>Pourquoi ma calculatrice classique se trompe-t-elle ?</summary>
+        <p>Parce qu'elle compte en base 10 et ignore qu'une heure vaut 60 minutes. Elle affichera 6,9 pour 2,30 × 3, ce qui n'a aucun sens en durée. Il faut convertir en minutes avant de calculer, ou utiliser un outil qui le fait pour vous.</p>
+      </details>
+      </div>
+
+      <h2>Les autres calculateurs du site</h2>
+      <ul class="liens-connexes">
+        <li><a href="/">Calculatrice de durée</a></li>
+        <li><a href="convertir-minutes-en-heures.html">Convertir minutes → heures</a></li>
+        <li><a href="additionner-des-heures.html">Additionner des heures</a></li>
+        <li><a href="calcul-heures-de-travail.html">Heures de travail</a></li>
+        <li><a href="calcul-jours-ouvres.html">Jours ouvrés</a></li>
+        <li><a href="duree-entre-deux-dates.html">Entre 2 dates</a></li>
+        <li><a href="combien-heures-entre-deux-horaires.html">Combien d'heures entre 2 horaires</a></li>
+        <li><a href="jours-feries-belgique.html">Fériés Belgique</a></li>
+        <li><a href="jours-feries-suisse.html">Fériés Suisse</a></li>
+        <li><a href="jours-feries-luxembourg.html">Fériés Luxembourg</a></li>
+        <li><a href="jours-feries-quebec.html">Fériés Québec</a></li>
+      </ul>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <nav class="plan" aria-label="Plan du site">
+      <div>
+        <h2 class="plan-titre">Calculs de durée</h2>
+        <ul>
+          <li><a href="/">Calculatrice de durée</a></li>
+          <li><a href="additionner-des-heures.html">Addition d'heures</a></li>
+          <li><a href="convertir-minutes-en-heures.html">Convertir minutes en heures</a></li>
+          <li><span aria-current="page">Multiplier ou diviser une durée</span></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="plan-titre">Heures de travail</h2>
+        <ul>
+          <li><a href="calcul-heures-de-travail.html">Calcul des heures de travail</a></li>
+          <li><a href="combien-heures-entre-deux-horaires.html">Combien d'heures entre 2 horaires</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="plan-titre">Dates et jours ouvrés</h2>
+        <ul>
+          <li><a href="duree-entre-deux-dates.html">Durée entre deux dates</a></li>
+          <li><a href="calcul-jours-ouvres.html">Calcul des jours ouvrés</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="plan-titre">Jours fériés</h2>
+        <ul>
+          <li><a href="jours-feries-belgique.html">Belgique</a></li>
+          <li><a href="jours-feries-quebec.html">Québec</a></li>
+          <li><a href="jours-feries-suisse.html">Suisse</a></li>
+          <li><a href="jours-feries-luxembourg.html">Luxembourg</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="plan-titre">Le site</h2>
+        <ul>
+          <li><a href="nouveautes.html">Nouveautés</a></li>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+        </ul>
+      </div>
+    </nav>
+    <p>
+      <strong>Calculatrice de Durée</strong> — addition d'heures, temps de travail, jours ouvrés.
+      Calculs effectués dans votre navigateur, aucune donnée collectée.
+    </p>
+    <p class="micro">
+      © <span id="year">2026</span> Calculatrice de Durée · Les résultats sont fournis à titre indicatif ·
+      <a href="mentions-legales.html">Mentions légales &amp; confidentialité</a>
+    </p>
+  </div>
+</footer>
+
+<a class="retour-calc" id="retour-calc" href="#calculatrice"><span aria-hidden="true">↑</span> Calculateur</a>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js" defer></script>
+
+<!-- Mesure d'audience Cloudflare Web Analytics : sans cookie, sans suivi individuel,
+     donc aucun bandeau de consentement n'est requis. Chargé en module = non bloquant. -->
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "358b8858ea3e40f7b12a4fe1064cb56b"}'></script>
+</body>
+</html>

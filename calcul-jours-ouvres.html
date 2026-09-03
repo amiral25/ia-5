@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>Calcul des Jours Ouvrés entre 2 Dates – Fériés Inclus</title>
+<meta name="description" content="Comptez les jours ouvrés entre deux dates, week-ends et jours fériés français exclus. Différence entre jours ouvrés, ouvrables et calendaires expliquée.">
+
+<link rel="canonical" href="https://calculatrice-duree.fr/calcul-jours-ouvres.html">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Calculatrice de Durée">
+<meta property="og:title" content="Calcul des Jours Ouvrés entre 2 Dates – Fériés Inclus">
+<meta property="og:description" content="Comptez les jours ouvrés entre deux dates, week-ends et jours fériés français exclus. Différence entre jours ouvrés, ouvrables et calendaires expliquée.">
+<meta property="og:url" content="https://calculatrice-duree.fr/calcul-jours-ouvres.html">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+
+<!-- Anti-flash du thème sombre : doit rester en ligne et en premier -->
+<script>
+(function(){try{var t=localStorage.getItem('cd-theme');
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+document.documentElement.setAttribute('data-theme',t);
+if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('data-ms','1');
+}catch(e){}})();
+</script>
+
+<!-- ============================================================
+     GOOGLE ADSENSE — décommentez après validation et remplacez
+     ca-pub-XXXXXXXXXXXXXXXX par votre identifiant.
+     ============================================================
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+-->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://calculatrice-duree.fr/calcul-jours-ouvres.html#page",
+      "url": "https://calculatrice-duree.fr/calcul-jours-ouvres.html",
+      "name": "Calcul des Jours Ouvrés entre 2 Dates – Fériés Inclus",
+      "description": "Comptez les jours ouvrés entre deux dates, week-ends et jours fériés français exclus. Différence entre jours ouvrés, ouvrables et calendaires expliquée.",
+      "inLanguage": "fr-FR",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://calculatrice-duree.fr/#site",
+        "name": "Calculatrice de Durée",
+        "url": "https://calculatrice-duree.fr/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://calculatrice-duree.fr/calcul-jours-ouvres.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quelle est la différence entre jours ouvrés et jours ouvrables ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Les jours ouvrés sont les jours travaillés dans l'entreprise, en général du lundi au vendredi, soit 5 par semaine. Les jours ouvrables comptent tous les jours sauf le dimanche et les jours fériés, soit 6 par semaine. C'est pourquoi 25 jours ouvrés de congés équivalent à 30 jours ouvrables."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Combien y a-t-il de jours fériés en France ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La France métropolitaine compte 11 jours fériés légaux. Huit ont une date fixe et trois sont mobiles car calés sur Pâques : le lundi de Pâques, l'Ascension et le lundi de Pentecôte."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Un jour férié qui tombe un samedi est-il récupéré ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Non. La loi française ne prévoit aucun report ni aucune compensation lorsqu'un jour férié tombe un samedi ou un dimanche, sauf disposition plus favorable de la convention collective."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Les jours fériés sont-ils comptés dans les jours ouvrés ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Non, un jour férié chômé n'est pas un jour ouvré. Le calculateur les exclut automatiquement quand l'option « Exclure les jours fériés » est activée."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://calculatrice-duree.fr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Jours ouvrés",
+          "item": "https://calculatrice-duree.fr/calcul-jours-ouvres.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body data-tab="3">
+
+<a class="skip-link" href="#calculatrice">Aller à la calculatrice</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.2 2"></path>
+        </svg>
+      </span>
+      <span class="brand-text">Calculatrice&nbsp;de&nbsp;Durée</span>
+    </a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a href="additionner-des-heures.html">Addition d'heures</a>
+      <a href="calcul-heures-de-travail.html">Heures de travail</a>
+      <a href="duree-entre-deux-dates.html">Entre 2 dates</a>
+      <a href="calcul-jours-ouvres.html" aria-current="page">Jours fériés</a>
+    </nav>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Basculer le thème sombre">
+      <svg class="ico-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4.2"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"></path>
+      </svg>
+      <svg class="ico-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.7 6.7 0 0 0 10.5 10.5Z"></path>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <nav class="fil" aria-label="Fil d'Ariane">
+    <a href="/">Accueil</a> <span aria-hidden="true">›</span> <span>Jours ouvrés</span>
+  </nav>
+
+  <section class="hero">
+    <h1>Calculer les jours ouvrés entre deux dates</h1>
+    <p class="lead">Comptez les jours réellement travaillés, week-ends et jours fériés déduits. Et comprenez enfin la différence entre ouvré, ouvrable et calendaire.</p>
+  </section>
+
+  <aside class="ad ad-leaderboard" aria-label="Publicité">
+    <span class="ad-label">Publicité</span>
+    <div class="ad-slot">
+      <!-- ▼▼ COLLEZ ICI VOTRE BLOC ADSENSE « Bannière » ▼▼ -->
+      <span class="ad-ph">Emplacement publicitaire</span>
+    </div>
+  </aside>
+
+  <div class="layout">
+    <div class="col-main">
+      <section id="calculatrice" class="card calc" aria-label="Calculatrice de durée">
+
+        <div class="tabs" role="tablist" aria-label="Type de calcul">
+          <button class="tab is-active" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true" type="button"
+                  aria-label="Addition / Soustraction de durées">
+            <svg class="tab-ico" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" aria-hidden="true">
+              <path d="M12 5v7M8.5 8.5h7M6.5 18h11"></path>
+            </svg><span>Addition / Soustraction</span>
+          </button>
+          <button class="tab" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false" tabindex="-1" type="button"
+                  aria-label="Durée entre 2 heures">
+            <svg class="tab-ico" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.4"></circle><path d="M12 7.4V12l3 2"></path>
+            </svg><span>Entre 2 heures</span>
+          </button>
+          <button class="tab" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false" tabindex="-1" type="button"
+                  aria-label="Durée entre 2 dates">
+            <svg class="tab-ico" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3.4" y="5" width="17.2" height="15.5" rx="2.6"></rect><path d="M3.4 10h17.2M8 3v4M16 3v4"></path>
+            </svg><span>Entre 2 dates</span>
+          </button>
+          <button class="tab" role="tab" id="tab-4" aria-controls="panel-4" aria-selected="false" tabindex="-1" type="button"
+                  aria-label="Multiplier / Diviser une durée">
+            <svg class="tab-ico" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" aria-hidden="true">
+              <path d="M5.5 7.5l5 5M10.5 7.5l-5 5M14.5 15h6"></path>
+              <circle cx="17.5" cy="11.6" r=".95" fill="currentColor" stroke="none"></circle>
+              <circle cx="17.5" cy="18.4" r=".95" fill="currentColor" stroke="none"></circle>
+            </svg><span>Multiplier / Diviser</span>
+          </button>
+        </div>
+
+        <!-- RÉSULTAT (hauteur réservée → CLS = 0) -->
+        <div class="result" id="result" aria-live="polite">
+          <span class="res-exemple" id="res-exemple">Exemple</span>
+          <div class="result-main">
+            <span class="result-label" id="res-label">Écart entre deux dates</span>
+            <output class="result-value" id="res-value">—</output>
+          </div>
+          <!-- État initial écrit en dur : le JS le remplace à l'identique,
+               donc rien ne bouge au chargement (CLS = 0). -->
+          <div class="result-grid" id="res-grid">
+            <div class="res-cell">
+            <b>—</b>
+            <span>Jours ouvrés *</span></div>
+            <div class="res-cell">
+            <b>—</b>
+            <span>Semaines</span></div>
+            <div class="res-cell">
+            <b>—</b>
+            <span>Détail calendaire</span></div>
+            <div class="res-cell">
+            <b>—</b>
+            <span>Jours inclus *</span></div>
+            <div class="res-cell">
+            <b>—</b>
+            <span>Heures</span></div>
+
+          </div>
+          <p class="result-note" id="res-note">* bornes incluses. Jours fériés : France.</p>
+          <p class="result-err is-hidden" id="res-err"></p>
+        </div>
+
+        <div class="actions">
+          <button id="btn-copy" class="btn btn-primary" type="button" aria-label="Copier le résultat">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+            </svg>
+            <span id="copy-txt">Copier<span class="btn-long"> le résultat</span></span>
+          </button>
+          <button id="btn-reset" class="btn btn-ghost" type="button">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 12a9 9 0 1 0 3-6.7L3 8"></path><path d="M3 3v5h5"></path>
+            </svg>
+            Effacer
+          </button>
+          <button id="btn-share" class="btn btn-ghost" type="button" aria-label="Partager ce calcul">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"></path><path d="M12 15V3M8 7l4-4 4 4"></path>
+            </svg>
+            Partager<span class="btn-long"> ce calcul</span>
+          </button>
+        </div>
+
+
+        <!-- ONGLET 1 -->
+        <div class="panel" role="tabpanel" id="panel-1" aria-labelledby="tab-1">
+          <div class="field">
+            <label class="lbl" for="quick">Saisie rapide</label>
+            <input id="quick" class="inp inp-quick" type="text" inputmode="text" autocomplete="off" spellcheck="false"
+                   aria-describedby="quick-hint" placeholder="Ex : 2h30 + 1h45 − 20min">
+            <p class="hint" id="quick-hint">
+              Utilisez <code>+</code> pour <strong>additionner</strong> et <code>-</code> pour
+              <strong>soustraire</strong>. Formats acceptés&nbsp;: <code>2h30</code>, <code>2:30</code>,
+              <code>45min</code>, <code>90s</code>, <code>1j</code>. Un nombre seul&nbsp;= des heures
+              (<code>1,5</code> = 1h30). Le résultat peut être négatif.
+              Laissez vide pour utiliser les champs ci-dessous.
+            </p>
+          </div>
+
+          <div class="sep"><span>ou saisie détaillée</span></div>
+
+          <div id="rows" class="rows">
+            <div class="row-units" aria-hidden="true">
+            <span>Ajouter / Retirer</span>
+            <span>Heures</span>
+            <span>Minutes</span>
+            <span>Sec.</span>
+            <span class="u-ms">Ms.</span>
+            <span></span></div>
+            <div class="row">
+            <div class="sign-group" role="group" aria-label="Ajouter ou soustraire cette durée">
+            <button type="button" class="sg-btn sg-plus is-on" data-sign="+" aria-pressed="true" title="Additionner cette durée">+</button>
+            <button type="button" class="sg-btn sg-minus" data-sign="-" aria-pressed="false" title="Soustraire cette durée">−</button></div><input class="inp r-h" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Heures" value="2"><input class="inp r-m" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Minutes" value="30"><input class="inp r-s" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Secondes" value=""><input class="inp r-ms" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Millisecondes" value="">
+            <button class="row-del" type="button" aria-label="Supprimer cette ligne">×</button></div>
+            <div class="row">
+            <div class="sign-group" role="group" aria-label="Ajouter ou soustraire cette durée">
+            <button type="button" class="sg-btn sg-plus is-on" data-sign="+" aria-pressed="true" title="Additionner cette durée">+</button>
+            <button type="button" class="sg-btn sg-minus" data-sign="-" aria-pressed="false" title="Soustraire cette durée">−</button></div><input class="inp r-h" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Heures" value="1"><input class="inp r-m" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Minutes" value="45"><input class="inp r-s" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Secondes" value=""><input class="inp r-ms" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Millisecondes" value="">
+            <button class="row-del" type="button" aria-label="Supprimer cette ligne">×</button></div>
+          </div>
+
+          <div class="row-actions">
+            <button id="add-row" class="btn btn-ghost btn-sm" type="button" aria-label="Ajouter une durée">
+              <span class="op-plus" aria-hidden="true">+</span> Ajouter<span class="btn-long"> une durée</span>
+            </button>
+            <button id="sub-row" class="btn btn-ghost btn-sm" type="button" aria-label="Soustraire une durée">
+              <span class="op-minus" aria-hidden="true">−</span> Soustraire<span class="btn-long"> une durée</span>
+            </button>
+            <button id="btn-retenue" class="btn btn-ghost btn-sm" type="button"
+                    aria-label="Reporter le total sur la première ligne"
+                    title="Reporter le total sur la première ligne pour continuer le calcul">
+              <span aria-hidden="true">↩</span> Reporter<span class="btn-long"> le total</span>
+            </button>
+          </div>
+          <label class="switch switch-ms">
+            <input id="opt-ms" type="checkbox">
+            <span class="switch-ui" aria-hidden="true"></span>
+            <span>Afficher les millisecondes</span>
+          </label>
+          <p class="hint">
+            Sur chaque ligne, choisissez <strong>+</strong> pour ajouter la durée ou <strong>−</strong> pour la retirer
+            du total. Un total négatif s'affiche tel quel, précédé d'un signe moins&nbsp;: utile pour un compteur
+            d'heures en déficit.
+          </p>
+          <p class="hint raccourcis">
+            Au clavier&nbsp;: <kbd>+</kbd> ajoute une ligne · <kbd>-</kbd> en ajoute une à soustraire ·
+            <kbd>W</kbd> reporte le total · <kbd>C</kbd> copie le résultat · <kbd>M</kbd> remet à zéro.
+          </p>
+        </div>
+
+        <!-- ONGLET 2 -->
+        <div class="panel is-hidden" role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden>
+          <div class="grid-2">
+            <div class="field">
+              <label class="lbl" for="h-start">Heure de début</label>
+              <input id="h-start" class="inp" type="time" value="08:30" step="60">
+            </div>
+            <div class="field">
+              <label class="lbl" for="h-end">Heure de fin</label>
+              <input id="h-end" class="inp" type="time" value="17:15" step="60">
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="field">
+              <label class="lbl" for="h-pause">Pause (minutes)</label>
+              <input id="h-pause" class="inp" type="number" min="0" max="1440" step="5" value="45" inputmode="numeric">
+            </div>
+            <div class="field">
+              <span class="lbl">Pauses fréquentes</span>
+              <div class="chips">
+                <button class="chip" type="button" data-pause="0">Aucune</button>
+                <button class="chip" type="button" data-pause="30">30 min</button>
+                <button class="chip" type="button" data-pause="45">45 min</button>
+                <button class="chip" type="button" data-pause="60">1 h</button>
+              </div>
+            </div>
+          </div>
+          <p id="h-note" class="note is-hidden">🌙 L'heure de fin est le lendemain (service de nuit).</p>
+        </div>
+
+        <!-- ONGLET 3 -->
+        <div class="panel is-hidden" role="tabpanel" id="panel-3" aria-labelledby="tab-3" hidden>
+          <div class="grid-2">
+            <div class="field">
+              <label class="lbl" for="d-start">Date de début</label>
+              <input id="d-start" class="inp" type="date">
+            </div>
+            <div class="field">
+              <label class="lbl" for="d-end">Date de fin</label>
+              <input id="d-end" class="inp" type="date">
+            </div>
+          </div>
+          <div class="field">
+            <label class="lbl" for="d-pays">Jours fériés du pays</label>
+            <select id="d-pays" class="inp inp-select">
+              <option value="fr">France</option>
+              <option value="be">Belgique</option>
+              <option value="ch">Suisse (socle romand)</option>
+              <option value="lu">Luxembourg</option>
+              <option value="qc">Québec</option>
+            </select>
+          </div>
+          <div class="opts">
+            <label class="switch">
+              <input id="d-weekend" type="checkbox" checked>
+              <span class="switch-ui" aria-hidden="true"></span>
+              <span>Exclure les week-ends</span>
+            </label>
+            <label class="switch">
+              <input id="d-holidays" type="checkbox" checked>
+              <span class="switch-ui" aria-hidden="true"></span>
+              <span>Exclure les jours fériés</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- ONGLET 4 -->
+        <div class="panel is-hidden" role="tabpanel" id="panel-4" aria-labelledby="tab-4" hidden>
+          <div class="field">
+            <span class="lbl">Durée de départ</span>
+            <div class="units-3" aria-hidden="true"><span>Heures</span><span>Minutes</span><span>Sec.</span></div>
+            <div class="grid-3">
+              <input id="m-h" class="inp" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Heures" value="2">
+              <input id="m-m" class="inp" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Minutes" value="30">
+              <input id="m-s" class="inp" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Secondes">
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <span class="lbl">Opération</span>
+              <div class="sign-group sign-group-op" role="group" aria-label="Multiplier ou diviser">
+                <button type="button" class="sg-btn sg-mul is-on" data-op="x" aria-pressed="true">× Multiplier</button>
+                <button type="button" class="sg-btn sg-div" data-op="/" aria-pressed="false">÷ Diviser</button>
+              </div>
+            </div>
+            <div class="field">
+              <label class="lbl" for="m-n">Par combien&nbsp;?</label>
+              <!-- type="text" volontaire : un champ number rejette la virgule,
+                   or « 2,5 » est la façon française d'écrire un nombre décimal. -->
+              <input id="m-n" class="inp" type="text" inputmode="decimal" autocomplete="off"
+                     spellcheck="false" placeholder="3" value="3">
+            </div>
+          </div>
+
+          <p class="hint">
+            Exemples&nbsp;: <code>2h30 × 3</code> = 7h30 (trois séances identiques) ·
+            <code>10h ÷ 4</code> = 2h30 (répartir une charge sur 4&nbsp;jours).
+          </p>
+        </div>
+
+        <div class="history" id="history-box" hidden>
+          <!-- Visible uniquement à l'impression : sert d'en-tête au relevé papier/PDF. -->
+          <p class="print-seul" id="print-entete">Relevé de durées</p>
+          <div class="history-head">
+            <h2 class="history-title">Vos derniers calculs</h2>
+            <div class="history-actions">
+              <button id="btn-csv" class="link-btn" type="button">Exporter CSV</button>
+              <button id="btn-print" class="link-btn" type="button">Imprimer / PDF</button>
+              <button id="btn-clear-hist" class="link-btn" type="button">Vider</button>
+            </div>
+          </div>
+          <ul class="history-list" id="history-list"></ul>
+        </div>
+      </section>
+
+      <!-- Liens contextuels placés au ras du calculateur : le bloc complet
+           reste en bas de page, mais ces trois-là sont vus. -->
+      <nav class="voisins" aria-label="Calculateurs proches">
+        <span class="voisins-titre">À voir aussi</span>
+        <ul>
+        <li><a href="duree-entre-deux-dates.html">Entre deux dates</a></li>
+        <li><a href="jours-feries-belgique.html">Fériés Belgique</a></li>
+        <li><a href="jours-feries-quebec.html">Fériés Québec</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <aside class="col-side" aria-label="Publicité">
+      <div class="ad ad-rect">
+        <span class="ad-label">Publicité</span>
+        <div class="ad-slot ad-slot-rect">
+          <!-- ▼▼ COLLEZ ICI VOTRE BLOC ADSENSE « Rectangle 300×250 » ▼▼ -->
+          <span class="ad-ph">Emplacement publicitaire<br>300 × 250</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <article class="content">
+
+      <h2>Ouvré, ouvrable, calendaire&nbsp;: trois compteurs différents</h2>
+      <p>
+        Ces trois mots désignent des décomptes distincts, et les confondre fausse un calcul de congés
+        comme un délai contractuel.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <caption>Les trois façons de compter les jours</caption>
+          <thead><tr><th scope="col">Type</th><th scope="col">Ce qu'on compte</th><th scope="col">Par semaine</th><th scope="col">Usage typique</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Ouvrés</strong></td><td>Lundi à vendredi, hors fériés</td><td>5 jours</td><td>Jours réellement travaillés, délais de livraison</td></tr>
+            <tr><td><strong>Ouvrables</strong></td><td>Lundi à samedi, hors fériés</td><td>6 jours</td><td>Décompte légal des congés payés</td></tr>
+            <tr><td><strong>Calendaires</strong></td><td>Tous les jours, sans exception</td><td>7 jours</td><td>Préavis, délais de rétractation, prescriptions</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Conséquence pratique pour les congés&nbsp;: <strong>25&nbsp;jours ouvrés équivalent à 30&nbsp;jours
+        ouvrables</strong>. Les deux décomptes donnent bien cinq semaines de congés payés, mais avec des
+        chiffres différents. Une semaine de vacances «&nbsp;coûte&nbsp;» 5&nbsp;jours en ouvrés et 6 en ouvrables.
+      </p>
+
+      <h2>Les 11 jours fériés français</h2>
+      <p>
+        Huit ont une date fixe. Trois sont <strong>mobiles</strong>, car calés sur Pâques&nbsp;: le lundi de
+        Pâques (Pâques +1), l'Ascension (+39&nbsp;jours) et le lundi de Pentecôte (+50&nbsp;jours). Leur date
+        change donc chaque année, ce qui rend le calcul manuel pénible.
+      </p>
+            <div class="table-wrap">
+        <table>
+          <caption>Les 11 jours fériés 2026 — France métropolitaine</caption>
+          <thead><tr><th scope="col">Jour férié</th><th scope="col">Date 2026</th><th scope="col">Tombe-t-il en semaine&nbsp;?</th></tr></thead>
+          <tbody>
+          <tr><td>Jour de l'an</td><td>jeudi 1<sup>er</sup> janvier</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Lundi de Pâques</td><td>lundi 6 avril</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Fête du Travail</td><td>vendredi 1<sup>er</sup> mai</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Victoire 1945</td><td>vendredi 8 mai</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Ascension</td><td>jeudi 14 mai</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Lundi de Pentecôte</td><td>lundi 25 mai</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Fête nationale</td><td>mardi 14 juillet</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Assomption</td><td>samedi 15 août</td><td>❌ non, week-end</td></tr>
+          <tr><td>Toussaint</td><td>dimanche 1<sup>er</sup> novembre</td><td>❌ non, week-end</td></tr>
+          <tr><td>Armistice 1918</td><td>mercredi 11 novembre</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Noël</td><td>vendredi 25 décembre</td><td>✅ oui, en semaine</td></tr>
+        </tbody>
+        </table>
+      </div>
+      <p class="micro">En 2026, <strong>2 jours fériés</strong> tombent
+      un samedi ou un dimanche, et l'année compte
+      <strong>252 jours ouvrés</strong> au total&nbsp;;
+      la loi française ne prévoit aucun report, ces jours sont donc « perdus ».</p>
+            <div class="table-wrap">
+        <table>
+          <caption>Les 11 jours fériés 2027 — France métropolitaine</caption>
+          <thead><tr><th scope="col">Jour férié</th><th scope="col">Date 2027</th><th scope="col">Tombe-t-il en semaine&nbsp;?</th></tr></thead>
+          <tbody>
+          <tr><td>Jour de l'an</td><td>vendredi 1<sup>er</sup> janvier</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Lundi de Pâques</td><td>lundi 29 mars</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Fête du Travail</td><td>samedi 1<sup>er</sup> mai</td><td>❌ non, week-end</td></tr>
+          <tr><td>Ascension</td><td>jeudi 6 mai</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Victoire 1945</td><td>samedi 8 mai</td><td>❌ non, week-end</td></tr>
+          <tr><td>Lundi de Pentecôte</td><td>lundi 17 mai</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Fête nationale</td><td>mercredi 14 juillet</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Assomption</td><td>dimanche 15 août</td><td>❌ non, week-end</td></tr>
+          <tr><td>Toussaint</td><td>lundi 1<sup>er</sup> novembre</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Armistice 1918</td><td>jeudi 11 novembre</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Noël</td><td>samedi 25 décembre</td><td>❌ non, week-end</td></tr>
+        </tbody>
+        </table>
+      </div>
+      <p class="micro">En 2027, <strong>4 jours fériés</strong> tombent
+      un samedi ou un dimanche, et l'année compte
+      <strong>254 jours ouvrés</strong> au total&nbsp;;
+      la loi française ne prévoit aucun report, ces jours sont donc « perdus ».</p>
+      <p>
+        Seul le <strong>1<sup>er</sup>&nbsp;mai</strong> est légalement chômé et payé pour tous&nbsp;; les dix
+        autres ne le sont que si un accord ou un usage le prévoit — c'est cependant le cas dans la très grande
+        majorité des entreprises. La loi ne prévoit <strong>aucun report</strong> lorsqu'un jour férié tombe un
+        samedi ou un dimanche.
+      </p>
+
+      <h2>Bornes incluses ou exclues&nbsp;?</h2>
+      <p>
+        C'est la source d'erreur la plus fréquente, et la plupart des outils ne le précisent pas. Entre le
+        lundi et le vendredi de la même semaine, il y a <strong>4&nbsp;jours d'écart</strong> mais
+        <strong>5&nbsp;jours travaillés</strong>. Le calculateur affiche les deux valeurs séparément&nbsp;:
+        l'écart en jours, et le nombre de jours ouvrés <strong>bornes incluses</strong> (la date de début et
+        celle de fin sont comptées).
+      </p>
+      <p>
+        Vérifiez toujours quelle convention utilise votre interlocuteur avant de vous engager sur un délai.
+        Un «&nbsp;délai de 5&nbsp;jours ouvrés&nbsp;» peut signifier la fin de semaine ou le lundi suivant
+        selon la façon de compter.
+      </p>
+
+      <h2>À quoi ça sert au quotidien</h2>
+      <ul class="uses">
+        <li><strong>Congés payés</strong>&nbsp;: savoir combien de jours seront décomptés de votre solde.</li>
+        <li><strong>Délais de livraison</strong>&nbsp;: « expédié sous 3 jours ouvrés » n'inclut ni le week-end ni les fériés.</li>
+        <li><strong>Planning et charge d'équipe</strong>&nbsp;: connaître le nombre réel de jours travaillables sur un mois ou un trimestre.</li>
+        <li><strong>Arrêts de travail et absences</strong>&nbsp;: convertir une durée calendaire en jours effectivement travaillés.</li>
+      </ul>
+      <h2>Vous ne travaillez pas en France&nbsp;?</h2>
+      <p>
+        Le calculateur ne se limite pas au calendrier français. Le sélecteur
+        «&nbsp;<strong>Jours fériés du pays</strong>&nbsp;» au-dessus des options bascule le décompte sur
+        la Belgique, la Suisse, le Luxembourg ou le Québec — dates mobiles recalculées comprises. Le pays
+        choisi est mémorisé pour vos prochaines visites.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <caption>Nombre de jours ouvrés en 2026 selon le pays</caption>
+          <thead><tr><th scope="col">Pays</th><th scope="col">Jours fériés légaux</th><th scope="col">Jours ouvrés en 2026</th></tr></thead>
+          <tbody>
+            <tr><td><strong>France métropolitaine</strong></td><td>11 jours</td><td>252 jours</td></tr>
+            <tr><td><strong>Belgique</strong></td><td>10 jours</td><td>253 jours</td></tr>
+            <tr><td><strong>Suisse (socle romand)</strong></td><td>7 jours</td><td>255 jours</td></tr>
+            <tr><td><strong>Luxembourg</strong></td><td>11 jours</td><td>254 jours</td></tr>
+            <tr><td><strong>Québec</strong></td><td>8 jours</td><td>253 jours</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ul class="uses">
+        <li><a href="jours-feries-belgique.html">Jours fériés en Belgique</a> — et la règle du jour de remplacement.</li>
+        <li><a href="jours-feries-suisse.html">Jours fériés en Suisse</a> — un seul est fédéral, tous les autres sont cantonaux.</li>
+        <li><a href="jours-feries-luxembourg.html">Jours fériés au Luxembourg</a> — indispensable pour les frontaliers.</li>
+        <li><a href="jours-feries-quebec.html">Jours fériés au Québec</a> — la Loi sur les normes du travail.</li>
+      </ul>
+      <p class="micro">
+        Côté français, le calculateur couvre la <strong>France métropolitaine</strong>. L'Alsace-Moselle compte
+        deux fériés supplémentaires (Vendredi saint et 26&nbsp;décembre), et les départements d'outre-mer ont
+        leurs propres dates de commémoration de l'abolition de l'esclavage — non pris en compte ici.
+      </p>
+
+      <h2 id="faq">Questions fréquentes</h2>
+      <div class="faq">
+      <details>
+        <summary>Quelle est la différence entre jours ouvrés et jours ouvrables ?</summary>
+        <p>Les jours ouvrés sont les jours travaillés dans l'entreprise, en général du lundi au vendredi, soit 5 par semaine. Les jours ouvrables comptent tous les jours sauf le dimanche et les jours fériés, soit 6 par semaine. C'est pourquoi 25 jours ouvrés de congés équivalent à 30 jours ouvrables.</p>
+      </details>
+      <details>
+        <summary>Combien y a-t-il de jours fériés en France ?</summary>
+        <p>La France métropolitaine compte 11 jours fériés légaux. Huit ont une date fixe et trois sont mobiles car calés sur Pâques : le lundi de Pâques, l'Ascension et le lundi de Pentecôte.</p>
+      </details>
+      <details>
+        <summary>Un jour férié qui tombe un samedi est-il récupéré ?</summary>
+        <p>Non. La loi française ne prévoit aucun report ni aucune compensation lorsqu'un jour férié tombe un samedi ou un dimanche, sauf disposition plus favorable de la convention collective.</p>
+      </details>
+      <details>
+        <summary>Les jours fériés sont-ils comptés dans les jours ouvrés ?</summary>
+        <p>Non, un jour férié chômé n'est pas un jour ouvré. Le calculateur les exclut automatiquement quand l'option « Exclure les jours fériés » est activée.</p>
+      </details>
+      </div>
+
+      <h2>Les autres calculateurs du site</h2>
+      <ul class="liens-connexes">
+        <li><a href="/">Calculatrice de durée</a></li>
+        <li><a href="convertir-minutes-en-heures.html">Convertir minutes → heures</a></li>
+        <li><a href="additionner-des-heures.html">Additionner des heures</a></li>
+        <li><a href="calcul-heures-de-travail.html">Heures de travail</a></li>
+        <li><a href="duree-entre-deux-dates.html">Entre 2 dates</a></li>
+        <li><a href="combien-heures-entre-deux-horaires.html">Combien d'heures entre 2 horaires</a></li>
+        <li><a href="multiplier-diviser-une-duree.html">Multiplier / Diviser</a></li>
+        <li><a href="jours-feries-belgique.html">Fériés Belgique</a></li>
+        <li><a href="jours-feries-suisse.html">Fériés Suisse</a></li>
+        <li><a href="jours-feries-luxembourg.html">Fériés Luxembourg</a></li>
+        <li><a href="jours-feries-quebec.html">Fériés Québec</a></li>
+      </ul>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <nav class="plan" aria-label="Plan du site">
+      <div>
+        <h2 class="plan-titre">Calculs de durée</h2>
+        <ul>
+          <li><a href="/">Calculatrice de durée</a></li>
+          <li><a href="additionner-des-heures.html">Addition d'heures</a></li>
+          <li><a href="convertir-minutes-en-heures.html">Convertir minutes en heures</a></li>
+          <li><a href="multiplier-diviser-une-duree.html">Multiplier ou diviser une durée</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="plan-titre">Heures de travail</h2>
+        <ul>
+          <li><a href="calcul-heures-de-travail.html">Calcul des heures de travail</a></li>
+          <li><a href="combien-heures-entre-deux-horaires.html">Combien d'heures entre 2 horaires</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="plan-titre">Dates et jours ouvrés</h2>
+        <ul>
+          <li><a href="duree-entre-deux-dates.html">Durée entre deux dates</a></li>
+          <li><span aria-current="page">Calcul des jours ouvrés</span></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="plan-titre">Jours fériés</h2>
+        <ul>
+          <li><a href="jours-feries-belgique.html">Belgique</a></li>
+          <li><a href="jours-feries-quebec.html">Québec</a></li>
+          <li><a href="jours-feries-suisse.html">Suisse</a></li>
+          <li><a href="jours-feries-luxembourg.html">Luxembourg</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="plan-titre">Le site</h2>
+        <ul>
+          <li><a href="nouveautes.html">Nouveautés</a></li>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+        </ul>
+      </div>
+    </nav>
+    <p>
+      <strong>Calculatrice de Durée</strong> — addition d'heures, temps de travail, jours ouvrés.
+      Calculs effectués dans votre navigateur, aucune donnée collectée.
+    </p>
+    <p class="micro">
+      © <span id="year">2026</span> Calculatrice de Durée · Les résultats sont fournis à titre indicatif ·
+      <a href="mentions-legales.html">Mentions légales &amp; confidentialité</a>
+    </p>
+  </div>
+</footer>
+
+<a class="retour-calc" id="retour-calc" href="#calculatrice"><span aria-hidden="true">↑</span> Calculateur</a>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js" defer></script>
+
+<!-- Mesure d'audience Cloudflare Web Analytics : sans cookie, sans suivi individuel,
+     donc aucun bandeau de consentement n'est requis. Chargé en module = non bloquant. -->
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "358b8858ea3e40f7b12a4fe1064cb56b"}'></script>
+</body>
+</html>

@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>Calculatrice d'Heure de Travail – Calcul du Temps de Travail</title>
+<meta name="description" content="Calculatrice d'heure de travail gratuite : temps de travail effectif, pauses déduites, horaires de nuit, total hebdomadaire et heures supplémentaires.">
+
+<link rel="canonical" href="https://calculatrice-duree.fr/calcul-heures-de-travail.html">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Calculatrice de Durée">
+<meta property="og:title" content="Calculatrice d'Heure de Travail – Calcul du Temps de Travail">
+<meta property="og:description" content="Calculatrice d'heure de travail gratuite : temps de travail effectif, pauses déduites, horaires de nuit, total hebdomadaire et heures supplémentaires.">
+<meta property="og:url" content="https://calculatrice-duree.fr/calcul-heures-de-travail.html">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+
+<!-- Anti-flash du thème sombre : doit rester en ligne et en premier -->
+<script>
+(function(){try{var t=localStorage.getItem('cd-theme');
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+document.documentElement.setAttribute('data-theme',t);
+if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('data-ms','1');
+}catch(e){}})();
+</script>
+
+<!-- ============================================================
+     GOOGLE ADSENSE — décommentez après validation et remplacez
+     ca-pub-XXXXXXXXXXXXXXXX par votre identifiant.
+     ============================================================
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+-->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://calculatrice-duree.fr/calcul-heures-de-travail.html#page",
+      "url": "https://calculatrice-duree.fr/calcul-heures-de-travail.html",
+      "name": "Calculatrice d'Heure de Travail – Calcul du Temps de Travail",
+      "description": "Calculatrice d'heure de travail gratuite : temps de travail effectif, pauses déduites, horaires de nuit, total hebdomadaire et heures supplémentaires.",
+      "inLanguage": "fr-FR",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://calculatrice-duree.fr/#site",
+        "name": "Calculatrice de Durée",
+        "url": "https://calculatrice-duree.fr/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://calculatrice-duree.fr/calcul-heures-de-travail.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Comment calculer ses heures de travail avec une pause ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Soustrayez l'heure de début de l'heure de fin, puis retirez la durée de la pause non rémunérée. De 08h30 à 17h15 avec 45 minutes de pause : 8h45 − 45 min = 8h00 de travail effectif."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment calculer un horaire de nuit qui passe minuit ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ajoutez 24 heures à l'heure de fin avant de soustraire. Pour un poste de 21h00 à 5h30 : 29h30 − 21h00 = 8h30. Le calculateur le fait automatiquement."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Combien font 35 heures par semaine en heures mensuelles ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "35 heures hebdomadaires correspondent à 151,67 heures par mois : 35 × 52 semaines ÷ 12 mois = 151,666…, arrondi à 151,67."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "La pause déjeuner est-elle du temps de travail ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Non, si vous êtes libre de vaquer à vos occupations personnelles : elle n'est alors ni du temps de travail effectif ni rémunérée. Elle le redevient si vous restez à disposition de l'employeur. Votre convention collective peut prévoir des règles plus favorables."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "De 8h à 17h, combien d'heures ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "De 8h00 à 17h00, il s'écoule 9 heures d'amplitude. Avec une pause déjeuner d'une heure non rémunérée, le temps de travail effectif est de 8 heures, soit 8,00 heures décimales et 480 minutes. Avec 45 minutes de pause, il reste 8 h 15."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment calculer la durée entre deux horaires ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Soustrayez l'heure de début de l'heure de fin. Si les minutes de fin sont inférieures à celles de début, empruntez une heure : par exemple 17h15 − 8h30 revient à calculer 16h75 − 8h30, soit 8 h 45. Si l'horaire passe minuit, ajoutez 24 heures à l'heure de fin avant de soustraire."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment calculer le nombre d'heures travaillées par mois ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multipliez votre durée hebdomadaire par 52 semaines, puis divisez par 12 mois. Pour 35 heures : 35 × 52 ÷ 12 = 151,67 heures par mois. Pour 39 heures : 169 heures. Pour un temps partiel à 24 heures : 104 heures."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://calculatrice-duree.fr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Heures de travail",
+          "item": "https://calculatrice-duree.fr/calcul-heures-de-travail.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body data-tab="2">
+
+<a class="skip-link" href="#calculatrice">Aller à la calculatrice</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.2 2"></path>
+        </svg>
+      </span>
+      <span class="brand-text">Calculatrice&nbsp;de&nbsp;Durée</span>
+    </a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a href="additionner-des-heures.html">Addition d'heures</a>
+      <a href="calcul-heures-de-travail.html" aria-current="page">Heures de travail</a>
+      <a href="duree-entre-deux-dates.html">Entre 2 dates</a>
+      <a href="calcul-jours-ouvres.html">Jours fériés</a>
+    </nav>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Basculer le thème sombre">
+      <svg class="ico-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4.2"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"></path>
+      </svg>
+      <svg class="ico-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.7 6.7 0 0 0 10.5 10.5Z"></path>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <nav class="fil" aria-label="Fil d'Ariane">
+    <a href="/">Accueil</a> <span aria-hidden="true">›</span> <span>Heures de travail</span>
+  </nav>
+
+  <section class="hero">
+    <h1>Calculatrice d'heure de travail : calculer son temps de travail</h1>
+    <p class="lead">Temps de travail effectif, pauses déduites, postes de nuit et heures supplémentaires. Entrez vos horaires, le calcul est immédiat.</p>
+  </section>
+
+  <aside class="ad ad-leaderboard" aria-label="Publicité">
+    <span class="ad-label">Publicité</span>
+    <div class="ad-slot">
+      <!-- ▼▼ COLLEZ ICI VOTRE BLOC ADSENSE « Bannière » ▼▼ -->
+      <span class="ad-ph">Emplacement publicitaire</span>
+    </div>
+  </aside>
+
+  <div class="layout">
+    <div class="col-main">
+      <section id="calculatrice" class="card calc" aria-label="Calculatrice de durée">
+
+        <div class="tabs" role="tablist" aria-label="Type de calcul">
+          <button class="tab is-active" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true" type="button"
+                  aria-label="Addition / Soustraction de durées">
+            <svg class="tab-ico" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" aria-hidden="true">
+              <path d="M12 5v7M8.5 8.5h7M6.5 18h11"></path>
+            </svg><span>Addition / Soustraction</span>
+          </button>
+          <button class="tab" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false" tabindex="-1" type="button"
+                  aria-label="Durée entre 2 heures">
+            <svg class="tab-ico" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.4"></circle><path d="M12 7.4V12l3 2"></path>
+            </svg><span>Entre 2 heures</span>
+          </button>
+          <button class="tab" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false" tabindex="-1" type="button"
+                  aria-label="Durée entre 2 dates">
+            <svg class="tab-ico" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3.4" y="5" width="17.2" height="15.5" rx="2.6"></rect><path d="M3.4 10h17.2M8 3v4M16 3v4"></path>
+            </svg><span>Entre 2 dates</span>
+          </button>
+          <button class="tab" role="tab" id="tab-4" aria-controls="panel-4" aria-selected="false" tabindex="-1" type="button"
+                  aria-label="Multiplier / Diviser une durée">
+            <svg class="tab-ico" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" aria-hidden="true">
+              <path d="M5.5 7.5l5 5M10.5 7.5l-5 5M14.5 15h6"></path>
+              <circle cx="17.5" cy="11.6" r=".95" fill="currentColor" stroke="none"></circle>
+              <circle cx="17.5" cy="18.4" r=".95" fill="currentColor" stroke="none"></circle>
+            </svg><span>Multiplier / Diviser</span>
+          </button>
+        </div>
+
+        <!-- RÉSULTAT (hauteur réservée → CLS = 0) -->
+        <div class="result" id="result" aria-live="polite">
+          <span class="res-exemple" id="res-exemple">Exemple</span>
+          <div class="result-main">
+            <span class="result-label" id="res-label">Temps net travaillé</span>
+            <output class="result-value" id="res-value">8h 00min</output>
+          </div>
+          <!-- État initial écrit en dur : le JS le remplace à l'identique,
+               donc rien ne bouge au chargement (CLS = 0). -->
+          <div class="result-grid" id="res-grid">
+            <div class="res-cell">
+            <b>8,00</b>
+            <span>Heures décimales</span></div>
+            <div class="res-cell">
+            <b>480 min</b>
+            <span>Minutes totales</span></div>
+            <div class="res-cell">
+            <b>8h 45min</b>
+            <span>Amplitude brute</span></div>
+            <div class="res-cell">
+            <b>45min</b>
+            <span>Pause déduite</span></div>
+
+          </div>
+          <p class="result-note is-hidden" id="res-note"></p>
+          <p class="result-err is-hidden" id="res-err"></p>
+        </div>
+
+        <div class="actions">
+          <button id="btn-copy" class="btn btn-primary" type="button" aria-label="Copier le résultat">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+            </svg>
+            <span id="copy-txt">Copier<span class="btn-long"> le résultat</span></span>
+          </button>
+          <button id="btn-reset" class="btn btn-ghost" type="button">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 12a9 9 0 1 0 3-6.7L3 8"></path><path d="M3 3v5h5"></path>
+            </svg>
+            Effacer
+          </button>
+          <button id="btn-share" class="btn btn-ghost" type="button" aria-label="Partager ce calcul">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"></path><path d="M12 15V3M8 7l4-4 4 4"></path>
+            </svg>
+            Partager<span class="btn-long"> ce calcul</span>
+          </button>
+        </div>
+
+
+        <!-- ONGLET 1 -->
+        <div class="panel" role="tabpanel" id="panel-1" aria-labelledby="tab-1">
+          <div class="field">
+            <label class="lbl" for="quick">Saisie rapide</label>
+            <input id="quick" class="inp inp-quick" type="text" inputmode="text" autocomplete="off" spellcheck="false"
+                   aria-describedby="quick-hint" placeholder="Ex : 2h30 + 1h45 − 20min">
+            <p class="hint" id="quick-hint">
+              Utilisez <code>+</code> pour <strong>additionner</strong> et <code>-</code> pour
+              <strong>soustraire</strong>. Formats acceptés&nbsp;: <code>2h30</code>, <code>2:30</code>,
+              <code>45min</code>, <code>90s</code>, <code>1j</code>. Un nombre seul&nbsp;= des heures
+              (<code>1,5</code> = 1h30). Le résultat peut être négatif.
+              Laissez vide pour utiliser les champs ci-dessous.
+            </p>
+          </div>
+
+          <div class="sep"><span>ou saisie détaillée</span></div>
+
+          <div id="rows" class="rows">
+            <div class="row-units" aria-hidden="true">
+            <span>Ajouter / Retirer</span>
+            <span>Heures</span>
+            <span>Minutes</span>
+            <span>Sec.</span>
+            <span class="u-ms">Ms.</span>
+            <span></span></div>
+            <div class="row">
+            <div class="sign-group" role="group" aria-label="Ajouter ou soustraire cette durée">
+            <button type="button" class="sg-btn sg-plus is-on" data-sign="+" aria-pressed="true" title="Additionner cette durée">+</button>
+            <button type="button" class="sg-btn sg-minus" data-sign="-" aria-pressed="false" title="Soustraire cette durée">−</button></div><input class="inp r-h" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Heures" value="2"><input class="inp r-m" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Minutes" value="30"><input class="inp r-s" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Secondes" value=""><input class="inp r-ms" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Millisecondes" value="">
+            <button class="row-del" type="button" aria-label="Supprimer cette ligne">×</button></div>
+            <div class="row">
+            <div class="sign-group" role="group" aria-label="Ajouter ou soustraire cette durée">
+            <button type="button" class="sg-btn sg-plus is-on" data-sign="+" aria-pressed="true" title="Additionner cette durée">+</button>
+            <button type="button" class="sg-btn sg-minus" data-sign="-" aria-pressed="false" title="Soustraire cette durée">−</button></div><input class="inp r-h" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Heures" value="1"><input class="inp r-m" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Minutes" value="45"><input class="inp r-s" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Secondes" value=""><input class="inp r-ms" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Millisecondes" value="">
+            <button class="row-del" type="button" aria-label="Supprimer cette ligne">×</button></div>
+          </div>
+
+          <div class="row-actions">
+            <button id="add-row" class="btn btn-ghost btn-sm" type="button" aria-label="Ajouter une durée">
+              <span class="op-plus" aria-hidden="true">+</span> Ajouter<span class="btn-long"> une durée</span>
+            </button>
+            <button id="sub-row" class="btn btn-ghost btn-sm" type="button" aria-label="Soustraire une durée">
+              <span class="op-minus" aria-hidden="true">−</span> Soustraire<span class="btn-long"> une durée</span>
+            </button>
+            <button id="btn-retenue" class="btn btn-ghost btn-sm" type="button"
+                    aria-label="Reporter le total sur la première ligne"
+                    title="Reporter le total sur la première ligne pour continuer le calcul">
+              <span aria-hidden="true">↩</span> Reporter<span class="btn-long"> le total</span>
+            </button>
+          </div>
+          <label class="switch switch-ms">
+            <input id="opt-ms" type="checkbox">
+            <span class="switch-ui" aria-hidden="true"></span>
+            <span>Afficher les millisecondes</span>
+          </label>
+          <p class="hint">
+            Sur chaque ligne, choisissez <strong>+</strong> pour ajouter la durée ou <strong>−</strong> pour la retirer
+            du total. Un total négatif s'affiche tel quel, précédé d'un signe moins&nbsp;: utile pour un compteur
+            d'heures en déficit.
+          </p>
+          <p class="hint raccourcis">
+            Au clavier&nbsp;: <kbd>+</kbd> ajoute une ligne · <kbd>-</kbd> en ajoute une à soustraire ·
+            <kbd>W</kbd> reporte le total · <kbd>C</kbd> copie le résultat · <kbd>M</kbd> remet à zéro.
+          </p>
+        </div>
+
+        <!-- ONGLET 2 -->
+        <div class="panel is-hidden" role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden>
+          <div class="grid-2">
+            <div class="field">
+              <label class="lbl" for="h-start">Heure de début</label>
+              <input id="h-start" class="inp" type="time" value="08:30" step="60">
+            </div>
+            <div class="field">
+              <label class="lbl" for="h-end">Heure de fin</label>
+              <input id="h-end" class="inp" type="time" value="17:15" step="60">
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="field">
+              <label class="lbl" for="h-pause">Pause (minutes)</label>
+              <input id="h-pause" class="inp" type="number" min="0" max="1440" step="5" value="45" inputmode="numeric">
+            </div>
+            <div class="field">
+              <span class="lbl">Pauses fréquentes</span>
+              <div class="chips">
+                <button class="chip" type="button" data-pause="0">Aucune</button>
+                <button class="chip" type="button" data-pause="30">30 min</button>
+                <button class="chip" type="button" data-pause="45">45 min</button>
+                <button class="chip" type="button" data-pause="60">1 h</button>
+              </div>
+            </div>
+          </div>
+          <p id="h-note" class="note is-hidden">🌙 L'heure de fin est le lendemain (service de nuit).</p>
+        </div>
+
+        <!-- ONGLET 3 -->
+        <div class="panel is-hidden" role="tabpanel" id="panel-3" aria-labelledby="tab-3" hidden>
+          <div class="grid-2">
+            <div class="field">
+              <label class="lbl" for="d-start">Date de début</label>
+              <input id="d-start" class="inp" type="date">
+            </div>
+            <div class="field">
+              <label class="lbl" for="d-end">Date de fin</label>
+              <input id="d-end" class="inp" type="date">
+            </div>
+          </div>
+          <div class="field">
+            <label class="lbl" for="d-pays">Jours fériés du pays</label>
+            <select id="d-pays" class="inp inp-select">
+              <option value="fr">France</option>
+              <option value="be">Belgique</option>
+              <option value="ch">Suisse (socle romand)</option>
+              <option value="lu">Luxembourg</option>
+              <option value="qc">Québec</option>
+            </select>
+          </div>
+          <div class="opts">
+            <label class="switch">
+              <input id="d-weekend" type="checkbox" checked>
+              <span class="switch-ui" aria-hidden="true"></span>
+              <span>Exclure les week-ends</span>
+            </label>
+            <label class="switch">
+              <input id="d-holidays" type="checkbox" checked>
+              <span class="switch-ui" aria-hidden="true"></span>
+              <span>Exclure les jours fériés</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- ONGLET 4 -->
+        <div class="panel is-hidden" role="tabpanel" id="panel-4" aria-labelledby="tab-4" hidden>
+          <div class="field">
+            <span class="lbl">Durée de départ</span>
+            <div class="units-3" aria-hidden="true"><span>Heures</span><span>Minutes</span><span>Sec.</span></div>
+            <div class="grid-3">
+              <input id="m-h" class="inp" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Heures" value="2">
+              <input id="m-m" class="inp" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Minutes" value="30">
+              <input id="m-s" class="inp" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Secondes">
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <span class="lbl">Opération</span>
+              <div class="sign-group sign-group-op" role="group" aria-label="Multiplier ou diviser">
+                <button type="button" class="sg-btn sg-mul is-on" data-op="x" aria-pressed="true">× Multiplier</button>
+                <button type="button" class="sg-btn sg-div" data-op="/" aria-pressed="false">÷ Diviser</button>
+              </div>
+            </div>
+            <div class="field">
+              <label class="lbl" for="m-n">Par combien&nbsp;?</label>
+              <!-- type="text" volontaire : un champ number rejette la virgule,
+                   or « 2,5 » est la façon française d'écrire un nombre décimal. -->
+              <input id="m-n" class="inp" type="text" inputmode="decimal" autocomplete="off"
+                     spellcheck="false" placeholder="3" value="3">
+            </div>
+          </div>
+
+          <p class="hint">
+            Exemples&nbsp;: <code>2h30 × 3</code> = 7h30 (trois séances identiques) ·
+            <code>10h ÷ 4</code> = 2h30 (répartir une charge sur 4&nbsp;jours).
+          </p>
+        </div>
+
+        <div class="history" id="history-box" hidden>
+          <!-- Visible uniquement à l'impression : sert d'en-tête au relevé papier/PDF. -->
+          <p class="print-seul" id="print-entete">Relevé de durées</p>
+          <div class="history-head">
+            <h2 class="history-title">Vos derniers calculs</h2>
+            <div class="history-actions">
+              <button id="btn-csv" class="link-btn" type="button">Exporter CSV</button>
+              <button id="btn-print" class="link-btn" type="button">Imprimer / PDF</button>
+              <button id="btn-clear-hist" class="link-btn" type="button">Vider</button>
+            </div>
+          </div>
+          <ul class="history-list" id="history-list"></ul>
+        </div>
+      </section>
+
+      <!-- Liens contextuels placés au ras du calculateur : le bloc complet
+           reste en bas de page, mais ces trois-là sont vus. -->
+      <nav class="voisins" aria-label="Calculateurs proches">
+        <span class="voisins-titre">À voir aussi</span>
+        <ul>
+        <li><a href="combien-heures-entre-deux-horaires.html">De 8h à 17h ?</a></li>
+        <li><a href="additionner-des-heures.html">Addition d'heures</a></li>
+        <li><a href="calcul-jours-ouvres.html">Jours ouvrés</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <aside class="col-side" aria-label="Publicité">
+      <div class="ad ad-rect">
+        <span class="ad-label">Publicité</span>
+        <div class="ad-slot ad-slot-rect">
+          <!-- ▼▼ COLLEZ ICI VOTRE BLOC ADSENSE « Rectangle 300×250 » ▼▼ -->
+          <span class="ad-ph">Emplacement publicitaire<br>300 × 250</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <article class="content">
+
+      <h2>Amplitude ou temps de travail effectif&nbsp;?</h2>
+      <p>
+        C'est la distinction qui change tout. L'<strong>amplitude horaire</strong> est le temps entre votre arrivée
+        et votre départ. Le <strong>temps de travail effectif</strong> est celui où vous êtes à disposition de
+        l'employeur, sans pouvoir vaquer à vos occupations personnelles. <strong>Seul le second est rémunéré</strong>,
+        et c'est lui qui sert au décompte des heures supplémentaires.
+      </p>
+      <p>
+        Une journée de 8&nbsp;h&nbsp;30 à 17&nbsp;h&nbsp;15 représente une amplitude de
+        <strong>8&nbsp;h&nbsp;45</strong>. Avec 45&nbsp;minutes de pause déjeuner non rémunérée, le temps effectif
+        tombe à <strong>8&nbsp;h&nbsp;00</strong>, soit 8,00&nbsp;heures décimales et 480&nbsp;minutes.
+      </p>
+      <p>
+        Toutes les pauses ne se déduisent pas&nbsp;: une pause pendant laquelle vous restez joignable ou à votre
+        poste reste du travail effectif. En France, une pause d'au moins 20&nbsp;minutes est obligatoire dès
+        6&nbsp;heures de travail quotidien, mais elle n'est pas rémunérée par défaut&nbsp;— votre convention
+        collective peut en décider autrement.
+      </p>
+
+      <h2>Les horaires de nuit qui passent minuit</h2>
+      <p>
+        Un poste de 21&nbsp;h&nbsp;00 à 5&nbsp;h&nbsp;30 donnerait un résultat négatif par simple soustraction.
+        Il faut ajouter 24&nbsp;heures à l'heure de fin&nbsp;: 29&nbsp;h&nbsp;30 − 21&nbsp;h&nbsp;00 =
+        <strong>8&nbsp;h&nbsp;30</strong>. Le calculateur détecte ce passage par minuit automatiquement et
+        vous le signale.
+      </p>
+
+      <h2>Du jour à la semaine, puis au mois</h2>
+      <p>
+        La durée légale est de <strong>35&nbsp;heures hebdomadaires</strong>. Au-delà, les heures sont
+        supplémentaires. Le régime légal prévoit une majoration de <strong>25&nbsp;%</strong> pour les huit
+        premières (de la 36<sup>e</sup> à la 43<sup>e</sup>), puis <strong>50&nbsp;%</strong> ensuite&nbsp;—
+        un accord d'entreprise ou de branche peut fixer un taux différent, sans descendre sous 10&nbsp;%.
+        Vérifiez toujours votre convention collective.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <caption>Repères de durée du travail</caption>
+          <thead><tr><th scope="col">Base</th><th scope="col">Par semaine</th><th scope="col">Par mois (décimal)</th></tr></thead>
+          <tbody>
+            <tr><td>Temps plein légal</td><td>35 h</td><td>151,67 h</td></tr>
+            <tr><td>Temps partiel courant</td><td>28 h</td><td>121,33 h</td></tr>
+            <tr><td>Mi-temps</td><td>17 h 30</td><td>75,83 h</td></tr>
+            <tr><td>Forfait 39 h</td><td>39 h</td><td>169,00 h</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        D'où vient le chiffre <strong>151,67</strong>&nbsp;? Du calcul 35&nbsp;h × 52&nbsp;semaines ÷ 12&nbsp;mois
+        = 151,666…, arrondi à 151,67. C'est une valeur <strong>décimale</strong>&nbsp;: elle ne se lit pas
+        «&nbsp;151&nbsp;heures et 67&nbsp;minutes&nbsp;», ce qui n'existe pas.
+      </p>
+
+      <h2>Compter ses heures supplémentaires</h2>
+      <p>
+        Une heure supplémentaire est une heure de travail <strong>effectif</strong> accomplie au-delà de
+        35&nbsp;heures sur une même semaine civile — du lundi 0&nbsp;h au dimanche 24&nbsp;h, sauf accord
+        prévoyant une autre période. Le décompte est <strong>hebdomadaire</strong>, pas mensuel&nbsp;: faire
+        30&nbsp;h une semaine puis 40&nbsp;h la suivante génère 5&nbsp;heures supplémentaires, même si la
+        moyenne retombe à 35.
+      </p>
+      <p>
+        Prenons une semaine à 41&nbsp;heures. Les 6&nbsp;heures au-delà de 35 sont majorées à 25&nbsp;%.
+        Pour un taux horaire de 15&nbsp;€, chacune est payée 18,75&nbsp;€, soit
+        <strong>112,50&nbsp;€</strong> pour les six. Au-delà de la 43<sup>e</sup>&nbsp;heure, la majoration
+        légale passe à 50&nbsp;%.
+      </p>
+      <p>
+        Ces heures peuvent aussi être compensées en repos plutôt qu'en argent, si un accord le prévoit&nbsp;:
+        une heure majorée à 25&nbsp;% donne alors droit à 1&nbsp;h&nbsp;15 de repos compensateur. Pensez à
+        vérifier votre convention collective&nbsp;: elle peut fixer des taux différents, sans jamais
+        descendre sous 10&nbsp;%.
+      </p>
+
+      <h2>Temps partiel et heures complémentaires</h2>
+      <p>
+        Pour un contrat à temps partiel, les heures effectuées au-delà de la durée contractuelle ne sont pas
+        des heures supplémentaires mais des <strong>heures complémentaires</strong>. Elles obéissent à des
+        règles distinctes&nbsp;: elles ne peuvent pas dépasser 10&nbsp;% de la durée prévue au contrat
+        (jusqu'à un tiers si un accord l'autorise), et ne doivent jamais porter le total au niveau d'un
+        temps plein. Leur majoration est de 10&nbsp;% dans la limite du dixième, puis 25&nbsp;% au-delà.
+      </p>
+
+      <h2>Éditer son relevé d'heures pour l'employeur</h2>
+      <p>
+        Compter ses heures ne sert qu'à moitié si l'on ne peut pas les présenter. Chaque calcul est
+        conservé dans un <strong>relevé de 50&nbsp;lignes</strong> sous le calculateur, avec sa date et son
+        heure, et deux boutons permettent d'en sortir un document.
+      </p>
+
+      <h3>L'export CSV, pour un tableur</h3>
+      <p>
+        Le bouton <strong>Exporter CSV</strong> télécharge un fichier daté du type
+        <code>releve-durees-2026-08-30.csv</code>, avec quatre colonnes&nbsp;: date, type de calcul,
+        opération et résultat. Il s'ouvre d'un double-clic dans Excel, LibreOffice ou Google&nbsp;Sheets,
+        colonnes correctement séparées et accents intacts&nbsp;— ce qui n'a rien d'automatique&nbsp;: le
+        fichier est écrit avec le séparateur et l'encodage qu'attend un Excel en français.
+      </p>
+
+      <h3>L'impression, pour un document papier ou PDF</h3>
+      <p>
+        Le bouton <strong>Imprimer / PDF</strong> ne sort que le relevé&nbsp;: ni menu, ni publicité, ni
+        contenu de la page, avec un en-tête daté. La boîte d'impression de votre système propose ensuite
+        <strong>Enregistrer au format PDF</strong>, ce qui donne un justificatif propre à joindre à un
+        courriel ou à une demande de régularisation.
+      </p>
+      <p class="micro">
+        Tout reste dans votre navigateur&nbsp;: le relevé n'est envoyé sur aucun serveur, et il disparaît
+        si vous videz les données du site. Pensez à exporter avant de faire le ménage.
+      </p>
+
+      <h2>Les durées maximales à connaître</h2>
+      <ul class="uses">
+        <li><strong>10 heures</strong> par jour au maximum (dérogations possibles jusqu'à 12&nbsp;h).</li>
+        <li><strong>48 heures</strong> sur une même semaine, et <strong>44 heures</strong> en moyenne sur 12&nbsp;semaines consécutives.</li>
+        <li><strong>11 heures</strong> de repos consécutives entre deux journées de travail.</li>
+        <li><strong>35 heures</strong> de repos hebdomadaire consécutives (24 h + les 11 h quotidiennes).</li>
+      </ul>
+      <p class="micro">
+        Ces valeurs sont les seuils légaux généraux&nbsp;; votre convention collective peut être plus favorable.
+        Les résultats du calculateur sont donnés à titre indicatif et ne remplacent pas un décompte officiel
+        ni un avis juridique.
+      </p>
+
+      <h2 id="faq">Questions fréquentes</h2>
+      <div class="faq">
+      <details>
+        <summary>Comment calculer ses heures de travail avec une pause ?</summary>
+        <p>Soustrayez l'heure de début de l'heure de fin, puis retirez la durée de la pause non rémunérée. De 08h30 à 17h15 avec 45 minutes de pause : 8h45 − 45 min = 8h00 de travail effectif.</p>
+      </details>
+      <details>
+        <summary>Comment calculer un horaire de nuit qui passe minuit ?</summary>
+        <p>Ajoutez 24 heures à l'heure de fin avant de soustraire. Pour un poste de 21h00 à 5h30 : 29h30 − 21h00 = 8h30. Le calculateur le fait automatiquement.</p>
+      </details>
+      <details>
+        <summary>Combien font 35 heures par semaine en heures mensuelles ?</summary>
+        <p>35 heures hebdomadaires correspondent à 151,67 heures par mois : 35 × 52 semaines ÷ 12 mois = 151,666…, arrondi à 151,67.</p>
+      </details>
+      <details>
+        <summary>La pause déjeuner est-elle du temps de travail ?</summary>
+        <p>Non, si vous êtes libre de vaquer à vos occupations personnelles : elle n'est alors ni du temps de travail effectif ni rémunérée. Elle le redevient si vous restez à disposition de l'employeur. Votre convention collective peut prévoir des règles plus favorables.</p>
+      </details>
+      <details>
+        <summary>De 8h à 17h, combien d'heures ?</summary>
+        <p>De 8h00 à 17h00, il s'écoule 9 heures d'amplitude. Avec une pause déjeuner d'une heure non rémunérée, le temps de travail effectif est de 8 heures, soit 8,00 heures décimales et 480 minutes. Avec 45 minutes de pause, il reste 8 h 15.</p>
+      </details>
+      <details>
+        <summary>Comment calculer la durée entre deux horaires ?</summary>
+        <p>Soustrayez l'heure de début de l'heure de fin. Si les minutes de fin sont inférieures à celles de début, empruntez une heure : par exemple 17h15 − 8h30 revient à calculer 16h75 − 8h30, soit 8 h 45. Si l'horaire passe minuit, ajoutez 24 heures à l'heure de fin avant de soustraire.</p>
+      </details>
+      <details>
+        <summary>Comment calculer le nombre d'heures travaillées par mois ?</summary>
+        <p>Multipliez votre durée hebdomadaire par 52 semaines, puis divisez par 12 mois. Pour 35 heures : 35 × 52 ÷ 12 = 151,67 heures par mois. Pour 39 heures : 169 heures. Pour un temps partiel à 24 heures : 104 heures.</p>
+      </details>
+      </div>
+
+      <h2>Les autres calculateurs du site</h2>
+      <ul class="liens-connexes">
+        <li><a href="/">Calculatrice de durée</a></li>
+        <li><a href="convertir-minutes-en-heures.html">Convertir minutes → heures</a></li>
+        <li><a href="additionner-des-heures.html">Additionner des heures</a></li>
+        <li><a href="calcul-jours-ouvres.html">Jours ouvrés</a></li>
+        <li><a href="duree-entre-deux-dates.html">Entre 2 dates</a></li>
+        <li><a href="combien-heures-entre-deux-horaires.html">Combien d'heures entre 2 horaires</a></li>
+        <li><a href="multiplier-diviser-une-duree.html">Multiplier / Diviser</a></li>
+        <li><a href="jours-feries-belgique.html">Fériés Belgique</a></li>
+        <li><a href="jours-feries-suisse.html">Fériés Suisse</a></li>
+        <li><a href="jours-feries-luxembourg.html">Fériés Luxembourg</a></li>
+        <li><a href="jours-feries-quebec.html">Fériés Québec</a></li>
+      </ul>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <nav class="plan" aria-label="Plan du site">
+      <div>
+        <h2 class="plan-titre">Calculs de durée</h2>
+        <ul>
+          <li><a href="/">Calculatrice de durée</a></li>
+          <li><a href="additionner-des-heures.html">Addition d'heures</a></li>
+          <li><a href="convertir-minutes-en-heures.html">Convertir minutes en heures</a></li>
+          <li><a href="multiplier-diviser-une-duree.html">Multiplier ou diviser une durée</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="plan-titre">Heures de travail</h2>
+        <ul>
+          <li><span aria-current="page">Calcul des heures de travail</span></li>
+          <li><a href="combien-heures-entre-deux-horaires.html">Combien d'heures entre 2 horaires</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="plan-titre">Dates et jours ouvrés</h2>
+        <ul>
+          <li><a href="duree-entre-deux-dates.html">Durée entre deux dates</a></li>
+          <li><a href="calcul-jours-ouvres.html">Calcul des jours ouvrés</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="plan-titre">Jours fériés</h2>
+        <ul>
+          <li><a href="jours-feries-belgique.html">Belgique</a></li>
+          <li><a href="jours-feries-quebec.html">Québec</a></li>
+          <li><a href="jours-feries-suisse.html">Suisse</a></li>
+          <li><a href="jours-feries-luxembourg.html">Luxembourg</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="plan-titre">Le site</h2>
+        <ul>
+          <li><a href="nouveautes.html">Nouveautés</a></li>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+        </ul>
+      </div>
+    </nav>
+    <p>
+      <strong>Calculatrice de Durée</strong> — addition d'heures, temps de travail, jours ouvrés.
+      Calculs effectués dans votre navigateur, aucune donnée collectée.
+    </p>
+    <p class="micro">
+      © <span id="year">2026</span> Calculatrice de Durée · Les résultats sont fournis à titre indicatif ·
+      <a href="mentions-legales.html">Mentions légales &amp; confidentialité</a>
+    </p>
+  </div>
+</footer>
+
+<a class="retour-calc" id="retour-calc" href="#calculatrice"><span aria-hidden="true">↑</span> Calculateur</a>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js" defer></script>
+
+<!-- Mesure d'audience Cloudflare Web Analytics : sans cookie, sans suivi individuel,
+     donc aucun bandeau de consentement n'est requis. Chargé en module = non bloquant. -->
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "358b8858ea3e40f7b12a4fe1064cb56b"}'></script>
+</body>
+</html>

@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>Addition d'Heures – Additionner Heures et Minutes en Ligne</title>
+<meta name="description" content="Addition d'heures en ligne : additionnez ou soustrayez des heures et des minutes sans erreur de retenue. Méthode expliquée et calculatrice instantanée.">
+
+<link rel="canonical" href="https://calculatrice-duree.fr/additionner-des-heures.html">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Calculatrice de Durée">
+<meta property="og:title" content="Addition d'Heures – Additionner Heures et Minutes en Ligne">
+<meta property="og:description" content="Addition d'heures en ligne : additionnez ou soustrayez des heures et des minutes sans erreur de retenue. Méthode expliquée et calculatrice instantanée.">
+<meta property="og:url" content="https://calculatrice-duree.fr/additionner-des-heures.html">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+
+<!-- Anti-flash du thème sombre : doit rester en ligne et en premier -->
+<script>
+(function(){try{var t=localStorage.getItem('cd-theme');
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+document.documentElement.setAttribute('data-theme',t);
+if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('data-ms','1');
+}catch(e){}})();
+</script>
+
+<!-- ============================================================
+     GOOGLE ADSENSE — décommentez après validation et remplacez
+     ca-pub-XXXXXXXXXXXXXXXX par votre identifiant.
+     ============================================================
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+-->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://calculatrice-duree.fr/additionner-des-heures.html#page",
+      "url": "https://calculatrice-duree.fr/additionner-des-heures.html",
+      "name": "Addition d'Heures – Additionner Heures et Minutes en Ligne",
+      "description": "Addition d'heures en ligne : additionnez ou soustrayez des heures et des minutes sans erreur de retenue. Méthode expliquée et calculatrice instantanée.",
+      "inLanguage": "fr-FR",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://calculatrice-duree.fr/#site",
+        "name": "Calculatrice de Durée",
+        "url": "https://calculatrice-duree.fr/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://calculatrice-duree.fr/additionner-des-heures.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Comment additionner 2h45 et 1h30 ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Additionnez les minutes (45 + 30 = 75) puis les heures (2 + 1 = 3). Comme 75 dépasse 60, retirez 60 minutes et ajoutez 1 heure : le résultat est 4 h 15."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment additionner des heures dans Excel ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Saisissez les durées au format hh:mm (par exemple 2:45), utilisez la fonction SOMME, puis appliquez à la cellule de total le format personnalisé [h]:mm. Sans les crochets, Excel repasse à zéro au-delà de 24 heures."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Peut-on obtenir un résultat négatif ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui, et c'est un point de vigilance. Plusieurs calculatrices en ligne inversent silencieusement les deux valeurs pour éviter d'afficher un signe moins : demandez-leur 2 h moins 5 h, elles répondent 3 h. Ce calculateur affiche −3 h 00, avec le signe, et le conserve dans tous les formats : −3,00 en décimal, −180 min en minutes totales. C'est indispensable pour un compteur de récupération, une annualisation du temps de travail ou un écart au prévisionnel, où un solde négatif doit rester négatif."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment faire une soustraction de durée ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Soustrayez les minutes entre elles, puis les heures. Si les minutes à retirer sont plus grandes, empruntez une heure et ajoutez-lui 60 minutes : 4 h 10 − 1 h 35 devient 3 h 70 − 1 h 35, soit 2 h 35. Sur le calculateur, le bouton − de chaque ligne retire la durée du total."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment soustraire les heures, minutes et secondes ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Procédez de droite à gauche : les secondes d'abord, puis les minutes, puis les heures, en empruntant 60 à la colonne supérieure chaque fois que nécessaire. Par exemple 2 h 10 min 20 s − 45 min 50 s = 1 h 24 min 30 s. Le calculateur accepte les secondes et fait les retenues seul."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment faire pour calculer l'heure sur une calculatrice ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Une calculatrice classique compte en base 10 : elle ne sait pas qu'une heure vaut 60 minutes. Il faut d'abord convertir les minutes en décimales (30 min = 0,5), calculer, puis reconvertir. Le calculateur de cette page évite cette double conversion : il travaille directement en heures et minutes."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://calculatrice-duree.fr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Additionner des heures",
+          "item": "https://calculatrice-duree.fr/additionner-des-heures.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body data-tab="1">
+
+<a class="skip-link" href="#calculatrice">Aller à la calculatrice</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.2 2"></path>
+        </svg>
+      </span>
+      <span class="brand-text">Calculatrice&nbsp;de&nbsp;Durée</span>
+    </a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a href="additionner-des-heures.html" aria-current="page">Addition d'heures</a>
+      <a href="calcul-heures-de-travail.html">Heures de travail</a>
+      <a href="duree-entre-deux-dates.html">Entre 2 dates</a>
+      <a href="calcul-jours-ouvres.html">Jours fériés</a>
+    </nav>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Basculer le thème sombre">
+      <svg class="ico-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4.2"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"></path>
+      </svg>
+      <svg class="ico-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.7 6.7 0 0 0 10.5 10.5Z"></path>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <nav class="fil" aria-label="Fil d'Ariane">
+    <a href="/">Accueil</a> <span aria-hidden="true">›</span> <span>Additionner des heures</span>
+  </nav>
+
+  <section class="hero">
+    <h1>Addition d'heures : additionner des heures et des minutes</h1>
+    <p class="lead">Cumulez plusieurs durées sans vous tromper de retenue. La méthode manuelle en 3 étapes, la soustraction, et les résultats négatifs.</p>
+  </section>
+
+  <aside class="ad ad-leaderboard" aria-label="Publicité">
+    <span class="ad-label">Publicité</span>
+    <div class="ad-slot">
+      <!-- ▼▼ COLLEZ ICI VOTRE BLOC ADSENSE « Bannière » ▼▼ -->
+      <span class="ad-ph">Emplacement publicitaire</span>
+    </div>
+  </aside>
+
+  <div class="layout">
+    <div class="col-main">
+      <section id="calculatrice" class="card calc" aria-label="Calculatrice de durée">
+
+        <div class="tabs" role="tablist" aria-label="Type de calcul">
+          <button class="tab is-active" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true" type="button"
+                  aria-label="Addition / Soustraction de durées">
+            <svg class="tab-ico" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" aria-hidden="true">
+              <path d="M12 5v7M8.5 8.5h7M6.5 18h11"></path>
+            </svg><span>Addition / Soustraction</span>
+          </button>
+          <button class="tab" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false" tabindex="-1" type="button"
+                  aria-label="Durée entre 2 heures">
+            <svg class="tab-ico" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.4"></circle><path d="M12 7.4V12l3 2"></path>
+            </svg><span>Entre 2 heures</span>
+          </button>
+          <button class="tab" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false" tabindex="-1" type="button"
+                  aria-label="Durée entre 2 dates">
+            <svg class="tab-ico" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3.4" y="5" width="17.2" height="15.5" rx="2.6"></rect><path d="M3.4 10h17.2M8 3v4M16 3v4"></path>
+            </svg><span>Entre 2 dates</span>
+          </button>
+          <button class="tab" role="tab" id="tab-4" aria-controls="panel-4" aria-selected="false" tabindex="-1" type="button"
+                  aria-label="Multiplier / Diviser une durée">
+            <svg class="tab-ico" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" aria-hidden="true">
+              <path d="M5.5 7.5l5 5M10.5 7.5l-5 5M14.5 15h6"></path>
+              <circle cx="17.5" cy="11.6" r=".95" fill="currentColor" stroke="none"></circle>
+              <circle cx="17.5" cy="18.4" r=".95" fill="currentColor" stroke="none"></circle>
+            </svg><span>Multiplier / Diviser</span>
+          </button>
+        </div>
+
+        <!-- RÉSULTAT (hauteur réservée → CLS = 0) -->
+        <div class="result" id="result" aria-live="polite">
+          <span class="res-exemple" id="res-exemple">Exemple</span>
+          <div class="result-main">
+            <span class="result-label" id="res-label">Total des durées</span>
+            <output class="result-value" id="res-value">4h 15min</output>
+          </div>
+          <!-- État initial écrit en dur : le JS le remplace à l'identique,
+               donc rien ne bouge au chargement (CLS = 0). -->
+          <div class="result-grid" id="res-grid">
+            <div class="res-cell">
+            <b>4,25</b>
+            <span>Heures décimales</span></div>
+            <div class="res-cell">
+            <b>255 min</b>
+            <span>Minutes totales</span></div>
+            <div class="res-cell">
+            <b>15 300 s</b>
+            <span>Secondes totales</span></div>
+          </div>
+          <p class="result-note is-hidden" id="res-note"></p>
+          <p class="result-err is-hidden" id="res-err"></p>
+        </div>
+
+        <div class="actions">
+          <button id="btn-copy" class="btn btn-primary" type="button" aria-label="Copier le résultat">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+            </svg>
+            <span id="copy-txt">Copier<span class="btn-long"> le résultat</span></span>
+          </button>
+          <button id="btn-reset" class="btn btn-ghost" type="button">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 12a9 9 0 1 0 3-6.7L3 8"></path><path d="M3 3v5h5"></path>
+            </svg>
+            Effacer
+          </button>
+          <button id="btn-share" class="btn btn-ghost" type="button" aria-label="Partager ce calcul">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"></path><path d="M12 15V3M8 7l4-4 4 4"></path>
+            </svg>
+            Partager<span class="btn-long"> ce calcul</span>
+          </button>
+        </div>
+
+
+        <!-- ONGLET 1 -->
+        <div class="panel" role="tabpanel" id="panel-1" aria-labelledby="tab-1">
+          <div class="field">
+            <label class="lbl" for="quick">Saisie rapide</label>
+            <input id="quick" class="inp inp-quick" type="text" inputmode="text" autocomplete="off" spellcheck="false"
+                   aria-describedby="quick-hint" placeholder="Ex : 2h30 + 1h45 − 20min">
+            <p class="hint" id="quick-hint">
+              Utilisez <code>+</code> pour <strong>additionner</strong> et <code>-</code> pour
+              <strong>soustraire</strong>. Formats acceptés&nbsp;: <code>2h30</code>, <code>2:30</code>,
+              <code>45min</code>, <code>90s</code>, <code>1j</code>. Un nombre seul&nbsp;= des heures
+              (<code>1,5</code> = 1h30). Le résultat peut être négatif.
+              Laissez vide pour utiliser les champs ci-dessous.
+            </p>
+          </div>
+
+          <div class="sep"><span>ou saisie détaillée</span></div>
+
+          <div id="rows" class="rows">
+            <div class="row-units" aria-hidden="true">
+            <span>Ajouter / Retirer</span>
+            <span>Heures</span>
+            <span>Minutes</span>
+            <span>Sec.</span>
+            <span class="u-ms">Ms.</span>
+            <span></span></div>
+            <div class="row">
+            <div class="sign-group" role="group" aria-label="Ajouter ou soustraire cette durée">
+            <button type="button" class="sg-btn sg-plus is-on" data-sign="+" aria-pressed="true" title="Additionner cette durée">+</button>
+            <button type="button" class="sg-btn sg-minus" data-sign="-" aria-pressed="false" title="Soustraire cette durée">−</button></div><input class="inp r-h" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Heures" value="2"><input class="inp r-m" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Minutes" value="30"><input class="inp r-s" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Secondes" value=""><input class="inp r-ms" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Millisecondes" value="">
+            <button class="row-del" type="button" aria-label="Supprimer cette ligne">×</button></div>
+            <div class="row">
+            <div class="sign-group" role="group" aria-label="Ajouter ou soustraire cette durée">
+            <button type="button" class="sg-btn sg-plus is-on" data-sign="+" aria-pressed="true" title="Additionner cette durée">+</button>
+            <button type="button" class="sg-btn sg-minus" data-sign="-" aria-pressed="false" title="Soustraire cette durée">−</button></div><input class="inp r-h" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Heures" value="1"><input class="inp r-m" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Minutes" value="45"><input class="inp r-s" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Secondes" value=""><input class="inp r-ms" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Millisecondes" value="">
+            <button class="row-del" type="button" aria-label="Supprimer cette ligne">×</button></div>
+          </div>
+
+          <div class="row-actions">
+            <button id="add-row" class="btn btn-ghost btn-sm" type="button" aria-label="Ajouter une durée">
+              <span class="op-plus" aria-hidden="true">+</span> Ajouter<span class="btn-long"> une durée</span>
+            </button>
+            <button id="sub-row" class="btn btn-ghost btn-sm" type="button" aria-label="Soustraire une durée">
+              <span class="op-minus" aria-hidden="true">−</span> Soustraire<span class="btn-long"> une durée</span>
+            </button>
+            <button id="btn-retenue" class="btn btn-ghost btn-sm" type="button"
+                    aria-label="Reporter le total sur la première ligne"
+                    title="Reporter le total sur la première ligne pour continuer le calcul">
+              <span aria-hidden="true">↩</span> Reporter<span class="btn-long"> le total</span>
+            </button>
+          </div>
+          <label class="switch switch-ms">
+            <input id="opt-ms" type="checkbox">
+            <span class="switch-ui" aria-hidden="true"></span>
+            <span>Afficher les millisecondes</span>
+          </label>
+          <p class="hint">
+            Sur chaque ligne, choisissez <strong>+</strong> pour ajouter la durée ou <strong>−</strong> pour la retirer
+            du total. Un total négatif s'affiche tel quel, précédé d'un signe moins&nbsp;: utile pour un compteur
+            d'heures en déficit.
+          </p>
+          <p class="hint raccourcis">
+            Au clavier&nbsp;: <kbd>+</kbd> ajoute une ligne · <kbd>-</kbd> en ajoute une à soustraire ·
+            <kbd>W</kbd> reporte le total · <kbd>C</kbd> copie le résultat · <kbd>M</kbd> remet à zéro.
+          </p>
+        </div>
+
+        <!-- ONGLET 2 -->
+        <div class="panel is-hidden" role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden>
+          <div class="grid-2">
+            <div class="field">
+              <label class="lbl" for="h-start">Heure de début</label>
+              <input id="h-start" class="inp" type="time" value="08:30" step="60">
+            </div>
+            <div class="field">
+              <label class="lbl" for="h-end">Heure de fin</label>
+              <input id="h-end" class="inp" type="time" value="17:15" step="60">
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="field">
+              <label class="lbl" for="h-pause">Pause (minutes)</label>
+              <input id="h-pause" class="inp" type="number" min="0" max="1440" step="5" value="45" inputmode="numeric">
+            </div>
+            <div class="field">
+              <span class="lbl">Pauses fréquentes</span>
+              <div class="chips">
+                <button class="chip" type="button" data-pause="0">Aucune</button>
+                <button class="chip" type="button" data-pause="30">30 min</button>
+                <button class="chip" type="button" data-pause="45">45 min</button>
+                <button class="chip" type="button" data-pause="60">1 h</button>
+              </div>
+            </div>
+          </div>
+          <p id="h-note" class="note is-hidden">🌙 L'heure de fin est le lendemain (service de nuit).</p>
+        </div>
+
+        <!-- ONGLET 3 -->
+        <div class="panel is-hidden" role="tabpanel" id="panel-3" aria-labelledby="tab-3" hidden>
+          <div class="grid-2">
+            <div class="field">
+              <label class="lbl" for="d-start">Date de début</label>
+              <input id="d-start" class="inp" type="date">
+            </div>
+            <div class="field">
+              <label class="lbl" for="d-end">Date de fin</label>
+              <input id="d-end" class="inp" type="date">
+            </div>
+          </div>
+          <div class="field">
+            <label class="lbl" for="d-pays">Jours fériés du pays</label>
+            <select id="d-pays" class="inp inp-select">
+              <option value="fr">France</option>
+              <option value="be">Belgique</option>
+              <option value="ch">Suisse (socle romand)</option>
+              <option value="lu">Luxembourg</option>
+              <option value="qc">Québec</option>
+            </select>
+          </div>
+          <div class="opts">
+            <label class="switch">
+              <input id="d-weekend" type="checkbox" checked>
+              <span class="switch-ui" aria-hidden="true"></span>
+              <span>Exclure les week-ends</span>
+            </label>
+            <label class="switch">
+              <input id="d-holidays" type="checkbox" checked>
+              <span class="switch-ui" aria-hidden="true"></span>
+              <span>Exclure les jours fériés</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- ONGLET 4 -->
+        <div class="panel is-hidden" role="tabpanel" id="panel-4" aria-labelledby="tab-4" hidden>
+          <div class="field">
+            <span class="lbl">Durée de départ</span>
+            <div class="units-3" aria-hidden="true"><span>Heures</span><span>Minutes</span><span>Sec.</span></div>
+            <div class="grid-3">
+              <input id="m-h" class="inp" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Heures" value="2">
+              <input id="m-m" class="inp" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Minutes" value="30">
+              <input id="m-s" class="inp" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-label="Secondes">
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <span class="lbl">Opération</span>
+              <div class="sign-group sign-group-op" role="group" aria-label="Multiplier ou diviser">
+                <button type="button" class="sg-btn sg-mul is-on" data-op="x" aria-pressed="true">× Multiplier</button>
+                <button type="button" class="sg-btn sg-div" data-op="/" aria-pressed="false">÷ Diviser</button>
+              </div>
+            </div>
+            <div class="field">
+              <label class="lbl" for="m-n">Par combien&nbsp;?</label>
+              <!-- type="text" volontaire : un champ number rejette la virgule,
+                   or « 2,5 » est la façon française d'écrire un nombre décimal. -->
+              <input id="m-n" class="inp" type="text" inputmode="decimal" autocomplete="off"
+                     spellcheck="false" placeholder="3" value="3">
+            </div>
+          </div>
+
+          <p class="hint">
+            Exemples&nbsp;: <code>2h30 × 3</code> = 7h30 (trois séances identiques) ·
+            <code>10h ÷ 4</code> = 2h30 (répartir une charge sur 4&nbsp;jours).
+          </p>
+        </div>
+
+        <div class="history" id="history-box" hidden>
+          <!-- Visible uniquement à l'impression : sert d'en-tête au relevé papier/PDF. -->
+          <p class="print-seul" id="print-entete">Relevé de durées</p>
+          <div class="history-head">
+            <h2 class="history-title">Vos derniers calculs</h2>
+            <div class="history-actions">
+              <button id="btn-csv" class="link-btn" type="button">Exporter CSV</button>
+              <button id="btn-print" class="link-btn" type="button">Imprimer / PDF</button>
+              <button id="btn-clear-hist" class="link-btn" type="button">Vider</button>
+            </div>
+          </div>
+          <ul class="history-list" id="history-list"></ul>
+        </div>
+      </section>
+
+      <!-- Liens contextuels placés au ras du calculateur : le bloc complet
+           reste en bas de page, mais ces trois-là sont vus. -->
+      <nav class="voisins" aria-label="Calculateurs proches">
+        <span class="voisins-titre">À voir aussi</span>
+        <ul>
+        <li><a href="convertir-minutes-en-heures.html">Minutes en heures</a></li>
+        <li><a href="multiplier-diviser-une-duree.html">Multiplier une durée</a></li>
+        <li><a href="calcul-heures-de-travail.html">Heures de travail</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <aside class="col-side" aria-label="Publicité">
+      <div class="ad ad-rect">
+        <span class="ad-label">Publicité</span>
+        <div class="ad-slot ad-slot-rect">
+          <!-- ▼▼ COLLEZ ICI VOTRE BLOC ADSENSE « Rectangle 300×250 » ▼▼ -->
+          <span class="ad-ph">Emplacement publicitaire<br>300 × 250</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <article class="content">
+
+      <h2>Pourquoi additionner des heures est piégeux</h2>
+      <p>
+        Les durées ne s'additionnent pas comme des nombres ordinaires. Notre système horaire est
+        <strong>sexagésimal</strong>&nbsp;: on change d'unité tous les 60, pas tous les 10. Écrire
+        2h45 + 1h30 = 3h75 est donc faux&nbsp;— au-delà de 60&nbsp;minutes, il faut reporter une heure.
+        Le bon résultat est <strong>4&nbsp;h&nbsp;15</strong>.
+      </p>
+
+      <h2>Calculette, calculatrice, additionneur&nbsp;: le même besoin</h2>
+      <p>
+        Peu importe le mot que vous employez — <strong>calculette d'heures</strong>, calculatrice
+        d'addition d'heures, additionneur de temps, somme d'heures — le besoin est toujours le même&nbsp;:
+        cumuler des durées sans se tromper de retenue. L'outil en haut de page fait les trois opérations
+        d'un coup&nbsp;: il additionne, il soustrait, et il affiche le total en heures et minutes, en
+        heures décimales et en minutes totales.
+      </p>
+      <p>
+        Une calculette de bureau, elle, ne sait pas le faire&nbsp;: tapez-y <code>2,45 + 1,30</code> et
+        elle répond 3,75, un résultat qui ne veut rien dire en durée. C'est précisément cette confusion
+        entre virgule décimale et minutes que la page suivante détaille.
+      </p>
+
+      <h2>La méthode en 3 étapes</h2>
+      <p>
+        <strong>Étape 1 — additionner séparément.</strong> Cumulez d'un côté les heures, de l'autre les minutes.
+        Pour 2h45 + 1h30&nbsp;: 3&nbsp;heures et 75&nbsp;minutes.
+      </p>
+      <p>
+        <strong>Étape 2 — reporter la retenue.</strong> Tant que les minutes dépassent 60, retirez-en 60 et
+        ajoutez 1&nbsp;heure. 75&nbsp;min = 1&nbsp;h&nbsp;15, donc 3&nbsp;h + 1&nbsp;h&nbsp;15 =
+        <strong>4&nbsp;h&nbsp;15</strong>.
+      </p>
+      <p>
+        <strong>Étape 3 — vérifier par les minutes totales.</strong> Convertissez tout en minutes&nbsp;:
+        165 + 90 = 255&nbsp;minutes. Puis 255 ÷ 60 = 4, reste 15 → 4&nbsp;h&nbsp;15. Si les deux méthodes
+        concordent, le résultat est bon.
+      </p>
+
+      <h2>Les additions qu'on cherche le plus souvent</h2>
+      <div class="table-wrap">
+        <table>
+          <caption>Additions de durées courantes, résultat immédiat</caption>
+          <thead><tr><th scope="col">Opération</th><th scope="col">Résultat</th><th scope="col">En décimal</th><th scope="col">En minutes</th></tr></thead>
+          <tbody>
+            <tr><td>45 min + 45 min</td><td><strong>1 h 30</strong></td><td>1,50</td><td>90 min</td></tr>
+            <tr><td>30 min + 45 min</td><td><strong>1 h 15</strong></td><td>1,25</td><td>75 min</td></tr>
+            <tr><td>1 h 30 + 1 h 45</td><td><strong>3 h 15</strong></td><td>3,25</td><td>195 min</td></tr>
+            <tr><td>2 h 45 + 1 h 30</td><td><strong>4 h 15</strong></td><td>4,25</td><td>255 min</td></tr>
+            <tr><td>7 h 30 + 7 h 30</td><td><strong>15 h 00</strong></td><td>15,00</td><td>900 min</td></tr>
+            <tr><td>8 h 15 + 6 h 50</td><td><strong>15 h 05</strong></td><td>15,08</td><td>905 min</td></tr>
+            <tr><td>20 min + 20 min + 20 min</td><td><strong>1 h 00</strong></td><td>1,00</td><td>60 min</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="micro">
+        Le piège revient à chaque ligne&nbsp;: 45 + 45 fait 90, et 90 minutes ne s'écrivent pas 0h90 mais
+        <strong>1 h 30</strong>. Dès que la somme des minutes dépasse 60, il y a une retenue.
+      </p>
+
+      <h2>Exemple concret&nbsp;: une semaine de travail</h2>
+      <div class="table-wrap">
+        <table>
+          <caption>Cumul d'une semaine, étape par étape</caption>
+          <thead><tr><th scope="col">Jour</th><th scope="col">Durée</th><th scope="col">Cumul</th></tr></thead>
+          <tbody>
+            <tr><td>Lundi</td><td>7 h 45</td><td>7 h 45</td></tr>
+            <tr><td>Mardi</td><td>8 h 15</td><td>16 h 00</td></tr>
+            <tr><td>Mercredi</td><td>7 h 30</td><td>23 h 30</td></tr>
+            <tr><td>Jeudi</td><td>8 h 00</td><td>31 h 30</td></tr>
+            <tr><td>Vendredi</td><td>6 h 30</td><td><strong>38 h 00</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Total&nbsp;: <strong>38&nbsp;heures</strong>, soit 38,00&nbsp;heures décimales et 2&nbsp;280&nbsp;minutes.
+        Au-delà des 35&nbsp;heures légales, cela représente <strong>3&nbsp;heures supplémentaires</strong>.
+        Dans la saisie rapide du calculateur, tapez simplement
+        <code>7h45 + 8h15 + 7h30 + 8h + 6h30</code>&nbsp;: le total tombe instantanément.
+      </p>
+
+      <h2>Soustraire des durées</h2>
+      <p>
+        La soustraction suit la logique inverse. Pour 4&nbsp;h&nbsp;10 − 1&nbsp;h&nbsp;35, on ne peut pas retirer
+        35 de 10&nbsp;: on «&nbsp;casse&nbsp;» une heure pour transformer 4&nbsp;h&nbsp;10 en
+        <strong>3&nbsp;h&nbsp;70</strong>. La soustraction devient possible&nbsp;: 3−1 = 2 heures,
+        70−35 = 35&nbsp;minutes, soit <strong>2&nbsp;h&nbsp;35</strong>.
+      </p>
+      <p>
+        Sur chaque ligne du calculateur, le bouton <strong>−</strong> retire la durée du total au lieu de
+        l'ajouter. Le résultat peut devenir <strong>négatif</strong>, ce qui est utile pour suivre un compteur
+        d'heures, un solde de récupération ou un écart par rapport à un objectif.
+      </p>
+
+      <h2>Le piège du résultat négatif escamoté</h2>
+      <p>
+        C'est le point sur lequel beaucoup de calculatrices en ligne se trompent, et il est facile à
+        vérifier vous-même&nbsp;: demandez-leur <strong>2 h moins 5 h</strong>. Plusieurs affichent
+        3&nbsp;h, tout simplement parce qu'elles <strong>inversent silencieusement les deux valeurs</strong>
+        pour éviter d'écrire un signe moins.
+      </p>
+      <p>
+        Le résultat n'est pas faux par accident&nbsp;: il est faux <em>par conception</em>. Et c'est le pire
+        des cas, car rien à l'écran ne signale l'inversion. Vous lisez un nombre plausible, sans savoir
+        qu'il désigne l'inverse de ce que vous avez demandé.
+      </p>
+      <p>
+        Ce calculateur affiche <strong>−3&nbsp;h&nbsp;00</strong>, avec le signe. C'est indispensable dès
+        que vous suivez un solde plutôt qu'un cumul&nbsp;:
+      </p>
+      <ul class="uses">
+        <li><strong>Compteur de récupération</strong>&nbsp;: devoir 3&nbsp;h à l'entreprise n'est pas la même chose qu'un crédit de 3&nbsp;h.</li>
+        <li><strong>Annualisation du temps de travail</strong>&nbsp;: le solde de fin de période peut être négatif, et il doit le rester.</li>
+        <li><strong>Écart au prévisionnel</strong>&nbsp;: un chantier prévu 40&nbsp;h et réalisé en 46&nbsp;h affiche −6&nbsp;h de marge.</li>
+      </ul>
+      <p class="micro">
+        Le signe se propage aussi dans les autres formats&nbsp;: −3&nbsp;h&nbsp;00 s'affiche −3,00 en heures
+        décimales et −180&nbsp;min en minutes totales. Une valeur négative reste négative partout.
+      </p>
+
+      <h2>Cumuler un mois d'heures sans tout ressaisir</h2>
+      <p>
+        Additionner quatre lignes est simple. Additionner vingt-deux journées de travail l'est beaucoup
+        moins&nbsp;: on perd le fil, on ressaisit un sous-total de travers, et le mois entier est faux.
+      </p>
+      <p>
+        Le bouton <strong>Reporter le total</strong> répond exactement à ça. Il renvoie le résultat sur la
+        première ligne et vide les autres. La méthode&nbsp;:
+      </p>
+      <ol class="uses">
+        <li>Saisissez les cinq journées de la première semaine, une par ligne.</li>
+        <li>Cliquez sur <strong>Reporter le total</strong>&nbsp;: la semaine devient la première ligne.</li>
+        <li>Saisissez la deuxième semaine en dessous, reportez à nouveau, et ainsi de suite.</li>
+      </ol>
+      <p>
+        À la fin, vous avez le total du mois sans avoir recopié un seul sous-total à la main. Et si le
+        cumul est négatif — un compteur en déficit — la première ligne bascule en soustraction pour que
+        le signe soit conservé.
+      </p>
+      <p class="micro">
+        Chaque étape est enregistrée dans le relevé sous le calculateur, avec sa date. Vous pouvez ensuite
+        l'exporter en CSV pour l'ouvrir dans un tableur, ou l'imprimer en PDF pour le joindre à une
+        demande de régularisation.
+      </p>
+
+      <h2>Additionner des millisecondes&nbsp;: chronométrage et temps de passage</h2>
+      <p>
+        L'option <strong>Afficher les millisecondes</strong>, sous les lignes de saisie, ajoute une
+        quatrième colonne. Elle ne sert à rien pour un bulletin de paie, mais elle devient indispensable
+        dès qu'on chronomètre&nbsp;: cumuler des tours de piste, additionner des temps de passage en
+        natation, comparer des relais en sport automobile.
+      </p>
+      <p>
+        Les millisecondes vont de 0 à 999 et se reportent normalement&nbsp;: 500&nbsp;ms plus 600&nbsp;ms
+        donnent <strong>1&nbsp;s&nbsp;100&nbsp;ms</strong>, pas 1&nbsp;100&nbsp;ms. Le résultat les affiche
+        alors dans tous ses formats, y compris en secondes décimales.
+      </p>
+      <p class="micro">
+        Votre choix est mémorisé d'une visite à l'autre. Si vous désactivez l'option, les millisecondes
+        déjà saisies sont effacées&nbsp;: les garder dans des champs masqués fausserait le total sans que
+        rien ne l'indique à l'écran.
+      </p>
+
+      <h2>Les raccourcis clavier</h2>
+      <p>
+        Sur ordinateur, cinq touches évitent des allers-retours à la souris. Elles ne fonctionnent que
+        lorsque aucun champ n'a le focus&nbsp;— autrement, taper <code>+</code> dans la saisie rapide
+        ajouterait une ligne au lieu d'écrire le signe.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <caption>Raccourcis de l'onglet Addition / Soustraction</caption>
+          <thead><tr><th scope="col">Touche</th><th scope="col">Effet</th></tr></thead>
+          <tbody>
+            <tr><td><strong>+</strong></td><td>Ajoute une ligne à additionner</td></tr>
+            <tr><td><strong>−</strong></td><td>Ajoute une ligne à soustraire</td></tr>
+            <tr><td><strong>W</strong></td><td>Reporte le total sur la première ligne</td></tr>
+            <tr><td><strong>C</strong></td><td>Copie le résultat dans le presse-papiers</td></tr>
+            <tr><td><strong>M</strong></td><td>Remet tous les champs à zéro</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Convertir avant d'additionner&nbsp;: la méthode des minutes</h2>
+      <p>
+        Il existe une seconde façon de procéder, souvent plus sûre quand les durées sont nombreuses&nbsp;:
+        <strong>tout convertir en minutes</strong>, additionner normalement, puis reconvertir à la fin.
+        Comme on ne manipule plus que des entiers, aucune retenue n'est possible.
+      </p>
+      <p>
+        Reprenons la semaine ci-dessus&nbsp;: 465 + 495 + 450 + 480 + 390 = <strong>2&nbsp;280&nbsp;minutes</strong>.
+        Pour revenir aux heures, on divise par 60&nbsp;: 2&nbsp;280 ÷ 60 = 38, reste 0, soit
+        <strong>38&nbsp;h&nbsp;00</strong>. Si la division tombait sur 2&nbsp;295, on obtiendrait 38 et
+        un reste de 15&nbsp;: 38&nbsp;h&nbsp;15.
+      </p>
+      <p>
+        Cette méthode a un avantage supplémentaire&nbsp;: le total en minutes est directement exploitable
+        pour une facturation ou un export. C'est pourquoi le calculateur l'affiche systématiquement à côté
+        du résultat en heures.
+      </p>
+
+      <h2>Additionner des durées longues, au-delà de 24 heures</h2>
+      <p>
+        Rien ne change dans la méthode, mais un piège apparaît&nbsp;: la plupart des outils considèrent
+        qu'au-delà de 24&nbsp;heures on repasse à zéro, comme une horloge. Additionner
+        18&nbsp;h + 10&nbsp;h donne alors 4&nbsp;h au lieu de <strong>28&nbsp;h</strong>.
+      </p>
+      <p>
+        C'est un comportement volontaire pour les <em>heures de la journée</em>, mais absurde pour des
+        <em>durées</em>. Le calculateur de cette page traite les durées comme des quantités&nbsp;: il n'a
+        aucune limite à 24&nbsp;heures et affichera bien 28&nbsp;h, 150&nbsp;h ou 1&nbsp;000&nbsp;h si
+        c'est le total réel. Vous pouvez d'ailleurs saisir des jours directement avec <code>1j</code>,
+        ce qui vaut 24&nbsp;heures.
+      </p>
+
+      <h2>Et dans un tableur&nbsp;?</h2>
+      <p>
+        Excel et Google Sheets savent additionner des durées, à deux conditions. D'abord, saisir les valeurs au
+        format <code>hh:mm</code> (2:45, pas 2h45). Ensuite, appliquer à la cellule de total le format
+        personnalisé <code>[h]:mm</code>&nbsp;— les crochets sont indispensables&nbsp;: sans eux, le tableur
+        repasse à zéro au-delà de 24&nbsp;heures et affiche 14:00 au lieu de 38:00.
+      </p>
+      <p class="micro">
+        C'est précisément le genre de piège que le calculateur ci-dessus évite&nbsp;: il n'a aucune limite à
+        24&nbsp;heures et affiche le total en heures, en décimal et en minutes simultanément.
+      </p>
+
+      <h2 id="faq">Questions fréquentes</h2>
+      <div class="faq">
+      <details>
+        <summary>Comment additionner 2h45 et 1h30 ?</summary>
+        <p>Additionnez les minutes (45 + 30 = 75) puis les heures (2 + 1 = 3). Comme 75 dépasse 60, retirez 60 minutes et ajoutez 1 heure : le résultat est 4 h 15.</p>
+      </details>
+      <details>
+        <summary>Comment additionner des heures dans Excel ?</summary>
+        <p>Saisissez les durées au format hh:mm (par exemple 2:45), utilisez la fonction SOMME, puis appliquez à la cellule de total le format personnalisé [h]:mm. Sans les crochets, Excel repasse à zéro au-delà de 24 heures.</p>
+      </details>
+      <details>
+        <summary>Peut-on obtenir un résultat négatif ?</summary>
+        <p>Oui, et c'est un point de vigilance. Plusieurs calculatrices en ligne inversent silencieusement les deux valeurs pour éviter d'afficher un signe moins : demandez-leur 2 h moins 5 h, elles répondent 3 h. Ce calculateur affiche −3 h 00, avec le signe, et le conserve dans tous les formats : −3,00 en décimal, −180 min en minutes totales. C'est indispensable pour un compteur de récupération, une annualisation du temps de travail ou un écart au prévisionnel, où un solde négatif doit rester négatif.</p>
+      </details>
+      <details>
+        <summary>Comment faire une soustraction de durée ?</summary>
+        <p>Soustrayez les minutes entre elles, puis les heures. Si les minutes à retirer sont plus grandes, empruntez une heure et ajoutez-lui 60 minutes : 4 h 10 − 1 h 35 devient 3 h 70 − 1 h 35, soit 2 h 35. Sur le calculateur, le bouton − de chaque ligne retire la durée du total.</p>
+      </details>
+      <details>
+        <summary>Comment soustraire les heures, minutes et secondes ?</summary>
+        <p>Procédez de droite à gauche : les secondes d'abord, puis les minutes, puis les heures, en empruntant 60 à la colonne supérieure chaque fois que nécessaire. Par exemple 2 h 10 min 20 s − 45 min 50 s = 1 h 24 min 30 s. Le calculateur accepte les secondes et fait les retenues seul.</p>
+      </details>
+      <details>
+        <summary>Comment faire pour calculer l'heure sur une calculatrice ?</summary>
+        <p>Une calculatrice classique compte en base 10 : elle ne sait pas qu'une heure vaut 60 minutes. Il faut d'abord convertir les minutes en décimales (30 min = 0,5), calculer, puis reconvertir. Le calculateur de cette page évite cette double conversion : il travaille directement en heures et minutes.</p>
+      </details>
+      </div>
+
+      <h2>Les autres calculateurs du site</h2>
+      <ul class="liens-connexes">
+        <li><a href="/">Calculatrice de durée</a></li>
+        <li><a href="convertir-minutes-en-heures.html">Convertir minutes → heures</a></li>
+        <li><a href="calcul-heures-de-travail.html">Heures de travail</a></li>
+        <li><a href="calcul-jours-ouvres.html">Jours ouvrés</a></li>
+        <li><a href="duree-entre-deux-dates.html">Entre 2 dates</a></li>
+        <li><a href="combien-heures-entre-deux-horaires.html">Combien d'heures entre 2 horaires</a></li>
+        <li><a href="multiplier-diviser-une-duree.html">Multiplier / Diviser</a></li>
+        <li><a href="jours-feries-belgique.html">Fériés Belgique</a></li>
+        <li><a href="jours-feries-suisse.html">Fériés Suisse</a></li>
+        <li><a href="jours-feries-luxembourg.html">Fériés Luxembourg</a></li>
+        <li><a href="jours-feries-quebec.html">Fériés Québec</a></li>
+      </ul>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <nav class="plan" aria-label="Plan du site">
+      <div>
+        <h2 class="plan-titre">Calculs de durée</h2>
+        <ul>
+          <li><a href="/">Calculatrice de durée</a></li>
+          <li><span aria-current="page">Addition d'heures</span></li>
+          <li><a href="convertir-minutes-en-heures.html">Convertir minutes en heures</a></li>
+          <li><a href="multiplier-diviser-une-duree.html">Multiplier ou diviser une durée</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="plan-titre">Heures de travail</h2>
+        <ul>
+          <li><a href="calcul-heures-de-travail.html">Calcul des heures de travail</a></li>
+          <li><a href="combien-heures-entre-deux-horaires.html">Combien d'heures entre 2 horaires</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="plan-titre">Dates et jours ouvrés</h2>
+        <ul>
+          <li><a href="duree-entre-deux-dates.html">Durée entre deux dates</a></li>
+          <li><a href="calcul-jours-ouvres.html">Calcul des jours ouvrés</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="plan-titre">Jours fériés</h2>
+        <ul>
+          <li><a href="jours-feries-belgique.html">Belgique</a></li>
+          <li><a href="jours-feries-quebec.html">Québec</a></li>
+          <li><a href="jours-feries-suisse.html">Suisse</a></li>
+          <li><a href="jours-feries-luxembourg.html">Luxembourg</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="plan-titre">Le site</h2>
+        <ul>
+          <li><a href="nouveautes.html">Nouveautés</a></li>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+        </ul>
+      </div>
+    </nav>
+    <p>
+      <strong>Calculatrice de Durée</strong> — addition d'heures, temps de travail, jours ouvrés.
+      Calculs effectués dans votre navigateur, aucune donnée collectée.
+    </p>
+    <p class="micro">
+      © <span id="year">2026</span> Calculatrice de Durée · Les résultats sont fournis à titre indicatif ·
+      <a href="mentions-legales.html">Mentions légales &amp; confidentialité</a>
+    </p>
+  </div>
+</footer>
+
+<a class="retour-calc" id="retour-calc" href="#calculatrice"><span aria-hidden="true">↑</span> Calculateur</a>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js" defer></script>
+
+<!-- Mesure d'audience Cloudflare Web Analytics : sans cookie, sans suivi individuel,
+     donc aucun bandeau de consentement n'est requis. Chargé en module = non bloquant. -->
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "358b8858ea3e40f7b12a4fe1064cb56b"}'></script>
+</body>
+</html>
