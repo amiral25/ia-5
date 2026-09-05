@@ -362,6 +362,12 @@ html[data-ms="1"] .u-ms{display:block}
 
 .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--card);margin:16px 0 18px}
 
+/* Tableau « cette date est-elle fériée ? ». Trois colonnes ne tiennent pas
+   dans 340 px : mieux vaut faire défiler la boîte que d'écraser le texte,
+   et le verdict doit rester lisible d'un coup d'œil, jamais coupé. */
+.tw-verdict table{min-width:520px}
+.tw-verdict td:nth-child(2){white-space:nowrap;font-weight:600}
+
 /* Emporter les jours fériés — remonte contre le tableau qu'il prolonge. */
 .dl-feries{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:-8px 0 20px}
 .dl-txt{font-size:.86rem;color:var(--muted)}
