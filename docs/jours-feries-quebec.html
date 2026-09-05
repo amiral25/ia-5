@@ -98,6 +98,22 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
             "@type": "Answer",
             "text": "Elle vaut 1/20e du salaire gagné pendant les quatre semaines complètes de paie précédant le congé, heures supplémentaires exclues. Une personne qui travaille ce jour-là reçoit cette indemnité en plus de son salaire, ou un congé compensatoire dans les trois semaines."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "Le 11 novembre est-il férié au Québec ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Non. Le jour du Souvenir ne fait pas partie des huit congés de la Loi sur les normes du travail : la journée est travaillée pour la très grande majorité des personnes salariées québécoises. Il est en revanche chômé dans les entreprises de compétence fédérale, comme les banques ou le transport interprovincial."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Combien y a-t-il de jours fériés entre deux dates au Québec ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cela dépend des dates, et le calculateur en haut de cette page le compte pour vous : choisissez l'onglet Entre 2 dates, saisissez le début et la fin, cochez Déduire les jours fériés et laissez le pays sur Québec. Le résultat indique le nombre de jours ouvrés et le nombre de fériés déduits."
+          }
         }
       ]
     },
@@ -541,6 +557,30 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         jour ouvré — le total annuel, lui, reste identique.
       </p>
 
+
+      <h2 id="est-ce-ferie">Cette date est-elle fériée au Québec&nbsp;?</h2>
+      <p>Les dates dont on se demande le plus souvent si elles sont chômées. Les huit congés de la Loi sur les normes du travail sont marqués «&nbsp;oui&nbsp;»&nbsp;; le reste est travaillé, même quand c'est férié ailleurs au Canada.</p>
+      <div class="table-wrap tw-verdict">
+        <table>
+          <caption>Est-ce férié au Québec&nbsp;? Les dates les plus souvent demandées</caption>
+          <thead><tr><th scope="col">Date</th><th scope="col">Férié&nbsp;?</th><th scope="col">Ce qu'il faut savoir</th></tr></thead>
+          <tbody>
+            <tr><td>1<sup>er</sup> janvier</td><td>✅ Oui</td><td>Jour de l'An.</td></tr>
+            <tr><td>2 janvier</td><td>❌ Non</td><td>Souvent accordé par convention collective, mais la loi ne l'exige pas.</td></tr>
+            <tr><td>Vendredi saint <em>ou</em> lundi de Pâques</td><td>✅ Oui, l'un des deux</td><td>L'employeur choisit l'un des deux&nbsp;; jamais les deux.</td></tr>
+            <tr><td>Lundi précédant le 25 mai</td><td>✅ Oui</td><td>Journée nationale des patriotes.</td></tr>
+            <tr><td>24 juin</td><td>✅ Oui</td><td>Fête nationale du Québec.</td></tr>
+            <tr><td>1<sup>er</sup> juillet</td><td>✅ Oui</td><td>Fête du Canada.</td></tr>
+            <tr><td>1<sup>er</sup> lundi de septembre</td><td>✅ Oui</td><td>Fête du Travail.</td></tr>
+            <tr><td>30 septembre</td><td>❌ Non</td><td>Journée de la vérité et de la réconciliation&nbsp;: férié <em>fédéral</em> seulement.</td></tr>
+            <tr><td>2<sup>e</sup> lundi d'octobre</td><td>✅ Oui</td><td>Action de grâce.</td></tr>
+            <tr><td>11 novembre</td><td>❌ Non</td><td>Le jour du Souvenir n'est pas férié au Québec. Il l'est pour les entreprises de compétence fédérale.</td></tr>
+            <tr><td>25 décembre</td><td>✅ Oui</td><td>Noël.</td></tr>
+            <tr><td>26 décembre</td><td>❌ Non</td><td>Le Boxing Day n'est pas un congé de la Loi sur les normes du travail.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
       <h2>Fériés provinciaux et fériés fédéraux&nbsp;: deux listes distinctes</h2>
       <p>
         C'est la confusion la plus fréquente. Une poignée d'entreprises seulement relèvent du fédéral —
@@ -632,6 +672,14 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
       <details>
         <summary>Quelle est l'indemnité versée pour un jour férié au Québec ?</summary>
         <p>Elle vaut 1/20e du salaire gagné pendant les quatre semaines complètes de paie précédant le congé, heures supplémentaires exclues. Une personne qui travaille ce jour-là reçoit cette indemnité en plus de son salaire, ou un congé compensatoire dans les trois semaines.</p>
+      </details>
+      <details>
+        <summary>Le 11 novembre est-il férié au Québec&nbsp;?</summary>
+        <p>Non. Le jour du Souvenir ne fait pas partie des huit congés de la Loi sur les normes du travail&nbsp;: la journée est travaillée pour la très grande majorité des personnes salariées québécoises. Il est en revanche chômé dans les entreprises de compétence fédérale — banques, transport interprovincial, télécommunications.</p>
+      </details>
+      <details>
+        <summary>Combien y a-t-il de jours fériés entre deux dates au Québec&nbsp;?</summary>
+        <p>Cela dépend des dates, et le calculateur en haut de cette page le compte pour vous&nbsp;: choisissez l'onglet <strong>Entre 2 dates</strong>, saisissez le début et la fin, cochez «&nbsp;Déduire les jours fériés&nbsp;» et laissez le pays sur Québec. Le résultat indique le nombre de jours ouvrés et le nombre de fériés déduits.</p>
       </details>
       </div>
 
