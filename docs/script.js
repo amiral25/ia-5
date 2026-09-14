@@ -174,7 +174,8 @@
     },
     lu: {
       nom: 'Luxembourg', gentile: 'luxembourgeois',
-      fixes: [[0, 1, 'Nouvel An'], [4, 1, 'Fête du Travail'], [4, 9, 'Journée de l\'Europe'],
+      fixes: [[0, 1, 'Nouvel An'], [4, 1, 'Fête du Travail'],
+              [4, 9, 'Journée de l\'Europe', 2019], // fériée seulement depuis 2019
               [5, 23, 'Fête nationale'], [7, 15, 'Assomption'], [10, 1, 'Toussaint'],
               [11, 25, 'Noël'], [11, 26, 'Saint-Étienne']],
       mobiles: [[1, 'Lundi de Pâques'], [39, 'Ascension'], [50, 'Lundi de Pentecôte']]
@@ -196,6 +197,14 @@
 
   function codePays(code) { return PAYS[code] ? code : 'fr'; }
 
+  /** Deux fêtes peuvent tomber le même jour — au Luxembourg, l'Ascension et
+      la Journée de l'Europe coïncidaient le 9 mai 2024. C'est une seule
+      journée chômée, mais les deux noms doivent être dits : écraser l'un par
+      l'autre ferait disparaître une fête de la liste. */
+  function poser(set, ts, nom) {
+    set[ts] = set[ts] ? set[ts] + ' et ' + nom : nom;
+  }
+
   /** { timestamp UTC → nom du jour férié } pour une année et un pays. */
   function holidaysOf(year, code) {
     code = codePays(code);
@@ -204,15 +213,20 @@
 
     var p = PAYS[code], set = Object.create(null), i;
     for (i = 0; i < p.fixes.length; i++) {
-      set[Date.UTC(year, p.fixes[i][0], p.fixes[i][1])] = p.fixes[i][2];
+      // Quatrième élément optionnel : l'année d'entrée en vigueur. Les lois
+      // changent — la Journée de l'Europe n'est fériée au Luxembourg que
+      // depuis 2019 —, et appliquer les règles d'aujourd'hui à une année
+      // ancienne produirait une liste fausse.
+      if (p.fixes[i][3] && year < p.fixes[i][3]) continue;
+      poser(set, Date.UTC(year, p.fixes[i][0], p.fixes[i][1]), p.fixes[i][2]);
     }
     var e = easterUTC(year);
     for (i = 0; i < p.mobiles.length; i++) {
-      set[e + p.mobiles[i][0] * DAY_MS] = p.mobiles[i][1];
+      poser(set, e + p.mobiles[i][0] * DAY_MS, p.mobiles[i][1]);
     }
     if (p.calcules) {
       var sup = p.calcules(year);
-      for (i = 0; i < sup.length; i++) set[sup[i][0]] = sup[i][1];
+      for (i = 0; i < sup.length; i++) poser(set, sup[i][0], sup[i][1]);
     }
     holidayCache[key] = set;
     return set;
