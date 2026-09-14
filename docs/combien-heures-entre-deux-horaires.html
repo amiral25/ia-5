@@ -371,6 +371,21 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
               </div>
             </div>
           </div>
+          <div class="grid-2">
+            <div class="field">
+              <label class="lbl" for="h-jours">Nombre de jours</label>
+              <input id="h-jours" class="inp" type="number" min="1" max="31" step="1" value="1" inputmode="numeric">
+            </div>
+            <div class="field">
+              <span class="lbl">Semaine type</span>
+              <div class="chips">
+                <button class="chip" type="button" data-jours="1">1 jour</button>
+                <button class="chip" type="button" data-jours="4">4 jours</button>
+                <button class="chip" type="button" data-jours="5">5 jours</button>
+                <button class="chip" type="button" data-jours="6">6 jours</button>
+              </div>
+            </div>
+          </div>
           <p id="h-note" class="note is-hidden">🌙 L'heure de fin est le lendemain (service de nuit).</p>
         </div>
 
@@ -573,6 +588,33 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         nuit, en principe, le salarié qui accomplit au moins deux fois par semaine trois heures de travail entre
         21&nbsp;h et 6&nbsp;h. Des contreparties en repos ou en majoration sont alors prévues — leur montant
         dépend de votre convention collective.
+      </p>
+
+
+      <h2 id="semaine">Et sur une semaine complète&nbsp;?</h2>
+      <p>
+        C'est la question qui suit presque toujours la première. Le calculateur ci-dessus la traite
+        en une fois&nbsp;: renseignez vos horaires, votre pause, puis le <strong>nombre de jours</strong>.
+        Il affiche alors le total et le rappel du détail journalier.
+      </p>
+      <div class="table-wrap tw-large">
+        <table>
+          <caption>Horaires courants, sur cinq jours</caption>
+          <thead><tr><th scope="col">Horaire</th><th scope="col">Pause</th><th scope="col">Par jour</th><th scope="col">Sur 5 jours</th><th scope="col">Face aux 35&nbsp;h</th></tr></thead>
+          <tbody>
+            <tr><td>8h00 – 17h00</td><td>60 min</td><td>8 h 00</td><td><strong>40 h 00</strong></td><td>au-delà</td></tr>
+            <tr><td>8h30 – 17h00</td><td>45 min</td><td>7 h 45</td><td><strong>38 h 45</strong></td><td>au-delà</td></tr>
+            <tr><td>9h00 – 17h00</td><td>60 min</td><td>7 h 00</td><td><strong>35 h 00</strong></td><td>pile</td></tr>
+            <tr><td>8h00 – 16h00</td><td>30 min</td><td>7 h 30</td><td><strong>37 h 30</strong></td><td>au-delà</td></tr>
+            <tr><td>9h00 – 18h00</td><td>60 min</td><td>8 h 00</td><td><strong>40 h 00</strong></td><td>au-delà</td></tr>
+            <tr><td>8h00 – 17h00</td><td>0 min</td><td>9 h 00</td><td><strong>45 h 00</strong></td><td>au-delà</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="micro">
+        La dernière colonne situe le total par rapport à la durée légale française de 35&nbsp;heures.
+        Au-delà, les heures supplémentaires se comptent à la semaine, et non au mois&nbsp;: c'est le
+        total hebdomadaire qui déclenche la majoration.
       </p>
 
       <h2 id="faq">Questions fréquentes</h2>

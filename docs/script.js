@@ -378,7 +378,8 @@
   /* ---------------------------------------------------------
      6. Onglet 2 — Durée entre deux heures
      --------------------------------------------------------- */
-  var hStart = $('#h-start'), hEnd = $('#h-end'), hPause = $('#h-pause'), hNote = $('#h-note');
+  var hStart = $('#h-start'), hEnd = $('#h-end'), hPause = $('#h-pause'),
+      hJours = $('#h-jours'), hNote = $('#h-note');
 
   function timeToSec(v) {
     var p = /^(\d{1,2}):(\d{2})(?::(\d{2}))?$/.exec(v || '');
@@ -401,19 +402,39 @@
     var gross = overnight ? b + 86400 - a : b - a;
     var net = gross - pause;
 
+    // Répétition sur plusieurs jours : « 8h30 → 17h, pause 45 min, × 5 »
+    // répond en une fois à « ça fait combien d'heures par semaine ? ».
+    var jours = Math.min(31, Math.max(1, parseInt(hJours.value, 10) || 1));
+    var total = net * jours;
+    var suffixe = (pause ? ' (pause ' + (pause / 60) + ' min)' : '') +
+                  (jours > 1 ? ' × ' + jours + ' jours' : '');
+
+    // Au-delà d'un jour, la question posée porte sur le total : c'est donc lui
+    // qui prend la grande ligne, et la journée passe en détail.
+    var cells = jours > 1
+      ? [{ v: nf(total / 3600, 2), l: 'Heures décimales' },
+         { v: fmtHMS(net), l: 'Par jour' },
+         { v: nf(net / 3600, 2), l: 'Décimales par jour' },
+         { v: fmtMinutes(total), l: 'Minutes totales' },
+         { v: fmtHMS(pause * jours), l: 'Pause déduite' }]
+      : [{ v: nf(net / 3600, 2), l: 'Heures décimales' },
+         { v: fmtMinutes(net), l: 'Minutes totales' },
+         { v: fmtHMS(gross), l: 'Amplitude brute' },
+         { v: fmtHMS(pause), l: 'Pause déduite' }];
+
     render({
-      label: overnight ? 'Temps net (service de nuit)' : 'Temps net travaillé',
-      value: fmtHMS(net),
-      input: hStart.value + ' → ' + hEnd.value + (pause ? ' − ' + (pause / 60) + ' min' : ''),
-      cells: [
-        { v: nf(net / 3600, 2), l: 'Heures décimales' },
-        { v: fmtMinutes(net), l: 'Minutes totales' },
-        { v: fmtHMS(gross), l: 'Amplitude brute' },
-        { v: fmtHMS(pause), l: 'Pause déduite' }
-      ],
+      label: jours > 1 ? 'Total sur ' + jours + ' jours'
+                       : (overnight ? 'Temps net (service de nuit)' : 'Temps net travaillé'),
+      value: fmtHMS(jours > 1 ? total : net),
+      input: hStart.value + ' → ' + hEnd.value +
+             (pause ? ' − ' + (pause / 60) + ' min' : '') +
+             (jours > 1 ? ' × ' + jours : ''),
+      cells: cells,
       error: net < 0 ? 'La pause est plus longue que la période sélectionnée.' : '',
-      copy: 'De ' + hStart.value + ' à ' + hEnd.value + (pause ? ' (pause ' + (pause / 60) + ' min)' : '') +
-            ' = ' + fmtHMS(net) + '  (' + nf(net / 3600, 2) + ' h décimales · ' + fmtMinutes(net) + ')'
+      copy: 'De ' + hStart.value + ' à ' + hEnd.value + suffixe +
+            ' = ' + fmtHMS(jours > 1 ? total : net) +
+            '  (' + nf((jours > 1 ? total : net) / 3600, 2) + ' h décimales' +
+            (jours > 1 ? ' · ' + fmtHMS(net) + ' par jour' : ' · ' + fmtMinutes(net)) + ')'
     });
   }
 
@@ -931,7 +952,8 @@
 
   $('#btn-reset').addEventListener('click', function () {
     if (current === 1) { quick.value = ''; buildRows([['', '', ''], ['', '', '']]); }
-    else if (current === 2) { hStart.value = ''; hEnd.value = ''; hPause.value = 0; syncChips(); }
+    else if (current === 2) { hStart.value = ''; hEnd.value = ''; hPause.value = 0;
+                              hJours.value = 1; syncChips(); }
     else if (current === 3) { setDefaultDates(); dWe.checked = true; dHol.checked = true; }
     else { mH.value = ''; mM.value = ''; mS.value = ''; mN.value = '2'; }
     compute();
@@ -1083,15 +1105,23 @@
     if (k === 'm') { $('#btn-reset').click(); e.preventDefault(); }
   });
 
-  [hStart, hEnd, hPause].forEach(function (el) { el.addEventListener('input', compute); });
+  [hStart, hEnd, hPause, hJours].forEach(function (el) { el.addEventListener('input', compute); });
+
+  // Deux séries de pastilles cohabitent : on les distingue par leur attribut,
+  // sinon un clic sur « 5 jours » écraserait la pause.
   function syncChips() {
-    var v = String(parseFloat(hPause.value) || 0);
-    $$('.chip').forEach(function (c) { c.classList.toggle('is-on', c.dataset.pause === v); });
+    var p = String(parseFloat(hPause.value) || 0);
+    var j = String(parseInt(hJours.value, 10) || 1);
+    $$('.chip[data-pause]').forEach(function (c) { c.classList.toggle('is-on', c.dataset.pause === p); });
+    $$('.chip[data-jours]').forEach(function (c) { c.classList.toggle('is-on', c.dataset.jours === j); });
   }
-  $$('.chip').forEach(function (c) {
+  $$('.chip[data-pause]').forEach(function (c) {
     c.addEventListener('click', function () { hPause.value = c.dataset.pause; syncChips(); compute(); });
   });
-  hPause.addEventListener('input', syncChips);
+  $$('.chip[data-jours]').forEach(function (c) {
+    c.addEventListener('click', function () { hJours.value = c.dataset.jours; syncChips(); compute(); });
+  });
+  [hPause, hJours].forEach(function (el) { el.addEventListener('input', syncChips); });
 
   [dStart, dEnd, dWe, dHol, dPays].forEach(function (el) { el.addEventListener('input', compute); });
 
@@ -1139,6 +1169,7 @@
     } else if (current === 2) {
       p.set('hd', hStart.value); p.set('hf', hEnd.value);
       p.set('hp', String(parseFloat(hPause.value) || 0));
+      p.set('hj', String(parseInt(hJours.value, 10) || 1));
     } else if (current === 3) {
       p.set('dd', dStart.value); p.set('df', dEnd.value);
       p.set('dw', dWe.checked ? 1 : 0); p.set('dh', dHol.checked ? 1 : 0);
@@ -1180,6 +1211,7 @@
     if (p.has('hd')) hStart.value = p.get('hd');
     if (p.has('hf')) hEnd.value = p.get('hf');
     if (p.has('hp')) { hPause.value = p.get('hp'); syncChips(); }
+    if (p.has('hj')) { hJours.value = p.get('hj'); syncChips(); }
     if (p.has('dd')) dStart.value = p.get('dd');
     if (p.has('df')) dEnd.value = p.get('df');
     if (p.has('dw')) dWe.checked = p.get('dw') === '1';

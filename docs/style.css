@@ -446,6 +446,8 @@ tr.passe td:first-child{text-decoration:line-through}
    dans 340 px : mieux vaut faire défiler la boîte que d'écraser le texte,
    et le verdict doit rester lisible d'un coup d'œil, jamais coupé. */
 .tw-verdict table{min-width:520px}
+/* Cinq colonnes : on laisse la boîte défiler plutôt que d'écraser le texte. */
+.tw-large table{min-width:560px}
 .tw-verdict td:nth-child(2){white-space:nowrap;font-weight:600}
 
 /* Emporter les jours fériés — remonte contre le tableau qu'il prolonge. */
