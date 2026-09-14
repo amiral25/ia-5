@@ -63,16 +63,46 @@ body{
 .theme-toggle{grid-area:bouton}
 .site-nav{grid-area:nav}
 
-.site-nav{display:flex;gap:4px;overflow-x:auto;padding-bottom:8px;
-  scrollbar-width:none;-ms-overflow-style:none}
-.site-nav::-webkit-scrollbar{display:none}
-.site-nav a{white-space:nowrap;padding:7px 11px;border-radius:8px;text-decoration:none;
+/* Navigation en quatre groupes dépliants, couvrant les onze pages du site.
+   Le dépliant est un <details> natif : il fonctionne au clavier et sans
+   JavaScript, contrairement à un menu bricolé à coups de div. */
+.site-nav{display:flex;flex-wrap:wrap;gap:2px;padding-bottom:6px}
+.nav-groupe{position:relative}
+.nav-groupe > summary{
+  display:flex;align-items:center;gap:7px;white-space:nowrap;cursor:pointer;
+  padding:7px 11px;border-radius:8px;list-style:none;
+  color:var(--muted);font-size:.86rem;font-weight:600;
+  transition:color .15s,background .15s}
+.nav-groupe > summary::-webkit-details-marker{display:none}
+.nav-groupe > summary:hover{color:var(--text);background:var(--card-2)}
+/* Le chevron est dessiné en CSS : rien à ajouter dans les quatorze pages. */
+.nav-groupe > summary::after{content:"";width:5px;height:5px;margin-top:-3px;
+  border-right:1.7px solid currentColor;border-bottom:1.7px solid currentColor;
+  transform:rotate(45deg);opacity:.55;transition:transform .15s}
+.nav-groupe[open] > summary::after{margin-top:2px;transform:rotate(-135deg)}
+.nav-groupe[open] > summary{color:var(--text);background:var(--card-2)}
+/* Le groupe qui contient la page courante reste signalé menu fermé. */
+.nav-groupe.est-actif > summary{color:var(--brand);background:var(--brand-soft)}
+
+.nav-pop{display:flex;flex-direction:column;gap:1px;padding:6px;margin:2px 0 4px 6px;
+  border-left:2px solid var(--line)}
+.nav-pop a{white-space:nowrap;padding:8px 11px;border-radius:7px;text-decoration:none;
   color:var(--muted);font-size:.86rem;font-weight:600;transition:color .15s,background .15s}
-.site-nav a:hover{color:var(--text);background:var(--card-2)}
-.site-nav a[aria-current]{color:var(--brand);background:var(--brand-soft)}
+.nav-pop a:hover{color:var(--text);background:var(--card-2)}
+.nav-pop a[aria-current]{color:var(--brand);background:var(--brand-soft)}
+
 @media(min-width:900px){
   .header-inner{grid-template-columns:auto 1fr auto;grid-template-areas:"marque nav bouton"}
-  .site-nav{justify-content:center;padding-bottom:0;overflow:visible}
+  .site-nav{flex-wrap:nowrap;gap:4px;padding-bottom:0}
+  /* Au-dessus de 900 px le volet flotte : il ne pousse rien, donc il ne
+     décale rien. En dessous il se déplie dans le flux, ce qui est un
+     mouvement déclenché par la personne et non un décalage subi. */
+  .nav-pop{position:absolute;top:calc(100% + 6px);left:0;z-index:40;min-width:210px;
+    margin:0;padding:6px;border:1px solid var(--line);border-radius:12px;
+    background:var(--card);box-shadow:var(--shadow-lg,0 12px 28px rgba(15,23,42,.14))}
+}
+@media(prefers-reduced-motion:reduce){
+  .nav-groupe > summary,.nav-groupe > summary::after,.nav-pop a{transition:none}
 }
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:700;letter-spacing:-.02em}
 .brand-mark{display:grid;place-items:center;width:32px;height:32px;border-radius:9px;background:linear-gradient(140deg,var(--brand),#7c3aed);color:#fff;box-shadow:var(--shadow)}
