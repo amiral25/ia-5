@@ -362,6 +362,37 @@ html[data-ms="1"] .u-ms{display:block}
 
 .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--card);margin:16px 0 18px}
 
+/* Prochain jour férié. Le texte est calculé à l'affichage d'après la date du
+   jour : la hauteur est donc réservée ici, sinon la boîte change de taille en
+   se remplissant et décale toute la page.
+   Les trois paliers sont mesurés, pas devinés : ce sont les hauteurs prises
+   par la plus longue phrase que le code puisse produire — nom de férié le plus
+   long, jour et mois les plus longs, « c'est aujourd'hui » —, soit 80
+   caractères. Le texte de repli est plus court, donc la hauteur ci-dessous
+   s'applique dans les deux cas et rien ne bouge.
+   La réserve porte sur la VALEUR, pas sur la boîte, et le contenu est aligné
+   en haut : centré verticalement, le couple étiquette/valeur se recentrait en
+   passant d'une ligne à deux, ce qui décalait tout de 12 px. */
+.prochain{display:flex;flex-direction:column;gap:3px;
+  margin:16px 0 6px;padding:12px 16px;
+  background:var(--brand-soft);border-left:3px solid var(--brand);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;font-size:.95rem}
+.prochain-etiq{font-weight:700;font-size:.74rem;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--brand)}
+.prochain-val{min-height:77px}
+@media(min-width:400px){.prochain-val{min-height:51px}}
+@media(min-width:700px){.prochain-val{min-height:26px}}
+
+/* Dates déjà passées : barrées ET grisées. Jamais la couleur seule, qui ne
+   dit rien à qui ne la perçoit pas — et aucun de ces deux effets ne modifie
+   la mise en page, donc rien ne bouge quand ils s'appliquent. */
+tr.passe td{color:var(--muted)}
+tr.passe td:first-child{text-decoration:line-through}
+
+/* Lu par les lecteurs d'écran, invisible à l'œil, sans effet sur la mise en page. */
+.hors-ecran{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
 /* Tableau « cette date est-elle fériée ? ». Trois colonnes ne tiennent pas
    dans 340 px : mieux vaut faire défiler la boîte que d'écraser le texte,
    et le verdict doit rester lisible d'un coup d'œil, jamais coupé. */

@@ -792,6 +792,78 @@
     });
   });
 
+  /* ---------- La page sait quel jour on est (pages pays) ----------
+     Deux affichages dépendent de la date du jour : le prochain jour férié,
+     et le marquage des dates déjà passées. Les deux sont calculés par le
+     moteur de la section 3 — jamais écrits en dur, sinon ils seraient faux
+     dès le lendemain. La hauteur de l'encart est réservée en CSS pour que
+     rien ne bouge quand le texte s'y écrit. */
+
+  var MOIS_FR = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin',
+                 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+
+  /** Minuit aujourd'hui, exprimé en UTC : les fériés le sont aussi. */
+  function aujourdHuiUTC() {
+    var d = new Date();
+    return Date.UTC(d.getFullYear(), d.getMonth(), d.getDate());
+  }
+
+  /** Le premier férié à venir, cette année ou la suivante. */
+  function prochainFerie(code, depuis) {
+    var an = new Date(depuis).getUTCFullYear();
+    for (var i = 0; i < 2; i++) {
+      var l = listeFeries(an + i, code);
+      for (var j = 0; j < l.length; j++) if (l[j].ts >= depuis) return l[j];
+    }
+    return null;
+  }
+
+  /** « lundi 12 octobre 2026 » */
+  function dateLongue(ts) {
+    var d = new Date(ts), jour = d.getUTCDate();
+    return JOURS_FR[d.getUTCDay()] + ' ' + (jour === 1 ? '1er' : jour) + ' ' +
+           MOIS_FR[d.getUTCMonth()] + ' ' + d.getUTCFullYear();
+  }
+
+  (function annoncerProchainFerie() {
+    var box = $('#prochain');
+    if (!box) return;
+    var f = prochainFerie(codePays(box.getAttribute('data-pays')), aujourdHuiUTC());
+    if (!f) return;
+    var jours = Math.round((f.ts - aujourdHuiUTC()) / DAY_MS);
+    var quand = jours === 0 ? "c'est aujourd'hui"
+              : jours === 1 ? "c'est demain"
+              : 'dans ' + jours + ' jours';
+    $('.prochain-val', box).textContent =
+      f.nom + ' — ' + dateLongue(f.ts) + ', ' + quand + '.';
+  })();
+
+  // Les lignes des tableaux suivent exactement l'ordre du moteur : c'est ce
+  // que vérifie test-feries.js, ligne à ligne. On peut donc apparier par
+  // index plutôt que de relire les dates affichées, ce qui serait fragile.
+  (function marquerDatesPassees() {
+    var auj = aujourdHuiUTC();
+    $$('.dl-feries').forEach(function (bloc) {
+      var code = codePays(bloc.getAttribute('data-pays'));
+      var annee = parseInt(bloc.getAttribute('data-annee'), 10);
+      var tw = bloc.previousElementSibling;
+      var table = tw && tw.querySelector('table');
+      if (!annee || !table) return;
+
+      var feries = listeFeries(annee, code);
+      $$('tbody tr', table).forEach(function (tr, i) {
+        if (!feries[i] || feries[i].ts >= auj) return;
+        tr.classList.add('passe');
+        // Le barré et le gris ne disent rien à qui ne les perçoit pas :
+        // la mention est aussi portée par le texte, hors écran.
+        var note = document.createElement('span');
+        note.className = 'hors-ecran';
+        note.textContent = ' (date passée)';
+        tr.cells[0].appendChild(note);
+      });
+    });
+  })();
+
   /* ---------- Impression / PDF ----------
      Pas de bibliothèque PDF : jsPDF pèse plus de 300 Ko, ce qui ruinerait le
      score de performance et la promesse « aucune requête externe ». La boîte
