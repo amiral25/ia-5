@@ -930,6 +930,42 @@
     try { localStorage.setItem('cd-theme', next); } catch (e) {}
   });
 
+  /* ---------- Menus dépliants de l'en-tête ----------
+     Les <details> s'ouvrent et se ferment tout seuls, au clic comme au
+     clavier : ce qui suit n'ajoute que les comportements qu'un menu doit
+     avoir et qu'ils n'ont pas — un seul ouvert à la fois, fermeture par
+     Échap et au clic à l'extérieur. Sans JavaScript, tout reste utilisable. */
+  (function menusEntete() {
+    var groupes = $$('.nav-groupe');
+    if (!groupes.length) return;
+
+    function fermerSauf(garde) {
+      groupes.forEach(function (g) { if (g !== garde) g.open = false; });
+    }
+
+    groupes.forEach(function (g) {
+      g.addEventListener('toggle', function () { if (g.open) fermerSauf(g); });
+      // Suivre un lien doit refermer le volet : sur la page d'arrivée, le
+      // menu resterait sinon ouvert sans raison.
+      $$('a', g).forEach(function (a) {
+        a.addEventListener('click', function () { g.open = false; });
+      });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      var ouvert = groupes.filter(function (g) { return g.open; })[0];
+      if (!ouvert) return;
+      ouvert.open = false;
+      // Le focus revient sur l'intitulé : sinon il reste dans le vide.
+      $('summary', ouvert).focus();
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.nav-groupe')) fermerSauf(null);
+    });
+  })();
+
   /* ---------------------------------------------------------
      11. Câblage des événements
      --------------------------------------------------------- */
