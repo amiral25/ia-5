@@ -392,6 +392,25 @@ html[data-ms="1"] .u-ms{display:block}
 
 .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--card);margin:16px 0 18px}
 
+/* Années précédentes : une année par dépliant. Replié par défaut, sinon six
+   listes complètes noieraient l'année en cours, qui est ce qu'on vient
+   chercher. Le contenu reste dans le HTML, donc lisible par les moteurs. */
+.histo{display:flex;flex-direction:column;gap:7px;margin:14px 0 22px}
+.histo > details{border:1px solid var(--line);border-radius:var(--r-sm);
+  background:var(--card);overflow:hidden}
+.histo > details > summary{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;
+  cursor:pointer;padding:12px 15px;font-weight:600;font-size:.93rem;list-style:none}
+.histo > details > summary::-webkit-details-marker{display:none}
+.histo > details > summary::after{content:"";margin-left:auto;align-self:center;
+  width:6px;height:6px;border-right:1.7px solid currentColor;
+  border-bottom:1.7px solid currentColor;transform:rotate(45deg);opacity:.5}
+.histo > details[open] > summary::after{transform:rotate(-135deg)}
+.histo > details[open] > summary{border-bottom:1px solid var(--line)}
+.histo-n{color:var(--muted);font-weight:500;font-size:.85rem}
+/* Le tableau est déjà encadré par le dépliant : pas de double bordure. */
+.histo .table-wrap{border:0;border-radius:0;margin:0}
+@media(prefers-reduced-motion:reduce){.histo > details > summary::after{transition:none}}
+
 /* Prochain jour férié. Le texte est calculé à l'affichage d'après la date du
    jour : la hauteur est donc réservée ici, sinon la boîte change de taille en
    se remplissant et décale toute la page.
