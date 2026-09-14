@@ -958,7 +958,11 @@
     }
 
     groupes.forEach(function (g) {
-      g.addEventListener('toggle', function () { if (g.open) fermerSauf(g); });
+      // On ferme les autres AU CLIC, pas sur l'événement « toggle » : celui-ci
+      // est asynchrone, si bien que deux volets se chevaucheraient le temps
+      // d'une image. Le clavier passe aussi par ici — activer un <summary> au
+      // clavier déclenche un clic.
+      $('summary', g).addEventListener('click', function () { fermerSauf(g); });
       // Suivre un lien doit refermer le volet : sur la page d'arrivée, le
       // menu resterait sinon ouvert sans raison.
       $$('a', g).forEach(function (a) {
@@ -968,11 +972,12 @@
 
     document.addEventListener('keydown', function (e) {
       if (e.key !== 'Escape') return;
-      var ouvert = groupes.filter(function (g) { return g.open; })[0];
-      if (!ouvert) return;
-      ouvert.open = false;
-      // Le focus revient sur l'intitulé : sinon il reste dans le vide.
-      $('summary', ouvert).focus();
+      var ouverts = groupes.filter(function (g) { return g.open; });
+      if (!ouverts.length) return;
+      // Le focus revient sur l'intitulé du premier : sinon il reste dans le vide.
+      var cible = $('summary', ouverts[0]);
+      ouverts.forEach(function (g) { g.open = false; });
+      cible.focus();
     });
 
     document.addEventListener('click', function (e) {
