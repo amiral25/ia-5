@@ -1,0 +1,4 @@
+# Fichier ads.txt — obligatoire pour être payé correctement par Google AdSense.
+# Remplacez pub-XXXXXXXXXXXXXXXX par VOTRE identifiant d'éditeur AdSense
+# (visible dans AdSense > Compte > Informations sur le compte).
+google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
