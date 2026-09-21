@@ -9,6 +9,18 @@
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var DAY_MS = 86400000;
 
+  /** Abonne un élément s'il existe. Les pages spécialisées — la journée coupée,
+      par exemple — ne portent pas le calculateur principal : sans cette
+      précaution, un seul abonnement sur un élément absent interromprait tout
+      le script, menus et thème compris. */
+  function on(cible, ev, fn, capture) {
+    var el = typeof cible === 'string' ? $(cible) : cible;
+    if (el) el.addEventListener(ev, fn, capture);
+  }
+
+  /** Le calculateur à quatre onglets n'est pas sur toutes les pages. */
+  var A_CALC = !!document.querySelector('#calculatrice');
+
   /* ---------------------------------------------------------
      1. Formatage
      --------------------------------------------------------- */
@@ -244,6 +256,7 @@
   var lastResult = { text: '', input: '', summary: '' };
 
   function render(o) {
+    if (!A_CALC) return;
     elLabel.textContent = o.label || 'Résultat';
     elValue.textContent = o.value;
     var html = '';
@@ -640,6 +653,7 @@
   }
 
   function drawHist() {
+    if (!histBox) return;
     var h = readHist();
     histBox.hidden = h.length === 0;
     histList.innerHTML = h.map(function (it) {
@@ -668,7 +682,7 @@
       drawHist();
     }, 1600);
   }
-  $('#btn-clear-hist').addEventListener('click', function () { writeHist([]); drawHist(); });
+  on('#btn-clear-hist', 'click', function () { writeHist([]); drawHist(); });
 
   /* ---------- Export CSV ---------- */
 
@@ -712,7 +726,7 @@
     showToast(h.length + (h.length > 1 ? ' lignes exportées' : ' ligne exportée'));
   }
 
-  $('#btn-csv').addEventListener('click', exporterCSV);
+  on('#btn-csv', 'click', exporterCSV);
 
   /* ---------- Emporter les jours fériés (pages pays) ----------
      Les tableaux de ces pages sont écrits en dur dans le HTML, mais les
@@ -905,8 +919,10 @@
      d'impression du navigateur propose « Enregistrer au format PDF » sur tous
      les systèmes récents, et rend un document plus propre. */
   function majEnteteImpression() {
+    var e = $('#print-entete');
+    if (!e) return;
     var n = readHist().length;
-    $('#print-entete').textContent =
+    e.textContent =
       'Relevé de durées — ' + n + (n > 1 ? ' calculs' : ' calcul') +
       ' — édité le ' + horodatage(Date.now()) + ' — calculatrice-duree.fr';
   }
@@ -915,7 +931,7 @@
   // l'en-tête doit être juste dans les deux cas.
   window.addEventListener('beforeprint', majEnteteImpression);
 
-  $('#btn-print').addEventListener('click', function () {
+  on('#btn-print', 'click', function () {
     if (!readHist().length) return showToast('Aucun calcul à imprimer');
     majEnteteImpression();
     window.print();
@@ -926,13 +942,14 @@
      --------------------------------------------------------- */
   var toast = $('#toast'), toastTimer;
   function showToast(msg) {
+    if (!toast) return;
     toast.textContent = msg;
     toast.classList.add('is-on');
     clearTimeout(toastTimer);
     toastTimer = setTimeout(function () { toast.classList.remove('is-on'); }, 2000);
   }
 
-  $('#btn-copy').addEventListener('click', function () {
+  on('#btn-copy', 'click', function () {
     var txt = lastResult.text || '';
     if (!txt || txt === '—') { showToast('Rien à copier pour l\'instant'); return; }
     var done = function () { showToast('Résultat copié ✓'); };
@@ -950,7 +967,7 @@
     document.body.removeChild(ta);
   }
 
-  $('#btn-reset').addEventListener('click', function () {
+  on('#btn-reset', 'click', function () {
     if (current === 1) { quick.value = ''; buildRows([['', '', ''], ['', '', '']]); }
     else if (current === 2) { hStart.value = ''; hEnd.value = ''; hPause.value = 0;
                               hJours.value = 1; syncChips(); }
@@ -960,7 +977,7 @@
     showToast('Champs réinitialisés');
   });
 
-  $('#theme-toggle').addEventListener('click', function () {
+  on('#theme-toggle', 'click', function () {
     var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
     try { localStorage.setItem('cd-theme', next); } catch (e) {}
@@ -1093,7 +1110,7 @@
   var userTouched = false;
   var badgeExemple = $('#res-exemple');
   ['input', 'click'].forEach(function (ev) {
-    $('#calculatrice').addEventListener(ev, function () {
+    on('#calculatrice', ev, function () {
       userTouched = true;
       // Le résultat s'affiche au-dessus des champs : tant que rien n'a été
       // saisi, il faut dire que c'est une démonstration, pas un calcul du
@@ -1105,15 +1122,15 @@
   /* Retour au calculateur : les pages atteignent quatorze écrans sur mobile.
      Le bouton n'apparaît qu'une fois l'outil sorti de l'écran. */
   (function () {
-    var lien = $('#retour-calc'), cible = $('#calculatrice');
+    var lien = $('#retour-calc'), cible = $('#calculatrice') || $('#services');
     if (!lien || !cible || !('IntersectionObserver' in window)) return;
     new IntersectionObserver(function (entrees) {
       lien.classList.toggle('is-on', !entrees[0].isIntersecting);
     }, { rootMargin: '-80px 0px 0px 0px' }).observe(cible);
   })();
 
-  rowsBox.addEventListener('input', compute);
-  rowsBox.addEventListener('click', function (e) {
+  on(rowsBox, 'input', compute);
+  on(rowsBox, 'click', function (e) {
     var sg = e.target.closest('.sg-btn');
     if (sg) {
       $$('.sg-btn', sg.closest('.sign-group')).forEach(function (b) {
@@ -1135,13 +1152,13 @@
     rowsBox.appendChild(rowTemplate('', '', '', sign));
     $('.row:last-child .r-h', rowsBox).focus();
   }
-  $('#add-row').addEventListener('click', function () { appendRow('+'); });
-  $('#sub-row').addEventListener('click', function () { appendRow('-'); });
-  quick.addEventListener('input', compute);
+  on('#add-row', 'click', function () { appendRow('+'); });
+  on('#sub-row', 'click', function () { appendRow('-'); });
+  on(quick, 'input', compute);
 
   // Millisecondes : à la désactivation, les valeurs saisies sont effacées.
   // Les laisser dans des champs masqués fausserait le total sans rien montrer.
-  optMs.addEventListener('change', function () {
+  on(optMs, 'change', function () {
     if (!msActif()) $$('.r-ms', rowsBox).forEach(function (i) { i.value = ''; });
     appliquerMs();
     compute();
@@ -1166,11 +1183,12 @@
     compute();
     showToast('Total reporté sur la première ligne');
   }
-  $('#btn-retenue').addEventListener('click', reporterTotal);
+  on('#btn-retenue', 'click', reporterTotal);
 
   /* Raccourcis clavier — ignorés dès qu'un champ a le focus, sinon taper « + »
      dans la saisie libre ajouterait une ligne au lieu d'écrire le signe. */
   document.addEventListener('keydown', function (e) {
+    if (!A_CALC) return;
     if (e.ctrlKey || e.metaKey || e.altKey) return;
     var a = document.activeElement;
     if (a && /^(INPUT|SELECT|TEXTAREA)$/.test(a.tagName)) return;
@@ -1185,7 +1203,7 @@
     if (k === 'm') { $('#btn-reset').click(); e.preventDefault(); }
   });
 
-  [hStart, hEnd, hPause, hJours].forEach(function (el) { el.addEventListener('input', compute); });
+  [hStart, hEnd, hPause, hJours].forEach(function (el) { on(el, 'input', compute); });
 
   // Deux séries de pastilles cohabitent : on les distingue par leur attribut,
   // sinon un clic sur « 5 jours » écraserait la pause.
@@ -1201,16 +1219,16 @@
   $$('.chip[data-jours]').forEach(function (c) {
     c.addEventListener('click', function () { hJours.value = c.dataset.jours; syncChips(); compute(); });
   });
-  [hPause, hJours].forEach(function (el) { el.addEventListener('input', syncChips); });
+  [hPause, hJours].forEach(function (el) { on(el, 'input', syncChips); });
 
-  [dStart, dEnd, dWe, dHol, dPays].forEach(function (el) { el.addEventListener('input', compute); });
+  [dStart, dEnd, dWe, dHol, dPays].forEach(function (el) { on(el, 'input', compute); });
 
   // Le pays choisi est retenu : un visiteur belge ne le resélectionne pas à chaque visite.
-  dPays.addEventListener('change', function () {
+  on(dPays, 'change', function () {
     try { localStorage.setItem(PKEY, paysActif()); } catch (e) {}
   });
 
-  [mH, mM, mS, mN].forEach(function (el) { el.addEventListener('input', compute); });
+  [mH, mM, mS, mN].forEach(function (el) { on(el, 'input', compute); });
   $$('.sign-group-op .sg-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
       $$('.sign-group-op .sg-btn').forEach(function (o) {
@@ -1312,7 +1330,7 @@
     return t >= 1 && t <= 4 ? t : 0;
   }
 
-  $('#btn-share').addEventListener('click', function () {
+  on('#btn-share', 'click', function () {
     var url = lienPartage();
     // Sur mobile, la feuille de partage du système est plus utile qu'un
     // presse-papiers ; ailleurs on copie, faute de mieux.
@@ -1346,21 +1364,27 @@
     } catch (e) {}
   }
 
-  // Le marqueur data-ms est déjà posé par le script d'en-tête ; on aligne
-  // simplement la case à cocher sur le choix mémorisé.
-  try { optMs.checked = localStorage.getItem(MSKEY) === '1'; } catch (e) {}
-  appliquerMs();
+  // L'année du pied de page vaut pour toutes les pages, calculateur ou non.
+  var an = $('#year');
+  if (an) an.textContent = new Date().getFullYear();
 
-  $('#year').textContent = new Date().getFullYear();
-  // Les lignes de départ sont déjà dans le HTML (évite tout décalage au chargement)
-  if (!$('.row', rowsBox)) buildRows();
-  setDefaultDates();
-  initPays();
-  syncChips();
-  drawHist();
-  // Un lien partagé impose son état et son onglet ; à défaut, les pages
-  // satellites indiquent l'onglet à ouvrir via <body data-tab="2">.
-  var depuisLien = appliquerParametres();
-  var onglet = depuisLien || parseInt(document.body.getAttribute('data-tab'), 10);
-  activate(onglet >= 1 && onglet <= 4 ? onglet : 1);
+  // Tout le reste n'a de sens que là où le calculateur à onglets est présent.
+  if (A_CALC) {
+    // Le marqueur data-ms est déjà posé par le script d'en-tête ; on aligne
+    // simplement la case à cocher sur le choix mémorisé.
+    try { optMs.checked = localStorage.getItem(MSKEY) === '1'; } catch (e) {}
+    appliquerMs();
+
+    // Les lignes de départ sont déjà dans le HTML (évite tout décalage au chargement)
+    if (!$('.row', rowsBox)) buildRows();
+    setDefaultDates();
+    initPays();
+    syncChips();
+    drawHist();
+    // Un lien partagé impose son état et son onglet ; à défaut, les pages
+    // satellites indiquent l'onglet à ouvrir via <body data-tab="2">.
+    var depuisLien = appliquerParametres();
+    var onglet = depuisLien || parseInt(document.body.getAttribute('data-tab'), 10);
+    activate(onglet >= 1 && onglet <= 4 ? onglet : 1);
+  }
 })();
