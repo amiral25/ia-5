@@ -989,13 +989,40 @@
      la précédente passe au lendemain. Sans cela, « 19h → 01h » donnerait une
      durée négative, et l'amplitude serait fausse dès qu'un service traverse
      minuit. */
+  /* Les cinq pays francophones que le site couvre n'ont pas les mêmes règles
+     sur la journée coupée, et ce sont elles qui font l'intérêt de chaque page.
+     Le calcul ne change pas d'un pays à l'autre — seules les bornes changent,
+     et elles sont réunies ici plutôt que dispersées dans le code.
+
+     • ampl     plafond d'amplitude, en secondes, ou null s'il n'y en a pas ;
+     • borne    comment le dire, la phrase citant le texte qui l'impose ;
+     • mini     durée minimale d'une prestation (Belgique, article 21 de la loi
+                du 16 mars 1971) ;
+     • maxJour  plafond de travail effectif par jour (Luxembourg, L.211-26) ;
+     • paye     seuil en deçà duquel une présence est payée forfaitairement
+                (Québec, article 58 de la Loi sur les normes du travail). */
+  var JC_PAYS = {
+    fr: { ampl: 13 * 3600,
+          borne: 'la limite de 13 heures qu\'implique le repos quotidien de 11 heures' },
+    be: { ampl: 13 * 3600,
+          borne: 'la limite de 13 heures qu\'implique le repos journalier de 11 heures',
+          mini: 3 * 3600 },
+    ch: { ampl: 14 * 3600,
+          borne: 'l\'espace de 14 heures dans lequel l\'article 10 LTr doit tenir la journée' },
+    lu: { ampl: 13 * 3600,
+          borne: 'la limite de 13 heures qu\'implique le repos journalier de 11 heures',
+          maxJour: 10 * 3600 },
+    qc: { ampl: null, paye: 3 * 3600 }
+  };
+
   (function journeeCoupee() {
     var box = $('#services');
     if (!box) return;
 
     var jcJours = $('#jc-jours');
     var PAIRES = [['#jc1d', '#jc1f'], ['#jc2d', '#jc2f'], ['#jc3d', '#jc3f']];
-    var LIMITE = 13 * 3600; // borne qu'implique le repos quotidien de 11 heures
+    var REGLES = JC_PAYS[box.dataset.pays] || JC_PAYS.fr;
+    var LIMITE = REGLES.ampl;
 
     function plages() {
       var out = [], base = 0, prec = -1;
@@ -1028,21 +1055,53 @@
       $('.jc-label', box).textContent = jours > 1
         ? 'Temps de travail sur ' + jours + ' jours' : 'Temps de travail effectif';
 
-      var note;
-      if (!p.length) {
-        note = 'Renseignez au moins un service pour obtenir un résultat.';
-      } else if (amplitude > LIMITE) {
-        note = 'Amplitude de ' + fmtHMS(amplitude) + ' — au-delà de la limite de 13 heures ' +
-               'qu\'implique le repos quotidien de 11 heures.';
-      } else if (amplitude === LIMITE) {
-        note = 'Amplitude de ' + fmtHMS(amplitude) + ' — c\'est exactement la limite ' +
-               'qu\'implique le repos quotidien de 11 heures.';
-      } else {
-        note = 'Amplitude de ' + fmtHMS(amplitude) + ' — sous la limite de 13 heures ' +
-               'qu\'implique le repos quotidien de 11 heures.';
+      // Québec : une présence de moins de trois heures est payée trois heures.
+      var paye = travail;
+      if (REGLES.paye) {
+        paye = 0;
+        p.forEach(function (x) { paye += Math.max(x[1] - x[0], REGLES.paye); });
+        var cellPaye = $('#jc-paye');
+        if (cellPaye) cellPaye.textContent = fmtHMS(paye * jours);
       }
-      $('#jc-note').textContent = note;
-      box.classList.toggle('jc-alerte', amplitude > LIMITE);
+
+      var courts = REGLES.mini ? p.filter(function (x) {
+        return x[1] - x[0] < REGLES.mini;
+      }).length : 0;
+      var tropLong = !!REGLES.maxJour && travail > REGLES.maxJour;
+      var tropLarge = LIMITE !== null && amplitude > LIMITE;
+
+      $('#jc-note').textContent = verdict(p.length, amplitude, travail, paye, courts, tropLong, tropLarge);
+      box.classList.toggle('jc-alerte', tropLarge || courts > 0 || tropLong);
+    }
+
+    /** Une seule phrase sous le résultat, et c'est la plus utile qui gagne :
+        un dépassement passe avant un simple constat d'amplitude. */
+    function verdict(n, amplitude, travail, paye, courts, tropLong, tropLarge) {
+      if (!n) return 'Renseignez au moins un service pour obtenir un résultat.';
+
+      if (tropLarge) {
+        return 'Amplitude de ' + fmtHMS(amplitude) + ' — au-delà de ' + REGLES.borne + '.';
+      }
+      if (tropLong) {
+        return fmtHMS(travail) + ' de travail effectif — au-delà des 10 heures par jour ' +
+               'que fixe l\'article L.211-26 du Code du travail.';
+      }
+      if (courts) {
+        return courts + (courts > 1 ? ' services durent' : ' service dure') +
+               ' moins de trois heures — c\'est la durée minimale d\'une prestation ' +
+               'que fixe l\'article 21 de la loi du 16 mars 1971, sauf dérogation.';
+      }
+      if (REGLES.paye) {
+        return paye > travail
+          ? fmtHMS(travail) + ' travaillées mais ' + fmtHMS(paye) + ' payées — toute présence ' +
+            'de moins de trois heures est indemnisée trois heures (article 58 LNT).'
+          : 'Chaque présence atteint trois heures — l\'indemnité de l\'article 58 LNT ' +
+            'ne s\'applique pas ici.';
+      }
+      if (amplitude === LIMITE) {
+        return 'Amplitude de ' + fmtHMS(amplitude) + ' — c\'est exactement ' + REGLES.borne + '.';
+      }
+      return 'Amplitude de ' + fmtHMS(amplitude) + ' — sous ' + REGLES.borne + '.';
     }
 
     function syncJc() {
