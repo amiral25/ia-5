@@ -33,7 +33,7 @@
   </url>
   <url>
     <loc>https://calculatrice-duree.fr/calcul-heures-journee-coupee.html</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -52,6 +52,30 @@
   <url>
     <loc>https://calculatrice-duree.fr/jours-feries-france.html</loc>
     <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calculatrice-duree.fr/journee-coupee-belgique.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calculatrice-duree.fr/journee-coupee-luxembourg.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calculatrice-duree.fr/journee-coupee-quebec.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calculatrice-duree.fr/journee-coupee-suisse.html</loc>
+    <lastmod>2026-09-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -93,7 +117,7 @@
   </url>
   <url>
     <loc>https://calculatrice-duree.fr/nouveautes.html</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.4</priority>
   </url>

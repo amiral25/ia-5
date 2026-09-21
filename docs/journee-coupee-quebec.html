@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="fr-CA" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>Horaire Brisé au Québec : Calcul des Heures et Règle des 3 h</title>
+<meta name="description" content="Calculez vos quarts coupés au Québec : heures travaillées, heures payées et coupure. La règle des trois heures de l'article 58 de la Loi sur les normes.">
+
+<link rel="canonical" href="https://calculatrice-duree.fr/journee-coupee-quebec.html">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fr_CA">
+<meta property="og:site_name" content="Calculatrice de Durée">
+<meta property="og:title" content="Horaire Brisé au Québec : Calcul des Heures et Règle des 3 h">
+<meta property="og:description" content="Calculez vos quarts coupés au Québec : heures travaillées, heures payées et coupure. La règle des trois heures de l'article 58 de la Loi sur les normes.">
+<meta property="og:url" content="https://calculatrice-duree.fr/journee-coupee-quebec.html">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+
+<!-- Anti-flash du thème sombre : doit rester en ligne et en premier -->
+<script>
+(function(){try{var t=localStorage.getItem('cd-theme');
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+document.documentElement.setAttribute('data-theme',t);
+if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('data-ms','1');
+}catch(e){}})();
+</script>
+
+<!-- ============================================================
+     GOOGLE ADSENSE — décommentez après validation et remplacez
+     ca-pub-XXXXXXXXXXXXXXXX par votre identifiant.
+     ============================================================
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+-->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://calculatrice-duree.fr/journee-coupee-quebec.html#page",
+      "url": "https://calculatrice-duree.fr/journee-coupee-quebec.html",
+      "name": "Horaire Brisé au Québec : Calcul des Heures et Règle des 3 h",
+      "description": "Calculez vos quarts coupés au Québec : heures travaillées, heures payées et coupure. La règle des trois heures de l'article 58 de la Loi sur les normes.",
+      "inLanguage": "fr-CA",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://calculatrice-duree.fr/#site",
+        "name": "Calculatrice de Durée",
+        "url": "https://calculatrice-duree.fr/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://calculatrice-duree.fr/journee-coupee-quebec.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Qu'est-ce que la règle des 3 heures au Québec ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Une personne salariée qui se présente au travail à la demande de son employeur et travaille moins de trois heures consécutives a droit à une indemnité égale à trois heures de son salaire horaire habituel (article 58 de la Loi sur les normes du travail). Elle s'applique à chaque présence."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Un horaire brisé donne-t-il droit à deux indemnités ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui, en principe : la règle s'applique à chaque présence. Deux heures le midi et deux heures le soir donnent six heures payées pour quatre travaillées. La règle ne joue pas si la nature du travail exige plusieurs courtes présences par jour, comme pour un brigadier scolaire."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment calculer ses heures en horaire brisé ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Additionnez chaque quart séparément, sans compter la coupure. Pour un quart de 10h à 15h puis de 18h à 23h : 5 heures plus 5 heures, soit 10 heures travaillées. Vérifiez ensuite qu'aucune présence ne descend sous trois heures."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Y a-t-il une amplitude maximale au Québec ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Non. La Loi sur les normes du travail ne fixe ni repos quotidien minimal ni plafond d'amplitude. Elle garantit un repos hebdomadaire de 32 heures consécutives (article 78) et un droit de refus au-delà de certaines durées."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "À partir de combien d'heures sont payées les heures supplémentaires ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Au-delà de 40 heures par semaine (article 52), majorées de 50 % du salaire horaire habituel (article 55). Le décompte est hebdomadaire, pas journalier."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Un quart qui finit après minuit, comment le compter ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Le calculateur le reconnaît tout seul : si l'heure de fin est inférieure à l'heure de début, il considère que le quart se termine le lendemain. Un quart de 19h à 01h compte donc 6 heures, et non une durée négative."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://calculatrice-duree.fr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Horaire brisé (Québec)",
+          "item": "https://calculatrice-duree.fr/journee-coupee-quebec.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body data-tab="2">
+
+<a class="skip-link" href="#services">Aller à la calculatrice</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.2 2"></path>
+        </svg>
+      </span>
+      <span class="brand-text">Calculatrice&nbsp;de&nbsp;Durée</span>
+    </a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <details class="nav-groupe">
+        <summary>Calculs de durée</summary>
+        <div class="nav-pop">
+          <a href="/">Calculatrice de durée</a>
+          <a href="additionner-des-heures.html">Addition d'heures</a>
+          <a href="convertir-minutes-en-heures.html">Convertir minutes en heures</a>
+          <a href="multiplier-diviser-une-duree.html">Multiplier ou diviser</a>
+        </div>
+      </details>
+      <details class="nav-groupe est-actif">
+        <summary>Heures de travail</summary>
+        <div class="nav-pop">
+          <a href="calcul-heures-de-travail.html">Heures de travail</a>
+          <a href="combien-heures-entre-deux-horaires.html">Entre deux horaires</a>
+          <a href="calcul-heures-journee-coupee.html">Journée coupée · France</a>
+          <a href="journee-coupee-belgique.html">Journée coupée · Belgique</a>
+          <a href="journee-coupee-suisse.html">Horaire coupé · Suisse</a>
+          <a href="journee-coupee-luxembourg.html">Journée coupée · Luxembourg</a>
+          <a href="journee-coupee-quebec.html" aria-current="page">Horaire brisé · Québec</a>
+        </div>
+      </details>
+      <details class="nav-groupe">
+        <summary>Dates et jours ouvrés</summary>
+        <div class="nav-pop">
+          <a href="duree-entre-deux-dates.html">Durée entre deux dates</a>
+          <a href="calcul-jours-ouvres.html">Jours ouvrés</a>
+        </div>
+      </details>
+      <details class="nav-groupe">
+        <summary>Jours fériés</summary>
+        <div class="nav-pop">
+          <a href="jours-feries-france.html">France</a>
+          <a href="jours-feries-belgique.html">Belgique</a>
+          <a href="jours-feries-suisse.html">Suisse</a>
+          <a href="jours-feries-luxembourg.html">Luxembourg</a>
+          <a href="jours-feries-quebec.html">Québec</a>
+        </div>
+      </details>
+    </nav>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Basculer le thème sombre">
+      <svg class="ico-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4.2"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"></path>
+      </svg>
+      <svg class="ico-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.7 6.7 0 0 0 10.5 10.5Z"></path>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <nav class="fil" aria-label="Fil d'Ariane">
+    <a href="/">Accueil</a> <span aria-hidden="true">›</span> <span>Horaire brisé (Québec)</span>
+  </nav>
+
+  <section class="hero">
+    <h1>Horaire brisé au Québec&nbsp;: calculer ses heures et ses heures payées</h1>
+    <p class="lead">Quart du midi, coupure, quart du soir. Le calculateur donne le temps travaillé, ce qui doit être payé et la durée des coupures. Règles applicables au Québec (Loi sur les normes du travail).</p>
+  </section>
+
+  <nav class="jc-pays" aria-label="Journée coupée par pays">
+    <span class="jc-pays-titre">Votre pays</span>
+    <ul>
+      <li><a href="calcul-heures-journee-coupee.html">France</a></li>
+      <li><a href="journee-coupee-belgique.html">Belgique</a></li>
+      <li><a href="journee-coupee-suisse.html">Suisse</a></li>
+      <li><a href="journee-coupee-luxembourg.html">Luxembourg</a></li>
+      <li><strong aria-current="page">Québec</strong></li>
+    </ul>
+  </nav>
+
+  <aside class="ad ad-leaderboard" aria-label="Publicité">
+    <span class="ad-label">Publicité</span>
+    <div class="ad-slot">
+      <!-- ▼▼ COLLEZ ICI VOTRE BLOC ADSENSE « Bannière » ▼▼ -->
+      <span class="ad-ph">Emplacement publicitaire</span>
+    </div>
+  </aside>
+
+  <div class="layout">
+    <div class="col-main">
+      <section id="services" class="card calc jc-card" data-pays="qc" aria-label="Calculateur d'horaire brisé au Québec">
+        <h2 class="jc-titre">Vos quarts de la journée</h2>
+
+        <div class="jc-out">
+          <p class="jc-label">Temps de travail effectif</p>
+          <p class="jc-gros" id="jc-travail">10h 00min</p>
+          <div class="jc-cells">
+            <div class="jc-cell"><b id="jc-dec">10,00</b><span>Heures décimales</span></div>
+            <div class="jc-cell"><b id="jc-ampl">13h 00min</b><span>Amplitude</span></div>
+            <div class="jc-cell"><b id="jc-coup">3h 00min</b><span>Coupure</span></div>
+            <div class="jc-cell"><b id="jc-paye">10h 00min</b><span>Heures payées</span></div>
+            <div class="jc-cell"><b id="jc-sem">—</b><span>Sur la période</span></div>
+          </div>
+          <p class="jc-note" id="jc-note">Chaque présence atteint trois heures — l'indemnité de l'article 58 LNT ne s'applique pas ici.</p>
+        </div>
+
+        <div class="jc-lignes">
+          <div class="jc-ligne">
+            <span class="jc-num">Quart 1</span>
+            <label class="hors-ecran" for="jc1d">Début du quart 1</label>
+            <input id="jc1d" class="inp" type="time" value="10:00" step="60">
+            <span class="jc-fleche" aria-hidden="true">→</span>
+            <label class="hors-ecran" for="jc1f">Fin du quart 1</label>
+            <input id="jc1f" class="inp" type="time" value="15:00" step="60">
+          </div>
+          <div class="jc-ligne">
+            <span class="jc-num">Quart 2</span>
+            <label class="hors-ecran" for="jc2d">Début du quart 2</label>
+            <input id="jc2d" class="inp" type="time" value="18:00" step="60">
+            <span class="jc-fleche" aria-hidden="true">→</span>
+            <label class="hors-ecran" for="jc2f">Fin du quart 2</label>
+            <input id="jc2f" class="inp" type="time" value="23:00" step="60">
+          </div>
+          <div class="jc-ligne">
+            <span class="jc-num">Quart 3</span>
+            <label class="hors-ecran" for="jc3d">Début du quart 3</label>
+            <input id="jc3d" class="inp" type="time" value="" step="60">
+            <span class="jc-fleche" aria-hidden="true">→</span>
+            <label class="hors-ecran" for="jc3f">Fin du quart 3</label>
+            <input id="jc3f" class="inp" type="time" value="" step="60">
+          </div>
+        </div>
+
+        <div class="jc-jours">
+          <label class="lbl" for="jc-jours">Nombre de jours travaillés</label>
+          <input id="jc-jours" class="inp" type="number" min="1" max="31" step="1" value="1" inputmode="numeric">
+          <div class="chips">
+            <button class="chip" type="button" data-jc="1">1 jour</button>
+            <button class="chip" type="button" data-jc="4">4 jours</button>
+            <button class="chip" type="button" data-jc="5">5 jours</button>
+            <button class="chip" type="button" data-jc="6">6 jours</button>
+          </div>
+        </div>
+
+        <p class="jc-aide">
+          Laissez un quart vide si vous ne le travaillez pas. Un quart qui se termine
+          après minuit est reconnu automatiquement.
+        </p>
+      </section>
+
+      <!-- Liens contextuels placés au ras du calculateur : le bloc complet
+           reste en bas de page, mais ces trois-là sont vus. -->
+      <nav class="voisins" aria-label="Calculateurs proches">
+        <span class="voisins-titre">À voir aussi</span>
+        <ul>
+        <li><a href="jours-feries-quebec.html">Jours fériés Québec</a></li>
+        <li><a href="calcul-heures-de-travail.html">Heures de travail</a></li>
+        <li><a href="calcul-heures-journee-coupee.html">Journée coupée France</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <aside class="col-side" aria-label="Publicité">
+      <div class="ad ad-rect">
+        <span class="ad-label">Publicité</span>
+        <div class="ad-slot ad-slot-rect">
+          <!-- ▼▼ COLLEZ ICI VOTRE BLOC ADSENSE « Rectangle 300×250 » ▼▼ -->
+          <span class="ad-ph">Emplacement publicitaire<br>300 × 250</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+    <article class="content">
+      <h2 id="trois-chiffres">Travaillé, payé, coupure&nbsp;: trois chiffres à ne pas confondre</h2>
+      <p>
+        Au Québec, la différence la plus importante n'est pas entre le travail et l'amplitude&nbsp;:
+        elle est entre <strong>ce que vous travaillez</strong> et <strong>ce qui doit vous être
+        payé</strong>. Les deux ne coïncident pas toujours, et c'est à votre avantage.
+      </p>
+      <ul class="uses">
+        <li><strong>Le temps travaillé</strong> est la somme de vos quarts, sans la coupure.</li>
+        <li><strong>Les heures payées</strong> peuvent être supérieures&nbsp;: toute présence de
+        moins de trois heures est indemnisée trois heures.</li>
+        <li><strong>La coupure</strong> est le temps entre deux quarts. Vous n'êtes pas à la
+        disposition de l'employeur&nbsp;: elle n'est pas rémunérée.</li>
+      </ul>
+
+      <h2 id="regle-trois-heures">La règle des trois heures (article&nbsp;58)</h2>
+      <p>
+        C'est la disposition qui change tout pour un horaire brisé. Une personne salariée qui se
+        présente au travail à la demande expresse de son employeur, ou dans le cours normal de son
+        emploi, et qui <strong>travaille moins de trois heures consécutives</strong>, a droit à une
+        <strong>indemnité égale à trois heures de son salaire horaire habituel</strong>.
+      </p>
+      <p>
+        Et elle s'applique <strong>à chaque présence</strong>. Deux heures le midi, deux heures le
+        soir&nbsp;: quatre heures travaillées, mais <strong>six heures payées</strong>. Le
+        calculateur affiche les deux chiffres côte à côte.
+      </p>
+      <p class="micro">
+        Deux exceptions&nbsp;: la règle ne joue pas lorsque la nature du travail exige plusieurs
+        présences de moins de trois heures dans la même journée — l'exemple donné par la loi est
+        celui du brigadier scolaire ou du chauffeur d'autobus — ni lorsque le travail s'effectue
+        habituellement en entier dans une période de trois heures. En cas de doute, la CNESST
+        tranche.
+      </p>
+
+      <h2 id="coupure-payee">La coupure est-elle payée&nbsp;?</h2>
+      <p>
+        <strong>Non</strong>, pas en tant que telle. Entre deux quarts, vous n'êtes pas à la
+        disposition de l'employeur&nbsp;: ce n'est pas du temps travaillé. Ce qui est protégé, ce
+        n'est pas la coupure, c'est <strong>la durée de chaque présence</strong> — d'où la règle
+        des trois heures.
+      </p>
+      <p>
+        La période de repas, elle, obéit à l'<strong>article&nbsp;79</strong>&nbsp;: trente minutes
+        après cinq heures de travail consécutives. Elle n'est pas rémunérée, sauf si vous n'êtes pas
+        autorisé à quitter votre poste — auquel cas elle compte dans vos heures.
+      </p>
+
+      <h2 id="amplitude">Y a-t-il une amplitude maximale&nbsp;?</h2>
+      <p>
+        Il faut le dire clairement, parce que beaucoup de pages l'éludent&nbsp;: <strong>la Loi sur
+        les normes du travail ne fixe pas de repos quotidien minimal, ni de plafond
+        d'amplitude</strong>. La règle des onze heures de repos que connaissent la France, la
+        Belgique ou la Suisse n'a pas d'équivalent québécois.
+      </p>
+      <p>
+        Ce que la loi garantit, c'est un <strong>repos hebdomadaire de 32 heures
+        consécutives</strong> (article&nbsp;78) et le droit de refuser de travailler au-delà de
+        certaines durées. Le calculateur affiche donc votre amplitude à titre d'information, sans
+        seuil d'alerte&nbsp;: il n'y en a pas à appliquer.
+      </p>
+      <p class="micro">
+        Une convention collective ou un décret sectoriel peut, lui, être plus généreux que la loi.
+        C'est toujours le plus favorable qui s'applique.
+      </p>
+
+      <h2 id="heures-sup">Heures supplémentaires&nbsp;: après 40 heures</h2>
+      <p>
+        La semaine normale de travail est de <strong>40 heures</strong> (article&nbsp;52). Toute
+        heure au-delà est majorée de <strong>50&nbsp;%</strong> du salaire horaire habituel
+        (article&nbsp;55).
+      </p>
+      <p class="micro">
+        Le décompte se fait <strong>à la semaine</strong>, pas à la journée&nbsp;: une journée de
+        douze heures ne déclenche rien par elle-même si la semaine reste sous 40 heures. C'est à
+        cela que sert le champ «&nbsp;nombre de jours&nbsp;» du calculateur.
+      </p>
+
+      <h2 id="faq">Questions fréquentes</h2>
+      <div class="faq">
+      <details>
+        <summary>Qu'est-ce que la règle des 3 heures au Québec&nbsp;?</summary>
+        <p>Une personne salariée qui se présente au travail à la demande de son employeur et travaille moins de trois heures consécutives a droit à une indemnité égale à <strong>trois heures de son salaire horaire habituel</strong> (article 58 de la Loi sur les normes du travail). Elle s'applique à chaque présence.</p>
+      </details>
+      <details>
+        <summary>Un horaire brisé donne-t-il droit à deux indemnités&nbsp;?</summary>
+        <p>Oui, en principe : la règle s'applique à chaque présence. Deux heures le midi et deux heures le soir donnent <strong>six heures payées pour quatre travaillées</strong>. La règle ne joue pas si la nature du travail exige plusieurs courtes présences par jour, comme pour un brigadier scolaire.</p>
+      </details>
+      <details>
+        <summary>Comment calculer ses heures en horaire brisé&nbsp;?</summary>
+        <p>Additionnez chaque quart séparément, sans compter la coupure. Pour un quart de 10h à 15h puis de 18h à 23h : 5 heures plus 5 heures, soit <strong>10 heures travaillées</strong>. Vérifiez ensuite qu'aucune présence ne descend sous trois heures.</p>
+      </details>
+      <details>
+        <summary>Y a-t-il une amplitude maximale au Québec&nbsp;?</summary>
+        <p>Non. La Loi sur les normes du travail ne fixe ni repos quotidien minimal ni plafond d'amplitude. Elle garantit un repos hebdomadaire de <strong>32 heures consécutives</strong> (article 78) et un droit de refus au-delà de certaines durées.</p>
+      </details>
+      <details>
+        <summary>À partir de combien d'heures sont payées les heures supplémentaires&nbsp;?</summary>
+        <p>Au-delà de <strong>40 heures par semaine</strong> (article 52), majorées de <strong>50 %</strong> du salaire horaire habituel (article 55). Le décompte est hebdomadaire, pas journalier.</p>
+      </details>
+      <details>
+        <summary>Un quart qui finit après minuit, comment le compter&nbsp;?</summary>
+        <p>Le calculateur le reconnaît tout seul : si l'heure de fin est inférieure à l'heure de début, il considère que le quart se termine le lendemain. Un quart de 19h à 01h compte donc 6 heures, et non une durée négative.</p>
+      </details>
+      </div>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <nav class="plan" aria-label="Plan du site">
+      <div>
+        <h2 class="plan-titre">Calculs de durée</h2>
+        <ul>
+          <li><a href="/">Calculatrice de durée</a></li>
+          <li><a href="additionner-des-heures.html">Addition d'heures</a></li>
+          <li><a href="convertir-minutes-en-heures.html">Convertir minutes en heures</a></li>
+          <li><a href="multiplier-diviser-une-duree.html">Multiplier ou diviser une durée</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="plan-titre">Heures de travail</h2>
+        <ul>
+          <li><a href="calcul-heures-de-travail.html">Calcul des heures de travail</a></li>
+          <li><a href="combien-heures-entre-deux-horaires.html">Combien d'heures entre 2 horaires</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="plan-titre">Journée coupée</h2>
+        <ul>
+          <li><a href="calcul-heures-journee-coupee.html">France</a></li>
+          <li><a href="journee-coupee-belgique.html">Belgique</a></li>
+          <li><a href="journee-coupee-suisse.html">Suisse</a></li>
+          <li><a href="journee-coupee-luxembourg.html">Luxembourg</a></li>
+          <li><span aria-current="page">Québec</span></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="plan-titre">Dates et jours ouvrés</h2>
+        <ul>
+          <li><a href="duree-entre-deux-dates.html">Durée entre deux dates</a></li>
+          <li><a href="calcul-jours-ouvres.html">Calcul des jours ouvrés</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="plan-titre">Jours fériés</h2>
+        <ul>
+          <li><a href="jours-feries-france.html">France</a></li>
+          <li><a href="jours-feries-belgique.html">Belgique</a></li>
+          <li><a href="jours-feries-suisse.html">Suisse</a></li>
+          <li><a href="jours-feries-luxembourg.html">Luxembourg</a></li>
+          <li><a href="jours-feries-quebec.html">Québec</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="plan-titre">Le site</h2>
+        <ul>
+          <li><a href="nouveautes.html">Nouveautés</a></li>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+        </ul>
+      </div>
+    </nav>
+    <p>
+      <strong>Calculatrice de Durée</strong> — addition d'heures, temps de travail, jours ouvrés.
+      Calculs effectués dans votre navigateur, aucune donnée collectée.
+    </p>
+    <p class="micro">
+      © <span id="year">2026</span> Calculatrice de Durée · Les résultats sont fournis à titre indicatif ·
+      <a href="mentions-legales.html">Mentions légales &amp; confidentialité</a>
+    </p>
+  </div>
+</footer>
+
+<a class="retour-calc" id="retour-calc" href="#services"><span aria-hidden="true">↑</span> Calculateur</a>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js" defer></script>
+
+<!-- Mesure d'audience Cloudflare Web Analytics : sans cookie, sans suivi individuel,
+     donc aucun bandeau de consentement n'est requis. Chargé en module = non bloquant. -->
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "358b8858ea3e40f7b12a4fe1064cb56b"}'></script>
+</body>
+</html>

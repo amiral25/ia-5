@@ -366,6 +366,21 @@ html[data-ms="1"] .u-ms{display:block}
   transition:border-color .15s,background .15s}
 .voisins a:hover{border-color:var(--brand);background:var(--brand-soft)}
 
+/* ---------- Bandeau des pays (journée coupée) ----------
+   Le calcul est le même partout, les règles non : amplitude plafonnée à 13 h
+   en France, 14 h en Suisse, prestation minimale de 3 h en Belgique, indemnité
+   de 3 h au Québec. Un Belge qui atterrit sur la page française doit pouvoir
+   rejoindre la sienne sans repasser par le menu. */
+.jc-pays{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 16px}
+.jc-pays-titre{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
+.jc-pays ul{display:flex;flex-wrap:wrap;gap:8px}
+.jc-pays a,.jc-pays strong{display:inline-block;padding:7px 12px;border:1px solid var(--line);
+  border-radius:999px;font-size:.84rem;font-weight:600;line-height:1.3}
+.jc-pays a{background:var(--card);color:var(--brand);text-decoration:none;
+  transition:border-color .15s,background .15s}
+.jc-pays a:hover{border-color:var(--brand);background:var(--brand-soft)}
+.jc-pays strong{background:var(--brand);border-color:var(--brand);color:#fff}
+
 /* ---------- Retour au calculateur ----------
    Les pages font jusqu'à quatorze écrans sur mobile : sans ce bouton, revenir
    à l'outil après avoir lu demande un défilement interminable. */
@@ -421,6 +436,13 @@ html[data-ms="1"] .u-ms{display:block}
 .jc-jours .inp{width:88px}
 .jc-jours .lbl{margin:0}
 .jc-aide{margin:0;font-size:.84rem;color:var(--muted)}
+
+/* La page québécoise a une cellule de plus — les heures payées. En dessous de
+   430 px la grille tombe à deux colonnes : la cinquième resterait seule dans
+   une demi-largeur, elle prend la ligne entière. */
+@media(max-width:430px){
+  .jc-cells>:last-child:nth-child(5){grid-column:1/-1}
+}
 
 @media(max-width:520px){
   /* minmax(0,…) est indispensable : un champ « time » a une largeur minimale
