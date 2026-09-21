@@ -966,6 +966,86 @@
     try { localStorage.setItem('cd-theme', next); } catch (e) {}
   });
 
+  /* ---------- Journée coupée (page restauration) ----------
+     Un service peut finir après minuit, et la journée entière peut déborder :
+     on reconstruit donc une chronologie absolue, où toute heure inférieure à
+     la précédente passe au lendemain. Sans cela, « 19h → 01h » donnerait une
+     durée négative, et l'amplitude serait fausse dès qu'un service traverse
+     minuit. */
+  (function journeeCoupee() {
+    var box = $('#services');
+    if (!box) return;
+
+    var jcJours = $('#jc-jours');
+    var PAIRES = [['#jc1d', '#jc1f'], ['#jc2d', '#jc2f'], ['#jc3d', '#jc3f']];
+    var LIMITE = 13 * 3600; // borne qu'implique le repos quotidien de 11 heures
+
+    function plages() {
+      var out = [], base = 0, prec = -1;
+      PAIRES.forEach(function (p) {
+        var d = timeToSec($(p[0]).value), f = timeToSec($(p[1]).value);
+        if (d === null || f === null) return;
+        if (prec >= 0 && d + base < prec) base += 86400;
+        var deb = d + base;
+        if (f + base < deb) base += 86400;   // le service traverse minuit
+        var fin = f + base;
+        prec = fin;
+        out.push([deb, fin]);
+      });
+      return out;
+    }
+
+    function calculer() {
+      var p = plages();
+      var jours = Math.min(31, Math.max(1, parseInt(jcJours.value, 10) || 1));
+      var travail = 0;
+      p.forEach(function (x) { travail += x[1] - x[0]; });
+      var amplitude = p.length ? p[p.length - 1][1] - p[0][0] : 0;
+      var coupure = amplitude - travail;
+
+      $('#jc-travail').textContent = fmtHMS(travail * jours);
+      $('#jc-dec').textContent = nf(travail * jours / 3600, 2);
+      $('#jc-ampl').textContent = fmtHMS(amplitude);
+      $('#jc-coup').textContent = coupure > 0 ? fmtHMS(coupure) : '—';
+      $('#jc-sem').textContent = jours > 1 ? fmtHMS(travail) + ' / jour' : '—';
+      $('.jc-label', box).textContent = jours > 1
+        ? 'Temps de travail sur ' + jours + ' jours' : 'Temps de travail effectif';
+
+      var note;
+      if (!p.length) {
+        note = 'Renseignez au moins un service pour obtenir un résultat.';
+      } else if (amplitude > LIMITE) {
+        note = 'Amplitude de ' + fmtHMS(amplitude) + ' — au-delà de la limite de 13 heures ' +
+               'qu\'implique le repos quotidien de 11 heures.';
+      } else if (amplitude === LIMITE) {
+        note = 'Amplitude de ' + fmtHMS(amplitude) + ' — c\'est exactement la limite ' +
+               'qu\'implique le repos quotidien de 11 heures.';
+      } else {
+        note = 'Amplitude de ' + fmtHMS(amplitude) + ' — sous la limite de 13 heures ' +
+               'qu\'implique le repos quotidien de 11 heures.';
+      }
+      $('#jc-note').textContent = note;
+      box.classList.toggle('jc-alerte', amplitude > LIMITE);
+    }
+
+    function syncJc() {
+      var v = String(parseInt(jcJours.value, 10) || 1);
+      $$('.chip[data-jc]').forEach(function (c) { c.classList.toggle('is-on', c.dataset.jc === v); });
+    }
+
+    PAIRES.forEach(function (p) {
+      $(p[0]).addEventListener('input', calculer);
+      $(p[1]).addEventListener('input', calculer);
+    });
+    jcJours.addEventListener('input', function () { syncJc(); calculer(); });
+    $$('.chip[data-jc]').forEach(function (c) {
+      c.addEventListener('click', function () { jcJours.value = c.dataset.jc; syncJc(); calculer(); });
+    });
+
+    syncJc();
+    calculer();
+  })();
+
   /* ---------- Menus dépliants de l'en-tête ----------
      Les <details> s'ouvrent et se ferment tout seuls, au clic comme au
      clavier : ce qui suit n'ajoute que les comportements qu'un menu doit
