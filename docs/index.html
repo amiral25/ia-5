@@ -12,7 +12,7 @@
      se servent ChatGPT et Copilot : à conserver au même titre que celle de Google. -->
 <meta name="msvalidate.01" content="EA2A9C2BF0BE15535604774422BAB6D9">
 
-<title>Calculatrice de Durée et de Temps – Calcul d'Heures Gratuit</title>
+<title>Calculatrice de durée et de temps – Calcul d'heures gratuit</title>
 <meta name="description" content="Calculatrice de durée et de temps : additionnez vos heures, calculez l'écart entre 2 heures ou 2 dates et convertissez en décimales. Gratuit et instantané.">
 
 <!-- Domaine du site. Le fichier docs/CNAME doit contenir la même valeur. -->
@@ -25,10 +25,15 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Calculatrice de Durée">
-<meta property="og:title" content="Calculatrice de Durée et de Temps – Calcul d'Heures Gratuit">
+<meta property="og:title" content="Calculatrice de durée et de temps – Calcul d'heures gratuit">
 <meta property="og:description" content="Calculatrice de durée et de temps : additionnez vos heures, calculez l'écart entre 2 heures ou 2 dates et convertissez en décimales. Gratuit et instantané.">
 <meta property="og:url" content="https://calculatrice-duree.fr/">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://calculatrice-duree.fr/og-accueil.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Calculatrice de durée et de temps – Calcul d'heures gratuit">
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="style.css">
@@ -149,13 +154,6 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
           }
         }
       ]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://calculatrice-duree.fr/" },
-        { "@type": "ListItem", "position": 2, "name": "Calculatrice de durée", "item": "https://calculatrice-duree.fr/#calculatrice" }
-      ]
     }
   ]
 }
@@ -177,7 +175,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
     </a>
     <nav class="site-nav" aria-label="Navigation principale">
       <details class="nav-groupe est-actif">
-        <summary>Calculs de durée</summary>
+        <summary><span class="nav-long">Calculs de durée</span><span class="nav-court">Durées</span></summary>
         <div class="nav-pop">
           <a href="/" aria-current="page">Calculatrice de durée</a>
           <a href="additionner-des-heures.html">Addition d'heures</a>
@@ -186,7 +184,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         </div>
       </details>
       <details class="nav-groupe">
-        <summary>Heures de travail</summary>
+        <summary><span class="nav-long">Heures de travail</span><span class="nav-court">Travail</span></summary>
         <div class="nav-pop">
           <a href="calcul-heures-de-travail.html">Heures de travail</a>
           <a href="combien-heures-entre-deux-horaires.html">Entre deux horaires</a>
@@ -198,14 +196,14 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         </div>
       </details>
       <details class="nav-groupe">
-        <summary>Dates et jours ouvrés</summary>
+        <summary><span class="nav-long">Dates et jours ouvrés</span><span class="nav-court">Dates</span></summary>
         <div class="nav-pop">
           <a href="duree-entre-deux-dates.html">Durée entre deux dates</a>
           <a href="calcul-jours-ouvres.html">Jours ouvrés</a>
         </div>
       </details>
       <details class="nav-groupe">
-        <summary>Jours fériés</summary>
+        <summary><span class="nav-long">Jours fériés</span><span class="nav-court">Fériés</span></summary>
         <div class="nav-pop">
           <a href="jours-feries-france.html">France</a>
           <a href="jours-feries-belgique.html">Belgique</a>
@@ -229,12 +227,13 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
 <main class="wrap">
 
   <section class="hero">
-    <h1>Calculatrice de Durée et de Temps&nbsp;: Additionnez et Convertissez vos Heures</h1>
+    <h1>Calculatrice de durée&nbsp;: additionnez et convertissez vos heures</h1>
     <p class="lead">
-      Additionnez ou soustrayez vos heures, calculez le temps écoulé entre deux horaires ou deux dates.
-      Résultat instantané en <strong>h&nbsp;: min</strong>, en <strong>décimal</strong> et en
-      <strong>minutes totales</strong>.
+      Additionnez des heures, mesurez le temps entre deux horaires ou deux dates.
+      Résultat instantané en <strong>h&nbsp;:&nbsp;min</strong>, en <strong>décimal</strong>
+      et en <strong>minutes</strong>.
     </p>
+    <p class="maj">Mis à jour le <time datetime="2026-09-26">26 septembre 2026</time></p>
   </section>
 
   <!-- ══════════ EMPLACEMENT PUBLICITAIRE A — Bannière responsive ══════════
@@ -343,7 +342,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
               <strong>soustraire</strong>. Formats acceptés&nbsp;: <code>2h30</code>, <code>2:30</code>,
               <code>45min</code>, <code>90s</code>, <code>1j</code>. Un nombre seul&nbsp;= des heures
               (<code>1,5</code> = 1h30). Le résultat peut être négatif.
-              Laissez vide pour utiliser les champs ci-dessous.
+              Une multiplication ou une division simple passe aussi&nbsp;: <code>2h30 x 3</code>, <code>10h / 4</code>. Laissez vide pour utiliser les champs ci-dessous.
             </p>
           </div>
 
@@ -370,10 +369,10 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
           </div>
 
           <div class="row-actions">
-            <button id="add-row" class="btn btn-ghost btn-sm" type="button" aria-label="Ajouter une durée">
+            <button id="add-row" class="btn btn-ghost btn-sm" type="button">
               <span class="op-plus" aria-hidden="true">+</span> Ajouter<span class="btn-long"> une durée</span>
             </button>
-            <button id="sub-row" class="btn btn-ghost btn-sm" type="button" aria-label="Soustraire une durée">
+            <button id="sub-row" class="btn btn-ghost btn-sm" type="button">
               <span class="op-minus" aria-hidden="true">−</span> Soustraire<span class="btn-long"> une durée</span>
             </button>
             <button id="btn-retenue" class="btn btn-ghost btn-sm" type="button"
@@ -560,143 +559,64 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
   <!-- ───────────────────────── CONTENU SEO ───────────────────────── -->
   <article class="content">
 
-    <h2 id="convertir-minutes">Comment convertir des minutes en heures décimales&nbsp;?</h2>
+    <h2 id="convertir-minutes">Convertir des minutes en heures décimales</h2>
     <p>
-      Une heure vaut 60 minutes, mais la paie, la facturation et les tableurs raisonnent en <strong>base 10</strong>.
-      C'est la source d'erreur numéro un&nbsp;: écrire «&nbsp;7,30&nbsp;» dans un tableur pour désigner 7&nbsp;h&nbsp;30
-      revient à déclarer 7&nbsp;h&nbsp;18. Pour <strong>convertir des minutes en heures décimales</strong> (aussi appelées
-      centièmes d'heure), la formule est toujours la même&nbsp;:
+      Une heure vaut 60&nbsp;minutes, mais la paie et les tableurs raisonnent en <strong>base 10</strong>.
+      C'est l'erreur numéro un&nbsp;: écrire «&nbsp;7,30&nbsp;» dans un tableur pour 7&nbsp;h&nbsp;30 revient
+      à déclarer 7&nbsp;h&nbsp;18.
     </p>
     <p class="formula"><strong>Heures décimales = minutes ÷ 60</strong> &nbsp;→&nbsp; 45 ÷ 60 = <strong>0,75&nbsp;h</strong></p>
     <p>
-      Ainsi 1&nbsp;h&nbsp;30 s'écrit 1,5&nbsp;h&nbsp;; 7&nbsp;h&nbsp;20 s'écrit 7,33&nbsp;h&nbsp;; et 35&nbsp;h&nbsp;45
-      deviennent 35,75&nbsp;h. Pour l'opération inverse, multipliez la partie décimale par 60&nbsp;:
-      0,4&nbsp;h × 60 = 24&nbsp;minutes. Les <strong>centièmes</strong> utilisés sur les feuilles de pointage sont
-      simplement ces décimales multipliées par 100 (0,75&nbsp;h = 75&nbsp;centièmes).
+      Ainsi 1&nbsp;h&nbsp;30 s'écrit 1,5&nbsp;h et 7&nbsp;h&nbsp;20 s'écrit 7,33&nbsp;h. Le calculateur
+      ci-dessus affiche les trois formats en même temps, vous n'avez donc jamais à convertir à la main.
+      <a href="convertir-minutes-en-heures.html">Guide complet et table des 60&nbsp;minutes →</a>
     </p>
 
-    <div class="table-wrap">
-      <table>
-        <caption>Table de conversion minutes → heures décimales → centièmes</caption>
-        <thead>
-          <tr><th scope="col">Minutes</th><th scope="col">Heures décimales</th><th scope="col">Centièmes</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>5 min</td><td>0,08 h</td><td>8</td></tr>
-          <tr><td>10 min</td><td>0,17 h</td><td>17</td></tr>
-          <tr><td>15 min</td><td>0,25 h</td><td>25</td></tr>
-          <tr><td>20 min</td><td>0,33 h</td><td>33</td></tr>
-          <tr><td>25 min</td><td>0,42 h</td><td>42</td></tr>
-          <tr><td>30 min</td><td>0,50 h</td><td>50</td></tr>
-          <tr><td>35 min</td><td>0,58 h</td><td>58</td></tr>
-          <tr><td>40 min</td><td>0,67 h</td><td>67</td></tr>
-          <tr><td>45 min</td><td>0,75 h</td><td>75</td></tr>
-          <tr><td>50 min</td><td>0,83 h</td><td>83</td></tr>
-          <tr><td>55 min</td><td>0,92 h</td><td>92</td></tr>
-          <tr><td>60 min</td><td>1,00 h</td><td>100</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="micro">
-      Astuce&nbsp;: la calculatrice ci-dessus affiche systématiquement les trois formats en même temps, vous n'avez donc
-      jamais à faire la conversion à la main avant de remplir une feuille d'heures ou une facture.
+    <h2 id="heures-de-travail">Calculer ses heures de travail</h2>
+    <p>
+      Le calcul tient en trois opérations&nbsp;: heure de fin − heure de début − pause non rémunérée.
+      De 8&nbsp;h&nbsp;30 à 17&nbsp;h&nbsp;15 avec 45&nbsp;minutes de pause, l'amplitude est de
+      8&nbsp;h&nbsp;45 et le <strong>temps de travail effectif de 8&nbsp;h&nbsp;00</strong>. Seul le
+      second est rémunéré&nbsp;: c'est lui qui sert de base aux heures supplémentaires.
+    </p>
+    <p>
+      Un contrat à 35&nbsp;heures correspond à <strong>151,67&nbsp;heures mensuelles</strong>
+      (35 × 52 ÷ 12), et non à «&nbsp;151&nbsp;h&nbsp;67&nbsp;», qui n'aurait aucun sens.
+      <a href="calcul-heures-de-travail.html">Guide complet, heures supplémentaires et postes de nuit →</a>
     </p>
 
-    <h2 id="heures-de-travail">Comment calculer ses heures de travail quotidiennes et hebdomadaires&nbsp;?</h2>
-
-    <h3>1. Le calcul d'une journée de travail</h3>
+    <h2 id="additionner-durees">Additionner des durées sans erreur</h2>
     <p>
-      Le principe du <strong>calcul d'heure de travail</strong> tient en trois opérations&nbsp;: heure de fin −
-      heure de début − temps de pause non rémunéré. Prenons une journée classique de 8&nbsp;h&nbsp;30 à 17&nbsp;h&nbsp;15
-      avec 45&nbsp;minutes de pause déjeuner. L'amplitude est de 8&nbsp;h&nbsp;45&nbsp;; en retirant la pause, le temps
-      de <em>travail effectif</em> est de <strong>8&nbsp;h&nbsp;00</strong>, soit 8,00&nbsp;heures décimales et
-      480&nbsp;minutes. Attention à ne pas confondre l'<strong>amplitude horaire</strong> (présence dans l'entreprise)
-      et le <strong>temps de travail effectif</strong>&nbsp;: seul le second est rémunéré, et c'est celui qui sert de
-      base au décompte des heures supplémentaires.
-    </p>
-    <p>
-      Pour un poste de nuit qui démarre à 21&nbsp;h&nbsp;00 et se termine à 5&nbsp;h&nbsp;30, la soustraction directe
-      donnerait un résultat négatif. Il faut ajouter 24&nbsp;heures à l'heure de fin&nbsp;: 29&nbsp;h&nbsp;30 −
-      21&nbsp;h&nbsp;00 = 8&nbsp;h&nbsp;30. L'onglet «&nbsp;Entre 2 heures&nbsp;» détecte automatiquement ce passage
-      par minuit et vous le signale.
+      Le système est sexagésimal&nbsp;: on additionne séparément secondes, minutes et heures, puis on
+      reporte les retenues à chaque fois qu'on dépasse 60. Pour 1&nbsp;h&nbsp;50 + 2&nbsp;h&nbsp;20 +
+      0&nbsp;h&nbsp;55, les minutes font 125, soit 2&nbsp;h&nbsp;05&nbsp;; le total est de
+      <strong>5&nbsp;h&nbsp;05</strong>. Les résultats négatifs sont acceptés et affichés avec leur signe.
+      <a href="additionner-des-heures.html">Guide complet de l'addition d'heures →</a>
     </p>
 
-    <h3>2. Le total hebdomadaire</h3>
+    <h2 id="jours-ouvres">Jours ouvrés, ouvrables et calendaires</h2>
     <p>
-      Additionnez ensuite les journées de la semaine. Avec 7&nbsp;h&nbsp;45 le lundi, 8&nbsp;h&nbsp;15 le mardi,
-      7&nbsp;h&nbsp;30 le mercredi, 8&nbsp;h&nbsp;00 le jeudi et 6&nbsp;h&nbsp;30 le vendredi, on obtient
-      38&nbsp;h&nbsp;00. La méthode manuelle consiste à cumuler les minutes (45+15+30+0+30 = 120&nbsp;min = 2&nbsp;h)
-      puis à les reporter sur les heures (36&nbsp;h + 2&nbsp;h). Au-delà de la durée légale de 35&nbsp;heures, les
-      heures supplémentaires sont ici de 3&nbsp;heures. La saisie rapide de l'onglet 1 accepte directement
-      <code>7h45 + 8h15 + 7h30 + 8h + 6h30</code>&nbsp;: le total tombe instantanément, avec la retenue déjà faite.
-    </p>
-
-    <h3>3. Mensualisation&nbsp;: d'où vient le chiffre 151,67&nbsp;h&nbsp;?</h3>
-    <p>
-      Un contrat à 35&nbsp;heures hebdomadaires correspond à 151,67&nbsp;heures mensuelles. Le calcul&nbsp;:
-      35&nbsp;h × 52&nbsp;semaines ÷ 12&nbsp;mois = 151,666…&nbsp;h, arrondi à 151,67. C'est cette valeur, exprimée en
-      décimal, qui figure sur la fiche de paie&nbsp;— et non «&nbsp;151&nbsp;h&nbsp;67&nbsp;», qui n'aurait aucun sens
-      puisqu'une heure ne compte que 60&nbsp;minutes. Pour un temps partiel à 24&nbsp;h, le même calcul donne
-      104&nbsp;heures mensuelles.
-    </p>
-
-    <h2 id="additionner-durees">Additionner des durées sans erreur&nbsp;: la méthode en 3 étapes</h2>
-    <p>
-      <strong>Additionner des durées</strong> à la main reste possible si l'on respecte l'ordre suivant.
-      <strong>Étape 1</strong>&nbsp;: additionnez séparément les secondes, les minutes puis les heures.
-      <strong>Étape 2</strong>&nbsp;: reportez les retenues, car le système est sexagésimal — chaque fois que les
-      secondes dépassent 60, vous convertissez en 1&nbsp;minute&nbsp;; chaque fois que les minutes dépassent 60, vous
-      convertissez en 1&nbsp;heure. <strong>Étape 3</strong>&nbsp;: vérifiez en repassant par les minutes totales.
-      Exemple avec 1&nbsp;h&nbsp;50 + 2&nbsp;h&nbsp;20 + 0&nbsp;h&nbsp;55&nbsp;: les minutes donnent 125, soit
-      2&nbsp;h&nbsp;05&nbsp;; ajoutées aux 3&nbsp;heures, le total est de <strong>5&nbsp;h&nbsp;05</strong>
-      (305&nbsp;minutes, ou 5,08&nbsp;heures décimales).
-    </p>
-    <p>
-      La soustraction suit la logique inverse&nbsp;: pour 4&nbsp;h&nbsp;10 − 1&nbsp;h&nbsp;35, on «&nbsp;casse&nbsp;»
-      une heure pour transformer 4&nbsp;h&nbsp;10 en 3&nbsp;h&nbsp;70, ce qui permet de soustraire les minutes&nbsp;:
-      le résultat est 2&nbsp;h&nbsp;35. Notre outil accepte les résultats négatifs et les affiche précédés du signe
-      moins, ce qui est utile pour suivre un compteur d'heures ou un solde de récupération.
-    </p>
-
-    <h2 id="jours-ouvres">Jours ouvrés, jours ouvrables et jours fériés</h2>
-    <p>
-      Les trois notions sont souvent confondues. Les <strong>jours ouvrables</strong> correspondent à tous les jours de
-      la semaine sauf le dimanche et les jours fériés, soit 6&nbsp;jours&nbsp;: c'est la base historique du décompte
-      des congés payés. Les <strong>jours ouvrés</strong> sont les jours réellement travaillés dans l'entreprise, en
-      général du lundi au vendredi, soit 5&nbsp;jours. Les <strong>jours calendaires</strong>, eux, comptent tous les
-      jours sans exception, y compris les week-ends et les fériés&nbsp;— c'est l'unité utilisée pour les délais de
-      préavis ou de rétractation.
-    </p>
-    <p>
-      La France métropolitaine compte 11&nbsp;jours fériés légaux. Huit ont une date fixe&nbsp;: le 1<sup>er</sup>&nbsp;janvier,
-      le 1<sup>er</sup>&nbsp;mai, le 8&nbsp;mai, le 14&nbsp;juillet, le 15&nbsp;août, le 1<sup>er</sup>&nbsp;novembre,
-      le 11&nbsp;novembre et le 25&nbsp;décembre. Trois sont mobiles car indexés sur Pâques&nbsp;: le lundi de Pâques,
-      l'Ascension (39&nbsp;jours après Pâques) et le lundi de Pentecôte (50&nbsp;jours après Pâques). L'onglet
-      «&nbsp;Entre 2 dates&nbsp;» calcule ces dates mobiles année par année et les retire du décompte quand l'option
-      est activée&nbsp;; les jours fériés qui tombent un samedi ou un dimanche ne sont évidemment comptés qu'une fois.
-    </p>
-
-    <h3>Belgique, Suisse, Luxembourg, Québec&nbsp;: cinq calendriers, un seul outil</h3>
-    <p>
-      Les jours fériés ne s'arrêtent pas aux frontières françaises, et les calendriers diffèrent bien plus qu'on
-      ne le croit. Le menu «&nbsp;<strong>Jours fériés du pays</strong>&nbsp;» de l'onglet «&nbsp;Entre 2 dates&nbsp;»
-      bascule le décompte sur la Belgique, la Suisse, le Luxembourg ou le Québec. Les dates mobiles sont recalculées
-      pour chaque pays, y compris celles qui n'existent pas en France&nbsp;: le Vendredi saint en Suisse et au Québec,
-      la Journée nationale des patriotes québécoise — le lundi précédant le 25&nbsp;mai — ou l'Action de grâce, deuxième
-      lundi d'octobre. Le pays retenu est mémorisé pour vos prochaines visites.
-    </p>
-    <p>
-      Les écarts sont loin d'être anecdotiques. La Belgique ignore le 8&nbsp;mai et le 14&nbsp;juillet mais chôme le
-      21&nbsp;juillet&nbsp;; le Luxembourg est l'un des rares pays à chômer la Journée de l'Europe du 9&nbsp;mai&nbsp;;
-      en Suisse, un seul jour est fédéral, le 1<sup>er</sup>&nbsp;août, tout le reste relevant des cantons. La règle
-      du week-end change elle aussi du tout au tout&nbsp;: en France un férié tombant un dimanche est perdu, alors que
-      la Belgique impose un jour de remplacement et le Luxembourg un congé compensatoire.
+      Les trois notions sont souvent confondues, et l'écart se compte en jours de congés&nbsp;:
     </p>
     <ul class="uses">
-      <li><a href="jours-feries-belgique.html">Jours fériés en Belgique</a>&nbsp;: les 10 jours légaux et le jour de remplacement.</li>
-      <li><a href="jours-feries-suisse.html">Jours fériés en Suisse</a>&nbsp;: le socle romand et les listes cantonales.</li>
-      <li><a href="jours-feries-luxembourg.html">Jours fériés au Luxembourg</a>&nbsp;: les 11 jours légaux et le cas des frontaliers.</li>
-      <li><a href="jours-feries-quebec.html">Jours fériés au Québec</a>&nbsp;: les 8 congés de la Loi sur les normes du travail.</li>
+      <li><strong>Jours ouvrables</strong>&nbsp;: tous les jours sauf le dimanche et les fériés, soit
+      six par semaine. C'est la base historique du décompte des congés payés.</li>
+      <li><strong>Jours ouvrés</strong>&nbsp;: les jours réellement travaillés, en général cinq.</li>
+      <li><strong>Jours calendaires</strong>&nbsp;: tous les jours sans exception, l'unité des délais
+      de préavis et de rétractation.</li>
+    </ul>
+    <p>
+      L'onglet «&nbsp;Entre 2 dates&nbsp;» retire les fériés du décompte et bascule sur cinq pays,
+      dont les calendriers diffèrent beaucoup plus qu'on ne le croit&nbsp;: un férié tombant un
+      dimanche est perdu en France, remplacé en Belgique, compensé au Luxembourg.
+      <a href="calcul-jours-ouvres.html">Guide complet des jours ouvrés →</a>
+    </p>
+    <ul class="uses">
+      <li><a href="jours-feries-france.html">Jours fériés en France</a>&nbsp;: les 11 jours légaux, 2020 à 2027.</li>
+      <li><a href="jours-feries-belgique.html">Belgique</a>&nbsp;: les 10 jours légaux et le jour de remplacement.</li>
+      <li><a href="jours-feries-suisse.html">Suisse</a>&nbsp;: le socle romand et les listes cantonales.</li>
+      <li><a href="jours-feries-luxembourg.html">Luxembourg</a>&nbsp;: les 11 jours légaux et le cas des frontaliers.</li>
+      <li><a href="jours-feries-quebec.html">Québec</a>&nbsp;: les 8 congés de la Loi sur les normes du travail.</li>
     </ul>
 
     <h2 id="fonctions">Les fonctions du calculateur, une par une</h2>
@@ -764,7 +684,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
     </ul>
     <p class="micro">
       Tous les calculs sont exécutés localement, dans votre navigateur&nbsp;: aucune donnée saisie n'est transmise ni
-      enregistrée sur un serveur. L'historique des cinq derniers calculs reste stocké uniquement sur votre appareil et
+      enregistrée sur un serveur. L'historique des 50 derniers calculs reste stocké uniquement sur votre appareil et
       vous pouvez l'effacer à tout moment d'un clic.
     </p>
 
@@ -893,6 +813,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
       <div>
         <h2 class="plan-titre">Le site</h2>
         <ul>
+          <li><a href="a-propos.html">À propos et méthode</a></li>
           <li><a href="nouveautes.html">Nouveautés</a></li>
           <li><a href="mentions-legales.html">Mentions légales</a></li>
         </ul>
@@ -900,7 +821,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
     </nav>
     <p>
       <strong>Calculatrice de Durée</strong> — addition d'heures, temps de travail, jours ouvrés.
-      Calculs effectués dans votre navigateur, aucune donnée collectée.
+      Calculs effectués dans votre navigateur : aucune donnée saisie n'est collectée.
     </p>
     <p class="micro">
       © <span id="year">2026</span> Calculatrice de Durée · Les résultats sont fournis à titre indicatif ·
@@ -909,7 +830,9 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
   </div>
 </footer>
 
-<a class="retour-calc" id="retour-calc" href="#calculatrice"><span aria-hidden="true">↑</span> Calculateur</a>
+<nav class="retour-nav" aria-label="Revenir au calculateur">
+  <a class="retour-calc" id="retour-calc" href="#calculatrice"><span aria-hidden="true">↑</span> Calculateur</a>
+</nav>
 
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 

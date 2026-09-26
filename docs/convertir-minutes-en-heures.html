@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-<title>Convertir des Minutes en Heures Décimales – Table Complète</title>
+<title>Convertir des minutes en heures décimales – Table complète</title>
 <meta name="description" content="Convertissez vos minutes en heures décimales et en centièmes. Table complète de 1 à 60 minutes, formule expliquée et calculateur instantané. Gratuit.">
 
 <link rel="canonical" href="https://calculatrice-duree.fr/convertir-minutes-en-heures.html">
@@ -15,10 +15,15 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Calculatrice de Durée">
-<meta property="og:title" content="Convertir des Minutes en Heures Décimales – Table Complète">
+<meta property="og:title" content="Convertir des minutes en heures décimales – Table complète">
 <meta property="og:description" content="Convertissez vos minutes en heures décimales et en centièmes. Table complète de 1 à 60 minutes, formule expliquée et calculateur instantané. Gratuit.">
 <meta property="og:url" content="https://calculatrice-duree.fr/convertir-minutes-en-heures.html">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://calculatrice-duree.fr/og-heures.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Convertir des minutes en heures décimales – Table complète">
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="style.css">
@@ -44,12 +49,25 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Organization",
+      "@id": "https://calculatrice-duree.fr/#editeur",
+      "name": "Calculatrice de Durée",
+      "url": "https://calculatrice-duree.fr/",
+      "email": "contact.calculatrice@gmail.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://calculatrice-duree.fr/favicon.svg"
+      }
+    },
+    {
       "@type": "WebPage",
       "@id": "https://calculatrice-duree.fr/convertir-minutes-en-heures.html#page",
       "url": "https://calculatrice-duree.fr/convertir-minutes-en-heures.html",
-      "name": "Convertir des Minutes en Heures Décimales – Table Complète",
+      "name": "Convertir des minutes en heures décimales – Table complète",
       "description": "Convertissez vos minutes en heures décimales et en centièmes. Table complète de 1 à 60 minutes, formule expliquée et calculateur instantané. Gratuit.",
       "inLanguage": "fr-FR",
+      "dateModified": "2026-09-26",
+      "publisher": { "@id": "https://calculatrice-duree.fr/#editeur" },
       "isPartOf": {
         "@type": "WebSite",
         "@id": "https://calculatrice-duree.fr/#site",
@@ -116,7 +134,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
 }
 </script>
 </head>
-<body data-tab="1">
+<body data-tab="1" data-unite="min">
 
 <a class="skip-link" href="#calculatrice">Aller à la calculatrice</a>
 
@@ -132,7 +150,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
     </a>
     <nav class="site-nav" aria-label="Navigation principale">
       <details class="nav-groupe est-actif">
-        <summary>Calculs de durée</summary>
+        <summary><span class="nav-long">Calculs de durée</span><span class="nav-court">Durées</span></summary>
         <div class="nav-pop">
           <a href="/">Calculatrice de durée</a>
           <a href="additionner-des-heures.html">Addition d'heures</a>
@@ -141,7 +159,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         </div>
       </details>
       <details class="nav-groupe">
-        <summary>Heures de travail</summary>
+        <summary><span class="nav-long">Heures de travail</span><span class="nav-court">Travail</span></summary>
         <div class="nav-pop">
           <a href="calcul-heures-de-travail.html">Heures de travail</a>
           <a href="combien-heures-entre-deux-horaires.html">Entre deux horaires</a>
@@ -153,14 +171,14 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         </div>
       </details>
       <details class="nav-groupe">
-        <summary>Dates et jours ouvrés</summary>
+        <summary><span class="nav-long">Dates et jours ouvrés</span><span class="nav-court">Dates</span></summary>
         <div class="nav-pop">
           <a href="duree-entre-deux-dates.html">Durée entre deux dates</a>
           <a href="calcul-jours-ouvres.html">Jours ouvrés</a>
         </div>
       </details>
       <details class="nav-groupe">
-        <summary>Jours fériés</summary>
+        <summary><span class="nav-long">Jours fériés</span><span class="nav-court">Fériés</span></summary>
         <div class="nav-pop">
           <a href="jours-feries-france.html">France</a>
           <a href="jours-feries-belgique.html">Belgique</a>
@@ -190,6 +208,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
   <section class="hero">
     <h1>Convertir des minutes en heures décimales et en centièmes</h1>
     <p class="lead">Passez des minutes aux heures décimales en un instant. Formule, table complète de 1 à 60 minutes, et les pièges qui faussent une feuille d'heures.</p>
+    <p class="maj">Mis à jour le <time datetime="2026-09-26">26 septembre 2026</time></p>
   </section>
 
   <aside class="ad ad-leaderboard" aria-label="Publicité">
@@ -284,13 +303,15 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
           <div class="field">
             <label class="lbl" for="quick">Saisie rapide</label>
             <input id="quick" class="inp inp-quick" type="text" inputmode="text" autocomplete="off" spellcheck="false"
-                   aria-describedby="quick-hint" placeholder="Ex : 2h30 + 1h45 − 20min">
+                   aria-describedby="quick-hint" placeholder="Ex : 90 + 45">
             <p class="hint" id="quick-hint">
               Utilisez <code>+</code> pour <strong>additionner</strong> et <code>-</code> pour
               <strong>soustraire</strong>. Formats acceptés&nbsp;: <code>2h30</code>, <code>2:30</code>,
-              <code>45min</code>, <code>90s</code>, <code>1j</code>. Un nombre seul&nbsp;= des heures
-              (<code>1,5</code> = 1h30). Le résultat peut être négatif.
-              Laissez vide pour utiliser les champs ci-dessous.
+              <code>45min</code>, <code>90s</code>, <code>1j</code>.
+              <strong>Sur cette page, un nombre seul compte en minutes</strong>&nbsp;:
+              tapez <code>90</code> pour obtenir 1h&nbsp;30min. Précisez l'unité
+              (<code>2h</code>) pour sortir de la minute. Le résultat peut être négatif.
+              Une multiplication ou une division simple passe aussi&nbsp;: <code>2h30 x 3</code>, <code>10h / 4</code>. Laissez vide pour utiliser les champs ci-dessous.
             </p>
           </div>
 
@@ -317,10 +338,10 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
           </div>
 
           <div class="row-actions">
-            <button id="add-row" class="btn btn-ghost btn-sm" type="button" aria-label="Ajouter une durée">
+            <button id="add-row" class="btn btn-ghost btn-sm" type="button">
               <span class="op-plus" aria-hidden="true">+</span> Ajouter<span class="btn-long"> une durée</span>
             </button>
-            <button id="sub-row" class="btn btn-ghost btn-sm" type="button" aria-label="Soustraire une durée">
+            <button id="sub-row" class="btn btn-ghost btn-sm" type="button">
               <span class="op-minus" aria-hidden="true">−</span> Soustraire<span class="btn-long"> une durée</span>
             </button>
             <button id="btn-retenue" class="btn btn-ghost btn-sm" type="button"
@@ -535,9 +556,9 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         Gardez cette table sous la main&nbsp;: elle couvre chaque minute, sans arrondi hasardeux. Les valeurs sont
         arrondies au centième le plus proche, ce qui est la précision utilisée sur les bulletins de paie.
       </p>
-            <div class="table-wrap">
+            <div class="table-wrap" tabindex="0" role="region" aria-labelledby="cap-convertir-minutes-en-heures-1">
         <table>
-          <caption>Table complète de conversion : minutes → heures décimales → centièmes</caption>
+          <caption id="cap-convertir-minutes-en-heures-1">Table complète de conversion : minutes → heures décimales → centièmes</caption>
           <thead><tr>
             <th scope="col">Min</th><th scope="col">Décimal</th><th scope="col">Centièmes</th>
             <th scope="col">Min</th><th scope="col">Décimal</th><th scope="col">Centièmes</th>
@@ -684,6 +705,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
       <div>
         <h2 class="plan-titre">Le site</h2>
         <ul>
+          <li><a href="a-propos.html">À propos et méthode</a></li>
           <li><a href="nouveautes.html">Nouveautés</a></li>
           <li><a href="mentions-legales.html">Mentions légales</a></li>
         </ul>
@@ -691,7 +713,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
     </nav>
     <p>
       <strong>Calculatrice de Durée</strong> — addition d'heures, temps de travail, jours ouvrés.
-      Calculs effectués dans votre navigateur, aucune donnée collectée.
+      Calculs effectués dans votre navigateur : aucune donnée saisie n'est collectée.
     </p>
     <p class="micro">
       © <span id="year">2026</span> Calculatrice de Durée · Les résultats sont fournis à titre indicatif ·
@@ -700,7 +722,9 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
   </div>
 </footer>
 
-<a class="retour-calc" id="retour-calc" href="#calculatrice"><span aria-hidden="true">↑</span> Calculateur</a>
+<nav class="retour-nav" aria-label="Revenir au calculateur">
+  <a class="retour-calc" id="retour-calc" href="#calculatrice"><span aria-hidden="true">↑</span> Calculateur</a>
+</nav>
 
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 

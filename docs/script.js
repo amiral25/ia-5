@@ -21,6 +21,12 @@
   /** Le calculateur à quatre onglets n'est pas sur toutes les pages. */
   var A_CALC = !!document.querySelector('#calculatrice');
 
+  /* Un nombre sans unité vaut des heures — sauf sur la page qui sert à
+     convertir des minutes, où taper « 45 » pour obtenir 45 heures est
+     exactement le contraire de ce qu'on venait chercher. La page le déclare
+     par un attribut plutôt que par son adresse. */
+  var UNITE_NUE = document.body && document.body.dataset.unite === 'min' ? 60 : 3600;
+
   /* ---------------------------------------------------------
      1. Formatage
      --------------------------------------------------------- */
@@ -67,6 +73,10 @@
   }
 
   /** Un terme isolé → secondes (null si illisible) */
+  /* Levé par parseTerm quand une valeur dépasse 59 dans un format « h:mm » ;
+     lu, puis remis à zéro, par parseExpression. */
+  var deborde = false;
+
   function parseTerm(raw) {
     var t = String(raw).toLowerCase().replace(/\s+/g, '').replace(/[’']/g, '');
     if (!t) return null;
@@ -79,6 +89,9 @@
       for (var i = 0; i < p.length; i++) {
         if (p[i] === '') { p[i] = '0'; }
         if (!/^\d+([.,]\d+)?$/.test(p[i])) return null;
+        // « 1:75 » vaut 2h15, ce qui est juste mais rarement voulu : le plus
+        // souvent c'est une durée décimale écrite avec deux-points.
+        if (i > 0 && parseFloat(p[i].replace(',', '.')) > 59) deborde = true;
         tot += parseFloat(p[i].replace(',', '.')) * mult[i];
       }
       return tot;
@@ -99,7 +112,7 @@
         if (lastMult === 3600) mult = 60;
         else if (lastMult === 60) mult = 1;
         else if (lastMult === 86400) mult = 3600;
-        else mult = 3600; // nombre seul = heures
+        else mult = UNITE_NUE; // nombre seul : heures, ou minutes selon la page
       }
       total += val * mult;
       lastMult = mult;
@@ -111,7 +124,24 @@
   /** Expression complète → { seconds } ou { error } */
   function parseExpression(expr) {
     var s = String(expr).replace(/[−–—]/g, '-').replace(/\bplus\b/gi, '+').replace(/\bmoins\b/gi, '-').trim();
+    deborde = false;
     if (!s) return { empty: true };
+
+    /* Multiplication et division simples : « 2h30 x 3 », « 10h / 4 ».
+       Un seul opérateur, aucun mélange avec + et − : gérer les priorités dans
+       une saisie libre est le genre de raffinement qui produit des résultats
+       faux, et un résultat faux coûte ici plus cher que la commodité gagnée.
+       L'onglet « Multiplier / diviser » reste là pour les cas composés. */
+    var op = /^([^+\-]+?)\s*([x*×\/÷])\s*([\d]+(?:[.,][\d]+)?)$/i.exec(s);
+    if (op) {
+      var base = parseTerm(op[1].trim());
+      var n = parseFloat(op[3].replace(',', '.'));
+      if (base === null) return { error: '« ' + op[1].trim() + ' » n\'est pas une durée valide.' };
+      if (/[x*×]/i.test(op[2])) return { seconds: base * n, deborde: deborde };
+      if (!n) return { error: 'Division par zéro impossible.' };
+      return { seconds: base / n, deborde: deborde };
+    }
+
     if (/^[+-]/.test(s) === false) s = '+' + s;
 
     var tokens = s.match(/[+-][^+-]*/g);
@@ -126,7 +156,7 @@
       if (v === null) return { error: '« ' + body + ' » n\'est pas une durée valide.' };
       total += sign * v;
     }
-    return { seconds: total };
+    return { seconds: total, deborde: deborde };
   }
 
   /* ---------------------------------------------------------
@@ -348,7 +378,7 @@
   }
 
   function calcTab1() {
-    var q = quick.value.trim(), sec, input;
+    var q = quick.value.trim(), sec, input, note1 = '';
 
     if (q) {
       var r = parseExpression(q);
@@ -356,6 +386,10 @@
         return render({ label: 'Addition de durées', value: '—', error: r.error, idle: true });
       }
       sec = r.seconds; input = q;
+      if (r.deborde) {
+        note1 = 'Attention : au-delà de 59 minutes, « 1:75 » vaut 1 h 75 min, ' +
+                'soit 2h 15min. Pour une durée décimale, écrivez « 1,75 ».';
+      }
     } else {
       var rows = sumRows();
       if (!rows.filled) {
@@ -384,6 +418,7 @@
         { v: fmtMinutes(sec), l: 'Minutes totales' },
         { v: (ms ? nf(sec, 3) : nf(Math.round(sec))) + ' s', l: 'Secondes totales' }
       ],
+      note: note1,
       copy: fmtHMS(sec, ms) + '  (' + nf(sec / 3600, 2) + ' h décimales · ' + fmtMinutes(sec) + ')'
     });
   }
@@ -508,7 +543,11 @@
 
     var weeks = Math.floor(days / 7), remDays = days % 7;
     var breakdown = (y ? y + ' an' + (y > 1 ? 's' : '') + ' ' : '') + (mo ? mo + ' mois ' : '') + dd + ' j';
-    var workLabel = skipWe ? (skipHol ? 'Jours ouvrés' : 'Jours hors week-end') : (skipHol ? 'Jours hors fériés' : 'Jours comptés');
+    var un = work === 1;
+    var workLabel = skipWe ? (skipHol ? (un ? 'Jour ouvré' : 'Jours ouvrés')
+                                      : (un ? 'Jour hors week-end' : 'Jours hors week-end'))
+                           : (skipHol ? (un ? 'Jour hors férié' : 'Jours hors fériés')
+                                      : (un ? 'Jour compté' : 'Jours comptés'));
     // Note volontairement constante à pays donné : y glisser le nombre de fériés
     // la ferait passer sur deux lignes selon la période, donc décaler la page (CLS).
     var note = skipHol
@@ -526,6 +565,11 @@
         { v: weeks + ' sem. ' + remDays + ' j', l: 'Semaines' },
         { v: breakdown.trim(), l: 'Détail calendaire' },
         { v: nf(days + 1), l: 'Jours inclus *' },
+        // Le nombre de fériés retirés était calculé mais n'apparaissait que dans
+        // le texte copié. Il occupe une cellule fixe, affichée même quand la
+        // déduction est désactivée : un nombre variable de cellules décalerait
+        // la page à chaque changement d'option.
+        { v: skipHol ? nf(feriesDeduits) : '—', l: 'Fériés déduits' },
         { v: nf(days * 24), l: 'Heures' }
       ],
       note: note,
@@ -868,9 +912,11 @@
   }
 
   /** « lundi 12 octobre 2026 » */
-  function dateLongue(ts) {
+  /** « jeudi 9 septembre 2027 », ou « 9 septembre 2027 » si sansJour. */
+  function dateLongue(ts, sansJour) {
     var d = new Date(ts), jour = d.getUTCDate();
-    return JOURS_FR[d.getUTCDay()] + ' ' + (jour === 1 ? '1er' : jour) + ' ' +
+    return (sansJour ? '' : JOURS_FR[d.getUTCDay()] + ' ') +
+           (jour === 1 ? '1er' : jour) + ' ' +
            MOIS_FR[d.getUTCMonth()] + ' ' + d.getUTCFullYear();
   }
 
@@ -931,22 +977,54 @@
   // l'en-tête doit être juste dans les deux cas.
   window.addEventListener('beforeprint', majEnteteImpression);
 
+  /* Le relevé de durées masque tout le reste de la page — c'est voulu pour
+     lui, et c'était un défaut pour tout le monde : un Ctrl+P sur une page de
+     jours fériés sortait une feuille sans le moindre tableau de dates. Les
+     règles d'impression réduites sont désormais attachées à cette classe, que
+     seul le bouton ci-dessous pose. */
+  function imprimerReleve() {
+    var h = document.documentElement;
+    h.classList.add('imprime-releve');
+    var rendre = function () { h.classList.remove('imprime-releve'); };
+    window.addEventListener('afterprint', rendre, { once: true });
+    // Filet : certains navigateurs n'émettent pas « afterprint ».
+    setTimeout(rendre, 1500);
+    window.print();
+  }
+
   on('#btn-print', 'click', function () {
     if (!readHist().length) return showToast('Aucun calcul à imprimer');
     majEnteteImpression();
-    window.print();
+    imprimerReleve();
   });
 
   /* ---------------------------------------------------------
      10. Actions : copier / effacer / thème / toast
      --------------------------------------------------------- */
   var toast = $('#toast'), toastTimer;
-  function showToast(msg) {
+
+  /** Un message, et parfois un bouton pour revenir en arrière. Une remise à
+      zéro déclenchée par erreur — la touche « M » suffisait — effaçait un
+      calcul sans recours : le retour en arrière est proposé le temps du
+      message. */
+  function showToast(msg, annuler) {
     if (!toast) return;
     toast.textContent = msg;
+    if (annuler) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'toast-annuler';
+      b.textContent = 'Annuler';
+      b.addEventListener('click', function () {
+        annuler();
+        toast.classList.remove('is-on');
+      });
+      toast.appendChild(b);
+    }
     toast.classList.add('is-on');
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(function () { toast.classList.remove('is-on'); }, 2000);
+    toastTimer = setTimeout(function () { toast.classList.remove('is-on'); },
+                            annuler ? 6000 : 2000);
   }
 
   on('#btn-copy', 'click', function () {
@@ -968,13 +1046,19 @@
   }
 
   on('#btn-reset', 'click', function () {
+    var avant = etatEnParametres();
     if (current === 1) { quick.value = ''; buildRows([['', '', ''], ['', '', '']]); }
     else if (current === 2) { hStart.value = ''; hEnd.value = ''; hPause.value = 0;
                               hJours.value = 1; syncChips(); }
     else if (current === 3) { setDefaultDates(); dWe.checked = true; dHol.checked = true; }
     else { mH.value = ''; mM.value = ''; mS.value = ''; mN.value = '2'; }
     compute();
-    showToast('Champs réinitialisés');
+    showToast('Champs réinitialisés', function () {
+      appliquerParametres(avant);
+      syncChips();
+      compute();
+      showToast('Calcul rétabli');
+    });
   });
 
   on('#theme-toggle', 'click', function () {
@@ -998,7 +1082,10 @@
      • borne    comment le dire, la phrase citant le texte qui l'impose ;
      • mini     durée minimale d'une prestation (Belgique, article 21 de la loi
                 du 16 mars 1971) ;
-     • maxJour  plafond de travail effectif par jour (Luxembourg, L.211-26) ;
+     • maxJour  plafond de travail effectif par jour (Luxembourg, L.211-12) ;
+     • coupureUnique  la journée ne peut être coupée qu'une fois (Luxembourg,
+                L.211-16 : « l'horaire de travail journalier ne peut être
+                entrecoupé que d'une seule période de repos non rémunérée ») ;
      • paye     seuil en deçà duquel une présence est payée forfaitairement
                 (Québec, article 58 de la Loi sur les normes du travail). */
   var JC_PAYS = {
@@ -1011,7 +1098,7 @@
           borne: 'l\'espace de 14 heures dans lequel l\'article 10 LTr doit tenir la journée' },
     lu: { ampl: 13 * 3600,
           borne: 'la limite de 13 heures qu\'implique le repos journalier de 11 heures',
-          maxJour: 10 * 3600 },
+          maxJour: 10 * 3600, coupureUnique: true },
     qc: { ampl: null, paye: 3 * 3600 }
   };
 
@@ -1052,8 +1139,11 @@
       $('#jc-ampl').textContent = fmtHMS(amplitude);
       $('#jc-coup').textContent = coupure > 0 ? fmtHMS(coupure) : '—';
       $('#jc-sem').textContent = jours > 1 ? fmtHMS(travail) + ' / jour' : '—';
+      // Le Québec dit « temps travaillé », et l'a écrit dans son balisage :
+      // le réécrire en dur ici l'effacerait au premier calcul.
+      var intitule = box.dataset.label || 'Temps de travail effectif';
       $('.jc-label', box).textContent = jours > 1
-        ? 'Temps de travail sur ' + jours + ' jours' : 'Temps de travail effectif';
+        ? intitule + ' sur ' + jours + ' jours' : intitule;
 
       // Québec : une présence de moins de trois heures est payée trois heures.
       var paye = travail;
@@ -1069,22 +1159,29 @@
       }).length : 0;
       var tropLong = !!REGLES.maxJour && travail > REGLES.maxJour;
       var tropLarge = LIMITE !== null && amplitude > LIMITE;
+      // Trois services, c'est deux coupures : une de trop au Luxembourg.
+      var tropCoupe = !!REGLES.coupureUnique && p.length > 2;
 
-      $('#jc-note').textContent = verdict(p.length, amplitude, travail, paye, courts, tropLong, tropLarge);
-      box.classList.toggle('jc-alerte', tropLarge || courts > 0 || tropLong);
+      $('#jc-note').textContent =
+        verdict(p.length, amplitude, travail, paye, courts, tropLong, tropLarge, tropCoupe);
+      box.classList.toggle('jc-alerte', tropLarge || courts > 0 || tropLong || tropCoupe);
     }
 
     /** Une seule phrase sous le résultat, et c'est la plus utile qui gagne :
         un dépassement passe avant un simple constat d'amplitude. */
-    function verdict(n, amplitude, travail, paye, courts, tropLong, tropLarge) {
+    function verdict(n, amplitude, travail, paye, courts, tropLong, tropLarge, tropCoupe) {
       if (!n) return 'Renseignez au moins un service pour obtenir un résultat.';
 
+      if (tropCoupe) {
+        return n + ' services, donc ' + (n - 1) + ' coupures — l\'article L.211-16 ' +
+               'n\'autorise qu\'une seule période de repos non rémunérée par journée.';
+      }
       if (tropLarge) {
         return 'Amplitude de ' + fmtHMS(amplitude) + ' — au-delà de ' + REGLES.borne + '.';
       }
       if (tropLong) {
         return fmtHMS(travail) + ' de travail effectif — au-delà des 10 heures par jour ' +
-               'que fixe l\'article L.211-26 du Code du travail.';
+               'que fixe l\'article L.211-12 du Code du travail.';
       }
       if (courts) {
         return courts + (courts > 1 ? ' services durent' : ' service dure') +
@@ -1183,9 +1280,35 @@
   (function () {
     var lien = $('#retour-calc'), cible = $('#calculatrice') || $('#services');
     if (!lien || !cible || !('IntersectionObserver' in window)) return;
+    var fleche = $('span', lien);
+
+    /* Sur les pages de jours fériés, le calculateur est 880 px plus bas que le
+       texte d'accueil : le bouton s'affichait donc dès l'arrivée, par-dessus
+       « L'essentiel », et sa flèche montait alors que la cible était dessous.
+       On le tait tant que le visiteur n'a pas commencé à lire, et la flèche
+       indique le sens réel du déplacement. */
+    var visible = true, auDessus = false;
+
+    function rafraichir() {
+      var dessous = !auDessus;
+      var montrer = !visible && (auDessus || window.pageYOffset > 400);
+      lien.classList.toggle('is-on', montrer);
+      if (fleche) fleche.textContent = dessous ? '↓' : '↑';
+    }
+
     new IntersectionObserver(function (entrees) {
-      lien.classList.toggle('is-on', !entrees[0].isIntersecting);
+      var e = entrees[0];
+      visible = e.isIntersecting;
+      auDessus = e.boundingClientRect.top < 0;
+      rafraichir();
     }, { rootMargin: '-80px 0px 0px 0px' }).observe(cible);
+
+    var prevu = false;
+    window.addEventListener('scroll', function () {
+      if (prevu) return;
+      prevu = true;
+      requestAnimationFrame(function () { prevu = false; rafraichir(); });
+    }, { passive: true });
   })();
 
   on(rowsBox, 'input', compute);
@@ -1252,6 +1375,11 @@
     var a = document.activeElement;
     if (a && /^(INPUT|SELECT|TEXTAREA)$/.test(a.tagName)) return;
     if (a && a.isContentEditable) return;
+    /* Une touche seule ne doit pas agir depuis n'importe où dans la page :
+       taper « m » en lisant un article effaçait le calcul. Les raccourcis ne
+       valent donc que si le focus est dans le calculateur — le lien
+       d'évitement, un clic ou la tabulation y mènent (WCAG 2.1.4). */
+    if (!a || !a.closest || !a.closest('#calculatrice')) return;
 
     var k = e.key.toLowerCase();
     if (current === 1 && (e.key === '+' || e.key === '-' || e.key === '−')) {
@@ -1347,9 +1475,11 @@
     return base.split('?')[0].split('#')[0] + '?' + etatEnParametres().toString();
   }
 
-  /** Applique les paramètres reçus. Renvoie l'onglet demandé, ou 0. */
-  function appliquerParametres() {
-    var p = new URLSearchParams(location.search);
+  /** Applique les paramètres reçus — ceux de l'adresse par défaut, ou un
+      instantané pris plus tôt, ce qui sert à revenir sur une remise à zéro.
+      Renvoie l'onglet demandé, ou 0. */
+  function appliquerParametres(source) {
+    var p = source || new URLSearchParams(location.search);
     if (!p.toString()) return 0;
     var t = parseInt(p.get('t'), 10);
 
@@ -1422,6 +1552,33 @@
       if (PAYS[memo]) dPays.value = memo;
     } catch (e) {}
   }
+
+  /* Jeûne genevois et Lundi du Jeûne fédéral : deux dates mobiles de septembre
+     que la page suisse met en avant. Écrites en dur, elles étaient périmées
+     trois semaines par an. Le HTML porte la prochaine date connue à la
+     publication, ce script la recalcule au chargement : le texte ne bouge donc
+     que le jour où il aurait été faux. */
+  (function jeunesSuisses() {
+    var ge = $('#jeune-ge'), fed = $('#jeune-fed');
+    if (!ge || !fed) return;
+
+    function dimanche(an, n) {          // n-ième dimanche de septembre, en UTC
+      var d = new Date(Date.UTC(an, 8, 1));
+      d.setUTCDate(1 + ((7 - d.getUTCDay()) % 7) + (n - 1) * 7);
+      return d;
+    }
+    function plus(d, j) { return new Date(d.getTime() + j * DAY_MS); }
+
+    var auj = aujourdHuiUTC(), an = new Date(auj).getUTCFullYear();
+    for (var i = 0; i < 2; i++) {
+      var g = plus(dimanche(an + i, 1), 4);   // le jeudi qui suit
+      if (g.getTime() >= auj) {
+        ge.textContent = dateLongue(g.getTime(), true);
+        fed.textContent = dateLongue(plus(dimanche(an + i, 3), 1).getTime(), true);
+        return;
+      }
+    }
+  })();
 
   // L'année du pied de page vaut pour toutes les pages, calculateur ou non.
   var an = $('#year');

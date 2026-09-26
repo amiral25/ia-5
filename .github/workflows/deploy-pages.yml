@@ -30,6 +30,34 @@ jobs:
       - name: Récupérer le code
         uses: actions/checkout@v4
 
+      # Le sitemap était tenu à la main et ses dates avaient dérivé : l'une
+      # d'elles précédait même la création de la page qu'elle datait. Il est
+      # désormais recalculé à chaque publication, à partir de l'historique git.
+      - name: Engendrer le sitemap
+        run: python3 outils/sitemap.py
+
+      # Le CSS et le JS sont commentés en long et en large, ce qui est une
+      # bonne chose dans le dépôt et un poids mort sur le réseau. La version
+      # publiée est réduite ; les sources restent intactes. En cas d'échec de
+      # l'outil, on publie les fichiers d'origine plutôt que rien.
+      - name: Réduire le CSS et le JS
+        continue-on-error: true
+        run: |
+          set -u
+          avant=$(wc -c < docs/style.css)$'\t'$(wc -c < docs/script.js)
+          npx --yes esbuild@0.24.0 docs/style.css --minify --outfile=/tmp/style.min.css || true
+          npx --yes esbuild@0.24.0 docs/script.js --minify --outfile=/tmp/script.min.js || true
+          for p in style.css:/tmp/style.min.css script.js:/tmp/script.min.js; do
+            src=${p%%:*}; min=${p#*:}
+            if [ -s "$min" ] && [ "$(wc -c < "$min")" -lt "$(wc -c < "docs/$src")" ]; then
+              cp "$min" "docs/$src"
+              echo "$src réduit à $(wc -c < "docs/$src") octets"
+            else
+              echo "$src laissé tel quel"
+            fi
+          done
+          echo "avant (css, js) : $avant"
+
       - name: Recopier docs/ sur la branche gh-pages
         run: |
           set -e

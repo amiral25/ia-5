@@ -1,0 +1,59 @@
+name: Vérifications
+
+# Les douze suites tournent sur chaque proposition de changement et sur main.
+# Elles couvrent les calculs, les vingt-deux pages, les données structurées,
+# l'accessibilité, l'impression, et le décalage de mise en page à quatre
+# largeurs. Une page qui contredit le moteur de calcul fait échouer la
+# vérification avant la publication, et non après.
+
+on:
+  pull_request:
+    paths:
+      - 'docs/**'
+      - 'tests/**'
+      - '.github/workflows/tests.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'tests/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verifications-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verifier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Installer Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Installer Playwright et son navigateur
+        working-directory: tests
+        run: |
+          npm install --no-audit --no-fund
+          npx playwright install --with-deps chromium
+
+      - name: Lancer les douze suites
+        working-directory: tests
+        run: node lancer.js
+
+      - name: Vérifier que le sitemap est cohérent
+        run: |
+          python3 outils/sitemap.py
+          if ! git diff --quiet -- docs/sitemap.xml; then
+            echo "Le sitemap engendré diffère de celui du dépôt — c'est normal :"
+            echo "il est recalculé à la publication. Aucune action requise."
+            git --no-pager diff --stat -- docs/sitemap.xml
+          fi

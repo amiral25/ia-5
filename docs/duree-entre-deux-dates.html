@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-<title>Calcul Durée entre Deux Dates – Jours, Semaines et Mois</title>
+<title>Calcul de durée entre deux dates – Jours, semaines et mois</title>
 <meta name="description" content="Calcul de la durée entre deux dates : nombre exact de jours, semaines, mois et années. Années bissextiles gérées, décomposition calendaire, jours ouvrés.">
 
 <link rel="canonical" href="https://calculatrice-duree.fr/duree-entre-deux-dates.html">
@@ -15,10 +15,15 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Calculatrice de Durée">
-<meta property="og:title" content="Calcul Durée entre Deux Dates – Jours, Semaines et Mois">
+<meta property="og:title" content="Calcul de durée entre deux dates – Jours, semaines et mois">
 <meta property="og:description" content="Calcul de la durée entre deux dates : nombre exact de jours, semaines, mois et années. Années bissextiles gérées, décomposition calendaire, jours ouvrés.">
 <meta property="og:url" content="https://calculatrice-duree.fr/duree-entre-deux-dates.html">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://calculatrice-duree.fr/og-dates.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Calcul de durée entre deux dates – Jours, semaines et mois">
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="style.css">
@@ -44,12 +49,25 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Organization",
+      "@id": "https://calculatrice-duree.fr/#editeur",
+      "name": "Calculatrice de Durée",
+      "url": "https://calculatrice-duree.fr/",
+      "email": "contact.calculatrice@gmail.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://calculatrice-duree.fr/favicon.svg"
+      }
+    },
+    {
       "@type": "WebPage",
       "@id": "https://calculatrice-duree.fr/duree-entre-deux-dates.html#page",
       "url": "https://calculatrice-duree.fr/duree-entre-deux-dates.html",
-      "name": "Calcul Durée entre Deux Dates – Jours, Semaines et Mois",
+      "name": "Calcul de durée entre deux dates – Jours, semaines et mois",
       "description": "Calcul de la durée entre deux dates : nombre exact de jours, semaines, mois et années. Années bissextiles gérées, décomposition calendaire, jours ouvrés.",
       "inLanguage": "fr-FR",
+      "dateModified": "2026-09-26",
+      "publisher": { "@id": "https://calculatrice-duree.fr/#editeur" },
       "isPartOf": {
         "@type": "WebSite",
         "@id": "https://calculatrice-duree.fr/#site",
@@ -132,7 +150,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
     </a>
     <nav class="site-nav" aria-label="Navigation principale">
       <details class="nav-groupe">
-        <summary>Calculs de durée</summary>
+        <summary><span class="nav-long">Calculs de durée</span><span class="nav-court">Durées</span></summary>
         <div class="nav-pop">
           <a href="/">Calculatrice de durée</a>
           <a href="additionner-des-heures.html">Addition d'heures</a>
@@ -141,7 +159,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         </div>
       </details>
       <details class="nav-groupe">
-        <summary>Heures de travail</summary>
+        <summary><span class="nav-long">Heures de travail</span><span class="nav-court">Travail</span></summary>
         <div class="nav-pop">
           <a href="calcul-heures-de-travail.html">Heures de travail</a>
           <a href="combien-heures-entre-deux-horaires.html">Entre deux horaires</a>
@@ -153,14 +171,14 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         </div>
       </details>
       <details class="nav-groupe est-actif">
-        <summary>Dates et jours ouvrés</summary>
+        <summary><span class="nav-long">Dates et jours ouvrés</span><span class="nav-court">Dates</span></summary>
         <div class="nav-pop">
           <a href="duree-entre-deux-dates.html" aria-current="page">Durée entre deux dates</a>
           <a href="calcul-jours-ouvres.html">Jours ouvrés</a>
         </div>
       </details>
       <details class="nav-groupe">
-        <summary>Jours fériés</summary>
+        <summary><span class="nav-long">Jours fériés</span><span class="nav-court">Fériés</span></summary>
         <div class="nav-pop">
           <a href="jours-feries-france.html">France</a>
           <a href="jours-feries-belgique.html">Belgique</a>
@@ -190,6 +208,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
   <section class="hero">
     <h1>Calcul de la durée entre deux dates</h1>
     <p class="lead">Le nombre exact de jours, semaines, mois et années séparant deux dates. Années bissextiles et longueurs de mois variables comprises.</p>
+    <p class="maj">Mis à jour le <time datetime="2026-09-26">26 septembre 2026</time></p>
   </section>
 
   <aside class="ad ad-leaderboard" aria-label="Publicité">
@@ -297,7 +316,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
               <strong>soustraire</strong>. Formats acceptés&nbsp;: <code>2h30</code>, <code>2:30</code>,
               <code>45min</code>, <code>90s</code>, <code>1j</code>. Un nombre seul&nbsp;= des heures
               (<code>1,5</code> = 1h30). Le résultat peut être négatif.
-              Laissez vide pour utiliser les champs ci-dessous.
+              Une multiplication ou une division simple passe aussi&nbsp;: <code>2h30 x 3</code>, <code>10h / 4</code>. Laissez vide pour utiliser les champs ci-dessous.
             </p>
           </div>
 
@@ -324,10 +343,10 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
           </div>
 
           <div class="row-actions">
-            <button id="add-row" class="btn btn-ghost btn-sm" type="button" aria-label="Ajouter une durée">
+            <button id="add-row" class="btn btn-ghost btn-sm" type="button">
               <span class="op-plus" aria-hidden="true">+</span> Ajouter<span class="btn-long"> une durée</span>
             </button>
-            <button id="sub-row" class="btn btn-ghost btn-sm" type="button" aria-label="Soustraire une durée">
+            <button id="sub-row" class="btn btn-ghost btn-sm" type="button">
               <span class="op-minus" aria-hidden="true">−</span> Soustraire<span class="btn-long"> une durée</span>
             </button>
             <button id="btn-retenue" class="btn btn-ghost btn-sm" type="button"
@@ -547,9 +566,9 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         avance d'un mois à l'autre en tenant compte de leur longueur véritable, et non d'une moyenne de
         30,4&nbsp;jours. C'est la méthode utilisée pour calculer un âge exact ou une ancienneté.
       </p>
-      <div class="table-wrap">
+      <div class="table-wrap" tabindex="0" role="region" aria-labelledby="cap-duree-entre-deux-dates-1">
         <table>
-          <caption>Quelques équivalences utiles</caption>
+          <caption id="cap-duree-entre-deux-dates-1">Quelques équivalences utiles</caption>
           <thead><tr><th scope="col">Durée</th><th scope="col">En jours</th><th scope="col">En heures</th></tr></thead>
           <tbody>
             <tr><td>1 semaine</td><td>7</td><td>168</td></tr>
@@ -688,6 +707,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
       <div>
         <h2 class="plan-titre">Le site</h2>
         <ul>
+          <li><a href="a-propos.html">À propos et méthode</a></li>
           <li><a href="nouveautes.html">Nouveautés</a></li>
           <li><a href="mentions-legales.html">Mentions légales</a></li>
         </ul>
@@ -695,7 +715,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
     </nav>
     <p>
       <strong>Calculatrice de Durée</strong> — addition d'heures, temps de travail, jours ouvrés.
-      Calculs effectués dans votre navigateur, aucune donnée collectée.
+      Calculs effectués dans votre navigateur : aucune donnée saisie n'est collectée.
     </p>
     <p class="micro">
       © <span id="year">2026</span> Calculatrice de Durée · Les résultats sont fournis à titre indicatif ·
@@ -704,7 +724,9 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
   </div>
 </footer>
 
-<a class="retour-calc" id="retour-calc" href="#calculatrice"><span aria-hidden="true">↑</span> Calculateur</a>
+<nav class="retour-nav" aria-label="Revenir au calculateur">
+  <a class="retour-calc" id="retour-calc" href="#calculatrice"><span aria-hidden="true">↑</span> Calculateur</a>
+</nav>
 
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 

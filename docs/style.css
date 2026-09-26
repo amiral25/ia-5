@@ -13,6 +13,11 @@ img,svg{display:block;max-width:100%}
 /* ---------- Jetons de design ---------- */
 :root{
   --brand:#2563eb; --brand-dk:#1d4ed8; --brand-soft:#eff6ff;
+  /* Encre posée SUR un aplat de couleur vive (pastille active, lien
+     d'évitement, pays courant). En thème sombre, l'aplat s'éclaircit :
+     du blanc dessus ne ferait plus que 2,54:1, loin des 4,5:1 exigés.
+     L'encre s'assombrit donc avec lui, et le rapport monte à 7,36:1. */
+  --on-fill:#ffffff;
   --bg:#f1f5f9; --bg-grad:radial-gradient(1200px 600px at 50% -200px,#dbeafe 0%,transparent 70%);
   --card:#ffffff; --card-2:#f8fafc; --ad-ph:#5a6473;
   --text:#0f172a; --muted:#64748b; --line:#e2e8f0;
@@ -25,6 +30,7 @@ img,svg{display:block;max-width:100%}
 }
 [data-theme="dark"]{
   --brand:#60a5fa; --brand-dk:#3b82f6; --brand-soft:#132a4d;
+  --on-fill:#0b1220;
   --bg:#080d18; --bg-grad:radial-gradient(1200px 600px at 50% -220px,#132a4d 0%,transparent 70%);
   --card:#0f172a; --card-2:#131f38; --ad-ph:#93a4c0;
   --text:#e8eefc; --muted:#93a4c0; --line:#22304d;
@@ -44,7 +50,7 @@ body{
 }
 .wrap{width:100%;max-width:1140px;margin-inline:auto;padding-inline:16px}
 
-.skip-link{position:absolute;left:-9999px;top:0;background:var(--brand);color:#fff;padding:10px 16px;border-radius:0 0 10px 0;z-index:99}
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--brand);color:var(--on-fill);padding:10px 16px;border-radius:0 0 10px 0;z-index:99}
 .skip-link:focus{left:0}
 
 :where(a,button,input,summary):focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:6px}
@@ -53,7 +59,7 @@ body{
 .site-header{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 /* Sur mobile l'en-tête défile avec la page : collant, la marque plus la barre
    de navigation mangeraient un dixième de l'écran en permanence. */
-@media(max-width:899px){.site-header{position:static}}
+@media(max-width:1039px){.site-header{position:static}}
 
 /* Marque et bouton sur la première ligne, navigation en dessous ; tout sur une
    seule ligne à partir de 900 px. */
@@ -74,6 +80,17 @@ body{
   color:var(--muted);font-size:.86rem;font-weight:600;
   transition:color .15s,background .15s}
 .nav-groupe > summary::-webkit-details-marker{display:none}
+/* Deux intitulés par groupe, un seul visible : le court sur téléphone,
+   le long dès qu'il y a la place. Celui qui est masqué par display:none
+   n'entre pas dans le nom accessible du bouton. */
+.nav-long{display:none}
+@media(min-width:700px){.nav-long{display:inline}.nav-court{display:none}}
+/* Sous 400 px, les intitulés courts eux-mêmes débordaient d'une ligne :
+   quelques pixels de rembourrage en moins suffisent à les ramener sur une. */
+@media(max-width:400px){
+  .nav-groupe > summary{padding:7px 8px;font-size:.83rem;gap:5px}
+  .site-nav{gap:1px}
+}
 .nav-groupe > summary:hover{color:var(--text);background:var(--card-2)}
 /* Le chevron est dessiné en CSS : rien à ajouter dans les quatorze pages. */
 .nav-groupe > summary::after{content:"";width:5px;height:5px;margin-top:-3px;
@@ -91,7 +108,7 @@ body{
 .nav-pop a:hover{color:var(--text);background:var(--card-2)}
 .nav-pop a[aria-current]{color:var(--brand);background:var(--brand-soft)}
 
-@media(min-width:900px){
+@media(min-width:1040px){
   .header-inner{grid-template-columns:auto 1fr auto;grid-template-areas:"marque nav bouton"}
   .site-nav{flex-wrap:nowrap;gap:4px;padding-bottom:0}
   /* Au-dessus de 900 px le volet flotte : il ne pousse rien, donc il ne
@@ -169,6 +186,12 @@ h1{font-size:clamp(1.5rem,4vw,2.2rem);line-height:1.18;letter-spacing:-.025em;fo
 
 .tabs{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;padding:5px;background:var(--card-2);border:1px solid var(--line);border-radius:14px;margin-bottom:18px}
 @media(min-width:640px){.tabs{grid-template-columns:repeat(4,1fr)}}
+/* Sur un petit téléphone, chaque pixel gagné au-dessus du résultat compte :
+   les onglets se resserrent sans changer de disposition. */
+@media(max-width:420px){
+  .tabs{gap:4px;padding:4px;margin-bottom:12px}
+  .tab{padding:7px 3px;font-size:.73rem;gap:2px}
+}
 .tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
   padding:9px 4px;border:0;border-radius:10px;background:transparent;color:var(--muted);
   font-size:.76rem;font-weight:600;line-height:1.25;text-align:center;cursor:pointer;transition:background .16s,color .16s}
@@ -224,8 +247,8 @@ html[data-ms="1"] .u-ms{display:block}
 .sign-group{display:grid;grid-template-columns:1fr 1fr;height:44px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card-2)}
 .sg-btn{border:0;background:transparent;font-weight:800;font-size:1.05rem;line-height:1;color:var(--muted);cursor:pointer;transition:background .15s,color .15s}
 .sg-btn:hover{background:color-mix(in srgb,var(--brand) 12%,transparent);color:var(--text)}
-.sg-plus.is-on{background:var(--brand);color:#fff}
-.sg-minus.is-on{background:var(--err);color:#fff}
+.sg-plus.is-on{background:var(--brand);color:var(--on-fill)}
+.sg-minus.is-on{background:var(--err);color:var(--on-fill)}
 .sg-btn:focus-visible{outline:2px solid var(--brand);outline-offset:-2px;border-radius:0}
 .row .inp{padding:12px 6px;text-align:center;min-width:0}
 .row-del{height:36px;width:36px;border:0;border-radius:9px;background:transparent;color:var(--muted);cursor:pointer;font-size:1.2rem;line-height:1}
@@ -265,14 +288,14 @@ html[data-ms="1"] .u-ms{display:block}
 .units-3{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
 .units-3 span{text-align:center}
 .sign-group-op .sg-btn{font-size:.82rem;font-weight:700;padding:0 4px}
-.sg-mul.is-on{background:var(--brand);color:#fff}
+.sg-mul.is-on{background:var(--brand);color:var(--on-fill)}
 .sg-div.is-on{background:#7c3aed;color:#fff}
 [data-theme="dark"] .sg-div.is-on{background:#8b5cf6}
 
 .chips{display:flex;flex-wrap:wrap;gap:7px}
 .chip{padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:var(--card-2);font-size:.82rem;font-weight:600;color:var(--muted);cursor:pointer;transition:.15s}
 .chip:hover{border-color:var(--brand);color:var(--brand)}
-.chip.is-on{background:var(--brand);border-color:var(--brand);color:#fff}
+.chip.is-on{background:var(--brand);border-color:var(--brand);color:var(--on-fill)}
 
 .opts{display:flex;flex-direction:column;gap:10px;margin-top:4px}
 .switch{display:flex;align-items:center;gap:10px;font-size:.9rem;cursor:pointer}
@@ -379,7 +402,7 @@ html[data-ms="1"] .u-ms{display:block}
 .jc-pays a{background:var(--card);color:var(--brand);text-decoration:none;
   transition:border-color .15s,background .15s}
 .jc-pays a:hover{border-color:var(--brand);background:var(--brand-soft)}
-.jc-pays strong{background:var(--brand);border-color:var(--brand);color:#fff}
+.jc-pays strong{background:var(--brand);border-color:var(--brand);color:var(--on-fill)}
 
 /* ---------- Retour au calculateur ----------
    Les pages font jusqu'à quatorze écrans sur mobile : sans ce bouton, revenir
@@ -387,8 +410,11 @@ html[data-ms="1"] .u-ms{display:block}
 .retour-calc{position:fixed;right:14px;bottom:14px;z-index:40;display:inline-flex;align-items:center;gap:7px;
   padding:11px 15px;border:1px solid var(--line);border-radius:999px;background:var(--card);
   color:var(--brand);font-size:.85rem;font-weight:600;text-decoration:none;box-shadow:var(--shadow-lg);
-  opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .2s,transform .2s}
-.retour-calc.is-on{opacity:1;transform:none;pointer-events:auto}
+  /* « visibility » en plus de l'opacité : un lien transparent restait
+     atteignable au clavier, et le focus disparaissait dans le vide. */
+  opacity:0;visibility:hidden;transform:translateY(10px);pointer-events:none;
+  transition:opacity .2s,transform .2s,visibility .2s}
+.retour-calc.is-on{opacity:1;visibility:visible;transform:none;pointer-events:auto}
 .retour-calc:hover{border-color:var(--brand)}
 @media(prefers-reduced-motion:reduce){.retour-calc{transition:none}}
 @media print{.retour-calc{display:none}}
@@ -402,10 +428,18 @@ html[data-ms="1"] .u-ms{display:block}
 .content p{margin-bottom:14px;color:color-mix(in srgb,var(--text) 88%,var(--muted))}
 .formula{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:0 var(--r-sm) var(--r-sm) 0;padding:12px 16px;font-size:1.02rem}
 .micro{font-size:.86rem;color:var(--muted)}
+/* Date de mise à jour, sous l'amorce : Google attend ce signal sur les
+   sujets qui touchent au travail et à l'argent, et le lecteur aussi.
+   Hauteur réservée pour que la ligne n'entre pas en décalant la page. */
+.maj{margin:10px 0 0;font-size:.8rem;color:var(--muted);min-height:20px}
+.maj a{color:inherit}
 .uses li{position:relative;padding-left:24px;margin-bottom:9px;color:color-mix(in srgb,var(--text) 88%,var(--muted))}
 .uses li::before{content:"✓";position:absolute;left:0;top:0;color:var(--ok);font-weight:800}
 
 .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--card);margin:16px 0 18px}
+/* Un tableau qui défile horizontalement doit pouvoir être parcouru au
+   clavier : il reçoit donc le focus, et doit alors le montrer. */
+.table-wrap:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
 
 /* Journée coupée : calculateur dédié de la page restauration.
    Le résultat est placé AVANT les champs, comme dans le calculateur principal :
@@ -563,7 +597,13 @@ td:first-child{font-weight:600}
 .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,140%);z-index:60;
   background:var(--text);color:var(--bg);padding:11px 20px;border-radius:999px;font-size:.88rem;font-weight:600;
   box-shadow:var(--shadow-lg);opacity:0;transition:transform .28s cubic-bezier(.2,.8,.3,1),opacity .28s;pointer-events:none}
-.toast.is-on{transform:translate(-50%,0);opacity:1}
+.toast.is-on{transform:translate(-50%,0);opacity:1;pointer-events:auto}
+/* Le message porte parfois un bouton de retour en arrière : il faut donc
+   pouvoir le cliquer, d'où le rétablissement des événements ci-dessus. */
+.toast-annuler{margin-left:12px;padding:3px 11px;border:1px solid var(--bg);
+  border-radius:999px;background:none;color:var(--bg);font-size:.82rem;
+  font-weight:700;cursor:pointer}
+.toast-annuler:hover{background:var(--bg);color:var(--text)}
 
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 /* ---------- Impression : on n'imprime que le relevé ----------
@@ -579,16 +619,45 @@ td:first-child{font-weight:600}
      texte pâle sur papier blanc, donc illisible. */
   :root,[data-theme="dark"]{
     --bg:#fff;--bg-grad:none;--card:#fff;--card-2:#fff;
-    --text:#000;--muted:#333;--line:#999;--brand:#000;
+    --text:#000;--muted:#333;--line:#999;--brand:#000;--on-fill:#fff;
   }
   body{background:#fff!important;color:#000!important;font-size:11pt}
-  .site-header,.fil,.hero,.ad,.tabs,.panel,.result,.actions,.content,
-  .plan,.site-footer,.toast,.skip-link,.history-actions,.liens-connexes{display:none!important}
+
+  /* Ce qui n'a aucun sens sur papier, quelle que soit l'impression. */
+  .site-header,.ad,.toast,.skip-link,.retour-calc,.voisins,.jc-pays,
+  .history-actions,.actions,.dl-feries{display:none!important}
+
+  /* Un tableau qui défile à l'écran doit se déplier sur papier, et ne pas
+     couper une ligne entre deux pages. */
+  .table-wrap{overflow:visible!important;border:0!important;border-radius:0}
+  tr,.faq details,.formula{break-inside:avoid}
+  h2,h3{break-after:avoid}
+  /* Les questions fréquentes sont repliées à l'écran : sur papier, une réponse
+     invisible est une réponse perdue. */
+  .faq details>*{display:block!important}
+  .faq summary::after{content:""}
+
+  /* Le relevé de durées. Seul le bouton « Imprimer / PDF » pose cette classe,
+     et elle seule masque le contenu de la page : un Ctrl+P ordinaire imprime
+     la page entière, tableaux de dates compris. */
+  html:not(.imprime-releve) .history,
+  html:not(.imprime-releve) .print-seul{display:none!important}
+  html.imprime-releve .fil,
+  html.imprime-releve .hero,
+  html.imprime-releve .tabs,
+  html.imprime-releve .panel,
+  html.imprime-releve .result,
+  html.imprime-releve .prochain,
+  html.imprime-releve .content,
+  html.imprime-releve .jc-card,
+  html.imprime-releve .plan,
+  html.imprime-releve .site-footer,
+  html.imprime-releve .liens-connexes{display:none!important}
   .layout,.col-main,.card,.calc,.wrap{display:block!important;border:0!important;
     box-shadow:none!important;padding:0!important;margin:0!important;max-width:none!important}
   .history{border-top:0;margin-top:0;padding-top:0}
   .history-title{display:none}
-  .print-seul{display:block;font-size:10pt;font-weight:700;margin-bottom:8pt;
+  html.imprime-releve .print-seul{display:block;font-size:10pt;font-weight:700;margin-bottom:8pt;
     padding-bottom:5pt;border-bottom:1.5pt solid #000}
   /* Les lignes redeviennent des lignes de tableau : ni cadre, ni coin arrondi,
      ni fond — sinon le relevé imprimé ressemble à une capture d'écran. */
