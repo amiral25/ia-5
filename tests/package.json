@@ -1,0 +1,12 @@
+{
+  "name": "calculatrice-duree-tests",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Suites de vérification du site : calculs, pages, accessibilité, mise en page.",
+  "scripts": {
+    "test": "node lancer.js"
+  },
+  "devDependencies": {
+    "playwright": "1.49.1"
+  }
+}

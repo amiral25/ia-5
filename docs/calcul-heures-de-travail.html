@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-<title>Calculatrice d'Heure de Travail – Calcul du Temps de Travail</title>
+<title>Calculatrice d'heure de travail – Calcul du temps de travail</title>
 <meta name="description" content="Calculatrice d'heure de travail gratuite : temps de travail effectif, pauses déduites, horaires de nuit, total hebdomadaire et heures supplémentaires.">
 
 <link rel="canonical" href="https://calculatrice-duree.fr/calcul-heures-de-travail.html">
@@ -15,10 +15,15 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Calculatrice de Durée">
-<meta property="og:title" content="Calculatrice d'Heure de Travail – Calcul du Temps de Travail">
+<meta property="og:title" content="Calculatrice d'heure de travail – Calcul du temps de travail">
 <meta property="og:description" content="Calculatrice d'heure de travail gratuite : temps de travail effectif, pauses déduites, horaires de nuit, total hebdomadaire et heures supplémentaires.">
 <meta property="og:url" content="https://calculatrice-duree.fr/calcul-heures-de-travail.html">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://calculatrice-duree.fr/og-heures.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Calculatrice d'heure de travail – Calcul du temps de travail">
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="style.css">
@@ -44,12 +49,25 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Organization",
+      "@id": "https://calculatrice-duree.fr/#editeur",
+      "name": "Calculatrice de Durée",
+      "url": "https://calculatrice-duree.fr/",
+      "email": "contact.calculatrice@gmail.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://calculatrice-duree.fr/favicon.svg"
+      }
+    },
+    {
       "@type": "WebPage",
       "@id": "https://calculatrice-duree.fr/calcul-heures-de-travail.html#page",
       "url": "https://calculatrice-duree.fr/calcul-heures-de-travail.html",
-      "name": "Calculatrice d'Heure de Travail – Calcul du Temps de Travail",
+      "name": "Calculatrice d'heure de travail – Calcul du temps de travail",
       "description": "Calculatrice d'heure de travail gratuite : temps de travail effectif, pauses déduites, horaires de nuit, total hebdomadaire et heures supplémentaires.",
       "inLanguage": "fr-FR",
+      "dateModified": "2026-09-26",
+      "publisher": { "@id": "https://calculatrice-duree.fr/#editeur" },
       "isPartOf": {
         "@type": "WebSite",
         "@id": "https://calculatrice-duree.fr/#site",
@@ -91,14 +109,6 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Non, si vous êtes libre de vaquer à vos occupations personnelles : elle n'est alors ni du temps de travail effectif ni rémunérée. Elle le redevient si vous restez à disposition de l'employeur. Votre convention collective peut prévoir des règles plus favorables."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "De 8h à 17h, combien d'heures ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "De 8h00 à 17h00, il s'écoule 9 heures d'amplitude. Avec une pause déjeuner d'une heure non rémunérée, le temps de travail effectif est de 8 heures, soit 8,00 heures décimales et 480 minutes. Avec 45 minutes de pause, il reste 8 h 15."
           }
         },
         {
@@ -156,7 +166,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
     </a>
     <nav class="site-nav" aria-label="Navigation principale">
       <details class="nav-groupe">
-        <summary>Calculs de durée</summary>
+        <summary><span class="nav-long">Calculs de durée</span><span class="nav-court">Durées</span></summary>
         <div class="nav-pop">
           <a href="/">Calculatrice de durée</a>
           <a href="additionner-des-heures.html">Addition d'heures</a>
@@ -165,7 +175,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         </div>
       </details>
       <details class="nav-groupe est-actif">
-        <summary>Heures de travail</summary>
+        <summary><span class="nav-long">Heures de travail</span><span class="nav-court">Travail</span></summary>
         <div class="nav-pop">
           <a href="calcul-heures-de-travail.html" aria-current="page">Heures de travail</a>
           <a href="combien-heures-entre-deux-horaires.html">Entre deux horaires</a>
@@ -177,14 +187,14 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         </div>
       </details>
       <details class="nav-groupe">
-        <summary>Dates et jours ouvrés</summary>
+        <summary><span class="nav-long">Dates et jours ouvrés</span><span class="nav-court">Dates</span></summary>
         <div class="nav-pop">
           <a href="duree-entre-deux-dates.html">Durée entre deux dates</a>
           <a href="calcul-jours-ouvres.html">Jours ouvrés</a>
         </div>
       </details>
       <details class="nav-groupe">
-        <summary>Jours fériés</summary>
+        <summary><span class="nav-long">Jours fériés</span><span class="nav-court">Fériés</span></summary>
         <div class="nav-pop">
           <a href="jours-feries-france.html">France</a>
           <a href="jours-feries-belgique.html">Belgique</a>
@@ -214,6 +224,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
   <section class="hero">
     <h1>Calculatrice d'heure de travail : calculer son temps de travail</h1>
     <p class="lead">Temps de travail effectif, pauses déduites, postes de nuit et heures supplémentaires. Entrez vos horaires, le calcul est immédiat.</p>
+    <p class="maj">Mis à jour le <time datetime="2026-09-26">26 septembre 2026</time> · Règles vérifiées le <time datetime="2026-09-26">26 septembre 2026</time> · <a href="a-propos.html#sources">Méthode et sources</a></p>
   </section>
 
   <aside class="ad ad-leaderboard" aria-label="Publicité">
@@ -318,7 +329,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
               <strong>soustraire</strong>. Formats acceptés&nbsp;: <code>2h30</code>, <code>2:30</code>,
               <code>45min</code>, <code>90s</code>, <code>1j</code>. Un nombre seul&nbsp;= des heures
               (<code>1,5</code> = 1h30). Le résultat peut être négatif.
-              Laissez vide pour utiliser les champs ci-dessous.
+              Une multiplication ou une division simple passe aussi&nbsp;: <code>2h30 x 3</code>, <code>10h / 4</code>. Laissez vide pour utiliser les champs ci-dessous.
             </p>
           </div>
 
@@ -345,10 +356,10 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
           </div>
 
           <div class="row-actions">
-            <button id="add-row" class="btn btn-ghost btn-sm" type="button" aria-label="Ajouter une durée">
+            <button id="add-row" class="btn btn-ghost btn-sm" type="button">
               <span class="op-plus" aria-hidden="true">+</span> Ajouter<span class="btn-long"> une durée</span>
             </button>
-            <button id="sub-row" class="btn btn-ghost btn-sm" type="button" aria-label="Soustraire une durée">
+            <button id="sub-row" class="btn btn-ghost btn-sm" type="button">
               <span class="op-minus" aria-hidden="true">−</span> Soustraire<span class="btn-long"> une durée</span>
             </button>
             <button id="btn-retenue" class="btn btn-ghost btn-sm" type="button"
@@ -564,15 +575,15 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         un accord d'entreprise ou de branche peut fixer un taux différent, sans descendre sous 10&nbsp;%.
         Vérifiez toujours votre convention collective.
       </p>
-      <div class="table-wrap">
+      <div class="table-wrap" tabindex="0" role="region" aria-labelledby="cap-calcul-heures-de-travail-1">
         <table>
-          <caption>Repères de durée du travail</caption>
+          <caption id="cap-calcul-heures-de-travail-1">Repères de durée du travail</caption>
           <thead><tr><th scope="col">Base</th><th scope="col">Par semaine</th><th scope="col">Par mois (décimal)</th></tr></thead>
           <tbody>
             <tr><td>Temps plein légal</td><td>35 h</td><td>151,67 h</td></tr>
             <tr><td>Temps partiel courant</td><td>28 h</td><td>121,33 h</td></tr>
             <tr><td>Mi-temps</td><td>17 h 30</td><td>75,83 h</td></tr>
-            <tr><td>Forfait 39 h</td><td>39 h</td><td>169,00 h</td></tr>
+            <tr><td>Contrat à 39 h</td><td>39 h</td><td>169,00 h</td></tr>
           </tbody>
         </table>
       </div>
@@ -672,10 +683,6 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         <p>Non, si vous êtes libre de vaquer à vos occupations personnelles : elle n'est alors ni du temps de travail effectif ni rémunérée. Elle le redevient si vous restez à disposition de l'employeur. Votre convention collective peut prévoir des règles plus favorables.</p>
       </details>
       <details>
-        <summary>De 8h à 17h, combien d'heures ?</summary>
-        <p>De 8h00 à 17h00, il s'écoule 9 heures d'amplitude. Avec une pause déjeuner d'une heure non rémunérée, le temps de travail effectif est de 8 heures, soit 8,00 heures décimales et 480 minutes. Avec 45 minutes de pause, il reste 8 h 15.</p>
-      </details>
-      <details>
         <summary>Comment calculer la durée entre deux horaires ?</summary>
         <p>Soustrayez l'heure de début de l'heure de fin. Si les minutes de fin sont inférieures à celles de début, empruntez une heure : par exemple 17h15 − 8h30 revient à calculer 16h75 − 8h30, soit 8 h 45. Si l'horaire passe minuit, ajoutez 24 heures à l'heure de fin avant de soustraire.</p>
       </details>
@@ -700,6 +707,13 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         <li><a href="jours-feries-luxembourg.html">Fériés Luxembourg</a></li>
         <li><a href="jours-feries-quebec.html">Fériés Québec</a></li>
       </ul>
+
+      <h2 id="sources">Sources</h2>
+      <p class="micro sources">
+        Les règles citées sur cette page viennent des textes officiels suivants,
+        consultés le 26 septembre 2026&nbsp;: <a href="https://www.legifrance.gouv.fr/codes/id/LEGITEXT000006072050/" rel="nofollow noopener" target="_blank">Code du travail sur Légifrance</a> · <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F2405" rel="nofollow noopener" target="_blank">Jours fériés et ponts — service-public.fr</a>.
+        La <a href="a-propos.html#calcul">méthode de calcul des dates</a> est décrite à part.
+      </p>
   </article>
 </main>
 
@@ -752,6 +766,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
       <div>
         <h2 class="plan-titre">Le site</h2>
         <ul>
+          <li><a href="a-propos.html">À propos et méthode</a></li>
           <li><a href="nouveautes.html">Nouveautés</a></li>
           <li><a href="mentions-legales.html">Mentions légales</a></li>
         </ul>
@@ -759,7 +774,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
     </nav>
     <p>
       <strong>Calculatrice de Durée</strong> — addition d'heures, temps de travail, jours ouvrés.
-      Calculs effectués dans votre navigateur, aucune donnée collectée.
+      Calculs effectués dans votre navigateur : aucune donnée saisie n'est collectée.
     </p>
     <p class="micro">
       © <span id="year">2026</span> Calculatrice de Durée · Les résultats sont fournis à titre indicatif ·
@@ -768,7 +783,9 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
   </div>
 </footer>
 
-<a class="retour-calc" id="retour-calc" href="#calculatrice"><span aria-hidden="true">↑</span> Calculateur</a>
+<nav class="retour-nav" aria-label="Revenir au calculateur">
+  <a class="retour-calc" id="retour-calc" href="#calculatrice"><span aria-hidden="true">↑</span> Calculateur</a>
+</nav>
 
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 

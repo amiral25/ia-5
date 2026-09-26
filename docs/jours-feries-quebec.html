@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="light">
+<html lang="fr-CA" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-<title>Jours Fériés au Québec 2026 et 2027 – Liste et Calcul</title>
-<meta name="description" content="Les jours fériés du Québec en 2026 et 2027 : congés de la Loi sur les normes du travail, fériés fédéraux, indemnité, et calculateur de jours ouvrables.">
+<title>Jours fériés au Québec 2026, 2027 et 2028 – Liste et calcul</title>
+<meta name="description" content="Les jours fériés du Québec en 2026, 2027 et 2028 : congés de la Loi sur les normes du travail, fériés fédéraux, indemnité, et calculateur de jours ouvrables.">
 
 <link rel="canonical" href="https://calculatrice-duree.fr/jours-feries-quebec.html">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -16,10 +16,15 @@
 <meta property="og:locale" content="fr_CA">
 <meta property="og:locale:alternate" content="fr_FR">
 <meta property="og:site_name" content="Calculatrice de Durée">
-<meta property="og:title" content="Jours Fériés au Québec 2026 et 2027 – Liste et Calcul">
-<meta property="og:description" content="Les jours fériés du Québec en 2026 et 2027 : congés de la Loi sur les normes du travail, fériés fédéraux, indemnité, et calculateur de jours ouvrables.">
+<meta property="og:title" content="Jours fériés au Québec 2026, 2027 et 2028 – Liste et calcul">
+<meta property="og:description" content="Les jours fériés du Québec en 2026, 2027 et 2028 : congés de la Loi sur les normes du travail, fériés fédéraux, indemnité, et calculateur de jours ouvrables.">
 <meta property="og:url" content="https://calculatrice-duree.fr/jours-feries-quebec.html">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://calculatrice-duree.fr/og-feries.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Jours fériés au Québec 2026, 2027 et 2028 – Liste et calcul">
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="style.css">
@@ -45,17 +50,30 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Organization",
+      "@id": "https://calculatrice-duree.fr/#editeur",
+      "name": "Calculatrice de Durée",
+      "url": "https://calculatrice-duree.fr/",
+      "email": "contact.calculatrice@gmail.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://calculatrice-duree.fr/favicon.svg"
+      }
+    },
+    {
       "@type": "WebPage",
       "@id": "https://calculatrice-duree.fr/jours-feries-quebec.html#page",
       "url": "https://calculatrice-duree.fr/jours-feries-quebec.html",
-      "name": "Jours Fériés au Québec 2026 et 2027 – Liste et Calcul",
-      "description": "Les jours fériés du Québec en 2026 et 2027 : congés de la Loi sur les normes du travail, fériés fédéraux, indemnité, et calculateur de jours ouvrables.",
-      "inLanguage": "fr-FR",
+      "name": "Jours fériés au Québec 2026, 2027 et 2028 – Liste et calcul",
+      "description": "Les jours fériés du Québec en 2026, 2027 et 2028 : congés de la Loi sur les normes du travail, fériés fédéraux, indemnité, et calculateur de jours ouvrables.",
+      "inLanguage": "fr-CA",
       "about": {
         "@type": "Country",
         "name": "Canada",
         "identifier": "CA"
       },
+      "dateModified": "2026-09-26",
+      "publisher": { "@id": "https://calculatrice-duree.fr/#editeur" },
       "isPartOf": {
         "@type": "WebSite",
         "@id": "https://calculatrice-duree.fr/#site",
@@ -112,7 +130,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
           "name": "Combien y a-t-il de jours fériés entre deux dates au Québec ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Cela dépend des dates, et le calculateur en haut de cette page le compte pour vous : choisissez l'onglet Entre 2 dates, saisissez le début et la fin, cochez Déduire les jours fériés et laissez le pays sur Québec. Le résultat indique le nombre de jours ouvrés et le nombre de fériés déduits."
+            "text": "Cela dépend des dates, et le calculateur en haut de cette page le compte pour vous : choisissez l'onglet Entre 2 dates, saisissez le début et la fin, cochez Exclure les jours fériés et laissez le pays sur Québec. Le résultat indique le nombre de jours ouvrés et le nombre de fériés déduits."
           }
         }
       ]
@@ -154,7 +172,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
     </a>
     <nav class="site-nav" aria-label="Navigation principale">
       <details class="nav-groupe">
-        <summary>Calculs de durée</summary>
+        <summary><span class="nav-long">Calculs de durée</span><span class="nav-court">Durées</span></summary>
         <div class="nav-pop">
           <a href="/">Calculatrice de durée</a>
           <a href="additionner-des-heures.html">Addition d'heures</a>
@@ -163,7 +181,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         </div>
       </details>
       <details class="nav-groupe">
-        <summary>Heures de travail</summary>
+        <summary><span class="nav-long">Heures de travail</span><span class="nav-court">Travail</span></summary>
         <div class="nav-pop">
           <a href="calcul-heures-de-travail.html">Heures de travail</a>
           <a href="combien-heures-entre-deux-horaires.html">Entre deux horaires</a>
@@ -175,14 +193,14 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         </div>
       </details>
       <details class="nav-groupe">
-        <summary>Dates et jours ouvrés</summary>
+        <summary><span class="nav-long">Dates et jours ouvrés</span><span class="nav-court">Dates</span></summary>
         <div class="nav-pop">
           <a href="duree-entre-deux-dates.html">Durée entre deux dates</a>
           <a href="calcul-jours-ouvres.html">Jours ouvrés</a>
         </div>
       </details>
       <details class="nav-groupe est-actif">
-        <summary>Jours fériés</summary>
+        <summary><span class="nav-long">Jours fériés</span><span class="nav-court">Fériés</span></summary>
         <div class="nav-pop">
           <a href="jours-feries-france.html">France</a>
           <a href="jours-feries-belgique.html">Belgique</a>
@@ -210,8 +228,9 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
   </nav>
 
   <section class="hero">
-    <h1>Jours fériés au Québec&nbsp;: dates 2026 et 2027</h1>
+    <h1>Jours fériés au Québec&nbsp;: dates 2026, 2027 et 2028</h1>
     <p class="lead">Les huit congés fériés de la Loi sur les normes du travail, ce qui les distingue des fériés fédéraux, et un calculateur réglé sur le calendrier québécois.</p>
+    <p class="maj">Mis à jour le <time datetime="2026-09-26">26 septembre 2026</time> · Règles vérifiées le <time datetime="2026-09-26">26 septembre 2026</time> · <a href="a-propos.html#sources">Méthode et sources</a></p>
   </section>
 
   <p class="prochain" id="prochain" data-pays="qc">
@@ -227,7 +246,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
           <li>La Journée des patriotes tombe le <strong>lundi précédant le 25 mai</strong>.</li>
           <li>Le 30 septembre est <strong>fédéral</strong>&nbsp;: il ne s'applique pas à la majorité des salariés.</li>
         </ul>
-        <p><a href="#dates">Voir les dates 2026 et 2027 →</a></p>
+        <p><a href="#dates">Voir les dates 2026, 2027 et 2028 →</a></p>
       </aside>
 
   <aside class="ad ad-leaderboard" aria-label="Publicité">
@@ -335,7 +354,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
               <strong>soustraire</strong>. Formats acceptés&nbsp;: <code>2h30</code>, <code>2:30</code>,
               <code>45min</code>, <code>90s</code>, <code>1j</code>. Un nombre seul&nbsp;= des heures
               (<code>1,5</code> = 1h30). Le résultat peut être négatif.
-              Laissez vide pour utiliser les champs ci-dessous.
+              Une multiplication ou une division simple passe aussi&nbsp;: <code>2h30 x 3</code>, <code>10h / 4</code>. Laissez vide pour utiliser les champs ci-dessous.
             </p>
           </div>
 
@@ -362,10 +381,10 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
           </div>
 
           <div class="row-actions">
-            <button id="add-row" class="btn btn-ghost btn-sm" type="button" aria-label="Ajouter une durée">
+            <button id="add-row" class="btn btn-ghost btn-sm" type="button">
               <span class="op-plus" aria-hidden="true">+</span> Ajouter<span class="btn-long"> une durée</span>
             </button>
-            <button id="sub-row" class="btn btn-ghost btn-sm" type="button" aria-label="Soustraire une durée">
+            <button id="sub-row" class="btn btn-ghost btn-sm" type="button">
               <span class="op-minus" aria-hidden="true">−</span> Soustraire<span class="btn-long"> une durée</span>
             </button>
             <button id="btn-retenue" class="btn btn-ghost btn-sm" type="button"
@@ -552,9 +571,9 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         <strong>Loi sur les normes du travail</strong>. Elle garantit <strong>huit congés fériés,
         chômés et payés</strong> à la quasi-totalité des personnes salariées de la province.
       </p>
-            <div class="table-wrap">
+            <div class="table-wrap" tabindex="0" role="region" aria-labelledby="cap-jours-feries-quebec-1">
         <table>
-          <caption>Les 8 jours fériés 2026 — Québec</caption>
+          <caption id="cap-jours-feries-quebec-1">Les 8 jours fériés 2026 — Québec</caption>
           <thead><tr><th scope="col">Jour férié</th><th scope="col">Date 2026</th><th scope="col">Tombe-t-il en semaine&nbsp;?</th></tr></thead>
           <tbody>
           <tr><td>Jour de l'An</td><td>jeudi 1<sup>er</sup> janvier</td><td>✅ oui, en semaine</td></tr>
@@ -578,9 +597,9 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
       un samedi ou un dimanche, et l'année compte
       <strong>253 jours ouvrés</strong> au total&nbsp;;
       la Loi sur les normes du travail prévoit un congé compensatoire ou une indemnité.</p>
-            <div class="table-wrap">
+            <div class="table-wrap" tabindex="0" role="region" aria-labelledby="cap-jours-feries-quebec-2">
         <table>
-          <caption>Les 8 jours fériés 2027 — Québec</caption>
+          <caption id="cap-jours-feries-quebec-2">Les 8 jours fériés 2027 — Québec</caption>
           <thead><tr><th scope="col">Jour férié</th><th scope="col">Date 2027</th><th scope="col">Tombe-t-il en semaine&nbsp;?</th></tr></thead>
           <tbody>
           <tr><td>Jour de l'An</td><td>vendredi 1<sup>er</sup> janvier</td><td>✅ oui, en semaine</td></tr>
@@ -604,6 +623,32 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
       un samedi ou un dimanche, et l'année compte
       <strong>254 jours ouvrés</strong> au total&nbsp;;
       la Loi sur les normes du travail prévoit un congé compensatoire ou une indemnité.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-labelledby="cap-jours-feries-quebec-2028">
+        <table>
+          <caption id="cap-jours-feries-quebec-2028">Les 8 jours fériés 2028 — Québec</caption>
+          <thead><tr><th scope="col">Jour férié</th><th scope="col">Date 2028</th><th scope="col">Tombe-t-il en semaine&nbsp;?</th></tr></thead>
+          <tbody>
+          <tr><td>Jour de l'An</td><td>samedi 1<sup>er</sup> janvier</td><td>❌ non, week-end</td></tr>
+          <tr><td>Vendredi saint</td><td>vendredi 14 avril</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Journée nationale des patriotes</td><td>lundi 22 mai</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Fête nationale du Québec</td><td>samedi 24 juin</td><td>❌ non, week-end</td></tr>
+          <tr><td>Fête du Canada</td><td>samedi 1<sup>er</sup> juillet</td><td>❌ non, week-end</td></tr>
+          <tr><td>Fête du Travail</td><td>lundi 4 septembre</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Action de grâce</td><td>lundi 9 octobre</td><td>✅ oui, en semaine</td></tr>
+          <tr><td>Noël</td><td>lundi 25 décembre</td><td>✅ oui, en semaine</td></tr>
+        </tbody>
+        </table>
+      </div>
+      <div class="dl-feries" data-pays="qc" data-annee="2028"
+           role="group" aria-label="Emporter les jours fériés 2028 — Québec">
+        <span class="dl-txt">Emporter ces dates&nbsp;:</span>
+        <button type="button" class="btn btn-ghost btn-sm" data-dl="csv">Excel (.csv)</button>
+        <button type="button" class="btn btn-ghost btn-sm" data-dl="ics">Mon agenda (.ics)</button>
+      </div>
+      <p class="micro">En 2028, <strong>1 jour férié</strong> tombe
+      un samedi ou un dimanche, et l'année compte
+      <strong>255 jours ouvrés</strong> au total&nbsp;;
+      la Loi sur les normes du travail prévoit un congé compensatoire ou une indemnité.</p>
       <p class="micro">
         Le calculateur retient le Vendredi saint. La loi laisse en effet à l'employeur le choix entre le
         <strong>Vendredi saint</strong> et le <strong>lundi de Pâques</strong>&nbsp;: un seul des deux
@@ -614,9 +659,9 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
 
       <h2 id="est-ce-ferie">Cette date est-elle fériée au Québec&nbsp;?</h2>
       <p>Les dates dont on se demande le plus souvent si elles sont chômées. Les huit congés de la Loi sur les normes du travail sont marqués «&nbsp;oui&nbsp;»&nbsp;; le reste est travaillé, même quand c'est férié ailleurs au Canada.</p>
-      <div class="table-wrap tw-verdict">
+      <div class="table-wrap tw-verdict" tabindex="0" role="region" aria-labelledby="cap-jours-feries-quebec-3">
         <table>
-          <caption>Est-ce férié au Québec&nbsp;? Les dates les plus souvent demandées</caption>
+          <caption id="cap-jours-feries-quebec-3">Est-ce férié au Québec&nbsp;? Les dates les plus souvent demandées</caption>
           <thead><tr><th scope="col">Date</th><th scope="col">Férié&nbsp;?</th><th scope="col">Ce qu'il faut savoir</th></tr></thead>
           <tbody>
             <tr><td>1<sup>er</sup> janvier</td><td>✅ Oui</td><td>Jour de l'An.</td></tr>
@@ -642,9 +687,9 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         année <em>et</em> dont le jour chômé dépend de votre employeur. Les deux
         questions se règlent séparément.
       </p>
-      <div class="table-wrap">
+      <div class="table-wrap" tabindex="0" role="region" aria-labelledby="cap-jours-feries-quebec-4">
         <table>
-          <caption>Pâques 2027 et 2028 — dates au Québec</caption>
+          <caption id="cap-jours-feries-quebec-4">Pâques 2027 et 2028 — dates au Québec</caption>
           <thead><tr><th scope="col">Année</th><th scope="col">Vendredi saint</th><th scope="col">Pâques</th><th scope="col">Lundi de Pâques</th></tr></thead>
           <tbody>
             <tr><td>2027</td><td>vendredi 26 mars</td><td>dimanche 28 mars</td><td>lundi 29 mars</td></tr>
@@ -673,13 +718,13 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         liste, plus longue. <strong>Plus de 90&nbsp;% des personnes salariées québécoises relèvent de la
         loi provinciale</strong>, celle appliquée ici.
       </p>
-      <div class="table-wrap">
+      <div class="table-wrap" tabindex="0" role="region" aria-labelledby="cap-jours-feries-quebec-5">
         <table>
-          <caption>Jours fériés fédéraux non retenus par le calculateur</caption>
+          <caption id="cap-jours-feries-quebec-5">Jours fériés fédéraux non retenus par le calculateur</caption>
           <thead><tr><th scope="col">Jour</th><th scope="col">Date</th><th scope="col">Statut au Québec</th></tr></thead>
           <tbody>
             <tr><td>Journée de la vérité et de la réconciliation</td><td>30 septembre</td><td>Fédéral seulement</td></tr>
-            <tr><td>Lundi de Pâques</td><td>Pâques + 1</td><td>Fédéral, ou provincial au choix de l'employeur</td></tr>
+            <tr><td>Lundi de Pâques</td><td>Pâques + 1</td><td>Fonction publique fédérale seulement&nbsp;: il ne fait pas partie des dix fériés du <a href="https://www.canada.ca/fr/services/emplois/milieu-travail/normes-travail-federales/conges-jours-feries.html" rel="nofollow noopener" target="_blank">Code canadien du travail</a>. Au Québec, l'employeur choisit entre lui et le Vendredi saint.</td></tr>
             <tr><td>Jour du Souvenir</td><td>11 novembre</td><td>Fédéral seulement</td></tr>
             <tr><td>Lendemain de Noël</td><td>26 décembre</td><td>Fédéral seulement</td></tr>
           </tbody>
@@ -711,9 +756,9 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         québécoise correspond à ce que le calculateur donne en cochant les deux options d'exclusion.
       </p>
 
-      <div class="table-wrap">
+      <div class="table-wrap" tabindex="0" role="region" aria-labelledby="cap-jours-feries-quebec-6">
         <table>
-          <caption>Les mêmes notions, deux vocabulaires</caption>
+          <caption id="cap-jours-feries-quebec-6">Les mêmes notions, deux vocabulaires</caption>
           <thead><tr><th scope="col">En France</th><th scope="col">Au Québec</th></tr></thead>
           <tbody>
             <tr><td>Jours ouvrés</td><td><strong>Jours ouvrables</strong></td></tr>
@@ -753,9 +798,9 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
       <div class="histo">
         <details>
           <summary>Jours fériés 2025 au Québec<span class="histo-n">8 jours, aucun un week-end</span></summary>
-          <div class="table-wrap">
+          <div class="table-wrap" tabindex="0" role="region" aria-labelledby="cap-jours-feries-quebec-7">
             <table>
-              <caption>Les 8 jours fériés 2025 — Québec</caption>
+              <caption id="cap-jours-feries-quebec-7">Les 8 jours fériés 2025 — Québec</caption>
               <thead><tr><th scope="col">Jour férié</th><th scope="col">Date 2025</th><th scope="col">Jour de la semaine</th></tr></thead>
               <tbody>
                 <tr><td>Jour de l'An</td><td>1<sup>er</sup> janvier</td><td>mercredi</td></tr>
@@ -772,9 +817,9 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         </details>
         <details>
           <summary>Jours fériés 2024 au Québec<span class="histo-n">8 jours, aucun un week-end</span></summary>
-          <div class="table-wrap">
+          <div class="table-wrap" tabindex="0" role="region" aria-labelledby="cap-jours-feries-quebec-8">
             <table>
-              <caption>Les 8 jours fériés 2024 — Québec</caption>
+              <caption id="cap-jours-feries-quebec-8">Les 8 jours fériés 2024 — Québec</caption>
               <thead><tr><th scope="col">Jour férié</th><th scope="col">Date 2024</th><th scope="col">Jour de la semaine</th></tr></thead>
               <tbody>
                 <tr><td>Jour de l'An</td><td>1<sup>er</sup> janvier</td><td>lundi</td></tr>
@@ -791,9 +836,9 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         </details>
         <details>
           <summary>Jours fériés 2023 au Québec<span class="histo-n">8 jours, dont 3 un week-end</span></summary>
-          <div class="table-wrap">
+          <div class="table-wrap" tabindex="0" role="region" aria-labelledby="cap-jours-feries-quebec-9">
             <table>
-              <caption>Les 8 jours fériés 2023 — Québec</caption>
+              <caption id="cap-jours-feries-quebec-9">Les 8 jours fériés 2023 — Québec</caption>
               <thead><tr><th scope="col">Jour férié</th><th scope="col">Date 2023</th><th scope="col">Jour de la semaine</th></tr></thead>
               <tbody>
                 <tr><td>Jour de l'An</td><td>1<sup>er</sup> janvier</td><td>dimanche</td></tr>
@@ -810,9 +855,9 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         </details>
         <details>
           <summary>Jours fériés 2022 au Québec<span class="histo-n">8 jours, dont 2 un week-end</span></summary>
-          <div class="table-wrap">
+          <div class="table-wrap" tabindex="0" role="region" aria-labelledby="cap-jours-feries-quebec-10">
             <table>
-              <caption>Les 8 jours fériés 2022 — Québec</caption>
+              <caption id="cap-jours-feries-quebec-10">Les 8 jours fériés 2022 — Québec</caption>
               <thead><tr><th scope="col">Jour férié</th><th scope="col">Date 2022</th><th scope="col">Jour de la semaine</th></tr></thead>
               <tbody>
                 <tr><td>Jour de l'An</td><td>1<sup>er</sup> janvier</td><td>samedi</td></tr>
@@ -829,9 +874,9 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         </details>
         <details>
           <summary>Jours fériés 2021 au Québec<span class="histo-n">8 jours, dont 1 un week-end</span></summary>
-          <div class="table-wrap">
+          <div class="table-wrap" tabindex="0" role="region" aria-labelledby="cap-jours-feries-quebec-11">
             <table>
-              <caption>Les 8 jours fériés 2021 — Québec</caption>
+              <caption id="cap-jours-feries-quebec-11">Les 8 jours fériés 2021 — Québec</caption>
               <thead><tr><th scope="col">Jour férié</th><th scope="col">Date 2021</th><th scope="col">Jour de la semaine</th></tr></thead>
               <tbody>
                 <tr><td>Jour de l'An</td><td>1<sup>er</sup> janvier</td><td>vendredi</td></tr>
@@ -848,9 +893,9 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         </details>
         <details>
           <summary>Jours fériés 2020 au Québec<span class="histo-n">8 jours, aucun un week-end</span></summary>
-          <div class="table-wrap">
+          <div class="table-wrap" tabindex="0" role="region" aria-labelledby="cap-jours-feries-quebec-12">
             <table>
-              <caption>Les 8 jours fériés 2020 — Québec</caption>
+              <caption id="cap-jours-feries-quebec-12">Les 8 jours fériés 2020 — Québec</caption>
               <thead><tr><th scope="col">Jour férié</th><th scope="col">Date 2020</th><th scope="col">Jour de la semaine</th></tr></thead>
               <tbody>
                 <tr><td>Jour de l'An</td><td>1<sup>er</sup> janvier</td><td>mercredi</td></tr>
@@ -891,7 +936,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
       </details>
       <details>
         <summary>Combien y a-t-il de jours fériés entre deux dates au Québec&nbsp;?</summary>
-        <p>Cela dépend des dates, et le calculateur en haut de cette page le compte pour vous&nbsp;: choisissez l'onglet <strong>Entre 2 dates</strong>, saisissez le début et la fin, cochez «&nbsp;Déduire les jours fériés&nbsp;» et laissez le pays sur Québec. Le résultat indique le nombre de jours ouvrés et le nombre de fériés déduits.</p>
+        <p>Cela dépend des dates, et le calculateur en haut de cette page le compte pour vous&nbsp;: choisissez l'onglet <strong>Entre 2 dates</strong>, saisissez le début et la fin, cochez «&nbsp;Exclure les jours fériés&nbsp;» et laissez le pays sur Québec. Le résultat indique le nombre de jours ouvrés et le nombre de fériés déduits.</p>
       </details>
       </div>
 
@@ -910,6 +955,13 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         <li><a href="jours-feries-suisse.html">Fériés Suisse</a></li>
         <li><a href="jours-feries-luxembourg.html">Fériés Luxembourg</a></li>
       </ul>
+
+      <h2 id="sources">Sources</h2>
+      <p class="micro sources">
+        Les règles citées sur cette page viennent des textes officiels suivants,
+        consultés le 26 septembre 2026&nbsp;: <a href="https://www.legisquebec.gouv.qc.ca/fr/document/lc/n-1.1" rel="nofollow noopener" target="_blank">Loi sur les normes du travail</a> · <a href="https://www.cnesst.gouv.qc.ca/fr" rel="nofollow noopener" target="_blank">CNESST</a>.
+        La <a href="a-propos.html#calcul">méthode de calcul des dates</a> est décrite à part.
+      </p>
   </article>
 </main>
 
@@ -962,6 +1014,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
       <div>
         <h2 class="plan-titre">Le site</h2>
         <ul>
+          <li><a href="a-propos.html">À propos et méthode</a></li>
           <li><a href="nouveautes.html">Nouveautés</a></li>
           <li><a href="mentions-legales.html">Mentions légales</a></li>
         </ul>
@@ -969,7 +1022,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
     </nav>
     <p>
       <strong>Calculatrice de Durée</strong> — addition d'heures, temps de travail, jours ouvrés.
-      Calculs effectués dans votre navigateur, aucune donnée collectée.
+      Calculs effectués dans votre navigateur : aucune donnée saisie n'est collectée.
     </p>
     <p class="micro">
       © <span id="year">2026</span> Calculatrice de Durée · Les résultats sont fournis à titre indicatif ·
@@ -978,7 +1031,9 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
   </div>
 </footer>
 
-<a class="retour-calc" id="retour-calc" href="#calculatrice"><span aria-hidden="true">↑</span> Calculateur</a>
+<nav class="retour-nav" aria-label="Revenir au calculateur">
+  <a class="retour-calc" id="retour-calc" href="#calculatrice"><span aria-hidden="true">↑</span> Calculateur</a>
+</nav>
 
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 

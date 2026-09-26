@@ -4,10 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-<title>Journée Coupée en Restauration : Calcul des Heures (Luxembourg)</title>
+<title>Journée coupée au Luxembourg : calcul des heures</title>
 <meta name="description" content="Calculez vos heures de service midi et soir au Luxembourg : travail effectif, amplitude et coupure. Maximum de 10 heures par jour, repos de 11 heures.">
 
 <link rel="canonical" href="https://calculatrice-duree.fr/journee-coupee-luxembourg.html">
+<link rel="alternate" hreflang="fr-FR" href="https://calculatrice-duree.fr/calcul-heures-journee-coupee.html">
+<link rel="alternate" hreflang="fr-BE" href="https://calculatrice-duree.fr/journee-coupee-belgique.html">
+<link rel="alternate" hreflang="fr-CH" href="https://calculatrice-duree.fr/journee-coupee-suisse.html">
+<link rel="alternate" hreflang="fr-LU" href="https://calculatrice-duree.fr/journee-coupee-luxembourg.html">
+<link rel="alternate" hreflang="fr-CA" href="https://calculatrice-duree.fr/journee-coupee-quebec.html">
+<link rel="alternate" hreflang="x-default" href="https://calculatrice-duree.fr/calcul-heures-journee-coupee.html">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
@@ -15,10 +21,15 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="fr_LU">
 <meta property="og:site_name" content="Calculatrice de Durée">
-<meta property="og:title" content="Journée Coupée en Restauration : Calcul des Heures (Luxembourg)">
+<meta property="og:title" content="Journée coupée au Luxembourg : calcul des heures">
 <meta property="og:description" content="Calculez vos heures de service midi et soir au Luxembourg : travail effectif, amplitude et coupure. Maximum de 10 heures par jour, repos de 11 heures.">
 <meta property="og:url" content="https://calculatrice-duree.fr/journee-coupee-luxembourg.html">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://calculatrice-duree.fr/og-coupee.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Journée coupée au Luxembourg : calcul des heures">
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="style.css">
@@ -44,12 +55,25 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Organization",
+      "@id": "https://calculatrice-duree.fr/#editeur",
+      "name": "Calculatrice de Durée",
+      "url": "https://calculatrice-duree.fr/",
+      "email": "contact.calculatrice@gmail.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://calculatrice-duree.fr/favicon.svg"
+      }
+    },
+    {
       "@type": "WebPage",
       "@id": "https://calculatrice-duree.fr/journee-coupee-luxembourg.html#page",
       "url": "https://calculatrice-duree.fr/journee-coupee-luxembourg.html",
-      "name": "Journée Coupée en Restauration : Calcul des Heures (Luxembourg)",
+      "name": "Journée coupée au Luxembourg : calcul des heures",
       "description": "Calculez vos heures de service midi et soir au Luxembourg : travail effectif, amplitude et coupure. Maximum de 10 heures par jour, repos de 11 heures.",
       "inLanguage": "fr-LU",
+      "dateModified": "2026-09-26",
+      "publisher": { "@id": "https://calculatrice-duree.fr/#editeur" },
       "isPartOf": {
         "@type": "WebSite",
         "@id": "https://calculatrice-duree.fr/#site",
@@ -66,7 +90,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
           "name": "Combien d'heures peut-on travailler par jour au Luxembourg ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "La durée légale est de 8 heures par jour et 40 heures par semaine (article L.211-5). Le maximum est de 10 heures par jour et 48 heures par semaine (article L.211-26). Au-delà de 40 heures hebdomadaires, on est dans les heures supplémentaires."
+            "text": "La durée légale est de 8 heures par jour et 40 heures par semaine (article L.211-5). Le maximum est de 10 heures par jour et 48 heures par semaine (article L.211-12). Au-delà de 40 heures hebdomadaires, on est dans les heures supplémentaires."
           }
         },
         {
@@ -98,7 +122,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
           "name": "Peut-on travailler six heures d'affilée sans pause ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Non. L'article L.211-16 interdit de travailler plus de six heures consécutives sans période de repos. En journée coupée, la coupure sépare déjà les deux services."
+            "text": "Non. L'article L.211-16 interdit de travailler plus de six heures consécutives sans période de repos. Le même article n'autorise qu'une seule période de repos non rémunérée par journée : une journée à trois services, donc à deux coupures, n'est pas régulière au Luxembourg."
           }
         },
         {
@@ -148,7 +172,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
     </a>
     <nav class="site-nav" aria-label="Navigation principale">
       <details class="nav-groupe">
-        <summary>Calculs de durée</summary>
+        <summary><span class="nav-long">Calculs de durée</span><span class="nav-court">Durées</span></summary>
         <div class="nav-pop">
           <a href="/">Calculatrice de durée</a>
           <a href="additionner-des-heures.html">Addition d'heures</a>
@@ -157,7 +181,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         </div>
       </details>
       <details class="nav-groupe est-actif">
-        <summary>Heures de travail</summary>
+        <summary><span class="nav-long">Heures de travail</span><span class="nav-court">Travail</span></summary>
         <div class="nav-pop">
           <a href="calcul-heures-de-travail.html">Heures de travail</a>
           <a href="combien-heures-entre-deux-horaires.html">Entre deux horaires</a>
@@ -169,14 +193,14 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         </div>
       </details>
       <details class="nav-groupe">
-        <summary>Dates et jours ouvrés</summary>
+        <summary><span class="nav-long">Dates et jours ouvrés</span><span class="nav-court">Dates</span></summary>
         <div class="nav-pop">
           <a href="duree-entre-deux-dates.html">Durée entre deux dates</a>
           <a href="calcul-jours-ouvres.html">Jours ouvrés</a>
         </div>
       </details>
       <details class="nav-groupe">
-        <summary>Jours fériés</summary>
+        <summary><span class="nav-long">Jours fériés</span><span class="nav-court">Fériés</span></summary>
         <div class="nav-pop">
           <a href="jours-feries-france.html">France</a>
           <a href="jours-feries-belgique.html">Belgique</a>
@@ -206,6 +230,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
   <section class="hero">
     <h1>Journée coupée en restauration&nbsp;: calculer ses heures au Luxembourg</h1>
     <p class="lead">Service du midi, coupure, service du soir. Le calculateur donne le temps de travail effectif, l'amplitude et la durée des coupures — les trois chiffres qu'il ne faut pas confondre. Règles applicables au Luxembourg.</p>
+    <p class="maj">Mis à jour le <time datetime="2026-09-26">26 septembre 2026</time> · Règles vérifiées le <time datetime="2026-09-26">26 septembre 2026</time> · <a href="a-propos.html#sources">Méthode et sources</a></p>
   </section>
 
   <nav class="jc-pays" aria-label="Journée coupée par pays">
@@ -241,7 +266,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
             <div class="jc-cell"><b id="jc-coup">3h 00min</b><span>Coupure</span></div>
             <div class="jc-cell"><b id="jc-sem">—</b><span>Sur la période</span></div>
           </div>
-          <p class="jc-note" id="jc-note">Amplitude de 13h 00min — c'est exactement la limite de 13 heures qu'implique le repos journalier de 11 heures.</p>
+          <p class="jc-note" id="jc-note" aria-live="polite">Amplitude de 13h 00min — c'est exactement la limite de 13 heures qu'implique le repos journalier de 11 heures.</p>
         </div>
 
         <div class="jc-lignes">
@@ -331,11 +356,33 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         au Luxembourg, c'est précisément le plafond.
       </p>
 
+      <h2 id="horaires-types">Les horaires types de la restauration</h2>
+      <p>
+        Six configurations courantes, avec les deux plafonds luxembourgeois&nbsp;: treize heures d'amplitude, et surtout <strong>dix heures de travail effectif</strong>, qui se heurte plus souvent qu'on ne croit.
+      </p>
+      <div class="table-wrap tw-large" tabindex="0" role="region" aria-labelledby="cap-journee-coupee-luxembourg-1">
+        <table>
+          <caption id="cap-journee-coupee-luxembourg-1">Journées types en restauration — seuils du pays</caption>
+          <thead><tr><th scope="col">Poste</th><th scope="col">Horaires</th><th scope="col">Travail</th><th scope="col">Amplitude</th><th scope="col">Coupure</th></tr></thead>
+          <tbody>
+            <tr><td>Service du midi seul</td><td>10h00–15h00</td><td><strong>5 h 00</strong></td><td>5 h 00</td><td>—</td></tr>
+            <tr><td>Service du soir seul</td><td>18h00–23h30</td><td><strong>5 h 30</strong></td><td>5 h 30</td><td>—</td></tr>
+            <tr><td>Journée coupée classique</td><td>10h00–15h00 puis 18h00–23h00</td><td><strong>10 h 00</strong></td><td>13 h 00</td><td>3 h 00</td></tr>
+            <tr><td>Coupure courte</td><td>11h30–15h00 puis 18h00–22h30</td><td><strong>8 h 00</strong></td><td>11 h 00</td><td>3 h 00</td></tr>
+            <tr><td>Cuisine, avec mise en place</td><td>09h00–15h00 puis 19h00–23h00</td><td><strong>10 h 00</strong></td><td>14 h 00 <strong>⚠️ au-delà de 13 h</strong></td><td>4 h 00</td></tr>
+            <tr><td>Trois services</td><td>08h00–11h00 puis 12h00–15h00 puis 19h00–23h00</td><td><strong>10 h 00</strong></td><td>15 h 00 <strong>⚠️ au-delà de 13 h</strong></td><td>5 h 00</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="micro">
+        La dernière ligne cumule les deux problèmes luxembourgeois&nbsp;: elle dépasse les dix heures de travail effectif, et <strong>trois services font deux coupures</strong> alors que l'<a href="https://itm.public.lu/fr/questions-reponses/droit-travail/duree-travail/b/b1.html" rel="nofollow noopener" target="_blank">article&nbsp;L.211-16</a> n'en autorise qu'une.
+      </p>
+
       <h2 id="dix-heures">Dix heures de travail par jour, pas une de plus</h2>
       <p>
         C'est la règle luxembourgeoise qui compte le plus en journée coupée, parce qu'elle ne porte
-        pas sur l'amplitude mais sur le <strong>travail effectif</strong>. L'<strong>article
-        L.211-26 du Code du travail</strong> fixe la durée maximale à <strong>10 heures par
+        pas sur l'amplitude mais sur le <strong>travail effectif</strong>. L'<strong><a href="https://itm.public.lu/fr/questions-reponses/droit-travail/duree-travail/k/k26.html" rel="nofollow noopener" target="_blank">article
+        L.211-12 du Code du travail</a></strong> fixe la durée maximale à <strong>10 heures par
         jour</strong> et <strong>48 heures par semaine</strong>.
       </p>
       <p>
@@ -374,6 +421,24 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         collective pour certaines activités, moyennant un repos compensateur équivalent.
       </p>
 
+      <h2 id="coupure-unique">Une seule coupure par journée</h2>
+      <p>
+        C'est la règle luxembourgeoise la plus mal connue, et elle change tout pour un planning à
+        trois services. L'<strong>article&nbsp;L.211-16</strong> est explicite&nbsp;: «&nbsp;l'horaire
+        de travail journalier ne peut être entrecoupé que d'<strong>une seule période de repos non
+        rémunérée</strong>&nbsp;».
+      </p>
+      <p>
+        Autrement dit&nbsp;: un service du midi puis un service du soir, c'est une coupure, c'est
+        régulier. Mais une mise en place le matin, un service du midi et un service du soir, cela fait
+        <strong>deux coupures</strong> — et ce découpage-là n'est pas autorisé. Le calculateur vous
+        alerte dès que vous saisissez un troisième service.
+      </p>
+      <p class="micro">
+        C'est une protection réelle contre l'émiettement de la journée&nbsp;: sans elle, un employeur
+        pourrait étaler quatre heures de travail sur quatorze heures d'amplitude.
+      </p>
+
       <h2 id="pauses">Six heures d'affilée au maximum</h2>
       <p>
         Aucun salarié ne peut travailler plus de <strong>six heures consécutives</strong> sans une
@@ -391,7 +456,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
       <div class="faq">
       <details>
         <summary>Combien d'heures peut-on travailler par jour au Luxembourg&nbsp;?</summary>
-        <p>La durée légale est de 8 heures par jour et 40 heures par semaine (article L.211-5). Le maximum est de <strong>10 heures par jour et 48 heures par semaine</strong> (article L.211-26). Au-delà de 40 heures hebdomadaires, on est dans les heures supplémentaires.</p>
+        <p>La durée légale est de 8 heures par jour et 40 heures par semaine (article L.211-5). Le maximum est de <strong>10 heures par jour et 48 heures par semaine</strong> (article L.211-12). Au-delà de 40 heures hebdomadaires, on est dans les heures supplémentaires.</p>
       </details>
       <details>
         <summary>Comment calculer ses heures en journée coupée&nbsp;?</summary>
@@ -407,13 +472,20 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
       </details>
       <details>
         <summary>Peut-on travailler six heures d'affilée sans pause&nbsp;?</summary>
-        <p>Non. L'article L.211-16 interdit de travailler plus de six heures consécutives sans période de repos. En journée coupée, la coupure sépare déjà les deux services.</p>
+        <p>Non. L'article L.211-16 interdit de travailler plus de six heures consécutives sans période de repos. Le même article n'autorise qu'une seule période de repos non rémunérée par journée : une journée à trois services, donc à deux coupures, n'est pas régulière au Luxembourg.</p>
       </details>
       <details>
         <summary>Un service qui finit après minuit, comment le compter&nbsp;?</summary>
         <p>Le calculateur le reconnaît tout seul : si l'heure de fin est inférieure à l'heure de début, il considère que le service se termine le lendemain. Un service de 19h à 01h compte donc 6 heures, et non une durée négative.</p>
       </details>
       </div>
+
+      <h2 id="sources">Sources</h2>
+      <p class="micro sources">
+        Les règles citées sur cette page viennent des textes officiels suivants,
+        consultés le 26 septembre 2026&nbsp;: <a href="https://itm.public.lu/fr/questions-reponses/droit-travail/duree-travail/b/b1.html" rel="nofollow noopener" target="_blank">ITM — durée du travail et repos</a> · <a href="https://legilux.public.lu/" rel="nofollow noopener" target="_blank">Legilux, journal officiel du Grand-Duché</a>.
+        La <a href="a-propos.html#calcul">méthode de calcul des dates</a> est décrite à part.
+      </p>
   </article>
 </main>
 
@@ -466,6 +538,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
       <div>
         <h2 class="plan-titre">Le site</h2>
         <ul>
+          <li><a href="a-propos.html">À propos et méthode</a></li>
           <li><a href="nouveautes.html">Nouveautés</a></li>
           <li><a href="mentions-legales.html">Mentions légales</a></li>
         </ul>
@@ -473,7 +546,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
     </nav>
     <p>
       <strong>Calculatrice de Durée</strong> — addition d'heures, temps de travail, jours ouvrés.
-      Calculs effectués dans votre navigateur, aucune donnée collectée.
+      Calculs effectués dans votre navigateur : aucune donnée saisie n'est collectée.
     </p>
     <p class="micro">
       © <span id="year">2026</span> Calculatrice de Durée · Les résultats sont fournis à titre indicatif ·
@@ -482,7 +555,9 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
   </div>
 </footer>
 
-<a class="retour-calc" id="retour-calc" href="#services"><span aria-hidden="true">↑</span> Calculateur</a>
+<nav class="retour-nav" aria-label="Revenir au calculateur">
+  <a class="retour-calc" id="retour-calc" href="#services"><span aria-hidden="true">↑</span> Calculateur</a>
+</nav>
 
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 

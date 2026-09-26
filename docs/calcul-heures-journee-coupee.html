@@ -4,10 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-<title>Journée Coupée en Restauration : Calcul des Heures</title>
+<title>Journée coupée en restauration : calcul des heures</title>
 <meta name="description" content="Calculez vos heures de service midi et soir : temps de travail effectif, amplitude et coupure. Pensé pour la restauration, les cafés et l'hôtellerie.">
 
 <link rel="canonical" href="https://calculatrice-duree.fr/calcul-heures-journee-coupee.html">
+<link rel="alternate" hreflang="fr-FR" href="https://calculatrice-duree.fr/calcul-heures-journee-coupee.html">
+<link rel="alternate" hreflang="fr-BE" href="https://calculatrice-duree.fr/journee-coupee-belgique.html">
+<link rel="alternate" hreflang="fr-CH" href="https://calculatrice-duree.fr/journee-coupee-suisse.html">
+<link rel="alternate" hreflang="fr-LU" href="https://calculatrice-duree.fr/journee-coupee-luxembourg.html">
+<link rel="alternate" hreflang="fr-CA" href="https://calculatrice-duree.fr/journee-coupee-quebec.html">
+<link rel="alternate" hreflang="x-default" href="https://calculatrice-duree.fr/calcul-heures-journee-coupee.html">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
@@ -15,10 +21,15 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Calculatrice de Durée">
-<meta property="og:title" content="Journée Coupée en Restauration : Calcul des Heures">
+<meta property="og:title" content="Journée coupée en restauration : calcul des heures">
 <meta property="og:description" content="Calculez vos heures de service midi et soir : temps de travail effectif, amplitude et coupure. Pensé pour la restauration, les cafés et l'hôtellerie.">
 <meta property="og:url" content="https://calculatrice-duree.fr/calcul-heures-journee-coupee.html">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://calculatrice-duree.fr/og-coupee.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Journée coupée en restauration : calcul des heures">
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="style.css">
@@ -44,12 +55,25 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Organization",
+      "@id": "https://calculatrice-duree.fr/#editeur",
+      "name": "Calculatrice de Durée",
+      "url": "https://calculatrice-duree.fr/",
+      "email": "contact.calculatrice@gmail.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://calculatrice-duree.fr/favicon.svg"
+      }
+    },
+    {
       "@type": "WebPage",
       "@id": "https://calculatrice-duree.fr/calcul-heures-journee-coupee.html#page",
       "url": "https://calculatrice-duree.fr/calcul-heures-journee-coupee.html",
-      "name": "Journée Coupée en Restauration : Calcul des Heures",
+      "name": "Journée coupée en restauration : calcul des heures",
       "description": "Calculez vos heures de service midi et soir : temps de travail effectif, amplitude et coupure. Pensé pour la restauration, les cafés et l'hôtellerie.",
       "inLanguage": "fr-FR",
+      "dateModified": "2026-09-26",
+      "publisher": { "@id": "https://calculatrice-duree.fr/#editeur" },
       "isPartOf": {
         "@type": "WebSite",
         "@id": "https://calculatrice-duree.fr/#site",
@@ -148,7 +172,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
     </a>
     <nav class="site-nav" aria-label="Navigation principale">
       <details class="nav-groupe">
-        <summary>Calculs de durée</summary>
+        <summary><span class="nav-long">Calculs de durée</span><span class="nav-court">Durées</span></summary>
         <div class="nav-pop">
           <a href="/">Calculatrice de durée</a>
           <a href="additionner-des-heures.html">Addition d'heures</a>
@@ -157,7 +181,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         </div>
       </details>
       <details class="nav-groupe est-actif">
-        <summary>Heures de travail</summary>
+        <summary><span class="nav-long">Heures de travail</span><span class="nav-court">Travail</span></summary>
         <div class="nav-pop">
           <a href="calcul-heures-de-travail.html">Heures de travail</a>
           <a href="combien-heures-entre-deux-horaires.html">Entre deux horaires</a>
@@ -169,14 +193,14 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         </div>
       </details>
       <details class="nav-groupe">
-        <summary>Dates et jours ouvrés</summary>
+        <summary><span class="nav-long">Dates et jours ouvrés</span><span class="nav-court">Dates</span></summary>
         <div class="nav-pop">
           <a href="duree-entre-deux-dates.html">Durée entre deux dates</a>
           <a href="calcul-jours-ouvres.html">Jours ouvrés</a>
         </div>
       </details>
       <details class="nav-groupe">
-        <summary>Jours fériés</summary>
+        <summary><span class="nav-long">Jours fériés</span><span class="nav-court">Fériés</span></summary>
         <div class="nav-pop">
           <a href="jours-feries-france.html">France</a>
           <a href="jours-feries-belgique.html">Belgique</a>
@@ -206,6 +230,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
   <section class="hero">
     <h1>Journée coupée&nbsp;: calculer ses heures en restauration</h1>
     <p class="lead">Service du midi, coupure, service du soir. Le calculateur donne le temps de travail effectif, l'amplitude et la durée des coupures — les trois chiffres qu'il ne faut pas confondre. Règles applicables en France.</p>
+    <p class="maj">Mis à jour le <time datetime="2026-09-26">26 septembre 2026</time> · Règles vérifiées le <time datetime="2026-09-26">26 septembre 2026</time> · <a href="a-propos.html#sources">Méthode et sources</a></p>
   </section>
 
   <nav class="jc-pays" aria-label="Journée coupée par pays">
@@ -241,7 +266,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
             <div class="jc-cell"><b id="jc-coup">3h 00min</b><span>Coupure</span></div>
             <div class="jc-cell"><b id="jc-sem">—</b><span>Sur la période</span></div>
           </div>
-          <p class="jc-note" id="jc-note">Amplitude de 13h 00min — c'est exactement la limite de 13 heures qu'implique le repos quotidien de 11 heures.</p>
+          <p class="jc-note" id="jc-note" aria-live="polite">Amplitude de 13h 00min — c'est exactement la limite de 13 heures qu'implique le repos quotidien de 11 heures.</p>
         </div>
 
         <div class="jc-lignes">
@@ -334,9 +359,9 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
       <p>
         Cinq configurations courantes, avec les trois chiffres pour chacune. Comparez avec la vôtre.
       </p>
-      <div class="table-wrap tw-large">
+      <div class="table-wrap tw-large" tabindex="0" role="region" aria-labelledby="cap-calcul-heures-journee-coupee-1">
         <table>
-          <caption>Journées types en restauration — travail, amplitude et coupure</caption>
+          <caption id="cap-calcul-heures-journee-coupee-1">Journées types en restauration — travail, amplitude et coupure</caption>
           <thead><tr><th scope="col">Poste</th><th scope="col">Horaires</th><th scope="col">Travail</th><th scope="col">Amplitude</th><th scope="col">Coupure</th></tr></thead>
           <tbody>
             <tr><td>Serveur, service du midi seul</td><td>10h00–15h00</td><td><strong>5 h 00</strong></td><td>5 h 00</td><td>—</td></tr>
@@ -387,7 +412,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
       <p>
         Le Code du travail ne fixe pas de plafond d'amplitude en tant que tel. Mais il impose
         <strong>11 heures de repos consécutif</strong> entre deux journées de travail
-        (article&nbsp;L3131-1).
+        (<a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033020918" rel="nofollow noopener" target="_blank">article&nbsp;L3131-1</a>).
       </p>
       <p>
         Sur vingt-quatre heures, cela <strong>borne l'amplitude à 13 heures</strong> en pratique.
@@ -439,6 +464,13 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         <li><a href="jours-feries-luxembourg.html">Fériés Luxembourg</a></li>
         <li><a href="jours-feries-quebec.html">Fériés Québec</a></li>
       </ul>
+
+      <h2 id="sources">Sources</h2>
+      <p class="micro sources">
+        Les règles citées sur cette page viennent des textes officiels suivants,
+        consultés le 26 septembre 2026&nbsp;: <a href="https://www.legifrance.gouv.fr/codes/id/LEGITEXT000006072050/" rel="nofollow noopener" target="_blank">Code du travail sur Légifrance</a> · <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F2405" rel="nofollow noopener" target="_blank">Jours fériés et ponts — service-public.fr</a>.
+        La <a href="a-propos.html#calcul">méthode de calcul des dates</a> est décrite à part.
+      </p>
   </article>
 </main>
 
@@ -491,6 +523,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
       <div>
         <h2 class="plan-titre">Le site</h2>
         <ul>
+          <li><a href="a-propos.html">À propos et méthode</a></li>
           <li><a href="nouveautes.html">Nouveautés</a></li>
           <li><a href="mentions-legales.html">Mentions légales</a></li>
         </ul>
@@ -498,7 +531,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
     </nav>
     <p>
       <strong>Calculatrice de Durée</strong> — addition d'heures, temps de travail, jours ouvrés.
-      Calculs effectués dans votre navigateur, aucune donnée collectée.
+      Calculs effectués dans votre navigateur : aucune donnée saisie n'est collectée.
     </p>
     <p class="micro">
       © <span id="year">2026</span> Calculatrice de Durée · Les résultats sont fournis à titre indicatif ·
@@ -507,7 +540,9 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
   </div>
 </footer>
 
-<a class="retour-calc" id="retour-calc" href="#services"><span aria-hidden="true">↑</span> Calculateur</a>
+<nav class="retour-nav" aria-label="Revenir au calculateur">
+  <a class="retour-calc" id="retour-calc" href="#services"><span aria-hidden="true">↑</span> Calculateur</a>
+</nav>
 
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 

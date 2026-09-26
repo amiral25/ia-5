@@ -1,4 +1,12 @@
-# Fichier ads.txt — obligatoire pour être payé correctement par Google AdSense.
-# Remplacez pub-XXXXXXXXXXXXXXXX par VOTRE identifiant d'éditeur AdSense
-# (visible dans AdSense > Compte > Informations sur le compte).
-google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+# Fichier ads.txt — il déclare qui a le droit de vendre la publicité de ce site.
+#
+# Aucune régie n'est active pour l'instant : le fichier est donc volontairement
+# vide de toute déclaration. Une ligne contenant un identifiant fictif serait
+# pire que rien — les robots des régies la lisent, et un identifiant invalide
+# fait échouer la vérification du domaine.
+#
+# Le jour où AdSense est validé, décommentez la ligne ci-dessous et remplacez
+# pub-XXXXXXXXXXXXXXXX par l'identifiant d'éditeur réel
+# (AdSense > Compte > Informations sur le compte).
+#
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0

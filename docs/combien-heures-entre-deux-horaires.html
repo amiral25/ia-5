@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-<title>De 8h à 17h Combien d'Heures ? – Tableau des Horaires</title>
+<title>De 8h à 17h combien d'heures ? – Tableau des horaires</title>
 <meta name="description" content="De 8h à 17h, combien d'heures ? 9 h d'amplitude, 8 h avec une pause d'une heure. Tableau des horaires de travail courants et calculatrice instantanée.">
 
 <link rel="canonical" href="https://calculatrice-duree.fr/combien-heures-entre-deux-horaires.html">
@@ -15,10 +15,15 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Calculatrice de Durée">
-<meta property="og:title" content="De 8h à 17h Combien d'Heures ? – Tableau des Horaires">
+<meta property="og:title" content="De 8h à 17h combien d'heures ? – Tableau des horaires">
 <meta property="og:description" content="De 8h à 17h, combien d'heures ? 9 h d'amplitude, 8 h avec une pause d'une heure. Tableau des horaires de travail courants et calculatrice instantanée.">
 <meta property="og:url" content="https://calculatrice-duree.fr/combien-heures-entre-deux-horaires.html">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://calculatrice-duree.fr/og-heures.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="De 8h à 17h combien d'heures ? – Tableau des horaires">
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="style.css">
@@ -44,12 +49,25 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Organization",
+      "@id": "https://calculatrice-duree.fr/#editeur",
+      "name": "Calculatrice de Durée",
+      "url": "https://calculatrice-duree.fr/",
+      "email": "contact.calculatrice@gmail.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://calculatrice-duree.fr/favicon.svg"
+      }
+    },
+    {
       "@type": "WebPage",
       "@id": "https://calculatrice-duree.fr/combien-heures-entre-deux-horaires.html#page",
       "url": "https://calculatrice-duree.fr/combien-heures-entre-deux-horaires.html",
-      "name": "De 8h à 17h Combien d'Heures ? – Tableau des Horaires",
+      "name": "De 8h à 17h combien d'heures ? – Tableau des horaires",
       "description": "De 8h à 17h, combien d'heures ? 9 h d'amplitude, 8 h avec une pause d'une heure. Tableau des horaires de travail courants et calculatrice instantanée.",
       "inLanguage": "fr-FR",
+      "dateModified": "2026-09-26",
+      "publisher": { "@id": "https://calculatrice-duree.fr/#editeur" },
       "isPartOf": {
         "@type": "WebSite",
         "@id": "https://calculatrice-duree.fr/#site",
@@ -132,7 +150,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
     </a>
     <nav class="site-nav" aria-label="Navigation principale">
       <details class="nav-groupe">
-        <summary>Calculs de durée</summary>
+        <summary><span class="nav-long">Calculs de durée</span><span class="nav-court">Durées</span></summary>
         <div class="nav-pop">
           <a href="/">Calculatrice de durée</a>
           <a href="additionner-des-heures.html">Addition d'heures</a>
@@ -141,7 +159,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         </div>
       </details>
       <details class="nav-groupe est-actif">
-        <summary>Heures de travail</summary>
+        <summary><span class="nav-long">Heures de travail</span><span class="nav-court">Travail</span></summary>
         <div class="nav-pop">
           <a href="calcul-heures-de-travail.html">Heures de travail</a>
           <a href="combien-heures-entre-deux-horaires.html" aria-current="page">Entre deux horaires</a>
@@ -153,14 +171,14 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         </div>
       </details>
       <details class="nav-groupe">
-        <summary>Dates et jours ouvrés</summary>
+        <summary><span class="nav-long">Dates et jours ouvrés</span><span class="nav-court">Dates</span></summary>
         <div class="nav-pop">
           <a href="duree-entre-deux-dates.html">Durée entre deux dates</a>
           <a href="calcul-jours-ouvres.html">Jours ouvrés</a>
         </div>
       </details>
       <details class="nav-groupe">
-        <summary>Jours fériés</summary>
+        <summary><span class="nav-long">Jours fériés</span><span class="nav-court">Fériés</span></summary>
         <div class="nav-pop">
           <a href="jours-feries-france.html">France</a>
           <a href="jours-feries-belgique.html">Belgique</a>
@@ -190,6 +208,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
   <section class="hero">
     <h1>De 8h à 17h, combien d'heures ? La réponse et le tableau complet</h1>
     <p class="lead">La réponse immédiate pour les horaires les plus fréquents, la méthode pour n'importe quel autre, et le cas des journées coupées.</p>
+    <p class="maj">Mis à jour le <time datetime="2026-09-26">26 septembre 2026</time></p>
   </section>
 
   <aside class="ad ad-leaderboard" aria-label="Publicité">
@@ -294,7 +313,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
               <strong>soustraire</strong>. Formats acceptés&nbsp;: <code>2h30</code>, <code>2:30</code>,
               <code>45min</code>, <code>90s</code>, <code>1j</code>. Un nombre seul&nbsp;= des heures
               (<code>1,5</code> = 1h30). Le résultat peut être négatif.
-              Laissez vide pour utiliser les champs ci-dessous.
+              Une multiplication ou une division simple passe aussi&nbsp;: <code>2h30 x 3</code>, <code>10h / 4</code>. Laissez vide pour utiliser les champs ci-dessous.
             </p>
           </div>
 
@@ -321,10 +340,10 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
           </div>
 
           <div class="row-actions">
-            <button id="add-row" class="btn btn-ghost btn-sm" type="button" aria-label="Ajouter une durée">
+            <button id="add-row" class="btn btn-ghost btn-sm" type="button">
               <span class="op-plus" aria-hidden="true">+</span> Ajouter<span class="btn-long"> une durée</span>
             </button>
-            <button id="sub-row" class="btn btn-ghost btn-sm" type="button" aria-label="Soustraire une durée">
+            <button id="sub-row" class="btn btn-ghost btn-sm" type="button">
               <span class="op-minus" aria-hidden="true">−</span> Soustraire<span class="btn-long"> une durée</span>
             </button>
             <button id="btn-retenue" class="btn btn-ghost btn-sm" type="button"
@@ -538,9 +557,9 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         Les trois colonnes de droite donnent le temps de travail effectif selon la pause déduite. Cherchez
         directement votre ligne&nbsp;:
       </p>
-            <div class="table-wrap">
+            <div class="table-wrap" tabindex="0" role="region" aria-labelledby="cap-combien-heures-entre-deux-horaires-1">
         <table>
-          <caption>Combien d'heures entre deux horaires — les cas les plus courants</caption>
+          <caption id="cap-combien-heures-entre-deux-horaires-1">Combien d'heures entre deux horaires — les cas les plus courants</caption>
           <thead><tr>
             <th scope="col">Horaires</th><th scope="col">Amplitude</th>
             <th scope="col">Pause 45 min</th><th scope="col">Pause 1 h</th>
@@ -602,9 +621,9 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         en une fois&nbsp;: renseignez vos horaires, votre pause, puis le <strong>nombre de jours</strong>.
         Il affiche alors le total et le rappel du détail journalier.
       </p>
-      <div class="table-wrap tw-large">
+      <div class="table-wrap tw-large" tabindex="0" role="region" aria-labelledby="cap-combien-heures-entre-deux-horaires-2">
         <table>
-          <caption>Horaires courants, sur cinq jours</caption>
+          <caption id="cap-combien-heures-entre-deux-horaires-2">Horaires courants, sur cinq jours</caption>
           <thead><tr><th scope="col">Horaire</th><th scope="col">Pause</th><th scope="col">Par jour</th><th scope="col">Sur 5 jours</th><th scope="col">Face aux 35&nbsp;h</th></tr></thead>
           <tbody>
             <tr><td>8h00 – 17h00</td><td>60 min</td><td>8 h 00</td><td><strong>40 h 00</strong></td><td>au-delà</td></tr>
@@ -657,6 +676,13 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         <li><a href="jours-feries-luxembourg.html">Fériés Luxembourg</a></li>
         <li><a href="jours-feries-quebec.html">Fériés Québec</a></li>
       </ul>
+
+      <h2 id="sources">Sources</h2>
+      <p class="micro sources">
+        Les règles citées sur cette page viennent des textes officiels suivants,
+        consultés le 26 septembre 2026&nbsp;: <a href="https://www.legifrance.gouv.fr/codes/id/LEGITEXT000006072050/" rel="nofollow noopener" target="_blank">Code du travail sur Légifrance</a> · <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F2405" rel="nofollow noopener" target="_blank">Jours fériés et ponts — service-public.fr</a>.
+        La <a href="a-propos.html#calcul">méthode de calcul des dates</a> est décrite à part.
+      </p>
   </article>
 </main>
 
@@ -709,6 +735,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
       <div>
         <h2 class="plan-titre">Le site</h2>
         <ul>
+          <li><a href="a-propos.html">À propos et méthode</a></li>
           <li><a href="nouveautes.html">Nouveautés</a></li>
           <li><a href="mentions-legales.html">Mentions légales</a></li>
         </ul>
@@ -716,7 +743,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
     </nav>
     <p>
       <strong>Calculatrice de Durée</strong> — addition d'heures, temps de travail, jours ouvrés.
-      Calculs effectués dans votre navigateur, aucune donnée collectée.
+      Calculs effectués dans votre navigateur : aucune donnée saisie n'est collectée.
     </p>
     <p class="micro">
       © <span id="year">2026</span> Calculatrice de Durée · Les résultats sont fournis à titre indicatif ·
@@ -725,7 +752,9 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
   </div>
 </footer>
 
-<a class="retour-calc" id="retour-calc" href="#calculatrice"><span aria-hidden="true">↑</span> Calculateur</a>
+<nav class="retour-nav" aria-label="Revenir au calculateur">
+  <a class="retour-calc" id="retour-calc" href="#calculatrice"><span aria-hidden="true">↑</span> Calculateur</a>
+</nav>
 
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 

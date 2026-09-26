@@ -4,10 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-<title>Horaire Brisé au Québec : Calcul des Heures et Règle des 3 h</title>
+<title>Horaire brisé au Québec : calcul des heures et règle des 3 h</title>
 <meta name="description" content="Calculez vos quarts coupés au Québec : heures travaillées, heures payées et coupure. La règle des trois heures de l'article 58 de la Loi sur les normes.">
 
 <link rel="canonical" href="https://calculatrice-duree.fr/journee-coupee-quebec.html">
+<link rel="alternate" hreflang="fr-FR" href="https://calculatrice-duree.fr/calcul-heures-journee-coupee.html">
+<link rel="alternate" hreflang="fr-BE" href="https://calculatrice-duree.fr/journee-coupee-belgique.html">
+<link rel="alternate" hreflang="fr-CH" href="https://calculatrice-duree.fr/journee-coupee-suisse.html">
+<link rel="alternate" hreflang="fr-LU" href="https://calculatrice-duree.fr/journee-coupee-luxembourg.html">
+<link rel="alternate" hreflang="fr-CA" href="https://calculatrice-duree.fr/journee-coupee-quebec.html">
+<link rel="alternate" hreflang="x-default" href="https://calculatrice-duree.fr/calcul-heures-journee-coupee.html">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
@@ -15,10 +21,15 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="fr_CA">
 <meta property="og:site_name" content="Calculatrice de Durée">
-<meta property="og:title" content="Horaire Brisé au Québec : Calcul des Heures et Règle des 3 h">
+<meta property="og:title" content="Horaire brisé au Québec : calcul des heures et règle des 3 h">
 <meta property="og:description" content="Calculez vos quarts coupés au Québec : heures travaillées, heures payées et coupure. La règle des trois heures de l'article 58 de la Loi sur les normes.">
 <meta property="og:url" content="https://calculatrice-duree.fr/journee-coupee-quebec.html">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://calculatrice-duree.fr/og-coupee.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Horaire brisé au Québec : calcul des heures et règle des 3 h">
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="style.css">
@@ -44,12 +55,25 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Organization",
+      "@id": "https://calculatrice-duree.fr/#editeur",
+      "name": "Calculatrice de Durée",
+      "url": "https://calculatrice-duree.fr/",
+      "email": "contact.calculatrice@gmail.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://calculatrice-duree.fr/favicon.svg"
+      }
+    },
+    {
       "@type": "WebPage",
       "@id": "https://calculatrice-duree.fr/journee-coupee-quebec.html#page",
       "url": "https://calculatrice-duree.fr/journee-coupee-quebec.html",
-      "name": "Horaire Brisé au Québec : Calcul des Heures et Règle des 3 h",
+      "name": "Horaire brisé au Québec : calcul des heures et règle des 3 h",
       "description": "Calculez vos quarts coupés au Québec : heures travaillées, heures payées et coupure. La règle des trois heures de l'article 58 de la Loi sur les normes.",
       "inLanguage": "fr-CA",
+      "dateModified": "2026-09-26",
+      "publisher": { "@id": "https://calculatrice-duree.fr/#editeur" },
       "isPartOf": {
         "@type": "WebSite",
         "@id": "https://calculatrice-duree.fr/#site",
@@ -148,7 +172,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
     </a>
     <nav class="site-nav" aria-label="Navigation principale">
       <details class="nav-groupe">
-        <summary>Calculs de durée</summary>
+        <summary><span class="nav-long">Calculs de durée</span><span class="nav-court">Durées</span></summary>
         <div class="nav-pop">
           <a href="/">Calculatrice de durée</a>
           <a href="additionner-des-heures.html">Addition d'heures</a>
@@ -157,7 +181,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         </div>
       </details>
       <details class="nav-groupe est-actif">
-        <summary>Heures de travail</summary>
+        <summary><span class="nav-long">Heures de travail</span><span class="nav-court">Travail</span></summary>
         <div class="nav-pop">
           <a href="calcul-heures-de-travail.html">Heures de travail</a>
           <a href="combien-heures-entre-deux-horaires.html">Entre deux horaires</a>
@@ -169,14 +193,14 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         </div>
       </details>
       <details class="nav-groupe">
-        <summary>Dates et jours ouvrés</summary>
+        <summary><span class="nav-long">Dates et jours ouvrés</span><span class="nav-court">Dates</span></summary>
         <div class="nav-pop">
           <a href="duree-entre-deux-dates.html">Durée entre deux dates</a>
           <a href="calcul-jours-ouvres.html">Jours ouvrés</a>
         </div>
       </details>
       <details class="nav-groupe">
-        <summary>Jours fériés</summary>
+        <summary><span class="nav-long">Jours fériés</span><span class="nav-court">Fériés</span></summary>
         <div class="nav-pop">
           <a href="jours-feries-france.html">France</a>
           <a href="jours-feries-belgique.html">Belgique</a>
@@ -206,6 +230,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
   <section class="hero">
     <h1>Horaire brisé au Québec&nbsp;: calculer ses heures et ses heures payées</h1>
     <p class="lead">Quart du midi, coupure, quart du soir. Le calculateur donne le temps travaillé, ce qui doit être payé et la durée des coupures. Règles applicables au Québec (Loi sur les normes du travail).</p>
+    <p class="maj">Mis à jour le <time datetime="2026-09-26">26 septembre 2026</time> · Règles vérifiées le <time datetime="2026-09-26">26 septembre 2026</time> · <a href="a-propos.html#sources">Méthode et sources</a></p>
   </section>
 
   <nav class="jc-pays" aria-label="Journée coupée par pays">
@@ -229,11 +254,11 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
 
   <div class="layout">
     <div class="col-main">
-      <section id="services" class="card calc jc-card" data-pays="qc" aria-label="Calculateur d'horaire brisé au Québec">
+      <section id="services" class="card calc jc-card" data-pays="qc" data-label="Temps travaillé" aria-label="Calculateur d'horaire brisé au Québec">
         <h2 class="jc-titre">Vos quarts de la journée</h2>
 
         <div class="jc-out">
-          <p class="jc-label">Temps de travail effectif</p>
+          <p class="jc-label">Temps travaillé</p>
           <p class="jc-gros" id="jc-travail">10h 00min</p>
           <div class="jc-cells">
             <div class="jc-cell"><b id="jc-dec">10,00</b><span>Heures décimales</span></div>
@@ -242,7 +267,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
             <div class="jc-cell"><b id="jc-paye">10h 00min</b><span>Heures payées</span></div>
             <div class="jc-cell"><b id="jc-sem">—</b><span>Sur la période</span></div>
           </div>
-          <p class="jc-note" id="jc-note">Chaque présence atteint trois heures — l'indemnité de l'article 58 LNT ne s'applique pas ici.</p>
+          <p class="jc-note" id="jc-note" aria-live="polite">Chaque présence atteint trois heures — l'indemnité de l'article 58 LNT ne s'applique pas ici.</p>
         </div>
 
         <div class="jc-lignes">
@@ -327,7 +352,29 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         disposition de l'employeur&nbsp;: elle n'est pas rémunérée.</li>
       </ul>
 
-      <h2 id="regle-trois-heures">La règle des trois heures (article&nbsp;58)</h2>
+      <h2 id="horaires-types">Les horaires types de la restauration</h2>
+      <p>
+        Six configurations courantes, avec la colonne qui n'existe qu'au Québec&nbsp;: <strong>ce qui doit être payé</strong>, qui n'est pas toujours ce qui a été travaillé.
+      </p>
+      <div class="table-wrap tw-large" tabindex="0" role="region" aria-labelledby="cap-journee-coupee-quebec-1">
+        <table>
+          <caption id="cap-journee-coupee-quebec-1">Journées types en restauration — seuils du pays</caption>
+          <thead><tr><th scope="col">Poste</th><th scope="col">Horaires</th><th scope="col">Travaillé</th><th scope="col">Payé</th><th scope="col">Coupure</th></tr></thead>
+          <tbody>
+            <tr><td>Service du midi seul</td><td>10h00–15h00</td><td><strong>5 h 00</strong></td><td>5 h 00</td><td>—</td></tr>
+            <tr><td>Service du soir seul</td><td>18h00–23h30</td><td><strong>5 h 30</strong></td><td>5 h 30</td><td>—</td></tr>
+            <tr><td>Journée coupée classique</td><td>10h00–15h00 puis 18h00–23h00</td><td><strong>10 h 00</strong></td><td>10 h 00</td><td>3 h 00</td></tr>
+            <tr><td>Coupure courte</td><td>11h30–15h00 puis 18h00–22h30</td><td><strong>8 h 00</strong></td><td>8 h 00</td><td>3 h 00</td></tr>
+            <tr><td>Cuisine, avec mise en place</td><td>09h00–15h00 puis 19h00–23h00</td><td><strong>10 h 00</strong></td><td>10 h 00</td><td>4 h 00</td></tr>
+            <tr><td>Deux courts services</td><td>11h30–13h30 puis 18h00–20h00</td><td><strong>4 h 00</strong></td><td>6 h 00 <strong>← art. 58</strong></td><td>4 h 30</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="micro">
+        La dernière ligne est celle qu'il faut retenir&nbsp;: quatre heures travaillées, <strong>six heures payées</strong>. Deux présences de moins de trois heures, donc deux indemnités.
+      </p>
+
+      <h2 id="regle-trois-heures">La règle des trois heures (<a href="https://www.cnt.gouv.qc.ca/salaire-paie-et-travail/horaire-de-travail/les-normes-du-travail/article-58/index.html" rel="nofollow noopener" target="_blank">article&nbsp;58</a>)</h2>
       <p>
         C'est la disposition qui change tout pour un horaire brisé. Une personne salariée qui se
         présente au travail à la demande expresse de son employeur, ou dans le cours normal de son
@@ -380,7 +427,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
 
       <h2 id="heures-sup">Heures supplémentaires&nbsp;: après 40 heures</h2>
       <p>
-        La semaine normale de travail est de <strong>40 heures</strong> (article&nbsp;52). Toute
+        La semaine normale de travail est de <strong>40 heures</strong> (<a href="https://www.legisquebec.gouv.qc.ca/fr/document/lc/n-1.1" rel="nofollow noopener" target="_blank">article&nbsp;52</a>). Toute
         heure au-delà est majorée de <strong>50&nbsp;%</strong> du salaire horaire habituel
         (article&nbsp;55).
       </p>
@@ -417,6 +464,13 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
         <p>Le calculateur le reconnaît tout seul : si l'heure de fin est inférieure à l'heure de début, il considère que le quart se termine le lendemain. Un quart de 19h à 01h compte donc 6 heures, et non une durée négative.</p>
       </details>
       </div>
+
+      <h2 id="sources">Sources</h2>
+      <p class="micro sources">
+        Les règles citées sur cette page viennent des textes officiels suivants,
+        consultés le 26 septembre 2026&nbsp;: <a href="https://www.legisquebec.gouv.qc.ca/fr/document/lc/n-1.1" rel="nofollow noopener" target="_blank">Loi sur les normes du travail</a> · <a href="https://www.cnesst.gouv.qc.ca/fr" rel="nofollow noopener" target="_blank">CNESST</a>.
+        La <a href="a-propos.html#calcul">méthode de calcul des dates</a> est décrite à part.
+      </p>
   </article>
 </main>
 
@@ -469,6 +523,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
       <div>
         <h2 class="plan-titre">Le site</h2>
         <ul>
+          <li><a href="a-propos.html">À propos et méthode</a></li>
           <li><a href="nouveautes.html">Nouveautés</a></li>
           <li><a href="mentions-legales.html">Mentions légales</a></li>
         </ul>
@@ -476,7 +531,7 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
     </nav>
     <p>
       <strong>Calculatrice de Durée</strong> — addition d'heures, temps de travail, jours ouvrés.
-      Calculs effectués dans votre navigateur, aucune donnée collectée.
+      Calculs effectués dans votre navigateur : aucune donnée saisie n'est collectée.
     </p>
     <p class="micro">
       © <span id="year">2026</span> Calculatrice de Durée · Les résultats sont fournis à titre indicatif ·
@@ -485,7 +540,9 @@ if(localStorage.getItem('cd-ms')==='1')document.documentElement.setAttribute('da
   </div>
 </footer>
 
-<a class="retour-calc" id="retour-calc" href="#services"><span aria-hidden="true">↑</span> Calculateur</a>
+<nav class="retour-nav" aria-label="Revenir au calculateur">
+  <a class="retour-calc" id="retour-calc" href="#services"><span aria-hidden="true">↑</span> Calculateur</a>
+</nav>
 
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
